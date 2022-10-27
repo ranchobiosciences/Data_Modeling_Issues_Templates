@@ -1,6 +1,5 @@
 name: Data Model Changeset
 description: Request changes to the data model
-title: "[DM Request]: "
 labels: ["enhancement"]
 assignees:
   - kwittmeyer
@@ -10,16 +9,38 @@ body:
       value: |
         These are the changes to the data model
   - type: input
-    id: entity
+    id: request_issue
     attributes:
-      label: Entity/Node
-      placeholder: ex. dataset
+      label: Request Issue
+      description: DM Request Issue linked to this changeset (use # to bring up issue numbers)
+      placeholder: #2223
     validations:
       required: true
-  - type: input
+ - type: input
+   id: orig_entity
+   attributes:
+     label: Original Entity/Node
+     placeholder: ex. dataset
+   validations:
+     required: true
+ - type: input
+    id: entity
+    attributes:
+      label: New Entity/Node
+      placeholder: ex. dataset
+    validations:
+      required: false
+ - type: input
+   id: orig_attribute
+   attributes:
+     label: Original Attribute/Field
+     placeholder: ex. dataset_owner
+   validations:
+     required: false
+- type: input
     id: attribute
     attributes:
-      label: Attribute/Field
+      label: New Attribute/Field
       placeholder: ex. dataset_owner
     validations:
       required: false
