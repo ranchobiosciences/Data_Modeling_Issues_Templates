@@ -22,7 +22,7 @@ body:
     attributes:
       label: Description of changes
       description: Proposed changes
-      value:|
+      value: |
         Old Entity:
         New Entity:
         Old Attribute:
