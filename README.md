@@ -1,7 +1,7 @@
 
 ### Data Model Update Request Process:
 
-1. SME or User submits an issue request (see below): [Data Model Request Form](https://github.com/ranchobiosciences/Data_Modeling_Issues_Templates/issues/new?assignees=kwittmeyer&labels=enhancement&template=data-model-request-form.yml&title=%5BDM+Request%5D%3A+)
+1. Stakeholder submits an issue request (see below): [Data Model Request Form](https://github.com/ranchobiosciences/Data_Modeling_Issues_Templates/issues/new?assignees=kwittmeyer&labels=enhancement&template=data-model-request-form.yml&title=%5BDM+Request%5D%3A+)
 2. Data modeler will review request
 3. Any further clarifications and discussion will be handeled in the comments of the issue request form
 4. Data modeler will create a changeset proposal and post it to the issue
@@ -19,5 +19,5 @@ When making a request please include the following details
     ie. add or delete enum values, add a property, change the name of a property
 3. Affected node(s) (Entities)
 4. Affected properties (Attributes)
-    a. Affected enum values (optional)
+    1. Affected enum values (optional)
 5. Any relevent data or examples that will aid modelling
