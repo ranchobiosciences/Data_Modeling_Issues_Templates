@@ -53,13 +53,24 @@ body:
     validations:
       required: false
   - type: dropdown
-    id: action
+    id: action_type
     attributes:
       label: Action
       options:
         - Add
         - Delete
         - Name Change
+    validations:
+      required: true
+  - type: dropdown
+    id: action_element
+    attributes:
+      label: Action element
+      options:
+        - Node
+        - Property
+        - Enum
+        - Key
     validations:
       required: true
  
