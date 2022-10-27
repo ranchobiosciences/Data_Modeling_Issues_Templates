@@ -14,7 +14,7 @@ body:
     attributes:
       label: Request Issue
       description: DM Request Issue # linked to this changeset
-      placeholder: ex. #2223
+      placeholder: ex. "#2223"
     validations:
       required: true
   - type: input
