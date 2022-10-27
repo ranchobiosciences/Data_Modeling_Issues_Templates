@@ -23,7 +23,7 @@ body:
     attributes:
       label: Description of changes
       description: Please include any relevent examples or data in the text or as an attachment
-      placeholder: |
+      value: |
         Short text description:
         
         
