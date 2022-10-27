@@ -1,4 +1,4 @@
-name: Data Model Changeset
+name: "Data Model Changeset"
 description: Request changes to the data model
 title: ['test'] 
 labels: ["enhancement"]
