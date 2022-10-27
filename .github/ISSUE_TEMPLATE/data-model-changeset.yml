@@ -1,6 +1,6 @@
 name: "Data Model Changeset"
 description: Request changes to the data model
-title: [changeset name]
+title: ["changeset name"]
 labels: ["enhancement"]
 assignees:
   - kwittmeyer
