@@ -20,4 +20,4 @@ When making a request please include the following details
 3. Affected node(s) (Entities)
 4. Affected properties (Attributes)
     1. Affected enum values (optional)
-5. Any relevent data or examples that will aid modelling
+5. Any relevent data or examples that will aid modeling
