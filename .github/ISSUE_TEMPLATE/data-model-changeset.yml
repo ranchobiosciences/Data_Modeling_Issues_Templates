@@ -1,0 +1,43 @@
+name: Data Model Changeset
+description: Request changes to the data model
+title: "[DM Request]: "
+labels: ["enhancement"]
+assignees:
+  - kwittmeyer
+body:
+  - type: markdown
+    attributes:
+      value: |
+        These are the changes to the data model
+  - type: input
+    id: entity
+    attributes:
+      label: Entity/Node
+      placeholder: ex. dataset
+    validations:
+      required: true
+  - type: input
+    id: attribute
+    attributes:
+      label: Attribute/Field
+      placeholder: ex. dataset_owner
+    validations:
+      required: false
+  - type: textarea
+    id: enum
+    attributes:
+      label: Enum Values
+      description: Enter values one per line
+    validations:
+      required: false
+  - type: dropdown
+    id: action
+    attributes:
+      label: Action
+      options:
+        - Add
+        - Delete
+        - Name Change
+    validations:
+      required: true
+ 
