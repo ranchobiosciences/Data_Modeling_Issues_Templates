@@ -2,10 +2,9 @@
 name: Data Model Request Form
 about: Request changes to the data model
 title: "[DM Request]: "
-labels: ["Data Model"]
+labels: ["enhancement"]
 assignees:
   - kwittmeyer
-  - jernest1
 body:
   - type: markdown
     attributes:
