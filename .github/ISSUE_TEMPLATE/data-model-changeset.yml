@@ -13,8 +13,8 @@ body:
     id: request_issue
     attributes:
       label: Request Issue
-      description: DM Request Issue linked to this changeset (use # to bring up issue numbers)
-      placeholder: #2223
+      description: DM Request Issue # linked to this changeset
+      placeholder: ex. #2223
     validations:
       required: true
   - type: input
