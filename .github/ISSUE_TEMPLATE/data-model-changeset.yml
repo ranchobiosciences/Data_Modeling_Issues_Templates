@@ -1,6 +1,5 @@
 name: "Data Model Changeset"
 description: Request changes to the data model
-title: ['test'] 
 labels: ["enhancement"]
 assignees:
   - kwittmeyer
@@ -17,49 +16,49 @@ body:
       placeholder: #2223
     validations:
       required: true
- - type: input
-   id: orig_entity
-   attributes:
-     label: Original Entity/Node
-     placeholder: ex. dataset
-   validations:
-     required: true
- - type: input
-    id: entity
+  - type: input
+    id: orig_entity
     attributes:
-      label: New Entity/Node
+      label: Original Entity/Node
       placeholder: ex. dataset
     validations:
-      required: false
- - type: input
-   id: orig_attribute
-   attributes:
-     label: Original Attribute/Field
-     placeholder: ex. dataset_owner
-   validations:
-     required: false
-- type: input
+      required: true
+  - type: input
+	id: entity
+	attributes:
+      label: New Entity/Node
+	  placeholder: ex. dataset
+	validations:
+	  required: false
+  - type: input
+    id: orig_attribute
+    attributes:
+	  label: Original Attribute/Field
+	  placeholder: ex. dataset_owner
+    validations:
+	  required: false
+  - type: input
     id: attribute
     attributes:
-      label: New Attribute/Field
-      placeholder: ex. dataset_owner
+	  label: New Attribute/Field
+	  placeholder: ex. dataset_owner
     validations:
-      required: false
+	  required: false
   - type: textarea
     id: enum
     attributes:
-      label: Enum Values
-      description: Enter values one per line
+	  label: Enum Values
+	  description: Enter values one per line
     validations:
-      required: false
+	  required: false
   - type: dropdown
     id: action
     attributes:
-      label: Action
-      options:
-        - Add
-        - Delete
-        - Name Change
+	  label: Action
+	  options:
+	    - Add
+	    - Delete
+	    - Name Change
     validations:
-      required: true
+	  required: true
  
