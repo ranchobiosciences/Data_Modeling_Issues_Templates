@@ -1,0 +1,39 @@
+name: "Data Model Changeset 2"
+description: Proposed data model updates
+title: "[Model Update]: "
+labels: ["enhancement"]
+assignees:
+  - kwittmeyer
+body:
+  - type: markdown
+    attributes:
+      value: |
+        These are the changes to the data model
+  - type: input
+    id: request_issue
+    attributes:
+      label: Request Issue
+      description: DM Request Issue # linked to this changeset
+      placeholder: ex. "#2223"
+    validations:
+      required: true
+  - type: textarea
+    id: changes
+    attributes:
+      label: Description of changes
+      description: Proposed changes
+      value:|
+        Old Entity:
+        New Entity:
+        Old Attribute:
+        New Attribute:
+        Enums:
+        -
+        -
+        -
+        ...
+        Action: (add|delete|name change)
+    validations:
+      required: true
+
+ 
