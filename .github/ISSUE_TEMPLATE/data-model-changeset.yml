@@ -1,5 +1,5 @@
 name: "Data Model Changeset"
-description: Request changes to the data model
+description: Proposed data model updates
 title: "[Model Update]: "
 labels: ["enhancement"]
 assignees:
