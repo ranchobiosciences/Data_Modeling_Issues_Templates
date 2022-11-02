@@ -100,7 +100,7 @@ body:
       label: Datatype
       options:
         - NA
-        - null
+        - "null"
         - enum
         - string
         - LDAP
@@ -115,7 +115,7 @@ body:
         - system-generated
         - object
     validations:
-      required: true
+      required: false
   - type: textarea
     id: enum
     attributes:
@@ -134,3 +134,5 @@ body:
         WES:Whole Exome Sequencing
     validations:
       required: false
+
+ 
