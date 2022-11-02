@@ -6,20 +6,20 @@ assignees:
   - kwittmeyer
 body:
   - type: markdown
-    propertys:
+    attributes:
       value: |
         These are the changes to the data model
   - type: input
     id: request_issue
-    propertys:
+    attributes:
       label: Request Issue
-      description: DM Request Issue # linked to this changeset
+      description: DM Request Issue '#' linked to this changeset
       placeholder: ex. "#2223"
     validations:
       required: true
   - type: dropdown
     id: action_type
-    propertys:
+    attributes:
       label: Action
       options:
         - Add
@@ -30,7 +30,7 @@ body:
       required: true
   - type: dropdown
     id: action_element
-    propertys:
+    attributes:
       label: Action element
       options:
         - Node
@@ -41,28 +41,28 @@ body:
       required: true
   - type: input
     id: orig_node
-    propertys:
+    attributes:
       label: Original Node
       placeholder: ex. dataset
     validations:
       required: true
   - type: input
     id: node
-    propertys:
+    attributes:
       label: New Node
       placeholder: ex. dataset
     validations:
       required: false
   - type: input
     id: node_description
-    propertys:
+    attributes:
         label: Node Description
         placeholder: "ex. Contains metadata related to datasets"
     validations:
         required: false
   - type: textarea
     id: links
-    propertys:
+    attributes:
       label: Links and Cardinality
       description: |
         Enter values one per line in the format: Child Node:Cardinality
@@ -75,28 +75,28 @@ body:
       required: false
   - type: input
     id: orig_property
-    propertys:
+    attributes:
       label: Original Property
       placeholder: ex. dataset_owner
     validations:
       required: false
   - type: input
     id: property
-    propertys:
+    attributes:
       label: New Property
       placeholder: ex. dataset_owner
     validations:
       required: false
   - type: input
     id: property_description
-    propertys:
+    attributes:
         label: Property Description
         placeholder: "ex. The data owner and point of contact"
     validations:
         required: false
   - type: dropdown
     id: datatype
-    propertys:
+    attributes:
       label: Datatype
       options:
         - "null"
@@ -117,7 +117,7 @@ body:
       required: false
   - type: textarea
     id: enum
-    propertys:
+    attributes:
       label: Enum Values
       description: |
         Enter values one per line or if modifying existing enums, 
