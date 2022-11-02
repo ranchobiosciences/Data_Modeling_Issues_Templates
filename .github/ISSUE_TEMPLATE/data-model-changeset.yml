@@ -8,7 +8,15 @@ body:
   - type: markdown
     attributes:
       value: |
-        These are the changes to the data model
+        These are the proposed changes to the data model
+        
+        Required Fields:
+        | Action | Action Element | Required Fields | 
+        |--|--|--|
+        | Add | Node | Original Node, Node Description, Links and Cardinality, Original Property, Property Description, Title, Datatype, Enums (if applicable)|
+        | Add | Property | Original Node, Original Property, Property Description, Title, Datatype, Enums (if applicable) |
+        | Add | Enums |  Original Node, Original Property, Datatype, Enums |
+        | Add | Link | Original Node, Links and Cardinality |
   - type: input
     id: request_issue
     attributes:
