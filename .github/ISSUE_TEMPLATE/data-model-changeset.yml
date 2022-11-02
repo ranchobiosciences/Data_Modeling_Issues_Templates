@@ -12,7 +12,7 @@ body:
         
         Required Fields:
         | Action | Action Element | Required Fields | Effect |
-        |--|--|--|--|--|
+        |--|--|--|--|
         | Add | Node | Original Node, Node Description, Links and Cardinality, *Properties new properties need to be added each on their own submission | Major |
         | Add | Property | Original Node, Original Property, Property Description, Title, Datatype, Enum Values(if applicable) | Limited |
         | Add | Enum Values |  Original Node, Original Property, Datatype, Enum Values | Limited |
