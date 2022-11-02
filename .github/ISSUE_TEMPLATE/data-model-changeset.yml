@@ -65,7 +65,7 @@ body:
     attributes:
       label: Links and Cardinality
       description: |
-        Enter values one per line in the format: Child Node:Cardinality
+        Enter values one per line in the format: Parent Node:Cardinality
         Possible carinality values are: many-to-many, many-to-one, one-to-many, one-to-one
       placeholder: |
         Ex:
@@ -111,7 +111,6 @@ body:
         - array, object
         - array, string
         - ontology
-        - system-generated
         - object
     validations:
       required: false
@@ -133,5 +132,3 @@ body:
         WES:Whole Exome Sequencing
     validations:
       required: false
-
- 
