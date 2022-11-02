@@ -14,7 +14,7 @@ body:
         
         Required Fields:
         Request Issue, Action, Action Element, Original Node
-        | Action | Action Element | Required Fields | Effect |
+        | Action | Action Element | Additional Required Fields | Effect |
         |--|--|--|--|
         | Add | Node | Node Description, Links and Cardinality, *Properties new properties need to be added each on their own submission | Major |
         | Add | Property | Original Property, Property Description, Title, Datatype, Enum Values(if applicable) | Limited |
