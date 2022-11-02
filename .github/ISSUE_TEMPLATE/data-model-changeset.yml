@@ -13,10 +13,18 @@ body:
         Required Fields:
         | Action | Action Element | Required Fields | 
         |--|--|--|
-        | Add | Node | Original Node, Node Description, Links and Cardinality, Original Property, Property Description, Title, Datatype, Enums (if applicable)|
-        | Add | Property | Original Node, Original Property, Property Description, Title, Datatype, Enums (if applicable) |
-        | Add | Enums |  Original Node, Original Property, Datatype, Enums |
+        | Add | Node | Original Node, Node Description, Links and Cardinality, Original Property, Property Description, Title, Datatype, Enum Values(if applicable)|
+        | Add | Property | Original Node, Original Property, Property Description, Title, Datatype, Enum Values(if applicable) |
+        | Add | Enum Values |  Original Node, Original Property, Datatype, Enum Values |
         | Add | Link | Original Node, Links and Cardinality |
+        | Delete | Node | Original Node |
+        | Delete | Property | Original Node, Original Property |
+        | Delete | Enum Values |   Original Node, Original Property, Datatype, Enum Values |
+        | Delete | Link | Original Node, Links and Cardinality |
+        | Rename | Node | Original Node, New Node |
+        | Rename | Property | Original Node, Original Property, New Property |
+        | Modify | Node | Original Node, Property Description |
+        | Modify | Property | Original Node, Original Property, One or more of: Property Description, Title, Datatype, Enum Values(if applicable)|
   - type: input
     id: request_issue
     attributes:
