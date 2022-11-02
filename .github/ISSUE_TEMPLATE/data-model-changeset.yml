@@ -99,7 +99,6 @@ body:
     attributes:
       label: Datatype
       options:
-        - NA
         - "null"
         - enum
         - string
