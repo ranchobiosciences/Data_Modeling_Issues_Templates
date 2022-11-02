@@ -10,22 +10,25 @@ body:
       value: |
         These are the proposed changes to the data model
         
+        Multiple requested changes will require submission of multiple changeset requests
+        
         Required Fields:
+        Request Issue, Action, Action Element, Original Node
         | Action | Action Element | Required Fields | Effect |
         |--|--|--|--|
-        | Add | Node | Original Node, Node Description, Links and Cardinality, *Properties new properties need to be added each on their own submission | Major |
-        | Add | Property | Original Node, Original Property, Property Description, Title, Datatype, Enum Values(if applicable) | Limited |
-        | Add | Enum Values |  Original Node, Original Property, Datatype, Enum Values | Limited |
-        | Add | Link | Original Node, Links and Cardinality | Limited |
+        | Add | Node | Node Description, Links and Cardinality, *Properties new properties need to be added each on their own submission | Major |
+        | Add | Property | Original Property, Property Description, Title, Datatype, Enum Values(if applicable) | Limited |
+        | Add | Enum Values |  Original Property, Datatype, Enum Values | Limited |
+        | Add | Link | Links and Cardinality | Limited |
         | Delete | Node | Original Node | Major |
-        | Delete | Property | Original Node, Original Property | Minor |
-        | Delete | Enum Values |   Original Node, Original Property, Datatype, Enum Values |  Minor |
-        | Delete | Link | Original Node, Links and Cardinality | Minor |
-        | Rename | Node | Original Node, New Node | Major |
-        | Rename | Property | Original Node, Original Property, New Property | Minor |
-        | Modify | Node | Original Node, Node Description | No Effect | False|
-        | Modify | Property | Original Node, Original Property, One or more of: Property Description, Title, Datatype | Minor |
-        | Modify | Enum Values | Original Node, Original Property, Datatype, Enum Values| Minor |
+        | Delete | Property | Original Property | Minor |
+        | Delete | Enum Values |   Original Property, Datatype, Enum Values |  Minor |
+        | Delete | Link | Links and Cardinality | Minor |
+        | Rename | Node | New Node | Major |
+        | Rename | Property | Original Property, New Property | Minor |
+        | Modify | Node | Node Description | No Effect | False|
+        | Modify | Property | Original Property, One or more of: Property Description, Title, Datatype | Minor |
+        | Modify | Enum Values | Original Property, Datatype, Enum Values| Minor |
   - type: input
     id: request_issue
     attributes:
