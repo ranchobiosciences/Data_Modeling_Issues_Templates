@@ -87,7 +87,7 @@ body:
       placeholder: ex. dataset_owner
     validations:
       required: false
-    - type: input
+  - type: input
     id: attribute_description
     attributes:
         label: Attribute Description
@@ -134,5 +134,3 @@ body:
         WES:Whole Exome Sequencing
     validations:
       required: false
-
- 
