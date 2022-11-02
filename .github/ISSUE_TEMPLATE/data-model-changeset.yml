@@ -24,7 +24,8 @@ body:
         | Rename | Node | Original Node, New Node |
         | Rename | Property | Original Node, Original Property, New Property |
         | Modify | Node | Original Node, Property Description |
-        | Modify | Property | Original Node, Original Property, One or more of: Property Description, Title, Datatype, Enum Values(if applicable)|
+        | Modify | Property | Original Node, Original Property, One or more of: Property Description, Title, Datatype |
+        | Modify | Enum Values | Original Node, Original Property, Datatype, Enum Values|
   - type: input
     id: request_issue
     attributes:
