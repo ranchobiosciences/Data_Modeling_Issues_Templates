@@ -23,7 +23,7 @@ body:
         | Delete | Link | Original Node, Links and Cardinality |
         | Rename | Node | Original Node, New Node |
         | Rename | Property | Original Node, Original Property, New Property |
-        | Modify | Node | Original Node, Property Description |
+        | Modify | Node | Original Node, Node Description |
         | Modify | Property | Original Node, Original Property, One or more of: Property Description, Title, Datatype |
         | Modify | Enum Values | Original Node, Original Property, Datatype, Enum Values|
   - type: input
