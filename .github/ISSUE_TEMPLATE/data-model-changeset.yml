@@ -17,6 +17,28 @@ body:
       placeholder: ex. "#2223"
     validations:
       required: true
+  - type: dropdown
+    id: action_type
+    attributes:
+      label: Action
+      options:
+        - Add
+        - Delete
+        - Rename
+        - Modify
+    validations:
+      required: true
+  - type: dropdown
+    id: action_element
+    attributes:
+      label: Action element
+      options:
+        - Node
+        - Property
+        - Enum
+        - Link
+    validations:
+      required: true
   - type: input
     id: orig_entity
     attributes:
@@ -29,6 +51,26 @@ body:
     attributes:
       label: New Entity/Node
       placeholder: ex. dataset
+    validations:
+      required: false
+  - type: input
+    id: entity_description
+    attributes:
+        label: Entity Description
+        placeholder: "ex. Contains metadata related to datasets"
+    validations:
+        required: false
+  - type: textarea
+    id: links
+    attributes:
+      label: Links and Cardinality
+      description: |
+        Enter values one per line in the format: Child Node:Cardinality
+        Possible carinality values are: many-to-many, many-to-one, one-to-many, one-to-one
+      placeholder: |
+        Ex:
+        clinical_trial:many-to-many
+        assay:many-to-many
     validations:
       required: false
   - type: input
@@ -45,32 +87,52 @@ body:
       placeholder: ex. dataset_owner
     validations:
       required: false
+    - type: input
+    id: attribute_description
+    attributes:
+        label: Attribute Description
+        placeholder: "ex. The data owner and point of contact"
+    validations:
+        required: false
+  - type: dropdown
+    id: datatype
+    attributes:
+      label: Datatype
+      options:
+        - NA
+        - null
+        - enum
+        - string
+        - LDAP
+        - url
+        - date
+        - float
+        - integer
+        - array
+        - array, object
+        - array, string
+        - ontology
+        - system-generated
+        - object
+    validations:
+      required: true
   - type: textarea
     id: enum
     attributes:
       label: Enum Values
-      description: Enter values one per line
+      description: |
+        Enter values one per line or if modifying existing enums, 
+        provide a mapping in the form old_enum:new_enum one per line
+      placeholder: |
+        Ex:
+        RNAseq
+        WGS
+        WES
+        Ex modify:
+        RNAseq:mRNA-seq
+        WGS:Whole Genome Sequencing
+        WES:Whole Exome Sequencing
     validations:
       required: false
-  - type: dropdown
-    id: action_type
-    attributes:
-      label: Action
-      options:
-        - Add
-        - Delete
-        - Name Change
-    validations:
-      required: true
-  - type: dropdown
-    id: action_element
-    attributes:
-      label: Action element
-      options:
-        - Node
-        - Property
-        - Enum
-        - Key
-    validations:
-      required: true
+
  
