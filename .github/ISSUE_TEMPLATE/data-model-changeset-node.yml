@@ -1,0 +1,85 @@
+name: "Data Model Changeset - Node"
+description: Proposed data model updates to a Node
+title: "[Model Update - Node]: "
+labels: ["DM Changeset - Node"]
+assignees:
+  - kwittmeyer
+body:
+  - type: markdown
+    attributes:
+      value: |
+        These are the proposed changes to the a node in the data model
+        When adding a node please submit additional requests for each added property as well
+        
+        Multiple requested changes will require submission of multiple changeset requests
+
+  - type: input
+    id: request_issue
+    attributes:
+      label: Request Issue Number
+      description: DM Request Issue '#' linked to this changeset
+      placeholder: ex. "#2223"
+    validations:
+      required: true
+  - type: dropdown
+    id: action_type
+    attributes:
+      label: Action
+      options:
+        - Add
+        - Delete
+        - Rename
+        - Modify
+    validations:
+      required: true
+  - type: checkbox
+    id: is_new
+    attributes:
+        label: Is this a new node?
+        values:
+            - New
+            - Existing
+        Default: Existing
+    validations:
+        required: true
+  - type: input
+    id: orig_node
+    attributes:
+      label: Original Node
+      placeholder: ex. dataset
+    validations:
+      required: true
+  - type: input
+    id: node
+    attributes:
+      label: New Node
+      description: Required: Rename
+      placeholder: ex. dataset
+    validations:
+      required: false
+  - type: input
+    id: node_description
+    attributes:
+        label: Node Description
+        description: |
+            Required: Add
+            Allowed: Modify
+        placeholder: "ex. Contains metadata related to datasets"
+    validations:
+        required: false
+  - type: textarea
+    id: links
+    attributes:
+      label: Links and Cardinality
+      description: |
+        Required: Add
+        Allowed: Delete
+        Enter values one per line in the format: Parent Node:Cardinality
+        Possible carinality values are: many-to-many, many-to-one, one-to-many, one-to-one
+      placeholder: |
+        Ex:
+        clinical_trial:many-to-many
+        assay:many-to-many
+    validations:
+      required: false
+
