@@ -60,16 +60,16 @@ body:
     validations:
       required: true
   - type: input
-    id: orig_node
+    id: node
     attributes:
-      label: Original Node
+      label: Node
       placeholder: ex. dataset
     validations:
       required: true
   - type: input
-    id: node
+    id: new_node_name
     attributes:
-      label: New Node
+      label: New Node Name
       placeholder: ex. dataset
     validations:
       required: false
@@ -94,17 +94,24 @@ body:
     validations:
       required: false
   - type: input
-    id: orig_property
+    id: property
     attributes:
-      label: Original Property
+      label: Property
       placeholder: ex. dataset_owner
     validations:
       required: false
   - type: input
-    id: property
+    id: new_property_name
     attributes:
-      label: New Property
+      label: New Property Name
       placeholder: ex. dataset_owner
+    validations:
+      required: false
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      placeholder: ex. Dataset Owner
     validations:
       required: false
   - type: input
