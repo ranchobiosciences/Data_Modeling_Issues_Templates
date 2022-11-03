@@ -8,7 +8,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        These are the proposed changes to the data model
+        These are the proposed modifications to the data model
         
         Multiple requested changes will require submission of multiple changeset requests
         
