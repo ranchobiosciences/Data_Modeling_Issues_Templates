@@ -33,7 +33,7 @@ body:
     validations:
       required: true
   - type: dropdown
-    id: is_new
+    id: is_new_node
     attributes:
       label: Is this node new?
       options:  
