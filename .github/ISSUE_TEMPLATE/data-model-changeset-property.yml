@@ -120,7 +120,7 @@ body:
   - type: checkboxes
     id: enum_action
     attributes:
-      label: Enum Action:
+      label: Enum Action
       options:
         - label: Add
         - label: Delete
