@@ -53,7 +53,7 @@ body:
     id: node
     attributes:
       label: New Node
-      description: Required: Rename
+      description: "Required: Rename"
       placeholder: ex. dataset
     validations:
       required: false
