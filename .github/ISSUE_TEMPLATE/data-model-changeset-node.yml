@@ -32,14 +32,13 @@ body:
         - Modify
     validations:
       required: true
-  - type: checkbox
+  - type: dropdown
     id: is_new
     attributes:
-        label: Is this a new node?
-        values:
-            - New
-            - Existing
-        Default: Existing
+      label: Is this node new?
+      options:  
+        - Existing
+        - New
     validations:
         required: true
   - type: input
