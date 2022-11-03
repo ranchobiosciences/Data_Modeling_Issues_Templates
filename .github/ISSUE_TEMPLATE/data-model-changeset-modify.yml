@@ -1,0 +1,133 @@
+name: "Data Model Changeset - modify"
+description: Proposed data model updates
+title: "[Model Update - modify]: "
+labels: ["DM Changeset - modify"]
+assignees:
+  - kwittmeyer
+body:
+  - type: markdown
+    attributes:
+      value: |
+        These are the proposed changes to the data model
+        
+        Multiple requested changes will require submission of multiple changeset requests
+        
+        Required Fields:
+        Request Issue, Action Element, Node
+        | Action | Action Element | Additional Required Fields | Effect |
+        |--|--|--|--|
+        | Modify | Node Description | Node, Node Description | No Effect | False|
+        | Modify | Property | Node, Property, One or more of: Property Description, Title, Datatype | Minor |
+        | Modify | Enum Values | Node, Property, Datatype, Enum Values | Minor |
+        | Modify | Link | Node, Links and Cardinality | Minor |
+  - type: input
+    id: request_issue
+    attributes:
+      label: Request Issue Number
+      description: DM Request Issue '#' linked to this changeset
+      placeholder: ex. "#2223"
+    validations:
+      required: true
+  - type: dropdown
+    id: action_type
+    attributes:
+      label: Action
+      options:
+        - Add
+        - Delete
+        - Rename
+        - Modify
+    validations:
+      required: true
+  - type: dropdown
+    id: action_element
+    attributes:
+      label: Action element
+      options:
+        - Node Description
+        - Property
+        - Enum Values
+        - Link
+    validations:
+      required: true
+  - type: input
+    id: node
+    attributes:
+      label: Node
+      placeholder: ex. dataset
+    validations:
+      required: true
+  - type: input
+    id: node_description
+    attributes:
+        label: Node Description
+        placeholder: "ex. Contains metadata related to datasets"
+    validations:
+        required: false
+  - type: textarea
+    id: links
+    attributes:
+      label: Links and Cardinality
+      description: |
+        Enter values one per line in the format: Parent Node:Cardinality
+        Possible carinality values are: many-to-many, many-to-one, one-to-many, one-to-one
+      placeholder: |
+        Ex:
+        clinical_trial:many-to-many
+        assay:many-to-many
+    validations:
+      required: false
+  - type: input
+    id: property
+    attributes:
+      label: Property
+      placeholder: ex. dataset_owner
+    validations:
+      required: false
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      placeholder: ex. Dataset Owner
+    validations:
+      required: false
+  - type: input
+    id: property_description
+    attributes:
+        label: Property Description
+        placeholder: "ex. The data owner and point of contact"
+    validations:
+        required: false
+  - type: dropdown
+    id: datatype
+    attributes:
+      label: Datatype
+      options:
+        - "null"
+        - enum
+        - string
+        - LDAP
+        - url
+        - date
+        - float
+        - integer
+        - array
+        - array, object
+        - array, string
+        - ontology
+        - object
+    validations:
+      required: false
+  - type: textarea
+    id: enum
+    attributes:
+      label: Enum Values
+      description: |
+        Provide a mapping in the form old_enum:new_enum one per line
+      placeholder: |
+        Ex modify:
+        RNAseq:mRNA-seq
+        WGS:Whole Genome Sequencing
+        WES:Whole Exome Sequencing
+    validations:
+      required: false
