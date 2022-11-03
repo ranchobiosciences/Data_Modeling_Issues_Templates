@@ -12,6 +12,15 @@ body:
         
         Multiple requested changes will require submission of multiple changeset requests
         
+        Required Fields:
+        Request Issue,  Action Element, Node
+        | Action | Action Element | Additional Required Fields | Effect |
+        |--|--|--|--|
+        | Add | Node | Node Node Description, Links and Cardinality, *Properties new properties need to be added each on their own submission | Major |
+        | Add | Property | Node, Property, Property Description, Title, Datatype, Enum Values(if applicable) | Limited |
+        | Add | Enum Values |  Original Property, Datatype, Enum Values | Limited |
+        | Add | Link | Links and Cardinality | Limited |
+        
   - type: input
     id: request_issue
     attributes:
@@ -64,6 +73,13 @@ body:
     attributes:
       label: Property
       placeholder: ex. dataset_owner
+    validations:
+      required: false
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      placeholder: ex. Dataset Owner
     validations:
       required: false
   - type: input
