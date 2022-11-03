@@ -16,10 +16,10 @@ body:
         Request Issue,  Action Element, Node
         | Action | Action Element | Additional Required Fields | Effect |
         |--|--|--|--|
-        | Add | Node | Node Node Description, Links and Cardinality, *Properties new properties need to be added each on their own submission | Major |
+        | Add | Node | Node, Node Description, Links and Cardinality, *Properties new properties need to be added each on their own submission | Major |
         | Add | Property | Node, Property, Property Description, Title, Datatype, Enum Values(if applicable) | Limited |
-        | Add | Enum Values |  Original Property, Datatype, Enum Values | Limited |
-        | Add | Link | Links and Cardinality | Limited |
+        | Add | Enum Values |  Node, Property, Datatype, Enum Values | Limited |
+        | Add | Link | Node, Links and Cardinality | Limited |
         
   - type: input
     id: request_issue
