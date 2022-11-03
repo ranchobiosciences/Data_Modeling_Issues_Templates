@@ -117,11 +117,3 @@ body:
         WES:Whole Exome Sequencing
     validations:
       required: false
-  - type: checkboxes
-    id: enum_action
-    attributes:
-      label: Enum Action
-      options:
-        - label: Add
-        - label: Delete
-        - label: Modify
