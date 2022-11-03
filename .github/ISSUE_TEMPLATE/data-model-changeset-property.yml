@@ -1,18 +1,17 @@
-name: "Data Model Changeset - Node"
-description: Proposed data model updates to a Node
-title: "[Model Update - Node]: "
-labels: ["DM Changeset - Node"]
+name: "Data Model Changeset - Property"
+description: Proposed data model updates
+title: "[Model Update - Property]: "
+labels: ["DM Changeset - Property"]
 assignees:
   - kwittmeyer
 body:
   - type: markdown
     attributes:
       value: |
-        These are the proposed changes to the a node in the data model
-        When adding a node please submit additional requests for each added property as well
+        These are the proposed changes to a property of the data model
         
         Multiple requested changes will require submission of multiple changeset requests
-
+        
   - type: input
     id: request_issue
     attributes:
@@ -33,52 +32,88 @@ body:
     validations:
       required: true
   - type: dropdown
-    id: is_new_node
+    id: is_new_property
     attributes:
-      label: Is this node new?
+      label: Is this property new?
       options:  
         - Existing
         - New
     validations:
         required: true
   - type: input
-    id: orig_node
+    id: node
     attributes:
-      label: Original Node
+      label: Node
       placeholder: ex. dataset
     validations:
       required: true
   - type: input
-    id: new_node_name
+    id: property
     attributes:
-      label: New Node Name
-      description: "Required: Rename"
-      placeholder: ex. dataset
+      label: Property
+      placeholder: ex. dataset_owner
+    validations:
+      required: true
+  - type: input
+    id: new_property_name
+    attributes:
+      label: New Property Name
+      description: |
+        Required: Rename
+      placeholder: ex. dataset_owner
     validations:
       required: false
   - type: input
-    id: node_description
+    id: property_description
     attributes:
-        label: Node Description
+        label: Property Description
         description: |
             Required: Add
             Allowed: Modify
-        placeholder: "ex. Contains metadata related to datasets"
+        placeholder: "ex. The data owner and point of contact"
     validations:
         required: false
-  - type: textarea
-    id: links
+  - type: dropdown
+    id: datatype
     attributes:
-      label: Links and Cardinality
+      label: Datatype
       description: |
         Required: Add
-        Allowed: Delete
-        Enter values one per line in the format: Parent Node:Cardinality
-        Possible carinality values are: many-to-many, many-to-one, one-to-many, one-to-one
-      placeholder: |
-        Ex:
-        clinical_trial:many-to-many
-        assay:many-to-many
+        Allowed: Modify
+      options:
+        - "null"
+        - enum
+        - string
+        - LDAP
+        - url
+        - date
+        - float
+        - integer
+        - array
+        - array, object
+        - array, string
+        - ontology
+        - object
     validations:
       required: false
-
+  - type: textarea
+    id: enum
+    attributes:
+      label: Enum Values
+      description: |
+        Required (if datatype is enum): Add
+        Allowed (if datatype is enum): Delete, Modify
+        Enter values one per line to be added or deleted.
+        If modifying existing enums, provide a mapping one per line in the form:
+        old_enum:new_enum 
+      placeholder: |
+        Ex Add/Delete:
+        RNAseq
+        WGS
+        WES
+        Ex Modify:
+        RNAseq:mRNA-seq
+        WGS:Whole Genome Sequencing
+        WES:Whole Exome Sequencing
+    validations:
+      required: false
