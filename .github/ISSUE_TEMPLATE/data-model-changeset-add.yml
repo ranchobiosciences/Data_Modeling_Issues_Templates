@@ -1,7 +1,7 @@
-name: "Data Model Changeset"
+name: "Data Model Changeset - add"
 description: Proposed data model updates
-title: "[Model Update]: "
-labels: ["DM Changeset"]
+title: "[Model Update - add]: "
+labels: ["DM Changeset - add"]
 assignees:
   - kwittmeyer
 body:
