@@ -13,22 +13,22 @@ body:
         Multiple requested changes will require submission of multiple changeset requests
         
         Required Fields:
-        Request Issue, Action, Action Element, Original Node
+        Request Issue, Action, Action Element, Node
         | Action | Action Element | Additional Required Fields | Effect |
         |--|--|--|--|
         | Add | Node | Node Description, Links and Cardinality, *Properties new properties need to be added each on their own submission | Major |
-        | Add | Property | Original Property, Property Description, Title, Datatype, Enum Values(if applicable) | Limited |
-        | Add | Enum Values |  Original Property, Datatype, Enum Values | Limited |
+        | Add | Property | Property, Property Description, Title, Datatype, Enum Values(if applicable) | Limited |
+        | Add | Enum Values |  Property, Datatype, Enum Values | Limited |
         | Add | Link | Links and Cardinality | Limited |
-        | Delete | Node | Original Node | Major |
-        | Delete | Property | Original Property | Minor |
-        | Delete | Enum Values |   Original Property, Datatype, Enum Values |  Minor |
+        | Delete | Node | Node | Major |
+        | Delete | Property | Property | Minor |
+        | Delete | Enum Values |   Property, Datatype, Enum Values |  Minor |
         | Delete | Link | Links and Cardinality | Minor |
         | Rename | Node | New Node | Major |
-        | Rename | Property | Original Property, New Property | Minor |
+        | Rename | Property | Property, New Property | Minor |
         | Modify | Node | Node Description | No Effect | False|
-        | Modify | Property | Original Property, One or more of: Property Description, Title, Datatype | Minor |
-        | Modify | Enum Values | Original Property, Datatype, Enum Values| Minor |
+        | Modify | Property | Property, One or more of: Property Description, Title, Datatype | Minor |
+        | Modify | Enum Values | Property, Datatype, Enum Values| Minor |
   - type: input
     id: request_issue
     attributes:
