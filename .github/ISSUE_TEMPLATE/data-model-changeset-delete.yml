@@ -1,7 +1,7 @@
 name: "Data Model Changeset - delete"
 description: Proposed data model updates
 title: "[Model Update - delete]: "
-labels: ["DM Changeset" - delete]
+labels: ["DM Changeset - delete"]
 assignees:
   - kwittmeyer
 body:
