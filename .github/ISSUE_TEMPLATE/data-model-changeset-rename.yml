@@ -1,0 +1,66 @@
+name: "Data Model Changeset - rename"
+description: Proposed data model updates
+title: "[Model Update - rename]: "
+labels: ["DM Changeset - rename"]
+assignees:
+  - kwittmeyer
+body:
+  - type: markdown
+    attributes:
+      value: |
+        These are the proposed items to rename in the data model
+        
+        Multiple requested changes will require submission of multiple changeset requests
+        
+        Required Fields:
+        Request Issue Number, Action Element
+        | Action | Action Element | Additional Required Fields | Effect |
+        |--|--|--|--|
+        | Rename | Node | Node, New Node Name | Major |
+        | Rename | Property | Node, Property, New Property Name | Minor |
+
+  - type: input
+    id: request_issue
+    attributes:
+      label: Request Issue Number
+      description: DM Request Issue '#' linked to this changeset
+      placeholder: ex. "#2223"
+    validations:
+      required: true
+  - type: dropdown
+    id: action_element
+    attributes:
+      label: Action element
+      options:
+        - Node
+        - Property
+    validations:
+      required: true
+  - type: input
+    id: node
+    attributes:
+      label: Node
+      placeholder: ex. dataset
+    validations:
+      required: true
+  - type: input
+    id: new_node_name
+    attributes:
+      label: New Node Name
+      placeholder: ex. dataset
+    validations:
+      required: false
+  - type: input
+    id: property
+    attributes:
+      label: Property
+      placeholder: ex. dataset_owner
+    validations:
+      required: false
+  - type: input
+    id: new_property_name
+    attributes:
+      label: New Property Name
+      placeholder: ex. dataset_owner
+    validations:
+      required: false
