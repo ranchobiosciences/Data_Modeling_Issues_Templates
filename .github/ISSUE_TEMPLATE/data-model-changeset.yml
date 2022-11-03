@@ -1,7 +1,7 @@
 name: "Data Model Changeset"
 description: Proposed data model updates
 title: "[Model Update]: "
-labels: ["enhancement"]
+labels: ["DM Changeset"]
 assignees:
   - kwittmeyer
 body:
@@ -32,7 +32,7 @@ body:
   - type: input
     id: request_issue
     attributes:
-      label: Request Issue
+      label: Request Issue Number
       description: DM Request Issue '#' linked to this changeset
       placeholder: ex. "#2223"
     validations:
