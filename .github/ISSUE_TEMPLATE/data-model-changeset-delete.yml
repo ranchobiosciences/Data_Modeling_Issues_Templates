@@ -1,0 +1,81 @@
+name: "Data Model Changeset - delete"
+description: Proposed data model updates
+title: "[Model Update - delete]: "
+labels: ["DM Changeset" - delete]
+assignees:
+  - kwittmeyer
+body:
+  - type: markdown
+    attributes:
+      value: |
+        These are the proposed deletions to the data model
+        
+        Multiple requested changes will require submission of multiple changeset requests
+        
+        Required Fields:
+        Request Issue, Action, Action Element, Node
+        | Action | Action Element | Additional Required Fields | Effect |
+        |--|--|--|--|
+        | Delete | Node | Node | Major |
+        | Delete | Property | Node, Property | Minor |
+        | Delete | Enum Values |  Node, Property, Enum Values |  Minor |
+        | Delete | Link | Node, Links | Minor |
+
+  - type: input
+    id: request_issue
+    attributes:
+      label: Request Issue Number
+      description: DM Request Issue '#' linked to this changeset
+      placeholder: ex. "#2223"
+    validations:
+      required: true
+  - type: dropdown
+    id: action_element
+    attributes:
+      label: Action element
+      options:
+        - Node
+        - Property
+        - Enum
+        - Link
+    validations:
+      required: true
+  - type: input
+    id: node
+    attributes:
+      label: Node
+      placeholder: ex. dataset
+    validations:
+      required: true
+  - type: textarea
+    id: links
+    attributes:
+      label: Links
+      description: |
+        Enter values one per line in the format: Parent Node
+      placeholder: |
+        Ex:
+        clinical_trial
+        assay
+    validations:
+      required: false
+  - type: input
+    id: property
+    attributes:
+      label: Property
+      placeholder: ex. dataset_owner
+    validations:
+      required: false
+  - type: textarea
+    id: enum
+    attributes:
+      label: Enum Values
+      description: |
+        Enter values one per line
+      placeholder: |
+        Ex:
+        RNAseq
+        WGS
+        WES
+    validations:
+      required: false
