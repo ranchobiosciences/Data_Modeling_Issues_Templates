@@ -49,9 +49,9 @@ body:
     validations:
       required: true
   - type: input
-    id: node
+    id: new_node_name
     attributes:
-      label: New Node
+      label: New Node Name
       description: "Required: Rename"
       placeholder: ex. dataset
     validations:
