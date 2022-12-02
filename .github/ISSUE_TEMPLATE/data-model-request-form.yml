@@ -1,7 +1,7 @@
 name: Data Model Request Form
 description: Request changes to the data model
 title: "[DM Request]: "
-labels: ["DM Request"]
+labels: ["Pending"]
 assignees:
   - kwittmeyer
 body:
