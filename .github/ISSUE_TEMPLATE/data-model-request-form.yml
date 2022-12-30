@@ -1,9 +1,9 @@
 name: Data Model Request Form
 description: Request changes to the data model
 title: "[DM Request]: "
-labels: ["Pending"]
-assignees:
-  - kwittmeyer
+labels: ["[SYSTEM]: Pending"]
+#assignees:
+#  - kwittmeyer
 body:
   - type: markdown
     attributes:
