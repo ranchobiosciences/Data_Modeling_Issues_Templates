@@ -1,0 +1,319 @@
+id: "https://monarch.web-dev.bms.com/api/schemaref/_meta"
+
+uiSettings:
+  enableAccessRequest:
+    - dataset
+  headerLabel: Dataset Catalog
+  globalSearchNodes:
+    - dataset
+    # - program
+    # - research_project
+    - clinical_trial
+    - analysis_result
+    - assay
+    - sample
+  navPrimary: /home
+  navNodes:
+  # RDC-1682, hide all nodes besides dataset & clinical trial
+    - clinical_trial
+    - dataset
+    - file
+    - program
+  #  - research_project
+    - assay
+    - sample
+    - analysis_result
+    # - data_product
+  navItems:
+    home:
+      uiPath: /home
+      label: Home
+      icon: sentiment_very_satisfied
+      toolTip: Home
+    datasetcatalog:
+      uiPath: /datasetcatalog
+      uiPathFirstNode: /datasetcatalog/clinical_trials # set UI first page, else history gonna have 2 entries and get stuck in backwards history
+      label: Explore Catalog
+      icon: tag
+      toolTip: Catalog
+    # file:
+    #   uiPath: /files
+    #   label: Files
+    #   icon: text_snippet
+    #   toolTip: Files
+    datamodel:
+      uiPath: /datamodel
+      uiPathFirstNode: /datamodel/graph
+      label: Data Model
+      icon: account_tree
+      iconStyle: material-icons-outlined
+      toolTip: Model
+      pages:
+        graph:
+          label: Data Graph
+        schemaeditor:
+          adminAccess: true
+          label: Schemas
+    accessrequestqueue:
+      uiPath: /accessrequestqueue
+      adminAccess: true
+      icon: local_cafe
+      label: Queues
+      iconStyle: material-icons-outlined
+      toolTip: Queue
+    # query:
+    #   label: Query
+    #   icon: manage_search
+    #   iconStyle: material-icons-outlined
+    documentation:
+      hideInVerticalNav: true
+      label: Docs
+      icon: article
+      iconStyle: material-icons-outlined
+      pages:
+        # glossary:
+        #   label: Glossary
+        # get_started:
+        #   label: Get Started
+        # user_guide:
+        #   label: User Guide
+        # data_ops:
+        #   label: Data Operations
+        ngs:
+          label: NGS
+          quickstart:
+            link: https://cggit.pri.bms.com/Research-Data-Commons/NGS/raw/main/BMS_template_v3.1.xlsm
+        # sys_admin:
+          #   label: System Admin
+        apiref:
+          label: API References    
+    # indexing:
+    #   adminAccess: true
+    #   icon: settings_applications
+    #   label: Indexing
+    #   iconStyle: material-icons-outlined
+    # more:
+    #   icon: pets 
+    #   label: More
+    #   iconStyle: material-icons-outlined
+
+  pageTitles: 
+    - title: Files
+      path: /files 
+    - title: Data Modeling
+      path: /datamodel 
+    - title: My Queues
+      path: /accessrequestqueue 
+    - title: Documentation
+      path: /documentation 
+    - title: Advanced Query
+      path: /query 
+    - title: System Settings
+      path: /settings
+    - title: Indexing Status Dashboard
+      path: /indexing
+
+  routerNodes:
+    - research_project
+    - program
+    - clinical_trial
+    - assay
+    - sample
+    - dataset
+    - analysis_result
+    - file
+    # - data_product
+
+  enableRelatedCreate:
+    - research_project
+    # - program
+    - clinical_trial
+    - assay
+    - sample
+    - dataset
+    - analysis_result
+  enableRelatedLink:
+    - research_project
+    # - program
+    - clinical_trial
+    - assay
+    - sample
+    - dataset
+    - file
+    - analysis_result
+  hideRelationships:
+    # - RDC-1682, hide all nodes relationship besides dataset & clinical trial
+    dataset:
+      - dataset
+      # - clinical_trial
+      - file
+      - research_project
+      - program
+      # - assay
+      - data_product
+      - bioinformatics_pipeline
+      - roles
+      - secondary_analysis
+      - lab_experiment
+    analysis_result:
+      - file
+      - secondary_analysis
+      - data_product
+    clinical_trial:
+      - file
+      - research_project
+      - sample
+      # - analysis_result
+      - program
+      - data_product
+      - roles
+      - subject
+      - visit
+    research_project:
+      - file
+    assay:
+      - file
+      - research_project
+      - bioinformatics_pipeline
+      - data_product
+      - external_partner
+      - lab_experiment
+      - roles
+      - sample_QC_metrics
+      - secondary_analysis
+      - sequencing_run
+      - subject
+      - treatment
+      - visit
+    sample:
+      - file
+      - research_project
+      - bioinformatics_pipeline
+      - data_product
+      - external_partner
+      - lab_experiment
+      - roles
+      - sample_QC_metrics
+      - secondary_analysis
+      - sequencing_run
+      - subject
+      - treatment
+      - visit
+      # - assay
+    file:
+      - file
+      - research_project
+      - program
+      - assay
+      - analysis_result
+      - bioinformatics_pipeline
+      - data_product
+      - external_partner
+      - lab_experiment
+      - roles
+      - sample_QC_metrics
+      - secondary_analysis
+      - sequencing_run
+      - subject
+      - treatment
+      - visit
+    data_product:
+      - file
+      - research_project
+      - bioinformatics_pipeline
+      - external_partner
+      - lab_experiment
+      - roles
+      - sample_QC_metrics
+      - secondary_analysis
+      - sequencing_run
+      - subject
+      - treatment
+      - visit
+  hideRelationshipsCreate:
+    dataset:
+      - dataset
+      # - clinical_trial
+      - file
+      - research_project
+      # - assay
+      - data_product
+      - bioinformatics_pipeline
+      - roles
+      - secondary_analysis
+      - lab_experiment
+    analysis_result:
+      - file
+      - secondary_analysis
+      - data_product
+    clinical_trial:
+      - file
+      - research_project
+      # - analysis_result
+      - sample
+      - program
+      - data_product
+      - roles
+      - subject
+      - visit
+      - lab_experiment
+    research_project:
+      - file
+    assay:
+      - file
+      - research_project
+      - bioinformatics_pipeline
+      - data_product
+      - external_partner
+      - lab_experiment
+      - roles
+      - sample_QC_metrics
+      - secondary_analysis
+      - sequencing_run
+      - subject
+      - treatment
+      - visit
+    sample:
+      - file
+      - research_project
+      # - assay
+      - data_product
+      - external_partner
+      - lab_experiment
+      - roles
+      - sample_QC_metrics
+      - secondary_analysis
+      - sequencing_run
+      - subject
+      - treatment
+      - visit
+    file:
+      - file
+      - research_project
+      - program
+      - assay
+      - analysis_result
+      - bioinformatics_pipeline
+      - data_product
+      - external_partner
+      - lab_experiment
+      - roles
+      - sample_QC_metrics
+      - secondary_analysis
+      - sequencing_run
+      - subject
+      - treatment
+      - visit    
+    data_product:
+      - file
+      - research_project
+      - bioinformatics_pipeline
+      - external_partner
+      - lab_experiment
+      - roles
+      - sample_QC_metrics
+      - secondary_analysis
+      - sequencing_run
+      - subject
+      - treatment
+      - visit

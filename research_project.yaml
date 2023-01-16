@@ -1,0 +1,261 @@
+$schema: "https://monarch.web-dev.bms.com/api/schemaref/_schema_validator#"
+
+id: "https://monarch.web-dev.bms.com/api/research_project/schema"
+title: Research Project
+identifierPrefix: RP
+type: object
+nodeTerms: null
+namespace: https://datacommons.web.bms.com/
+category: administrative
+description: >
+  Typically the largest category for research activity in an organization. 
+  Encompasses large range of activities, starting with preclinical experiments, followed by clinical trials, and post-market activities.
+  (Synonyms: Research Initiative, Umbrella Study, Research Campaign, Research Consortium)
+additionalProperties: false
+validators: null
+
+uiSettings:
+  icon: account_tree
+  iconStyle: material-icons-outlined
+  uiPath: /datasetcatalog/research_project
+  plural: Research Projects
+  globalSearchSettings:
+    searchFields:
+      - research_project_title
+      - identifier
+      - submitter_id
+    displayFields:
+      - research_project_title
+      - identifier
+      - id
+  displayField: research_project_title
+  displaySubField: research_project_title
+  defaultSortField: identifier
+  primaryPersonField: investigator_name # for email template
+  editValidationUserFields:
+    - program_lead.uid
+    - created_by
+  nodeIdentifier: id
+  abacSchemaName: _abac_research_project
+  renderColCount: 3
+  createForm:
+    buttonLabel: Create Project
+  expandFilterOptionsByDefault: true
+  dataFilterField:
+    research_project_type:
+      label: Research Project Type
+    investigator_name:
+      label: Investigator
+    research_project_stakeholder:
+      label: Stakeholder
+    external_partner:
+      label: External Partner
+    research_project_status:
+      label: Status
+    research_project_completion_date:
+      label: Completion Date
+    # research_project_milestone: Milestone
+    identifier:
+      label: Identifier
+      view: dynamic
+      tooltip: true
+      optionsPromiseLimit: 100
+  tableField:
+    identifier: Project ID
+    research_project_title: Name
+    research_project_type: Type
+    external_partner: External Partner
+    research_project_status: Status
+  searchField:
+    - research_project_title
+    - investigator_name.cn
+    - tags
+    - research_project_stakeholder.cn
+    - research_project_description
+    - research_project_type
+    - external_partner
+    - research_project_status
+    - identifier
+  fullNodeView: true
+  fullNodeViewForm:
+    ngsUrls:
+      - prod: https://ngs.rdcloud.bms.com
+      - uat: https://ngsstaging.rdcloud.bms.com
+      - dev: https://ngsdev.rdcloud.bms.com
+      - local: http://localhost:5000
+    nameField: 
+      name: research_project_title
+    personFields:
+          - name: investigator_name
+          - name: research_project_stakeholder
+    upperFields:
+          - name: research_project_description   
+          - name: tags      
+    metadataFields:
+          - name: identifier
+          - name: research_project_title
+          - name: research_project_type
+          - name: external_partner
+          - name: research_project_status
+          - name: research_project_completion_date
+    relationshipFields:
+          - name: relationships
+            label:
+    bottomFields:
+      # - name: files
+      #   label:
+  fullNodeRegisterForm:
+    ngsUrls:
+      - prod: https://ngs.rdcloud.bms.com
+      - uat: https://ngsstaging.rdcloud.bms.com
+      - dev: https://ngsdev.rdcloud.bms.com
+      - local: http://localhost:5000
+    readonlyFields:
+      - identifier
+    panels:
+      - title: Basic research project information
+        fields:
+          - name: research_project_title
+            label: Title
+          - name: investigator_name
+            label: Investigator
+          - name: research_project_stakeholder
+            label: Stakeholder
+          - name: research_project_description
+            label: Description
+      - title: Details
+        fields:
+          - name: research_project_type
+            label: Type
+          - name: external_partner
+            label: External Partner
+          - name: research_project_status
+            label: Status
+          - name: research_project_completion_date
+            label: Completion Date
+          - name: tags
+            label: Tags
+      - title: Relationships
+        fields:
+          - name: relationships
+            label:
+      # - title: Files
+      #   fields:
+      #     - name: files
+      #       label:
+
+systemProperties:
+  - id
+  - _id
+  - created_datetime
+  - updated_datetime
+  - created_by
+  - submitter_id
+  - type
+  - state
+
+links:
+  - name: programs
+    backref: research_project
+    parent_title: Programs # what's rendered for this node
+    child_title: Research Projects
+    label: member_of
+    target_type: program
+    multiplicity: many_to_many
+    required: false
+
+required:
+  - type
+  # - research_project_title
+  # - investigator_name
+  # - research_project_stakeholder
+
+uniqueKeys:
+  - [id]
+
+properties:
+  $ref: "_definitions.yaml#/ubiquitous_properties"
+
+  research_project_title:
+    title: Title
+    description: The title of the research project.
+    type: string
+    placeholder: Input here
+
+  research_project_type:
+    title: Type
+    description: The type of the project.
+    placeholder: Choose from dropdown
+    enum:
+      - Clinical (non trial human research)
+      - Clinical trial
+      - Consortium
+      - Development
+      - Discovery (preclinical)
+      - Multimodal
+      - Translational
+
+  research_project_description:
+    title: Description
+    description: The description of the research project including its goals and scope. Scientific questions being studied, approaches, anticipated findings, etc.
+    type: string
+    view: richtext
+    placeholder: Enter a project description here
+
+  investigator_name:
+    title: Principal Investigator
+    description: The principal investigator on this research project.
+    type: object
+    sortField: investigator_name.cn
+    placeholder: Dynamic Search
+    additionalProperties: true
+    $ref: "_definitions.yaml#/bms_group_enum_config"
+
+  research_project_stakeholder:
+    title: Stakeholder
+    description: A person or persons with vested interest in the outcomes of a research project.
+    type: array
+    placeholder: Dynamic Search
+    items:
+      type: object
+    additionalProperties: true
+    $ref: "_definitions.yaml#/bms_group_enum_config"
+
+  research_project_status:
+    title: Status
+    description: The status of the project.
+    placeholder: Choose from dropdown
+    enum:
+      - Planning
+      - In Progress
+      - Completed
+      - Terminated
+      - On Hold
+
+  research_project_completion_date:
+    title: Completion Date
+    description: The completion date for the project.
+    placeholder: yyyy-mm-dd
+    type: string
+    format: date
+    uiDateFormat: MM-DD-YYYY
+
+  project_publications:
+    title: Project Publications
+    description: Link(s) to publications related to the project.
+    type: array
+    view: linkbuttons
+    placeholder: Links.
+    items:
+      type: object
+    additionalProperties: true
+    objectFields:
+      - name: linkName
+        label: Link Name
+      - name: linkUrl
+        label: Link URL
+
+  programs:
+    $ref: "_definitions.yaml#/to_many"
+  dataset:
+    $ref: "_definitions.yaml#/to_many"

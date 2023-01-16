@@ -1,0 +1,53 @@
+$schema: "https://monarch.web-dev.bms.com/api/schemaref/_schema_validator#"
+
+id: "https://monarch.web-dev.bms.com/api/permissions/_abac_analysis_result/schema"
+title: Analysis Result Access Request
+identifierPrefix: DAR
+type: object
+nodeTerms: null
+namespace: https://datacommons.web.bms.com/
+category: administrative
+description: Analysis Result access request
+additionalProperties: false
+validators: null
+
+uiSettings:
+  uiPath: /access_requests
+  plural: Data Access Requests
+  nodeIdentifier: id
+  accessForm:
+    nodeSearchFields:
+      - id
+      - result_name
+    requestNode: "analysis_result"
+    ruleRequestedNodes: "analysis_result"
+    nodeName: "Analysis Results"
+    nodeSelectPanelTitle: "Analysis Results"
+    nodeSelectDisplayField: result_name
+    nodeSelectDisplayFieldSecond: result_type
+    nodeSelectLabel: "Start typing the Analysis Result name or ID# of the analysis result(s) you would like to request access to:*"
+  accessReviewForm:
+    requestNode: "analysis_result"
+    ruleRequestedNodes: "analysis_results"
+    nodeSelectDisplayField: result_name
+    nodeName: "Analysis Result"
+    requestedNodeTitle: ANALYSIS RESULT REQUESTED
+    requestedNodeLabel: Request Access to Analysis Result(s)
+
+systemProperties:
+  - _id
+  - type
+
+required:
+  - purpose
+  - using_other
+  - analysis_description
+  - output_use
+  - specific_use_case_agreement
+  - contract_terms_agreement
+
+uniqueKeys:
+  - [id]
+
+properties:
+  $ref: "_definitions.yaml#/abac_ubiquitous_properties"

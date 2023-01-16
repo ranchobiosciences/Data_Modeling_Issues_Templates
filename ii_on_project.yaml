@@ -1,0 +1,238 @@
+$schema: "https://monarch.web-dev.bms.com/api/schemaref/_schema_validator#"
+
+id: "https://monarch.web-dev.bms.com/api/ii_on_project/schema"
+title: II-ON Project
+identifierPrefix: IP
+type: object
+nodeTerms: null
+namespace: https://datacommons.web.bms.com/
+category: administrative
+description: A singular project aim
+additionalProperties: false
+validators: null
+
+uiSettings:
+  icon: account_tree
+  uiPath: /datasetcatalog/ii_on_project
+  plural: II-ON Projects
+  globalSearchSettings:
+    searchFields:
+      - project_title
+      - identifier
+      - submitter_id
+    displayFields:
+      - project_title
+      - identifier
+      - id
+  displayField: project_title
+  displaySubField: ""
+  defaultSortField: project_number
+  nodeIdentifier: id
+  editValidationUserFields:
+    - created_by
+  hideAttachments: true
+  renderColCount: 3
+  createForm:
+    maxRows: 12
+    maxCols: 3
+  expandFilterOptionsByDefault: true
+  dataFilterField:
+    research_priority:
+      label: Priority
+    identifier:
+      label: Identifier
+      view: dynamic
+      tooltip: true
+      optionsPromiseLimit: 100
+  tableField:
+    - fieldID: project_title
+      headerName: Project Title
+      colFlex: 1
+      textWrap: true
+      width: "300px"
+    - fieldID: project_number
+      headerName: Project Number
+      textWrap: true
+    - fieldID: investigator
+      headerName: Investigator
+    - fieldID: institution
+      headerName: Institution
+      width: "150px"
+    - fieldID: research_priority
+      headerName: Research Priority
+      colFlex: 1
+      width: "200px"
+      textWrap: true
+    - fieldID: ii_on_contact
+      headerName: II-ON contact
+    # - fieldID: project_hypothesis
+    #   headerName: Project Hypothesis
+    #   colFlex: 1
+    #   textWrap: true
+    # tableField:
+    # created_datetime: Created On
+    # project_title: Project Title
+    # investigator: Investigator
+    # institution: Institution
+    # research_priority: Research Priority
+    # ii_on_contact: II-ON Contact
+    # project_hypothesis: Project Hypothesis
+
+  searchField:
+    - created_datetime
+    - project_number
+    - investigator
+    - institution
+    - research_priority
+    - ii_on_contact
+    - project_hypothesis
+
+systemProperties:
+  - id
+  - _id
+  - created_datetime
+  - updated_datetime
+  - created_by
+  - submitter_id
+  - type
+  - state
+  - identifier
+
+required:
+  - type
+  - project_title
+  - institution
+
+uniqueKeys:
+  - [id]
+
+properties:
+  $ref: "_definitions.yaml#/ubiquitous_properties"
+
+  created_datetime:
+    title: Created On
+    description: The date and time your project was created.
+    type: string
+
+  project_number:
+    title: Project Number
+    description: The main identifier for a project.
+    type: string
+
+  project_title:
+    title: Project Title
+    description: The title of your II_ON project.
+    type: string
+
+  investigator:
+    title: Investigator
+    description: The primary PI responsible for the project.
+    type: string
+
+  institution:
+    title: Institution
+    description: The primary insituiton responsible for the project.
+    type: string
+
+  project_milestones:
+    title: Expected Timeline and Milestones/Check-ins
+    type: object
+    status_timeline: true
+    propertyNames: # This validates the object keys as an controlled enum
+      enum:
+        - Contract Signed
+        - DASH Report
+        - Check-In
+        - Final Report
+    additionalProperties: # This validates object values
+      oneOf:
+        - type: object
+          required:
+            - milestone_timestamp
+            - checkins
+          properties:
+            milestone_timestamp:
+              type: string
+              format: date-time
+            checkins:
+              type: array
+              items:
+                type: object
+                required:
+                  - checkin_timestamp
+                  - checkin_message
+                properties:
+                  checkin_timestamp:
+                    type: string
+                    format: date-time
+                  checkin_message:
+                    type: string
+        - type: "null"
+
+  research_priority:
+    title: Research Priority
+    description: The priority of a II-ON research project.
+    type: string
+
+  ii_on_contact:
+    title: II-ON Contact
+    description: The primary II-ON contact related to a DASH.
+    type: object
+    sortField: ii_on_contact.cn
+    additionalProperties: true
+    $ref: "_definitions.yaml#/bms_group_enum_config"
+    # enum_source:
+    #   type: ldap
+
+  project_hypothesis:
+    title: Project Hypothesis
+    description: a few sentences to describe the hypothesis for a project.
+    type: string
+    multiline: true
+    textWrap: true
+    colSpan: 3
+
+  sharepoint_files:
+    title: SharePoint Project Files
+    description: Link to associated sharepoint files.
+    type: array
+    items:
+      type: string
+
+  tumor_simple:
+    title: Tumor Simple
+    description: The priority of a II-ON research project.
+    type: string
+
+  project_status:
+    title: Project Status Simple
+    description: The priority of a II-ON research project.
+    type: string
+
+  final_report_planned_date:
+    title: Final Report Planned Date
+    description: The priority of a II-ON research project.
+    type: string
+    format: date
+
+  study_id:
+    title: Study ID
+    description: The priority of a II-ON research project.
+    type: string
+
+  project_champion:
+    title: Project Champion
+    description: The primary II-ON contact related to a DASH.
+    type: object
+    additionalProperties: true
+    $ref: "_definitions.yaml#/bms_group_enum_config"
+
+  relevant_asset:
+    title: Relevant Asset
+    description: The priority of a II-ON research project.
+    type: string
+
+  tm_or_mm:
+    title: TM or MM
+    description: The priority of a II-ON research project.
+    type: string

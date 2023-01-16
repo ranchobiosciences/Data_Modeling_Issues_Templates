@@ -1,0 +1,459 @@
+$schema: "https://monarch.web-dev.bms.com/api/schemaref/_schema_validator#"
+
+id: "https://monarch.web-dev.bms.com/api/sequencing_run/schema"
+title: Sequencing Run
+title_submitter: Submitter
+identifierPrefix: SR
+type: object
+nodeTerms: null
+namespace: https://datacommons.web.bms.com/
+category: administrative
+description: Parameters for a sequencing experiment pertaining to the inputs for the seuqencer.
+additionalProperties: false
+validators: null
+
+uiSettings:
+  icon: analytics
+  iconStyle: material-icons-outlined
+  color: rgb(255, 236, 205)
+  uiPath: /datasetcatalog/sequencing_run
+  plural: Sequencing Runs
+  globalSearchSettings:
+    searchFields:
+      - sequencing_run_ID
+      - sequencing_run_name
+      - identifier
+      - submitter_id
+    displayFields:
+      - sequencing_run_ID
+      - sequencing_run_name
+      - identifier
+      - id
+  displayField: sequencing_run_name
+  displaySubField: sequencing_run_ID # Used for tag section in flex view
+  defaultSortField: dataset_name
+  primaryPersonField: created_by # for email template
+  editValidationUserFields:
+    - created_by
+  nodeIdentifier: id
+  #abacSchemaName:
+  createForm:
+    maxRows: 11
+    maxCols: 2
+    buttonLabel: Create Sequencing Run
+  expandFilterOptionsByDefault: true
+  dataFilterField:
+    sequencing_run_ID:
+      label: Sequencing Run ID
+      tooltip: true
+    sequencing_run_type:
+      label: Sequencing Run Type
+      tooltip: true
+    ngs_platform:
+      label: NGS Platform
+      view: dropdown
+      tooltip: true
+    library_kit_used:
+      label: Library Kit Used
+      view: dropdown
+      tooltip: true
+    read_length:
+      label: Read Length
+      view: dropdown
+      tooltip: true
+    spike_ins:
+      label: Spike-in Used
+      tooltip: true
+    identifier:
+      label: Identifier
+      view: dynamic
+      tooltip: true
+      optionsPromiseLimit: 100
+  tableField:
+    sequencing_run_ID: Sequencing Run ID
+    sequencing_run_name: Sequencing Run Name
+    sequencing_run_type: Sequencing Run Type
+  searchField:
+    - sequencing_run_ID
+    - sequencing_run_name
+    - tags
+    - ngs_platform
+    - library_kit_used
+    - read_length
+    - identifier
+    - spike_ins
+  fullNodeView: true
+  fullNodeViewForm:
+    nameField:
+      name: sequencing_run_name
+    personFields:
+    upperFields:
+      - name: links
+      - name: sequencing_run_ID
+        label: Sequencing Run ID
+      - name: sequencing_run_date
+        label: Sequencing Run Date
+      - name: tags
+        label: Tags
+    metadataFields:
+      - name: sequencing_run_parameters
+        label: Sequencing Run Parameters
+      - name: sequencing_run_type
+        label: Sequencing Run Type
+      - name: ngs_platform
+        label: NGS Platform
+      - name: library_kit_used
+        label: Library Kit Used
+      - name: read_length
+        label: Read Length
+      - name: flow_cell_id
+        label: Flow Cell ID
+      - name: spike_ins
+        label: Spike-in Used
+      - name: sequencing_pool_specs
+        label: Sequencing Pool Specifications
+      - name: internal_ngs_reference_control
+        label: Internal NGS Reference Control
+    relationshipFields:
+      - name: relationships
+        label:
+    bottomFields:
+      - name: files
+        label:
+
+  fullNodeRegisterForm:
+    readonlyFields:
+      - identifier
+    panels:
+      - title: Overview
+        fields:
+          - name: sequencing_run_name
+            label: Sequencing Run Name
+            description: Name of the sequencing run.
+          - name: sequencing_run_ID
+            label: Sequencing Run ID
+            description:  Unique ID for the sequencing run. This ID may be applicable to a batch of samples run together.
+
+      - title: Details
+        optional: true
+        fields:
+          - name: submitter_id
+            label: Submitter ID
+          - name: sequencing_run_parameters
+            label: Sequencing Run Parameters
+            description: Description of the sequencing run.
+          - name: sequencing_run_type
+            label: Sequencing Run Type
+            description: Sequenced as single-end or paired-end?
+          - name: ngs_platform
+            label: NGS Platform
+            description: The NGS assay platform.
+          - name: library_kit_used
+            label: Library Kit Used
+            description: Indication of the assay-defined library kit used to sequence this sample batch.
+          - name: read_length
+            label: Read Length
+            description: Length of the sequencing read.
+          - name: flow_cell_id
+            label: Flow Cell ID
+            description: Flow cell ID.
+          - name: spike_ins
+            label: Spike-in Used
+            description: Spike-in Used
+          - name: sequencing_run_date
+            label: Sequencing Run Date
+            description: Date of the sequencing run.
+          - name: sequencing_pool_specs
+            label: Sequencing Pool Specifications
+            description: Specifications for the pooled samples.
+          - name: internal_ngs_reference_control
+            label: Internal NGS Reference Control
+            description: Ex. UHR, UMR, URR for RNAseq, NA12878 for WGS
+      
+      - title: Related Metadata
+        optional: true
+        fields:
+          - name: relationships
+            label:
+          - name: tags
+            label: Tags
+
+      - title: Files
+        fields:
+          - name: files
+            label:
+
+fullNodeEditForm:
+    readonlyFields:
+      - identifier
+    panels:
+      - title: Overview
+        fields:
+          - name: sequencing_run_name
+            label: Sequencing Run Name
+            description: Name of the sequencing run.
+          - name: sequencing_run_ID
+            label: Sequencing Run ID
+            description:  Unique ID for the sequencing run. This ID may be applicable to a batch of samples run together.
+
+      - title: Details
+        optional: true
+        fields:
+          - name: submitter_id
+            label: Submitter ID
+          - name: sequencing_run_parameters
+            label: Sequencing Run Parameters
+            description: Description of the sequencing run.
+          - name: sequencing_run_type
+            label: Sequencing Run Type
+            description: Sequenced as single-end or paired-end?
+          - name: ngs_platform
+            label: NGS Platform
+            description: The NGS assay platform.
+          - name: library_kit_used
+            label: Library Kit Used
+            description: Indication of the assay-defined library kit used to sequence this sample batch.
+          - name: read_length
+            label: Read Length
+            description: Length of the sequencing read.
+          - name: flow_cell_id
+            label: Flow Cell ID
+            description: Flow cell ID.
+          - name: spike_ins
+            label: Spike-in Used
+            description: Spike-in Used
+          - name: sequencing_run_date
+            label: Sequencing Run Date
+            description: Date of the sequencing run.
+          - name: sequencing_pool_specs
+            label: Sequencing Pool Specifications
+            description: Specifications for the pooled samples.
+          - name: internal_ngs_reference_control
+            label: Internal NGS Reference Control
+            description: Ex. UHR, UMR, URR for RNAseq, NA12878 for WGS
+      
+      - title: Related Metadata
+        optional: true
+        fields:
+          - name: relationships
+            label:
+          - name: tags
+            label: Tags
+
+      - title: Files
+        fields:
+          - name: files
+            label:
+
+systemProperties:
+  - id
+  - _id
+  - created_datetime
+  - updated_datetime
+  - created_by
+  - submitter_id
+  - type
+  - state
+  - identifier
+
+required:
+  - type
+
+uniqueKeys:
+  - [id]
+
+# links:
+#   - name: sample
+#     backref: sequencing_run
+#     parent_title: Samples # what's rendered for this node
+#     child_title: Sequencing Runs
+#     label: includes
+#     target_type: sample
+#     multiplicity: many_to_many
+#     required: false
+
+#   - name: bioinformatics_pipeline
+#     backref: sequencing_run
+#     parent_title: Bioinformatics Pipelines # what's rendered for this node
+#     child_title: Sequencing Runs
+#     label: is_part_of
+#     target_type: bioinformatics_pipeline
+#     multiplicity: many_to_many
+#     required: false
+
+#   - name: assay
+#     backref: sequencing_run
+#     parent_title: Assays # what's rendered for this node
+#     child_title: Sequencing Runs
+#     label: is_part_of
+#     target_type: assay
+#     multiplicity: many_to_many
+#     required: false
+
+properties:
+  $ref: "_definitions.yaml#/ubiquitous_properties"
+
+  sequencing_run_ID:
+    title: Sequencing Run ID
+    description: Unique ID for the sequencing run. This ID may be applicable to a batch of samples run together.
+    type: string
+    placeholder: Input here
+
+  sequencing_run_name:
+    title: Sequencing Run Name
+    description: Name of the sequencing run.
+    type: string
+    placeholder: Input here
+
+  sequencing_run_parameters:
+    title: Sequencing Run Parameters
+    description: Description of the sequencing run.
+    type: string
+    placeholder: Input here
+
+  sequencing_run_type:
+    title: Sequencing Run Type
+    description: Sequenced as single-end or paired-end?
+    placeholder: Choose from dropdown
+    enum:
+      - single-end
+      - paired-end
+
+  ngs_platform:
+    title: NGS Platform
+    description: The NGS assay platform.
+    placeholder: Choose from dropdown
+    enum:
+      - Illumina
+      - PacBio
+      - Oxford NanoPore
+      - Ion Torrent
+      - Illumina Genome Analyzer
+      - Illumina Genome Analyzer II
+      - Illumina Genome Analyzer IIx
+      - Illumina HiScan HQ
+      - Illumina HiSeq (unspecified)
+      - Illumina HiSeq 1000
+      - Illumina HiSeq 1500
+      - Illumina HiSeq 2000
+      - Illumina HiSeq 2500 High Throughput
+      - Illumina HiSeq 2500 Rapid Run
+      - Illumina HiSeq 2500 (unspecified RR or HT)
+      - Illumina HiSeq 3000
+      - Illumina HiSeq 4000
+      - Illumina HiSeq X
+      - Illumina MiniSeq
+      - Illumina MiSeq
+      - Illumina NextSeq (unspecified)
+      - Illumina NextSeq 500
+      - Illumina NovoSeq 6000
+      - ThermoFisher Ion S5
+
+  library_kit_used:
+    title: Library Kit Used
+    description: Indication of the assay-defined library kit used to sequence this sample batch.
+    type: array
+    placeholder: Choose from dropdown
+    items:
+      enum:
+        - DNAseq
+        - ATAC-Seq
+        - ChIP-Seq
+        - CITE-Seq
+        - CUT&RUN
+        - CRISPR knockout screen
+        - CRISPRa activation screen
+        - CRISPRi interference screen
+        - MARS-Seq
+        - microbiome targeted RNA sequencing
+        - microbiome total RNA sequencing
+        - microbiome whole genome sequencing (WGS)
+        - microRNA-Seq
+        - mRNA-Seq
+        - PRISM screen
+        - ribosomal profiling
+        - single cell ATAC-Seq
+        - single nuclei ATAC-Seq
+        - single cell DNA-Seq
+        - single cell mRNA-Seq
+        - single nuclei mRNA-Seq
+        - single cell total RNA-Seq
+        - targeted (DNA) resequencing
+        - targeted RNA-Seq
+        - total RNA-Seq
+        - whole exome sequencing (WES)
+        - whole genome bisulfite sequencing (WGBS)
+        - whole genome sequencing (WGS)
+        - Edge-Seq
+        - Gene Expression (GEX)
+        - DNA/CNV
+        - Perturb-Seq
+        - Spatial Transcriptomics
+        - VDJ
+        - CRISPR gRNA screens
+        - RNA-Seq
+        - WES
+        - WGS
+        - 10X Visium
+        - Long read sequencing
+        - MAGeCK CRISPR Screen
+        - scTCR
+        - SPLiT-seq
+        - CRISPR-DAV
+        - Multiome ATAC + Gene Expression
+  
+  read_length:
+    title: Read Length
+    description: Length of the sequencing read.
+    placeholder: Choose from dropdown
+    enum:
+      - 50 bp
+      - 100 bp
+      - 150 bp
+      - 200 bp
+      - 1000 bp
+
+  flow_cell_id:
+    title: Flow Cell ID
+    description: Flow cell ID.
+    type: string
+    placeholder: Input here
+
+  spike_ins:
+    title: Spike-in Used
+    description: Spike-in Used
+    placeholder: Choose from dropdown
+    enum:
+      - Drosophila
+      - ERCC
+      - Yeast
+      - NA
+      - NONE
+      - phiX
+
+  sequencing_run_date:
+    title: Sequencing Run Date
+    decription: Date of the sequencing run.
+    placeholder: yyyy-mm-dd
+    type: string
+    format: date
+    uiDateFormat: MM-DD-YYYY
+
+  sequencing_pool_specs:
+    title: Sequencing Pool Specifications
+    description: Specifications for the pooled samples.
+    type: string
+    placeholder: Input here
+
+  internal_ngs_reference_control:
+    title: Internal NGS Reference Control
+    description: Ex. UHR, UMR, URR for RNAseq, NA12878 for WGS
+    type: string
+    placeholder: Input here
+
+  sample:
+    $ref: "_definitions.yaml#/to_many"
+  bioinformatics_pipeline:
+    $ref: "_definitions.yaml#/to_many"
+  assay:
+    $ref: "_definitions.yaml#/to_many"

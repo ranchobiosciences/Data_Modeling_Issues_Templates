@@ -1,0 +1,479 @@
+$schema: "https://monarch.web-dev.bms.com/api/schemaref/_schema_validator#"
+
+id: "https://monarch.web-dev.bms.com/api/treatment/schema"
+title: Treatment
+title_submitter: Submitter
+identifierPrefix: T
+type: object
+nodeTerms: null
+namespace: https://datacommons.web.bms.com/
+category: administrative
+description: >
+  Treatment is a manipulation of a sample or subject, usually with a compound or physical intervention in line 
+  with a specific regimen in order to change the sample or subjects' current state to another.
+additionalProperties: false
+validators: null
+
+uiSettings:
+  icon: medication
+  iconStyle: material-icons-outlined
+  color: rgb(255, 236, 205)
+  uiPath: /datasetcatalog/treatment
+  plural: Treatments
+  globalSearchSettings:
+    searchFields:
+      - dataset_name
+      - identifier
+      - submitter_id
+    displayFields:
+      - dataset_name
+      - identifier
+      - id
+  displayField: treatment_name
+  displaySubField: treatment_ID # Used for tag section in flex view
+  defaultSortField: treatment_name
+  primaryPersonField: created_by # for email template
+  editValidationUserFields:
+    - created_by
+  nodeIdentifier: id
+  #abacSchemaName: _abac_treatment
+  createForm:
+    maxRows: 11
+    maxCols: 2
+    buttonLabel: Create Treatment
+  expandFilterOptionsByDefault: true
+  dataFilterField:
+    treatment_frequency:
+      label: Treatement Frequency
+      tooltip: true
+    route_of_administration:
+      label: Route of Administration
+      view: dropdown
+      tooltip: true
+    treatment_duration_units:
+      label: Treatment Duration Units
+      tooltip: true
+    exposure_duration_units:
+      label: Exposure Duration Units
+      tooltip: true
+    identifier:
+      label: Identifier
+      view: dynamic
+      tooltip: true
+      optionsPromiseLimit: 100
+  tableField:
+    treatment_name: Treatment Name
+    treatment_ID: Treatment ID
+  searchField:
+    - treatment_name
+    - treatment_ID
+    - treatment_frequency
+    - route_of_administration
+    - treatment_duration_units
+    - exposure_duration_units
+    - tags
+    - identifier
+  fullNodeView: true
+  fullNodeViewForm:
+    nameField:
+      name: treatment_name
+    personFields:
+    upperFields:
+      - name: links
+      - name: treatment_ID
+        label: Treatement ID
+      - name: treatment_ID_aligned
+        label: Treatement ID Aligned
+      - name: tags
+        label: Tags
+    metadataFields:
+      - name: treatment_dose
+        label: Treatement Dose
+      - name: treatment_frequency
+        label: Treatment Frequency
+      - name: route_of_administration
+        label: Route of Administration
+      - name: treatment_regimen
+        label: Treatment Regimen
+      - name: treatment_duration
+        label: Treatment Duration
+      - name: treatment_duration_units
+        label: Treatment Duration Units
+      - name: exposure_duration
+        label: Exposure Duration
+      - name: exposure_duration_units
+        label: Exposure Duration Units
+      - name: longitudinal_timepoint
+        label: Longitudinal Timepoint
+    relationshipFields:
+      - name: relationships
+        label:
+    bottomFields:
+      - name: files
+        label:
+
+  fullNodeRegisterForm:
+    readonlyFields:
+      - identifier
+    panels:
+      - title: Overview
+        fields:
+          - name: treatment_name
+            label: Treatment Name
+            description: 'Give a conventional name to the treatment, for example: Yervoy, placebo, radiation therapy, etc.'
+          - name: treatment_ID
+            label: Treatment ID
+            description: If available, provide ID for the pharmaceutical from internal database.
+          - name: treatment_ID_aligned
+            label: Treatment ID Aligned
+            description: Treatment ID aligned to an ontology such as ChEMBL or Drugbank.
+
+      - title: Details
+        optional: true
+        fields:
+          - name: submitter_id
+            label: Submitter ID
+          - name: treatment_dose
+            label: Treatement Dose
+            description: 'List dosing in conventional format, for example: 1 mg/kg.'
+          - name: treatment_frequency
+            label: Treatment Frequency
+            description: List frequency of treatment using pull down values.
+          - name: route_of_administration
+            label: Route of Administration
+            description: Select from the provided list the route of administration of the main treatment.
+          - name: treatment_regimen
+            label: Treatment Regimen
+            description: 'Describe treatment regimen. For example: "first week of trial, dosing is done twice daily followed by a rest period of 3 weeks."'
+          - name: treatment_duration
+            label: Treatment Duration
+            description: Used for samples treatment usually and indicates how long a sample was treated with a modifier.
+          - name: treatment_duration_units
+            label: Treatment Duration Units
+            description: With treatment duration indicates the unit of time a sample was treated with a modifier.
+          - name: exposure_duration
+            label: Exposure Duration
+            description: Used for subjects treatment usually and indicates how long a subject was exposed to a modifier.
+          - name: exposure_duration_units
+            label: Exposure Duration Units
+            description: With exposure duration indicates the unit of time a subject was exposed to a modifier.
+          - name: longitudinal_timepoint
+            label: Longitudinal Timepoint
+            description: The Longitudinal Timepoint for the sample.
+
+      - title: Related Metadata
+        optional: true
+        fields:
+          - name: relationships
+            label:
+          - name: tags
+            label: Tags
+
+      - title: Files
+        fields:
+          - name: files
+            label:
+
+  fullNodeEditForm:
+    readonlyFields:
+      - identifier
+    panels:
+      - title: Overview
+        fields:
+          - name: treatment_name
+            label: Treatment Name
+            description: 'Give a conventional name to the treatment, for example: Yervoy, placebo, radiation therapy, etc.'
+          - name: treatment_ID
+            label: Treatment ID
+            description: If available, provide ID for the pharmaceutical from internal database.
+          - name: treatment_ID_aligned
+            label: Treatment ID Aligned
+            description: Treatment ID aligned to an ontology such as ChEMBL or Drugbank.
+
+      - title: Details
+        optional: true
+        fields:
+          - name: submitter_id
+            label: Submitter ID
+          - name: treatment_dose
+            label: Treatement Dose
+            description: 'List dosing in conventional format, for example: 1 mg/kg.'
+          - name: treatment_frequency
+            label: Treatment Frequency
+            description: List frequency of treatment using pull down values.
+          - name: route_of_administration
+            label: Route of Administration
+            description: Select from the provided list the route of administration of the main treatment.
+          - name: treatment_regimen
+            label: Treatment Regimen
+            description: 'Describe treatment regimen. For example: "first week of trial, dosing is done twice daily followed by a rest period of 3 weeks."'
+          - name: treatment_duration
+            label: Treatment Duration
+            description: Used for samples treatment usually and indicates how long a sample was treated with a modifier.
+          - name: treatment_duration_units
+            label: Treatment Duration Units
+            description: With treatment duration indicates the unit of time a sample was treated with a modifier.
+          - name: exposure_duration
+            label: Exposure Duration
+            description: Used for subjects treatment usually and indicates how long a subject was exposed to a modifier.
+          - name: exposure_duration_units
+            label: Exposure Duration Units
+            description: With exposure duration indicates the unit of time a subject was exposed to a modifier.
+          - name: longitudinal_timepoint
+            label: Longitudinal Timepoint
+            description: The Longitudinal Timepoint for the sample.
+
+      - title: Related Metadata
+        optional: true
+        fields:
+          - name: relationships
+            label:
+          - name: tags
+            label: Tags
+
+      - title: Files
+        fields:
+          - name: files
+            label:
+
+
+systemProperties:
+  - id
+  - _id
+  - created_datetime
+  - updated_datetime
+  - created_by
+  - submitter_id
+  - type
+  - state
+
+required:
+  - type
+
+uniqueKeys:
+  - [id]
+
+#links:
+
+properties:
+  $ref: "_definitions.yaml#/ubiquitous_properties"
+
+  treatment_name:
+    title: Treatment Name
+    description: 'Give a conventional name to the treatment, for example: Yervoy, placebo, radiation therapy, etc.'
+    type: string
+    placeholder: Input here
+
+  treatment_ID:
+    title: Treatment ID
+    description: If available, provide ID for the pharmaceutical from internal database.
+    type: string
+    placeholder: Input here
+
+  treatment_ID_aligned:
+    title: Treatment ID Aligned
+    description: Treatment ID aligned to an ontology such as ChEMBL or Drugbank.
+
+  treatment_dose:
+    title: Treatement Dose
+    description: 'List dosing in conventional format, for example: 1 mg/kg.'
+    type: array
+    placeholder: Input here
+    items:
+      type: string
+
+  treatment_frequency:
+    title: Treatment Frequency
+    description: List frequency of treatment using pull down values.
+    placeholder: Choose from dropdown
+    enum:
+      - 10 times a day
+      - 2-3 times a day
+      - 4 times per week
+      - 5 times a day
+      - 7 times a day
+      - 8-12 times per day
+      - 8 times per day
+      - BID
+      - BWK
+      - continuous
+      - every 2-3 months
+      - every 2 days
+      - every 3 days
+      - every 4 days
+      - every 72 hrs
+      - for 24 hours
+      - for 3 days
+      - for 72 hours
+      - hourly for 72 hours
+      - Intermittent
+      - Q24H
+      - Q3H
+      - Q4H
+      - QD
+      - QD and BID on alternative days
+      - QHS
+      - QID
+      - QOD
+      - TID
+
+  route_of_administration:
+    title: Route of Administration
+    description: Select from the provided list the route of administration of the main treatment.
+    placeholder: Choose from dropdown
+    enum:
+      - Auricular (Otic)
+      - Buccal
+      - Conjunctival
+      - Cutaneous
+      - Dental
+      - Electro-Osmosis
+      - Endocervical
+      - Endosinusial
+      - Endotracheal
+      - Enteral
+      - Epidural
+      - Extra-Amniotic
+      - Extracorporeal
+      - Hemodialysis
+      - Infiltration
+      - Interstitial
+      - Intra-Abdominal
+      - Intra-Amniotic
+      - Intra-Arterial
+      - Intra-Articular
+      - Intrabiliary
+      - Intrabronchial
+      - Intrabursal
+      - Intracardiac
+      - Intracartilaginous
+      - Intracaudal
+      - Intracavernous
+      - Intracavitary
+      - Intracerebral
+      - Intracisternal
+      - Intracorneal
+      - Intracoronal, Dental
+      - Intracoronary
+      - Intracorporus Cavernosum
+      - Intradermal
+      - Intradiscal
+      - Intraductal
+      - Intraduodenal
+      - Intradural
+      - Intraepidermal
+      - Intraesophageal
+      - Intragastric
+      - Intragingival
+      - Intraileal
+      - Intralesional
+      - Intraluminal
+      - Intralymphatic
+      - Intramedullary
+      - Intrameningeal
+      - Intramuscular
+      - Intraocular
+      - Intraovarian
+      - Intrapericardial
+      - Intraperitoneal
+      - Intrapleural
+      - Intraprostatic
+      - Intrapulmonary
+      - Intrasinal
+      - Intraspinal
+      - Intrasynovial
+      - Intratendinous
+      - Intratesticular
+      - Intrathecal
+      - Intrathoracic
+      - Intratubular
+      - Intratumor
+      - Intratympanic
+      - Intrauterine
+      - Intravascular
+      - Intravenous
+      - Intravenous Bolus
+      - Intravenous Drip
+      - Intraventricular
+      - Intravesical
+      - Intravitreal
+      - Iontophoresis
+      - Irrigation
+      - Laryngeal
+      - Nasal
+      - Nasogastric
+      - Not Applicable
+      - Opthalmic
+      - Oral
+      - Oropharyngeal
+      - Parenteral
+      - Percutaneous
+      - Periarticular
+      - Peridural
+      - Perineural
+      - Periodontal
+      - Rectal
+      - Respiratory (Inhalation)
+      - Retrobulbar
+      - Soft Tissue
+      - Subarachnoid
+      - Subconjunctival
+      - Subcutaneous
+      - Sublingual
+      - Submucosal
+      - Topical
+      - Transdermal
+      - Transmucosal
+      - Transplacental
+      - Transtracheal
+      - Transtympanic
+      - Unknown
+      - Urethral
+      - Vaginal
+
+  treatment_regimen:
+    title: Treatment Regimen
+    description: 'Describe treatment regimen. For example: "first week of trial, dosing is done twice daily followed by a rest period of 3 weeks."'
+    type: string
+    placeholder: Input here
+
+  treatment_duration:
+    title: Treatment Duration
+    description: Used for samples treatment usually and indicates how long a sample was treated with a modifier.
+    type: integer
+    placeholder: Input here
+
+  treatment_duration_units:
+    title: Treatment Duration Units
+    description: With treatment duration indicates the unit of time a sample was treated with a modifier.
+    placeholder: Choose from dropdown
+    enum:
+      - days
+      - hours
+      - minutes
+      - months
+      - seconds
+  
+  exposure_duration:
+    title: Exposure Duration
+    description: Used for subjects treatment usually and indicates how long a subject was exposed to a modifier.
+    type: integer
+    placeholder: Input here
+
+
+  exposure_duration_units:
+    title: Exposure Duration Units
+    description: With exposure duration indicates the unit of time a subject was exposed to a modifier.
+    placeholder: Choose from dropdown
+    enum:
+      - days
+      - hours
+      - minutes
+      - months
+      - seconds
+
+  longitudinal_timepoint:
+    title: Longitudinal Timepoint
+    description: The Longitudinal Timepoint for the sample.
+    type: string
+    placeholder: Input here

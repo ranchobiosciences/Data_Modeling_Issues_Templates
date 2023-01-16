@@ -1,0 +1,439 @@
+$schema: 'https://monarch.web-dev.bms.com/api/schemaref/_schema_validator#'
+
+id: 'https://monarch.web-dev.bms.com/api/data_product/schema'
+title: Data Product
+title_submitter: Submitter
+identifierPrefix: DP
+type: object
+nodeTerms: null
+namespace: https://datacommons.web.bms.com/
+category: administrative
+description: Data product is an application that queries a collection of data, a summary of a collection of data, or a collection of data that is distinct from a dataset.
+additionalProperties: false
+validators: null
+
+uiSettings:
+  icon: margin
+  iconStyle: material-icons-outlined
+  color: rgb(255, 236, 205)
+  uiPath: /datasetcatalog/data_product
+  plural: Data Products
+  globalSearchSettings:
+    searchFields:
+      - data_product_name
+      - identifier
+      - submitter_id
+    displayFields:
+      - data_product_name
+      - identifier
+      - id
+  displayField: data_product_name
+  displaySubField: data_product_id
+  defaultSortField: identifier
+  primaryPersonField: owner # for email template
+  editValidationUserFields:
+    - owner.uid
+    - collaborator.uid
+    - created_by
+  nodeIdentifier: id
+  #abacSchemaName: 
+  createForm:
+    maxRows: 11
+    maxCols: 2
+    buttonLabel: Create Data Product
+  myNodesAdditionalFields:
+    - owner.uid
+    - collaborator.uid
+  expandFilterOptionsByDefault: true
+  dataFilterField:
+    data_product_type:
+      label: Data Product Type
+      view: dropdown
+      tooltip: true
+    owner:
+      label: Owner
+      tooltip: true
+    collaborator:
+      label: Collaborator
+      tooltip: true
+    identifier:
+      label: Identifier
+      view: dynamic
+      tooltip: true
+      optionsPromiseLimit: 100
+  tableField:
+    identifier: Data Product ID
+    data_product_name: Data Product Name
+    owner: Owner
+    collaborator: Collaborator
+    data_product_type: Data Product Type
+    data_product_location: Data Product Location
+    data_product_url: Data Product URL
+    data_protocol_version: Data Protocol Version
+    version_update_desc: Version Update Description
+  searchField:
+    - data_product_name
+    - owner.cn
+    - collaborator.cn
+    - data_product_location
+    - data_product_description
+    - data_product_url
+    - data_product_type
+    - data_product_version
+    - version_update_desc
+    - tags
+    - identifier
+  fullNodeView: true
+  fullNodeViewForm:
+    nameField: 
+      name: data_product_name
+    personFields:
+      - name: owner
+        label: Owner
+      - name: collaborator
+        label: Collaborator
+    upperFields:
+      - name: links
+      - name: data_product_description
+        label: Description
+    metadataFields:
+      - name: data_product_type
+        label: Data Product Type
+      - name: data_product_location
+        label: Location
+      - name: data_product_version
+        label: Version
+      - name: version_update_desc
+        label: Version Update Description
+      - name: data_product_url
+        label: URL
+    #contractAcknowledgements: 
+    #datasetPath:
+    relationshipFields:
+      - name: relationships
+        label:
+    bottomFields:
+      - name: files
+        label:
+
+  fullNodeRegisterForm:
+    readonlyFields:
+      - identifier
+    panels:
+      - title: Overview
+        fields:
+          - name: data_product_name
+            label: Data Product Name
+            description: Name of the data product.
+          - name: owner
+            label: Owner
+            description: The individual or group who owns and maintains the data product.
+          - name: Collaborator
+            label: Collaborator
+            description: Collaborators for the data product.
+          - name: data_product_description
+            label: Description
+            description: Description of the data product.
+
+      - title: Details
+        optional: true
+        fields:
+          - name: data_product_location
+            label: Location
+            description: Location of the data product.
+          - name: data_product_url
+            label: Data Product URL
+            description: Data product direct url.
+          - name: data_product_type
+            label: Data Product Type
+            description: Type of data product.
+          - name: data_product_version
+            label: Data Product Version
+            description: Version of the data product.
+          - name: version_update_desc
+            label: Version Update Description
+            description: Description of the data product version and update. 
+
+      - title: Related Metadata
+        optional: true
+        fields:
+          - name: relationships
+            label:
+          - name: tags
+            label: Tags
+
+      - title: Files
+        fields:
+          - name: files
+            label:
+
+  fullNodeEditForm:
+    readonlyFields:
+      - identifier
+    panels:
+      - title: Overview
+        fields:
+          - name: data_product_name
+            label: Data Product Name
+            description: Name of the data product.
+          - name: owner
+            label: Owner
+            description: The individual or group who owns and maintains the data product.
+          - name: Collaborator
+            label: Collaborator
+            description: Collaborators for the data product.
+          - name: data_product_description
+            label: Description
+            description: Description of the data product.
+
+      - title: Details
+        optional: true
+        fields:
+          - name: data_product_location
+            label: Location
+            description: Location of the data product.
+          - name: data_product_url
+            label: Data Product URL
+            description: Data product direct url.
+          - name: data_product_type
+            label: Data Product Type
+            description: Type of data product.
+          - name: data_product_version
+            label: Data Product Version
+            description: Version of the data product.
+          - name: version_update_desc
+            label: Version Update Description
+            description: Description of the data product version and update.
+
+      - title: Related Metadata
+        optional: true
+        fields:
+          - name: relationships
+            label:
+          - name: tags
+            label: Tags
+
+      - title: Files
+        fields:
+          - name: files
+            label:
+
+
+systemProperties:
+  - id
+  - _id
+  - created_datetime
+  - updated_datetime
+  - created_by
+  - submitter_id
+  - type
+  - state
+  - identifier
+
+required:
+  - type
+  # - data_product_name
+
+uniqueKeys:
+  - [id]
+
+links:
+  - name: dataset
+    backref: data_product
+    parent_title: Datasets # what's rendered for this node
+    child_title: Data Products
+    label: includes
+    target_type: dataset
+    multiplicity: many_to_many
+    required: false
+
+  - name: sample
+    backref: data_product
+    parent_title: Samples # what's rendered for this node
+    child_title: Data Products
+    label: includes
+    target_type: sample
+    multiplicity: many_to_many
+    required: false
+
+  # - name: subject
+  #   backref: data_product
+  #   parent_title: Subjects # what's rendered for this node
+  #   child_title: Data Products
+  #   label: includes
+  #   target_type: subject
+  #   multiplicity: many_to_many
+  #   required: false
+
+  - name: assay
+    backref: data_product
+    parent_title: Assays # what's rendered for this node
+    child_title: Data Products
+    label: includes
+    target_type: assay
+    multiplicity: many_to_many
+    required: false
+
+  # - name: treatment
+  #   backref: data_product
+  #   parent_title: Treatments # what's rendered for this node
+  #   child_title: Data Products
+  #   label: includes
+  #   target_type: treatment
+  #   multiplicity: many_to_many
+  #   required: false
+
+  - name: clinical_trial
+    backref: data_product
+    parent_title: Clinical Trials # what's rendered for this node
+    child_title: Data Products
+    label: includes
+    target_type: clinical_trial
+    multiplicity: many_to_many
+    required: false
+
+  # - name: research_project
+  #   backref: data_product
+  #   parent_title: Research Projects # what's rendered for this node
+  #   child_title: Data Products
+  #   label: includes
+  #   target_type: research_project
+  #   multiplicity: many_to_many
+  #   required: false
+
+  # - name: lab_experiment
+  #   backref: data_product
+  #   parent_title: Lab Experiments # what's rendered for this node
+  #   child_title: Data Products
+  #   label: includes
+  #   target_type: lab_experiment
+  #   multiplicity: many_to_many
+  #   required: false
+
+  # - name: sample_QC_metrics
+  #   backref: data_product
+  #   parent_title: Sample QC Metrics # what's rendered for this node
+  #   child_title: Data Products
+  #   label: includes
+  #   target_type: sample_QC_metrics
+  #   multiplicity: many_to_many
+  #   required: false
+
+  # - name: analysis_result
+  #   backref: data_product
+  #   parent_title: Analysis Result # what's rendered for this node
+  #   child_title: Data Products
+  #   label: includes
+  #   target_type: analysis_result
+  #   multiplicity: many_to_many
+  #   required: false
+
+properties:
+  $ref: '_definitions.yaml#/ubiquitous_properties'
+
+  data_product_name:
+    title: Data Product Name
+    description: Name of the data product.
+    type: string
+    placeholder: Input here
+
+  data_product_location:
+    title: Data Product Location
+    description: Location of the data product.
+    placeholder: Choose from dropdown
+    enum:
+      - Celgene
+      - TM
+      - Research
+      - DMCP
+
+  data_product_url:
+    title: Data Project URL
+    description: Data product direct url.
+    placeholder: Input here
+    type: array
+    enum_source:
+      type: suggestion
+      global:
+        false # by default, the suggestion lists will be partiaitoned by node + field.
+        # If global is set to true, we want to only partition suggestion list based on field
+      enforce:
+        'auto_add' # yes/true/'true': reject any suggestions not registered
+        # auto_add: accept any suggestion, add to validation list if not exist
+        # false/no/'false': accept any suggestion, don't auto add to validation list
+    items:
+      type: string
+      format: uri
+
+  data_product_type:
+    title: Data Product Type
+    description: Type of data product.
+    placeholder: Choose from dropdown
+    enum:
+      - Spotfire Build
+      - Shiny app
+      - DaaP
+    
+  owner:
+    title: Owner
+    description: The individual or group who owns and maintains the data product.
+    type: object
+    sortField: owner.cn
+    placeholder: Dynamic Search
+    additionalProperties: true
+    $ref: '_definitions.yaml#/bms_group_enum_config'
+
+  collaborator:
+    title: Collaborator
+    description: Collaborators for the data product.
+    type: array
+    placeholder: Dynamic Search
+    items:
+      type: object
+    additionalProperties: true
+    $ref: '_definitions.yaml#/bms_group_enum_config'
+
+  data_product_version:
+    title: Data Product Version
+    description: Version of the data product.
+    type: integer
+    placeholder: Input here
+
+  version_update_desc:
+    title: Version Update Description
+    description: Description of the data product version and update.
+    type: string
+    placeholder: Input here
+
+  data_product_description:
+    title: Description
+    description: The description of the data product.
+    type: string
+    view: richtext
+    placeholder: Enter a data product description here
+
+  links:
+    title: Links
+    description: Links of the data product.
+    type: array
+    view: linkbuttons
+    placeholder: Links of the data product.
+    items:
+      type: object
+    additionalProperties: true
+    objectFields:
+      - name: linkName
+        label: Link Name
+      - name: linkUrl
+        label: Link URL
+
+  dataset:
+    $ref: '_definitions.yaml#/to_many'
+  sample:
+    $ref: '_definitions.yaml#/to_many'
+  assay:
+    $ref: '_definitions.yaml#/to_many'
+  clinical_trial:
+    $ref: '_definitions.yaml#/to_many'
+  analysis_result:
+    $ref: '_definitions.yaml#/to_many'

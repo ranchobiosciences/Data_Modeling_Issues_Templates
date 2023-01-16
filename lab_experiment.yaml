@@ -1,0 +1,269 @@
+$schema: 'https://monarch.web-dev.bms.com/api/schemaref/_schema_validator#'
+
+id: 'https://monarch.web-dev.bms.com/api/lab_experiment/schema'
+title: Lab Experiment
+title_submitter: Submitter
+identifierPrefix: LE
+type: object
+nodeTerms: null
+namespace: https://datacommons.web.bms.com/
+category: administrative
+description: >
+  Individual experiment performed by a laboratory scientist with a specific purpose or hypothesis.
+additionalProperties: false
+validators: null
+
+uiSettings:
+  icon: science
+  iconStyle: material-icons-outlined
+  color: rgb(255, 236, 205)
+  uiPath: /datasetcatalog/lab_experiment
+  plural: Lab Experiments
+  globalSearchSettings:
+    searchFields:
+      - lab_experiment_title
+      - identifier
+    displayFields:
+      - lab_experiment_title
+      - identifier
+      - id
+  displayField: lab_experiment_title
+  displaySubField: lab_experiment_description
+  defaultSortField: lab_experiment_title
+  primaryPersonField: created_by # for email template
+  editValidationUserFields:
+    - created_by
+  nodeIdentifier: id
+  #abacSchemaName: 
+  createForm:
+    maxRows: 11
+    maxCols: 2
+    buttonLabel: Create Lab Experiment
+  #myNodesAdditionalFields:
+  expandFilterOptionsByDefault: true
+  dataFilterField:
+    lab_experiment_status:
+      label: Lab Experiment Status
+      view: dropdown
+      tooltip: true
+    lab_experiment_date:
+      label: Lab Experiment Date
+      tooltip: true
+    flowcytometry_experiment_protocol:
+      label: Flow Cytometry Experiment Protocol
+      tooltip: true
+    identifier:
+      label: Identifier
+      view: dynamic
+      tooltip: true
+      optionsPromiseLimit: 100
+  tableField:
+    lab_experiment_title: Lab Experiment Title
+    lab_experiment_description: Lab Experiment Description
+    lab_experiment_status: Lab Experiment Status
+    lab_experiment_date: Lab Experiment Date
+  searchField:
+    - lab_experiment_title
+    - lab_experiment_description
+    - lab_experiment_status
+    - lab_experiment_date
+    - flowcytometry_experiment_protocol
+    - tags
+    - identifier
+  fullNodeView: true
+  fullNodeViewForm:
+    nameField:
+      name: lab_experiment_title
+    personFields:
+    upperFields:
+      - name: links
+      - name: lab_experiment_description
+        label: Description
+      - name: tags
+        label: Tags
+    metadataFields:
+      - name: lab_experiment_status
+        label: Lab Experiment Status
+      - name: lab_experiment_date
+        label: Lab Experiment Date
+      - name: flowcytometry_experiment_protocol
+        label: Flow Cytometry Experiment Protocol
+    relationshipFields:
+      - name: relationships
+        label:
+    bottomFields:
+      - name: files
+        label:
+
+  fullNodeRegisterForm:
+    readonlyFields:
+      - identifier
+    panels:
+      - title: Overview
+        fields:
+          - name: lab_experiment_title
+            label: Lab Experiment Title
+            description: Title of the individual laboratory experiment.
+          - name: lab_experiment_description
+            label: Lab Experiment Description
+            description: Description of the laboratory experiment purpose.
+      
+      - title: Details
+        optional: true
+        fields:
+          - name: lab_experiment_status
+            label: Lab Experiment Status
+            description: Status of the laboratory experiment.
+          - name: lab_experiment_date
+            label: Lab Experiment Date
+            description: The date the lab experiment was performed.
+          - name: flowcytometry_experiment_protocol
+            label: Flow Cytometry Experiment Protocol
+            description: Protocol used in the experiment.
+
+      - title: Related Metadata
+        optional: true
+        fields:
+          - name: relationships
+            label:
+          - name: tags
+            label: Tags
+
+      - title: Files
+        fields:
+        - name: files
+          label:
+
+  fullNodeEditForm:
+    readonlyFields:
+      - identifier
+    panels:
+      - title: Overview
+        fields:
+          - name: lab_experiment_title
+            label: Lab Experiment Title
+            description: Title of the individual laboratory experiment.
+          - name: lab_experiment_description
+            label: Lab Experiment Description
+            description: Description of the laboratory experiment purpose.
+      
+      - title: Details
+        optional: true
+        fields:
+          - name: lab_experiment_status
+            label: Lab Experiment Status
+            description: Status of the laboratory experiment.
+          - name: lab_experiment_date
+            label: Lab Experiment Date
+            description: The date the lab experiment was performed.
+          - name: flowcytometry_experiment_protocol
+            label: Flow Cytometry Experiment Protocol
+            description: Protocol used in the experiment.
+
+      - title: Related Metadata
+        optional: true
+        fields:
+          - name: relationships
+            label:
+          - name: tags
+            label: Tags
+
+      - title: Files
+        fields:
+        - name: files
+          label:
+
+
+systemProperties:
+  - id
+  - _id
+  - created_datetime
+  - updated_datetime
+  - created_by
+  - submitter_id
+  - type
+  - state
+  - identifier
+
+required:
+  - type
+
+uniqueKeys:
+  - [id]
+
+# links:
+#   - name: research_project
+#     backref: lab_experiment
+#     parent_title: Research Projects # what's rendered for this node
+#     child_title: Lab Experiments
+#     label: member_of
+#     target_type: research_project
+#     multiplicity: many_to_many
+#     required: false
+
+  # - name: assay
+  #   backref: lab_experiment
+  #   parent_title: Assays # what's rendered for this node
+  #   child_title: Lab Experiments
+  #   label: includes
+  #   target_type: assay
+  #   multiplicity: many_to_many
+  #   required: false
+
+  # - name: roles
+  #   backref: lab_experiment
+  #   parent_title: Roles # what's rendered for this node
+  #   child_title: Lab Experiments
+  #   label: includes
+  #   target_type: roles
+  #   multiplicity: many_to_many
+  #   required: false
+
+  # - name: sample
+  #   backref: lab_experiment
+  #   parent_title: Samples # what's rendered for this node
+  #   child_title: Lab Experiments
+  #   label: uses
+  #   target_type: sample
+  #   multiplicity: many_to_many
+  #   required: false
+          
+properties:
+  $ref: '_definitions.yaml#/ubiquitous_properties'
+
+  lab_experiment_title:
+    title: Lab Experiment Title
+    description: Title of the individual laboratory experiment.
+    type: string
+    placeholder: Input here
+
+  lab_experiment_description:
+    title: Lab Experiment Description
+    description: Description of the laboratory experiment purpose.
+    type: string
+    placeholder: Input here
+
+  lab_experiment_status:
+    title: Lab Experiment Status
+    description: Status of the laboratory experiment.
+    placeholder: Choose from dropdown
+    enum:
+      - In Progress
+      - Complete
+
+  lab_experiment_date:
+    title: Lab Experiment Date
+    description: The date the lab experiment was performed.
+    placeholder: yyyy-mm-dd
+    type: string
+    format: date
+    uiDateFormat: MM-DD-YYYY
+
+  # research_project:
+  #   $ref: '_definitions.yaml#/to_many'
+  assay:
+    $ref: '_definitions.yaml#/to_many'
+  # roles:
+  #   $ref: '_definitions.yaml#/to_many'
+  sample:
+    $ref: '_definitions.yaml#/to_many'

@@ -1,0 +1,409 @@
+$schema: 'https://monarch.web-dev.bms.com/api/schemaref/_schema_validator#'
+
+id: 'https://monarch.web-dev.bms.com/api/program/schema'
+title: Program
+identifierPrefix: PR
+type: object
+nodeTerms: null
+namespace: https://datacommons.web.bms.com/
+category: administrative
+description: A BMS Asset, Target, Drug or combination of things that proceed through the BMS Pipeline.
+additionalProperties: false
+validators: null
+
+uiSettings:
+  icon: device_hub
+  iconStyle: material-icons-outlined
+  uiPath: /datasetcatalog/program
+  plural: Programs
+  globalSearchSettings:
+    searchFields:
+      - program_name
+      - identifier
+      - submitter_id
+    displayFields:
+      - program_name
+      - identifier
+      - id
+  displayField: program_name
+  displaySubField: 'program_name'
+  defaultSortField: identifier
+  primaryPersonField: program_lead # for email template
+  editValidationUserFields:
+    - program_lead
+    - created_by
+  nodeIdentifier: id
+  abacSchemaName: _abac_program
+  expandFilterOptionsByDefault: false
+  dataFilterField:
+    therapeutic_area:
+      label: Therapeutic Area
+    target_indications:
+      label: Target Indications
+    modality:
+      label: Modality
+    program_lead:
+      label: Program Lead
+    program_stage_achieved:
+      label: Program Stage Achieved
+    identifier:
+      label: Identifier
+      view: dynamic
+      tooltip: true
+      optionsPromiseLimit: 100
+  createForm:
+    maxRows: 8
+    maxCols: 3
+    buttonLabel: Create Program
+  tableField:
+    identifier: Program ID
+    program_name: Program Name
+    program_lead: Program Lead
+    modality: Modality
+    therapeutic_area: Therapeutic Area
+    target_indications: Target Indications
+    program_stage_achieved: Program Stage
+    clinical_stage: Clinical Stage
+  searchField:
+    - program_name
+    - program_description
+    - program_lead.cn
+    - modality
+    - therapeutic_area
+    - target_indications
+    - program_stage_achieved
+    - clinical_stage
+    - tags
+    - identifier
+  fullNodeView: true
+  fullNodeViewForm:
+    nameField:
+      name: program_name
+    personFields:
+      - name: program_lead
+        label: Lead
+    upperFields:
+      - name: program_description
+        label: Description
+      - name: tags
+        label: Tags
+    metadataFields:
+      - name: modality
+        label: Modality
+      - name: therapeutic_area
+        label: Therapeutic Area
+      - name: target_indications
+        label: Target Indications
+      - name: program_stage_achieved
+        label: Program Stage
+      - name: clinical_stage
+        label: Clinical Stage
+    relationshipFields:
+      - name: relationships
+        label: null
+    bottomFields:
+      # - name: files
+      #   label:
+  fullNodeRegisterForm:
+    readonlyFields:
+      - identifier
+    panels:
+      - title: Overview
+        fields:
+          - name: program_name
+            label: Program Name
+            width: 12
+          - name: program_description
+            label: Description
+            width: 12
+          - name: program_lead
+            label: Lead
+            width: 12
+          - name: modality
+            label: Modality
+            width: 12
+          - name: therapeutic_area
+            label: Therapeutic Area
+            width: 12
+          - name: target_indications
+            label: Target Indications
+            width: 12
+          - name: program_stage_achieved
+            label: Program Stage
+            width: 12
+          - name: clinical_stage
+            label: Clinical Stage
+            width: 12
+      - title: Related Metadata
+        optional: true
+        fields:
+          - name: relationships
+            label:
+          - name: tags
+            label: Tags
+            width: 12
+      # - title: Files
+      #   fields:
+      #     - name: files
+      #       label:
+
+systemProperties:
+  - id
+  - _id
+  - created_datetime
+  - updated_datetime
+  - created_by
+  - submitter_id
+  - type
+  - state
+
+required:
+  - type
+  - program_name
+#  - program_lead
+
+uniqueKeys:
+  - [id]
+
+# links: 
+#   - name: clinical_trial
+#     backref: program
+#     parent_title: Clinical Trials # what's rendered for this node
+#     child_title: Programs
+#     label: member_of
+#     target_type: clinical_trial
+#     multiplicity: many_to_many
+#     required: false
+
+properties:
+  $ref: '_definitions.yaml#/ubiquitous_properties'
+
+  program_name:
+    title: Program Name
+    description: The name of the program.
+    type: string
+    placeholder: Input here
+
+  program_description:
+    title: Description
+    description: The description of the program.
+    type: string
+    view: richtext
+    placeholder: Enter a program description here
+
+  program_lead:
+    title: Program Lead
+    description: Program Lead of the program.
+    type: object
+    sortField: program_lead.cn
+    placeholder: Dynamic Search
+    additionalProperties: true
+    $ref: '_definitions.yaml#/bms_group_enum_config'
+
+  modality:
+    title: Modality
+    description: The modality of the program.
+    placeholder: Choose from dropdown
+    enum:
+      - ADC
+      - AHR
+      - AR
+      - CAR-T
+      - CelMOD
+      - LDD
+
+  therapeutic_area:
+    title: Therapeutic Area
+    description: The therapeutic area of the program.
+    placeholder: Choose from dropdown
+    enum:
+      - Cardiovascular
+      - Dermatology
+      - Fibrosis
+      - Generically Defined Diseases
+      - Hematology
+      - Immuno/Oncology
+      - Immunology
+      - Immunoscience
+      - Infectious Diseases
+      - Metabolic Diseases
+      - Metabolism
+      - Neuroscience
+      - Oncology
+      - Virology
+
+  target_indications:
+    title: Target Indications
+    description: The target indications of the program.
+    type: array
+    placeholder: Dynamic Search
+    items:
+      enum:
+        - 'Acute Coronary Syndrome'
+        - 'Acute Decompensated Heart Failure'
+        - 'Acute Lymphocytic Leukemia'
+        - 'Acute Myeloid Leukemia'
+        - 'Adenoid Cystic Carcinoma'
+        - 'Alpha Thalassemia'
+        - "Alzheimer's Disease"
+        - 'Anemia'
+        - 'Angioimmunoblastic T-Cell Lymphoma'
+        - 'Ankylosing Spondylitis'
+        - 'Atherosclerosis'
+        - 'Atopic Dermatitis'
+        - 'Atrial Fibrillation'
+        - 'Autism Spectrum Disorder'
+        - 'Autoimmune Disease'
+        - 'Basal Cell Carcinoma'
+        - "Behcet's Disease"
+        - 'Beta Thalassemia'
+        - 'Bipolar Disorder'
+        - 'Breast Cancer'
+        - 'Cancer NOS'
+        - 'Cardiovascular NOS'
+        - 'Central Nervous System Lymphoma'
+        - 'Cervical Cancer'
+        - 'Chronic Lymphocytic Leukemia'
+        - 'Chronic Myeloid Leukemia'
+        - 'Colorectal Cancer'
+        - 'COVID-19'
+        - "Crohn's Disease"
+        - 'Cutaneous Lupus Erythematosus'
+        - 'Cutaneous T-Cell Lymphoma'
+        - 'Depression'
+        - 'Diabetes Mellitus'
+        - 'Diabetic Kidney Disease'
+        - 'Diffuse Intrinsic Pontine Glioma'
+        - 'Diffuse Large B-Cell Lymphoma'
+        - 'Dilated Cardiomyopathy '
+        - 'Endometrial Cancer'
+        - 'Eosinophilic Esophagitis'
+        - 'Esophageal Cancer'
+        - 'Female Reproductive Cancer'
+        - 'Fibrosis NOS'
+        - 'Follicular Lymphoma'
+        - 'Gallbladder Cancer'
+        - 'Gastric Cancer'
+        - 'Gastroesophageal Junction Cancer'
+        - 'Gastrointestinal System Cancer NOS'
+        - 'Giant Cell Arteritis'
+        - 'Glioblastoma Multiforme'
+        - 'Glioma'
+        - 'Graft Rejection'
+        - 'Head and Neck Cancer NOS'
+        - 'Heart Failure'
+        - 'Hematologic Cancer NOS'
+        - 'Hepatitis B'
+        - 'Hepatitis C'
+        - 'Hepatocellular Carcinoma'
+        - "Hodgkin's Lymphoma"
+        - 'Human Immunodeficiency Virus'
+        - 'Hyperlipidemia'
+        - 'Hypertension'
+        - 'Hypertrophic Cardiomyopathy'
+        - 'Idiopathic Inflammatory Myositis'
+        - 'Idiopathic Pulmonary Fibrosis'
+        - 'IgA Nephropathy'
+        - 'Immune Thrombocytopenic Purpura'
+        - 'Immunoscience NOS'
+        - 'Inflammatory Bowel Disease'
+        - 'Juvenile Idiopathic Arthritis'
+        - "Kaposi's Sarcoma"
+        - 'Lipodystrophy'
+        - 'Liposarcoma'
+        - 'Lupus Nephritis'
+        - 'Lymphoma NOS'
+        - 'Major Adverse Cardiac Event'
+        - 'Mantle Cell Lymphoma'
+        - 'Marginal Zone Lymphoma'
+        - 'Melanoma'
+        - 'Merkel Cell Carcinoma'
+        - 'Mesothelioma'
+        - 'Metabolic Disease'
+        - 'Microscopic Colitis'
+        - 'Multiple Myeloma'
+        - 'Multiple Sclerosis'
+        - 'Muscle Invasive Bladder Cancer'
+        - 'Myelodysplastic Syndromes'
+        - 'Myelofibrosis'
+        - 'Nasopharyngeal Cancer'
+        - 'Neuroendocrine Neoplasm'
+        - 'Neuromuscular Disease'
+        - 'Neuroscience NOS'
+        - 'Non-Hodgkin Lymphoma'
+        - 'Non-Muscle Invasive Bladder Cancer'
+        - 'Non-Small Cell Lung Carcinoma'
+        - 'Nonalcoholic Steatohepatitis'
+        - 'Ovarian Cancer'
+        - 'Pancreatic Cancer'
+        - 'Peripheral T-Cell Lymphoma'
+        - 'Pleomorphic Adenoma Carcinoma'
+        - 'Polycythemia Vera'
+        - 'Primary Sclerosing Cholangitis'
+        - 'Progressive Supranuclear Palsy'
+        - 'Prostate Cancer'
+        - 'Psoriasis'
+        - 'Psoriatic Arthritis'
+        - 'Pulmonary Sarcoidosis'
+        - 'Renal Cell Carcinoma'
+        - 'Renal Transplant Rejection'
+        - 'Rheumatoid Arthritis'
+        - 'Rhinitis'
+        - 'Sarcoma NOS'
+        - 'Schizophrenia'
+        - 'Scleroderma'
+        - 'Sepsis'
+        - "Sjogren's Syndrome"
+        - 'Skin Carcinoma NOS'
+        - 'Small Cell Lung Carcinoma'
+        - 'Squamous Cell Carcinoma'
+        - 'Steroid-Resistant Nephrotic Syndrome'
+        - 'Stroke'
+        - 'Systemic Lupus Erythematosus'
+        - 'Systemic Sclerosis'
+        - 'Thrombosis'
+        - 'Thyroid Cancer'
+        - 'Triple-Negative Breast Cancer'
+        - 'Ulcerative Colitis'
+        - 'Urinary Bladder Cancer'
+        - 'Uveitis'
+        - 'Venous Thromboembolism'
+        - 'Virology NOS'
+
+  program_stage_achieved:
+    title: Program Stage
+    description: The program stage achieved of the program.
+    placeholder: Choose from dropdown
+    enum:
+      - Pre-GT1
+      - GT1 - Go to Full Discovery
+      - GT2 - Go to Early Development
+      - Post-GT2
+      - GT3 - Go to First in Human
+      - GT4 - POC
+      - GT5 - Go to Full Development
+      - GT6 - Go to Commercialization
+      - GT7 - Go to File
+
+  clinical_stage:
+    title: Clinical Stage
+    description: The clinical stage of the program.
+    view: radio
+    enum:
+      - Clinical
+      - Pre-Clinical
+
+  program_purpose:
+    title: Program purpose
+    # description: 
+    # placeholder:
+    enum:
+      - Differentiate compounds activity and pharmacology
+      - Investigate mechanism of action
+      - Generate therapeutic hypothesis
+      - Validate therapeutic hypothesis
+      - Validate animal models
+      - Toxicity
+
+clinical_trial:
+  $ref: "_definitions.yaml#/to_many"

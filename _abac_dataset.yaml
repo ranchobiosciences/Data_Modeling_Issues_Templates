@@ -1,0 +1,53 @@
+$schema: "https://monarch.web-dev.bms.com/api/schemaref/_schema_validator#"
+
+id: "https://monarch.web-dev.bms.com/api/permissions/_abac_dataset/schema"
+title: Dataset Access Request
+identifierPrefix: DAR
+type: object
+nodeTerms: null
+namespace: https://datacommons.web.bms.com/
+category: administrative
+description: Dataset access request
+additionalProperties: false
+validators: null
+
+uiSettings:
+  uiPath: /access_requests
+  plural: Data Access Requests
+  nodeIdentifier: id
+  accessForm:
+    nodeSearchFields:
+      - id
+      - dataset_name
+    requestNode: "dataset"
+    ruleRequestedNodes: "datasets"
+    nodeName: "Dataset"
+    nodeSelectPanelTitle: "Datasets"
+    nodeSelectDisplayField: dataset_name
+    nodeSelectDisplayFieldSecond: dataset_type
+    nodeSelectLabel: "Start typing the Dataset Name or ID# of the dataset(s) you would like to request access to:*"
+  accessReviewForm:
+    requestNode: "dataset"
+    ruleRequestedNodes: "datasets"
+    nodeSelectDisplayField: dataset_name
+    nodeName: "Dataset"
+    requestedNodeTitle: DATASETS REQUESTED
+    requestedNodeLabel: Request Access to Dataset(s)
+
+systemProperties:
+  - _id
+  - type
+
+required:
+  - purpose
+  - using_other
+  - analysis_description
+  - output_use
+  - specific_use_case_agreement
+  - contract_terms_agreement
+
+uniqueKeys:
+  - [id]
+
+properties:
+  $ref: "_definitions.yaml#/abac_ubiquitous_properties"

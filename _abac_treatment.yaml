@@ -1,0 +1,53 @@
+$schema: "https://monarch.web-dev.bms.com/api/schemaref/_schema_validator#"
+
+id: "https://monarch.web-dev.bms.com/api/permissions/_abac_treatment/schema"
+title: treatment Access Request
+identifierPrefix: DAR
+type: object
+nodeTerms: null
+namespace: https://datacommons.web.bms.com/
+category: administrative
+description: treatment access request
+additionalProperties: false
+validators: null
+
+uiSettings:
+  uiPath: /access_requests
+  plural: Data Access Requests
+  nodeIdentifier: id
+  accessForm:
+    nodeSearchFields:
+      - id
+      - treatment_name
+    requestNode: "treatment"
+    ruleRequestedNodes: "treatments"
+    nodeName: "Treatment"
+    nodeSelectPanelTitle: "Treatments"
+    nodeSelectDisplayField: treatment_name
+    nodeSelectDisplayFieldSecond: treatment_type
+    nodeSelectLabel: "Start typing the treatment Name or ID# of the treatment(s) you would like to request access to:*"
+  accessReviewForm:
+    requestNode: "treatment"
+    ruleRequestedNodes: "treatments"
+    nodeSelectDisplayField: treatment_name
+    nodeName: "Treatment"
+    requestedNodeTitle: TREATMENTS REQUESTED
+    requestedNodeLabel: Request Access to treatment(s)
+
+systemProperties:
+  - _id
+  - type
+
+required:
+  - purpose
+  - using_other
+  - analysis_description
+  - output_use
+  - specific_use_case_agreement
+  - contract_terms_agreement
+
+uniqueKeys:
+  - [id]
+
+properties:
+  $ref: "_definitions.yaml#/abac_ubiquitous_properties"

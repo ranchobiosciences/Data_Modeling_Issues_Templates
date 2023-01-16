@@ -1,0 +1,790 @@
+$schema: 'https://monarch.web-dev.bms.com/api/schemaref/_schema_validator#'
+
+id: 'https://monarch.web-dev.bms.com/api/clinical_trial/schema'
+title: Clinical Trial
+identifierPrefix: CT
+title_submitter: Submitter
+type: object
+nodeTerms: null
+namespace: https://datacommons.web.bms.com/
+category: administrative
+description: >
+  Clinical Trial is a part of the Program; 
+  they are a distinct research activity that is centered around 
+  administering treatment of interest to human subjects.
+  (Synonyms: Clinical study, Trial)
+additionalProperties: false
+validators: null
+
+uiSettings:
+  icon: add_box
+  iconStyle: material-icons
+  color: rgb(197, 255, 230)
+  uiPath: /datasetcatalog/clinical_trials
+  plural: Clinical Trials
+  globalSearchSettings:
+    searchFields:
+      - clinical_trial_title
+      - identifier
+      - submitter_id
+    displayFields:
+      - clinical_trial_title
+      - identifier
+      - id
+  displayField: protocol_number
+  displaySubField: study_type # Used for tag section in flex view
+  defaultSortField: identifier
+  nodeIdentifier: id
+  editValidationUserFields:
+    - created_by
+  abacSchemaName: _abac_clinical_trial
+  renderColCount: 3
+  #fullNodeView: true # must have fullNodeRegisterForm
+  expandFilterOptionsByDefault: false
+  dataFilterField:
+    therapeutic_area:
+      label: Therapeutic Area
+      tooltip: true
+      multiSelect: true
+      queryOperator: $in
+    indication:
+      label: Indication
+      tooltip: true
+      multiSelect: true
+      queryOperator: $in
+      # view: dropdown
+    status:
+      label: Status
+      tooltip: true
+      multiSelect: true
+      queryOperator: $in
+      optionsPromiseLimit: -1
+    study_phase:
+      label: Study Phase
+      tooltip: true
+      multiSelect: true
+      queryOperator: $in
+      optionsPromiseLimit: -1
+    intervention:
+      label: Intervention
+      tooltip: true
+      multiSelect: true
+      queryOperator: $in
+      optionsPromiseLimit: -1
+    study_type:
+      label: Study Type
+      tooltip: true
+      multiSelect: true
+      queryOperator: $in
+  createForm:
+    maxRows: 5
+    maxCols: 2
+    buttonLabel: Create Clinical Trial
+
+  tableField:
+    protocol_number: 'Protocol #'
+    program_id: Program ID
+    therapeutic_area: Therapeutic Area
+    status: Status
+    study_phase: Study Phase
+    study_type: Study Type
+    compound_number: 'Compound #'
+  searchField:
+    - clinical_trial_title
+    - protocol_number
+    - program_id
+    - clinical_trial_id
+    - drug_code
+    - indication
+    - therapeutic_area
+    - status
+    - study_phase
+    - study_type
+    - study_id
+    - lead_sponsor
+    - compound_number
+    - intervention
+    - principal_investigator
+    - tags
+    - identifier
+  fullNodeView: true
+  fullNodeViewForm:
+    nameField:
+      name: clinical_trial_title
+    personFields:
+    upperFields:
+      - name: links
+      - name: inclusion_criteria
+        label: Inclusion Criteria
+        description: List all inclusion criteria for the clinical trial.
+      - name: exclusion_criteria
+        label: Exclusion Criteria
+        description: List all exclusion criteria for the clinical trial.
+      - name: tags
+        label: Tags
+    metadataFields:
+      - name: protocol_number
+        label: 'Protocol #'
+      - name: program_id
+        label: Program ID
+      - name: clinical_trial_id
+        label: Clinical Trial ID
+      - name: drug_code
+        label: Drug Code
+      - name: indication
+        label: Indication
+      - name: therapeutic_area
+        label: Therapeutic Area
+      - name: status
+        label: Status
+      - name: study_phase
+        label: Study Phase
+      - name: study_type
+        label: Type
+      - name: study_id
+        label: ID
+      - name: lead_sponsor
+        label: Lead Sponsor
+      - name: compound_number
+        label: 'Compound #'
+      - name: has_results
+        label: Has Results
+      - name: intervention
+        label: Intervention
+      - name: principal_investigator
+        label: Principal Investigator
+      - name: regimen
+        label: Regimen
+      - name: clinical_trial_status
+        label: Clinical Trial Status
+      - name: study_arms
+        label: Study Arms
+      - name: study_blinding_procedure
+        label: Study Blinding Procedure
+      - name: study_design
+        label: Study Design
+      - name: project_publications
+        label: Project Publications
+    relationshipFields:
+      - name: relationships
+        label:
+    bottomFields:
+      # - name: files
+      #   label:
+  fullNodeRegisterForm:
+    readonlyFields:
+      - identifier
+    panels:
+      - title: Overview
+        fields:
+          - name: clinical_trial_title
+            label: Protocol Title
+            description: Clinical Trial Title
+          - name: inclusion_criteria
+            label: Inclusion Criteria
+            description: List all inclusion criteria for the clinical trial.
+          - name: exclusion_criteria
+            label: Exclusion Criteria
+            description: List all exclusion criteria for the clinical trial.
+      - title: Details
+        optional: true
+        fields:
+          - name: protocol_number
+            label: 'Protocol #'
+            width: 12
+          - name: program_id
+            label: Program ID
+            width: 12
+          - name: clinical_trial_id
+            label: Clinical Trial ID
+            width: 12
+          - name: drug_code
+            label: Drug Code
+            width: 12
+          - name: indication
+            label: Indication
+            width: 12
+          - name: therapeutic_area
+            label: Therapeutic Area
+            width: 12
+          - name: status
+            label: Status
+            width: 12
+          - name: study_phase
+            label: Study Phase
+            width: 12
+          - name: study_type
+            label: Type
+            width: 12
+          - name: study_id
+            label: ID
+          - name: lead_sponsor
+            label: Lead Sponsor
+            width: 12
+          - name: compound_number
+            label: 'Compound #'
+            width: 12
+          - name: has_results
+            label: Has Results
+            width: 12
+          - name: intervention
+            label: Intervention
+            width: 12
+          - name: principal_investigator
+            label: Principal Investigator
+            width: 12
+          - name: regimen
+            label: Regimen
+            width: 12
+          - name: clinical_trial_status
+            label: Clinical Trial Status
+            width: 12
+          - name: study_arms
+            label: Study Arms
+            width: 12
+          - name: study_blinding_procedure
+            label: Study Blinding Procedure
+            width: 12
+          - name: study_design
+            label: Study Design
+            width: 12
+          - name: project_publications
+            label: Project Publications
+            width: 12
+
+      - title: Related Metadata
+        optional: true
+        fields:
+          - name: relationships
+            label:
+            width: 12
+          - name: tags
+            label: Tags
+            width: 12
+
+  fullNodeEditForm:
+    readonlyFields:
+      - identifier
+    panels:
+      - title: Overview
+        fields:
+          - name: clinical_trial_title
+            label: Protocol Title
+            description: Clinical Trial Title
+          - name: inclusion_criteria
+            label: Inclusion Criteria
+            description: List all inclusion criteria for the clinical trial.
+          - name: exclusion_criteria
+            label: Exclusion Criteria
+            description: List all exclusion criteria for the clinical trial.
+      - title: Details
+        optional: true
+        fields:
+          - name: protocol_number
+            label: 'Protocol #'
+            width: 12
+          - name: program_id
+            label: Program ID
+            width: 12
+          - name: clinical_trial_id
+            label: Clinical Trial ID
+            width: 12
+          - name: drug_code
+            label: Drug Code
+            width: 12
+          - name: indication
+            label: Indication
+            width: 12
+          - name: therapeutic_area
+            label: Therapeutic Area
+            width: 12
+          - name: status
+            label: Status
+            width: 12
+          - name: study_phase
+            label: Study Phase
+            width: 12
+          - name: study_type
+            label: Type
+            width: 12
+          - name: study_id
+            label: ID
+          - name: lead_sponsor
+            label: Lead Sponsor
+            width: 12
+          - name: compound_number
+            label: 'Compound #'
+            width: 12
+          - name: has_results
+            label: Has Results
+            width: 12
+          - name: intervention
+            label: Intervention
+            width: 12
+          - name: principal_investigator
+            label: Principal Investigator
+            width: 12
+          - name: regimen
+            label: Regimen
+            width: 12
+          - name: clinical_trial_status
+            label: Clinical Trial Status
+            width: 12
+          - name: study_arms
+            label: Study Arms
+            width: 12
+          - name: study_blinding_procedure
+            label: Study Blinding Procedure
+            width: 12
+          - name: study_design
+            label: Study Design
+            width: 12
+          - name: project_publications
+            label: Project Publications
+            width: 12
+
+      - title: Related Metadata
+        optional: true
+        fields:
+          - name: relationships
+            label:
+            width: 12
+          - name: tags
+            label: Tags
+            width: 12
+
+      # - title: Files
+      #   fields:
+      #     - name: files
+      #       label:
+
+systemProperties:
+  - id
+  - _id
+  - created_datetime
+  - updated_datetime
+  - created_by
+  - submitter_id
+  - type
+  - state
+
+required:
+  - type
+  # - clinical_trial_title
+
+uniqueKeys:
+  - [id]
+
+links:
+  - name: research_project
+    backref: clinical_trial
+    parent_title: Research Projects # what's rendered for this node
+    child_title: Clinical Trials
+    label: derived_from
+    target_type: research_project
+    multiplicity: many_to_many
+    required: false
+
+  - name: program
+    backref: clinical_trial
+    parent_title: Programs # what's rendered for this node
+    child_title: Clinical Trials
+    label: member_of
+    target_type: program
+    multiplicity: many_to_many
+    required: false
+
+  - name: subject
+    backref: clinical_trial
+    parent_title: Subjects # what's rendered for this node
+    child_title: Clinical Trials
+    label: has
+    target_type: subject
+    multiplicity: many_to_many
+    required: false
+
+  - name: roles
+    backref: clinical_trial
+    parent_title: Roles # what's rendered for this node
+    child_title: Clinical Trials
+    label: includes
+    target_type: roles
+    multiplicity: many_to_many
+    required: false
+
+  # - name: sample
+  #   backref: clinical_trials
+  #   parent_title: Samples # what's rendered for this node
+  #   child_title: Clinical Trials
+  #   label: includes
+  #   target_type: sample
+  #   multiplicity: many_to_many
+  #   required: false
+
+properties:
+  $ref: '_definitions.yaml#/ubiquitous_properties'
+
+  clinical_trial_id:
+    title: Clinical Trial ID
+    description: The unique ID for the clinical trial.
+    type: string
+
+  clinical_trial_title:
+    title: Clinical Trial Title
+    description: The title of the clinical trial.
+    type: string
+    placeholder: Input here
+
+  protocol_number:
+    title: 'Protocol #'
+    description: The number of the protocol for a trial.
+    type: string
+
+  inclusion_criteria:
+    title: Inclusion Criteria
+    description: List all inclusion criteria for the clinical trial.
+    type: string
+    view: richtext
+    placeholder: Input here
+
+  exclusion_criteria:
+    title: Exclusion Criteria
+    description: List all exclusion criteria for the clinical trial.
+    type: string
+    view: richtext
+    placeholder: Input here
+
+  has_results:
+    title: Has Results
+    description: Flag for results.
+    placeholder: Choose from dropdown
+    type: string
+    enum:
+      - 'Yes'
+      - 'No'
+      - 'Pending analysis'
+
+  indication:
+    title: Indication
+    description: The indication for a trial.
+    placeholder: Dynamic Search
+    enum:
+      - 'Acute Coronary Syndrome'
+      - 'Acute Decompensated Heart Failure'
+      - 'Acute Lymphocytic Leukemia'
+      - 'Acute Myeloid Leukemia'
+      - 'Adenoid Cystic Carcinoma'
+      - 'Alpha Thalassemia'
+      - "Alzheimer's Disease"
+      - 'Anemia'
+      - 'Angioimmunoblastic T-Cell Lymphoma'
+      - 'Ankylosing Spondylitis'
+      - 'Atherosclerosis'
+      - 'Atopic Dermatitis'
+      - 'Atrial Fibrillation'
+      - 'Autism Spectrum Disorder'
+      - 'Autoimmune Disease'
+      - 'Basal Cell Carcinoma'
+      - "Behcet's Disease"
+      - 'Beta Thalassemia'
+      - 'Bipolar Disorder'
+      - 'Breast Cancer'
+      - 'Cancer NOS'
+      - 'Cardiovascular NOS'
+      - 'Central Nervous System Lymphoma'
+      - 'Cervical Cancer'
+      - 'Chronic Lymphocytic Leukemia'
+      - 'Chronic Myeloid Leukemia'
+      - 'Colorectal Cancer'
+      - 'COVID-19'
+      - "Crohn's Disease"
+      - 'Cutaneous Lupus Erythematosus'
+      - 'Cutaneous T-Cell Lymphoma'
+      - 'Depression'
+      - 'Diabetes Mellitus'
+      - 'Diabetic Kidney Disease'
+      - 'Diffuse Intrinsic Pontine Glioma'
+      - 'Diffuse Large B-Cell Lymphoma'
+      - 'Dilated Cardiomyopathy'
+      - 'Endometrial Cancer'
+      - 'Eosinophilic Esophagitis'
+      - 'Esophageal Cancer'
+      - 'Female Reproductive Cancer'
+      - 'Fibrosis NOS'
+      - 'Follicular Lymphoma'
+      - 'Gallbladder Cancer'
+      - 'Gastric Cancer'
+      - 'Gastroesophageal Junction Cancer'
+      - 'Gastrointestinal System Cancer NOS'
+      - 'Giant Cell Arteritis'
+      - 'Glioblastoma Multiforme'
+      - 'Glioma'
+      - 'Graft Rejection'
+      - 'Head and Neck Cancer NOS'
+      - 'Heart Failure'
+      - 'Hematologic Cancer NOS'
+      - 'Hepatitis B'
+      - 'Hepatitis C'
+      - 'Hepatocellular Carcinoma'
+      - "Hodgkin's Lymphoma"
+      - 'Human Immunodeficiency Virus'
+      - 'Hyperlipidemia'
+      - 'Hypertension'
+      - 'Hypertrophic Cardiomyopathy'
+      - 'Idiopathic Inflammatory Myositis'
+      - 'Idiopathic Pulmonary Fibrosis'
+      - 'IgA Nephropathy'
+      - 'Immune Thrombocytopenic Purpura'
+      - 'Immunoscience NOS'
+      - 'Inflammatory Bowel Disease'
+      - 'Juvenile Idiopathic Arthritis'
+      - "Kaposi's Sarcoma"
+      - 'Lipodystrophy'
+      - 'Liposarcoma'
+      - 'Lupus Nephritis'
+      - 'Lymphoma NOS'
+      - 'Major Adverse Cardiac Event'
+      - 'Mantle Cell Lymphoma'
+      - 'Marginal Zone Lymphoma'
+      - 'Melanoma'
+      - 'Merkel Cell Carcinoma'
+      - 'Mesothelioma'
+      - 'Metabolic Disease'
+      - 'Microscopic Colitis'
+      - 'Multiple Myeloma'
+      - 'Multiple Sclerosis'
+      - 'Muscle Invasive Bladder Cancer'
+      - 'Myelodysplastic Syndromes'
+      - 'Myelofibrosis'
+      - 'Nasopharyngeal Cancer'
+      - 'Neuroendocrine Neoplasm'
+      - 'Neuromuscular Disease'
+      - 'Neuroscience NOS'
+      - 'Non-Hodgkin Lymphoma'
+      - 'Non-Muscle Invasive Bladder Cancer'
+      - 'Non-Small Cell Lung Carcinoma'
+      - 'Nonalcoholic Steatohepatitis'
+      - 'Ovarian Cancer'
+      - 'Pancreatic Cancer'
+      - 'Peripheral T-Cell Lymphoma'
+      - 'Pleomorphic Adenoma Carcinoma'
+      - 'Polycythemia Vera'
+      - 'Primary Sclerosing Cholangitis'
+      - 'Progressive Supranuclear Palsy'
+      - 'Prostate Cancer'
+      - 'Psoriasis'
+      - 'Psoriatic Arthritis'
+      - 'Pulmonary Sarcoidosis'
+      - 'Renal Cell Carcinoma'
+      - 'Renal Transplant Rejection'
+      - 'Rheumatoid Arthritis'
+      - 'Rhinitis'
+      - 'Sarcoma NOS'
+      - 'Schizophrenia'
+      - 'Scleroderma'
+      - 'Sepsis'
+      - "Sjogren's Syndrome"
+      - 'Skin Carcinoma NOS'
+      - 'Small Cell Lung Carcinoma'
+      - 'Squamous Cell Carcinoma'
+      - 'Steroid-Resistant Nephrotic Syndrome'
+      - 'Stroke'
+      - 'Systemic Lupus Erythematosus'
+      - 'Systemic Sclerosis'
+      - 'Thrombosis'
+      - 'Thyroid Cancer'
+      - 'Triple-Negative Breast Cancer'
+      - 'Ulcerative Colitis'
+      - 'Urinary Bladder Cancer'
+      - 'Uveitis'
+      - 'Venous Thromboembolism'
+      - 'Virology NOS'
+
+  intervention:
+    title: Intervention
+    description: The intervention used in the clinical trial.
+    placeholder: Choose from dropdown
+    enum:
+      - Combination treatment
+      - Gene therapy
+      - Hormone therapy
+      - Immunotherapy
+      - Multiple modalities
+      - Radiotherapy
+      - Single treatment
+      - Surgery
+      - Targeted molecular therapy
+
+  principal_investigator:
+    title: Principal Investigator
+    description: The lead sponsor or principal investigator for the clinical trial.
+    type: object
+    sortField: principal_investigator.cn
+    placeholder: Dynamic Search
+    additionalProperties: true
+    $ref: "_definitions.yaml#/bms_group_enum_config"
+
+  regimen:
+    title: Regimen
+    description: Regimen of the clinical trial, include duration and treatment description.
+    type: string
+    placeholder: Input here
+
+  clinical_trial_status:
+    title: Clinical Trial Status
+    description: The status for the clinical trial.
+    placeholder: Choose from dropdown 
+    enum:
+      - Ongoing
+      - Enrolling
+      - Completed
+      - Terminated
+      - Suspended
+
+  study_arms:
+    title: Study Arms
+    description: Description of the study arms.
+    type: string
+    placeholder: Input here
+
+  study_blinding_procedure:
+    title: Study Blinding Procedure
+    description: Description of the blinding protocol.
+    placeholder: Choose from dropdown
+    enum:
+      - Open
+      - Single blind
+      - Double blind
+      - Triple blind
+
+  study_design:
+    title: Study Design
+    description: Description of the study design - use NIH guidlelines for terminology.
+    placeholder: Choose from dropdown
+    enum:
+      - Placebo concurrent controlled
+      - Dose-comparison concurrent control
+      - No treatment concurrent control
+      - Active treatment concurrent control
+      - Historical control
+
+  study_phase:
+    title: Study Phase
+    description: The phase for a clinical trial.
+    placeholder: Choose from dropdown
+    enum:
+      - Phase 0
+      - Phase 1/2
+      - Phase 1
+      - Phase 2
+      - Phase 2a
+      - Phase 2b
+      - Phase 3
+      - Phase 4
+
+  therapeutic_area:
+    title: Therapeutic Area
+    description: The therapeutic area of the clinical trial.
+    placeholder: Choose from dropdown
+    enum:
+      - Cardiovascular
+      - Dermatology
+      - Fibrosis
+      - Hematology
+      - Immunoscience
+      - Metabolism
+      - Neuroscience
+      - Oncology
+      - Virology
+
+  study_type:
+    title: Study Type
+    description: The category that the clinical trial falls under.
+    placeholder: Choose from dropdown 
+    enum:
+      - Cross-sectional
+      - Ex Vivo
+      - Interventional
+      - Interventional and Observational
+      - Longitudinal
+      - Normal Health Volunteer
+      - Observational
+      - Prospective
+      - RWD
+      - Rapid Autopsy
+      - Retrospective
+
+  program_id:
+    title: Program ID
+    description: The program ID for a trial.
+    type: string
+
+  status:
+    title: Status
+    description: The status for a trial.
+    type: string
+
+  drug_code:
+    title: Drug Code
+    description: The drug code for a trial.
+    type: string
+
+  study_id:
+    title: Study ID
+    description: The ID of the trial.
+    type: string
+
+  links:
+    title: Links
+    description: Links.
+    type: array
+    view: linkbuttons
+    placeholder: Links.
+    items:
+      type: object
+    additionalProperties: true
+    objectFields:
+      - name: linkName
+        label: Link Name
+      - name: linkUrl
+        label: Link URL
+
+  lead_sponsor:
+    title: Lead Sponsor
+    description: The lead sponsor for the trial
+    type: string
+  
+  compound_number:
+    title: 'Compound #'
+    description: The compound number used in the trial.
+    type: string
+
+  project_publications:
+    title: Project Publications
+    description: Link(s) to publications related to the project.
+    placeholder: Input here
+    type: array
+    enum_source:
+      type: suggestion
+      global:
+        false # by default, the suggestion lists will be partiaitoned by node + field.
+        # If global is set to true, we want to only partition suggestion list based on field
+      enforce:
+        "auto_add" # yes/true/"true": reject any suggestions not registered
+        # auto_add: accept any suggestion, add to validation list if not exist
+        # false/no/"false": accept any suggestion, don't auto add to validation list
+    items:
+      type: string
+
+  research_project:
+    $ref: '_definitions.yaml#/to_many'
+  analysis_result:
+    $ref: '_definitions.yaml#/to_many'
+  program:
+    $ref: "_definitions.yaml#/to_many"
+  subject:
+    $ref: "_definitions.yaml#/to_many"
+  roles:
+    $ref: "_definitions.yaml#/to_many"
+  sample:
+    $ref: "_definitions.yaml#/to_many"

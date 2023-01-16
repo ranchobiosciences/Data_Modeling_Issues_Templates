@@ -1,0 +1,258 @@
+$schema: 'https://monarch.web-dev.bms.com/api/schemaref/_schema_validator#'
+
+id: 'https://monarch.web-dev.bms.com/api/secondary_analysis/schema'
+title: Secondary Analysis
+title_submitter: Submitter
+identifierPrefix: SA
+type: object
+nodeTerms: null
+namespace: https://datacommons.web.bms.com/
+category: administrative
+description: > 
+  Secondary analysis describes a process performed on a dataset or set of data to analyze, visualize, or convert raw data 
+  into another interpretable form.
+additionalProperties: false
+validators: null
+
+uiSettings:
+  icon: analytics
+  iconStyle: material-icons-outlined
+  color: rgb(255, 236, 205)
+  uiPath: /datasetcatalog/secondary_analysis
+  plural: Secondary Analyses
+  globalSearchSettings:
+    searchFields:
+      - analysis_name
+      - identifier
+      - submitter_id
+    displayFields:
+      - analysis_name
+      - identifier
+      - id
+  displayField: analysis_name
+  displaySubField: analysis_date # Used for tag section in flex view
+  defaultSortField: analysis_name
+  primaryPersonField: created_by # for email template
+  editValidationUserFields:
+    - created_by
+  nodeIdentifier: id
+  #abacSchemaName: 
+  createForm:
+    maxRows: 11
+    maxCols: 2
+    buttonLabel: Create Secondary Analysis
+  expandFilterOptionsByDefault: true
+  dataFilterField:
+    analysis_date:
+      label: Analysis Date
+      tooltip: true
+    analysis_software:
+      label: Analysis Software
+      view: dropdown
+      tooltip: true
+    identifier:
+      label: Identifier
+      view: dynamic
+      tooltip: true
+      optionsPromiseLimit: 100
+  tableField:
+    identifier: Analysis ID
+    analysis_name: Analysis Name
+    analysis_date: Analysis Date
+    analysis_software: Analysis Software
+  searchField:
+    - analysis_name
+    - analysis_software
+    - tags
+    - identifier
+  fullNodeView: true
+  fullNodeViewForm:
+    nameField:
+      name: analysis_name
+    personFields:
+    upperFields:
+      - name: links
+      - name: analysis_date
+        label: Analysis Date
+      - name: tags
+        label: Tags
+    metadataFields:
+      - name: analysis_software
+        label: Anlysis Software
+      - name: cluster_info
+        label: Cluster Info
+    relationshipFields:
+      - name: relationships
+        label:
+    bottomFields:
+      - name: files
+        label:
+
+fullNodeRegisterForm:
+  readonlyFields:
+    - identifier
+  panels:
+    - title: Overview
+      fields:
+        - name: analysis_name
+          label: Analysis Name
+          description: Name of the analysis.
+
+    - title: Details
+      optional: true
+      fields:
+        - name: submitter_id
+          label: Submitter ID
+        - name: analysis_date
+          label: Analysis Date
+          description: Date that the analysis was performed.
+        - name: analysis_software
+          label: Analysis Software
+          description: Software, program, package and/or language that is used to perform the analysis.
+    
+    - title: Related Metadata
+      optional: true
+      fields:
+        - name: relationships
+          label:
+        - name: tags
+          label: Tags
+
+    - title: Files
+      fields:
+        - name: files
+          label:
+
+fullNodeEditForm:
+  readonlyFields:
+    - identifier
+  panels:
+    - title: Overview
+      fields:
+        - name: analysis_name
+          label: Analysis Name
+          description: Name of the analysis.
+
+    - title: Details
+      optional: true
+      fields:
+        - name: analysis_date
+          label: Analysis Date
+          description: Date that the analysis was performed.
+        - name: analysis_software
+          label: Analysis Software
+          description: Software, program, package and/or language that is used to perform the analysis.
+    
+    - title: Related Metadata
+      optional: true
+      fields:
+        - name: relationships
+          label:
+        - name: tags
+          label: Tags
+
+    - title: Files
+      fields:
+        - name: files
+          label:
+
+
+systemProperties:
+  - id
+  - _id
+  - created_datetime
+  - updated_datetime
+  - created_by
+  - submitter_id
+  - type
+  - state
+  - identifier
+
+required:
+  - type
+
+uniqueKeys:
+  - [id]
+
+# links:
+#   - name: assay
+#     backref: secondary_analysis
+#     parent_title: Assays # what's rendered for this node
+#     child_title: Secondary Analyses
+#     label: includes
+#     target_type: assay
+#     multiplicity: many_to_many
+#     required: false
+
+#   - name: dataset
+#     backref: secondary_analysis
+#     parent_title: Datasets # what's rendered for this node
+#     child_title: Secondary Analyses
+#     label: is_from
+#     target_type: dataset
+#     multiplicity: many_to_many
+#     required: false
+
+#   - name: research_project
+#     backref: secondary_analysis
+#     parent_title: Research Projects # what's rendered for this node
+#     child_title: Secondary Analyses
+#     label: is_part_of
+#     target_type: research_project
+#     multiplicity: many_to_many
+#     required: false
+
+#   - name: lab_experiment
+#     backref: secondary_analysis
+#     parent_title: Lab Experiments # what's rendered for this node
+#     child_title: Secondary Analyses
+#     label: is_part_of
+#     target_type: lab_experiment
+#     multiplicity: many_to_many
+#     required: false
+
+properties:
+  $ref: '_definitions.yaml#/ubiquitous_properties'
+
+  analysis_name:
+    title: Analysis Name
+    description: Name of the analysis.
+    type: string
+    placeholder: Input here
+
+  analysis_date:
+    title: Analysis Date
+    description: Date that the analysis was performed.
+    placeholder: yyyy-mm-dd
+    type: string
+    format: date
+    uiDateFormat: MM-DD-YYYY
+
+  analysis_software:
+    title: Analysis Software
+    description: Software, program, package and/or language that is used to perform the analysis.
+    placeholder: Choose from dropdown
+    enum:
+       - FlowJo
+       - flowViz
+       - cytotree
+       - tSNE
+       - other - R
+       - other - python
+
+  cluster_info:
+    title: Cluster Info
+    description: Flow cytometry cluster assigned by analysis.
+    type: string
+    placeholder: Input here
+
+  assay:
+    $ref: '_definitions.yaml#/to_many'
+  dataset:
+    $ref: '_definitions.yaml#/to_many'
+  analysis_result:
+    $ref: '_definitions.yaml#/to_many'
+  research_project:
+    $ref: '_definitions.yaml#/to_many'
+  lab_experiment:
+    $ref: '_definitions.yaml#/to_many'

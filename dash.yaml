@@ -1,0 +1,127 @@
+$schema: "https://monarch.web-dev.bms.com/api/schemaref/_schema_validator#"
+
+id: "https://monarch.web-dev.bms.com/api/dash/schema"
+title: DASH
+identifierPrefix: DA
+type: object
+nodeTerms: null
+namespace: https://datacommons.web.bms.com/
+category: administrative
+description: A singular project aim
+additionalProperties: false
+validators: null
+
+uiSettings:
+  icon: account_tree
+  uiPath: /dash
+  plural: DASH
+  globalSearchSettings:
+    searchFields:
+      - project_update
+      - identifier
+      - submitter_id
+    displayFields:
+      - project_update
+      - identifier
+      - id
+  displayField: project_update
+  displaySubField: ""
+  defaultSortField: project_update
+  nodeIdentifier: id
+  editValidationUserFields:
+    - created_by
+  renderColCount: 3
+  createForm:
+    maxRows: 12
+    maxCols: 3
+  tableField:
+    - fieldID: project_update
+      headerName: Project Update
+      colFlex: 1
+      textWrap: true
+      width: '200 px'
+    - fieldID: key_findings
+      headerName: Key Findings
+      colFlex: 1
+      textWrap: true
+    - fieldID: context_next_steps
+      headerName: Context / Next Steps
+      colFlex: 1
+      textWrap: true
+    - fieldID: bms_contact
+      headerName: BMS Contact
+      colFlex: 1
+      textWrap: true
+   #tableField:
+   # project_update: Project Update 
+   # key_findings: Key Findings
+   
+    
+    
+  searchField:
+    - project_type
+    - project_update
+    - key_findings
+    
+
+links:
+  - name: ii_on_project
+    backref: dash
+    parent_title: Projects
+    child_title: DASHes
+    label: member_of
+    target_type: ii_on_project
+    multiplicity: many_to_many
+    required: true
+
+
+systemProperties:
+  - id
+  - _id
+  - created_datetime
+  - updated_datetime
+  - created_by
+  - submitter_id
+  - type
+  - state
+  - identifier
+
+required:
+  - type
+  - project_update
+  - key_findings
+
+uniqueKeys:
+  - [id]
+
+properties:
+  $ref: "_definitions.yaml#/ubiquitous_properties"                                                                                                                                                                                                                                 
+  
+  project_update:
+    title: Project Update
+    description: New updates/files to add to DASH (i.e final report).
+    type: string
+
+  key_findings: 
+    title: Key Findings 
+    description: A few sentences to describe the key findings of a given DASH report.
+    type: string 
+    multiline: true
+    colSpan: 3
+  
+  context_next_steps:
+    title: Context / Next Steps
+    description: Context of project and next steps.
+    type: string 
+  
+  bms_contact:
+    title: BMS Contact 
+    description: BMS contact for II-ON project.
+    type: string
+
+  
+  ii_on_project:
+    $ref: "_definitions.yaml#/to_many"       
+  
+  
+  

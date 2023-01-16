@@ -1,0 +1,341 @@
+$schema: 'https://monarch.web-dev.bms.com/api/schemaref/_schema_validator#'
+
+id: 'https://monarch.web-dev.bms.com/api/external_partner/schema'
+title: External Partner
+title_submitter: Submitter
+identifierPrefix: EP
+type: object
+nodeTerms: null
+namespace: https://datacommons.web.bms.com/
+category: administrative
+description: Partner for a research project external to BMS.
+additionalProperties: false
+validators: null
+
+uiSettings:
+  icon: handshake 
+  iconStyle: material-icons-outlined
+  color: rgb(255, 236, 205)
+  uiPath: /datasetcatalog/external_partner
+  plural: External Partners
+  globalSearchSettings:
+    searchFields:
+      - partner_name
+      - identifier
+    displayFields:
+      - partner_name
+      - identifier
+      - id
+  displayField: partner_name
+  displaySubField: partner_ID
+  defaultSortField: partner_name
+  primaryPersonField: BMS_sponsor
+  editValidationUserFields:
+    - BMS_sponsor.uid
+    - created_by
+  nodeIdentifier: id
+  #abacSchemaName: 
+  createForm:
+    maxRows: 11
+    maxCols: 2
+    buttonLabel: Create External Partner
+  myNodesAdditionalFields:
+    - BMS_sponsor.uid
+  expandFilterOptionsByDefault: true
+  dataFilterField:
+    partner_name:
+      label: Partner Name
+      tooltip: true
+    partner_ID:
+      label: External Partner ID
+      tooltip: true
+    partner_projectID:
+      label: Partner Project ID
+      tooltip: true
+    BMS_sponsor:
+      label: BMS Sponsor
+      tooltip: true
+    engagement_startdate:
+      label: Engagement Start Date
+      tooltip: true 
+    engagement_enddate:
+      label: Engagement End Date
+      tooltip: true 
+    identifier:
+      label: Identifier
+      view: dynamic
+      tooltip: true
+      optionsPromiseLimit: 100
+
+  tableField:
+    partner_name: Partner Name
+    partner_ID: Partner ID
+    partner_projectID: Parter Project ID
+    BMS_sponsor: BMS Sponsor 
+    partner_poc: Partner Point of Contact
+
+  searchField:
+    - partner_name
+    - partner_ID
+    - partner_projectID
+    - BMS_sponsor
+    - partner_poc
+    - partner_poc_email
+    - engagement_startdate
+    - engagement_enddate
+    - engagement_justification
+    - tags
+    - identifier
+
+  fullNodeView: true
+  fullNodeViewForm:
+    nameField: partner_name
+    personFields: 
+      - name: BMS_sponsor
+        label: BMS Sponsor
+    upperFields:
+      - name: links
+      - name: partner_name
+        label: Partner Name
+      - name: partner_ID
+        label: Partner ID
+      - name: tags
+        label: Tags
+    metadataFields:
+      - name: partner_projectID
+        label: Parter Project ID
+      - name: partner_poc
+        label: Partner Point of Contact
+      - name: partner_poc_email
+        label: Partner Point of Contact Email
+      - name: engagement_startdate
+        label: Engagement Start Date
+      - name: engagement_enddate
+        label: Engagement End Date
+      - name: engagement_justification
+        label: Engagement Justification
+    relationshipFields:
+      - name: relationships
+        label:
+    bottomFields:
+      - name: files
+        label:
+
+  fullNodeRegisterForm:
+    readonlyFields:
+      - identifier
+    panels:
+      - title: Overview
+        fields:
+          - name: partner_name
+            label: Partner Name
+            description: Name of external partner.
+          - name: partner_ID
+            label: External Partner ID
+            description: External Partner ID.
+          - name: partner_projectID
+            label: Parter Project ID
+            description: Project ID specific to an engagement with an external partner.
+          - name: BMS_sponsor
+            label: BMS Sponsor
+            description: The BMS representative who holds the relationship with external company and oversees this engagement.
+
+      - title: Details
+        optional: true
+        fields:
+          - name: partner_poc
+            label: Partner Point of Contact
+            description: Partner Point of Contact (Delegate) who will be responsible for on-boarding, review, and off-boarding of partner identities.
+          - name: partner_poc_email
+            label: Partner Point of Contact Email
+            description: Partner Point of Contact email.
+          - name: engagement_startdate
+            label: Engagement Start Date 
+            description: Start date of the Engagement.
+          - name: engagement_enddate
+            label: Engagement End Date
+            description: End date of the Engagement.
+          - name: engagement_justification
+            label: Engagement Justification
+            description: Description of the need and scope of the Engagement.
+
+      - title: Related Metadata
+        optional: true
+        fields:
+          - name: relationships
+            label:
+          - name: tags
+            label: Tags
+
+      - title: Files
+        fields:
+        - name: files
+          label:
+
+  fullNodeEditForm:
+    readonlyFields:
+      - identifier
+    panels:
+      - title: Overview
+        fields:
+          - name: partner_name
+            label: Partner Name
+            description: Name of external partner.
+          - name: partner_ID
+            label: External Partner ID
+            description: External Partner ID.
+          - name: partner_projectID
+            label: Parter Project ID
+            description: Project ID specific to an engagement with an external partner.
+          - name: BMS_sponsor
+            label: BMS Sponsor
+            description: The BMS representative who holds the relationship with external company and oversees this engagement.
+
+      - title: Details
+        optional: true
+        fields:
+          - name: partner_poc
+            label: Partner Point of Contact
+            description: Partner Point of Contact (Delegate) who will be responsible for on-boarding, review, and off-boarding of partner identities.
+          - name: partner_poc_email
+            label: Partner Point of Contact Email
+            description: Partner Point of Contact email.
+          - name: engagement_startdate
+            label: Engagement Start Date 
+            description: Start date of the Engagement.
+          - name: engagement_enddate
+            label: Engagement End Date
+            description: End date of the Engagement.
+          - name: engagement_justification
+            label: Engagement Justification
+            description: Description of the need and scope of the Engagement.
+
+      - title: Related Metadata
+        optional: true
+        fields:
+          - name: relationships
+            label:
+          - name: tags
+            label: Tags
+
+      - title: Files
+        fields:
+        - name: files
+          label:
+
+
+systemProperties:
+  - id
+  - _id
+  - created_datetime
+  - updated_datetime
+  - created_by
+  - submitter_id
+  - type
+  - state
+  - identifier
+
+required:
+  - type
+
+uniqueKeys:
+  - [id]
+
+links:
+  - name: research_project
+    backref: external_partner
+    parent_title: Research Projects # what's rendered for this node
+    child_title: External Partners
+    label: is_part_of
+    target_type: research_project
+    multiplicity: many_to_many
+    required: false
+
+  - name: data_product
+    backref: external_partner
+    parent_title: Data Products # what's rendered for this node
+    child_title: External Partners
+    label: is_part_of
+    target_type: data_product
+    multiplicity: many_to_many
+    required: false
+
+  - name: roles
+    backref: external_partner
+    parent_title: Roles # what's rendered for this node
+    child_title: External Partners
+    label: is_part_of
+    target_type: roles
+    multiplicity: many_to_many
+    required: false 
+
+properties:
+  $ref: '_definitions.yaml#/ubiquitous_properties'
+
+  partner_name:
+    title: Partner Name
+    description: Name of external partner.
+    type: string
+    placeholder: Input here
+    
+  partner_ID:
+    title: External Partner ID
+    description: External Partner ID.
+    type: string
+    placeholder: Input here
+
+  partner_projectID:
+    title: Parter Project ID
+    description: Project ID specific to an engagement with an external partner.
+    type: string
+    placeholder: Input here
+
+  BMS_sponsor:
+    title: BMS Sponsor
+    description: The BMS representative who holds the relationship with external company and oversees this engagement.
+    type: object
+    sortField: BMS_sponsor.cn
+    placeholder: Dynamic Search
+    additionalProperties: true
+    $ref: '_definitions.yaml#/bms_group_enum_config'
+
+  partner_poc:
+    title: Partner Point of Contact
+    description: Partner Point of Contact (Delegate) who will be responsible for on-boarding, review, and off-boarding of partner identities.
+    type: string
+    placeholder: Input here
+  
+  partner_poc_email:
+    title: Partner Point of Contact Email
+    description: Partner Point of Contact email.
+    type: string
+    placeholder: Input here
+
+  engagement_startdate:
+    title: Engagement Start Date
+    description: Start date of the Engagement.
+    placeholder: yyyy-mm-dd
+    type: string
+    format: date
+    uiDateFormat: MM-DD-YYYY
+
+  engagement_enddate:
+    title: Engagement End Date
+    description: End date of the Engagement.
+    placeholder: yyyy-mm-dd
+    type: string
+    format: date
+    uiDateFormat: MM-DD-YYYY
+
+  engagement_justification:
+    title: Engagement Justification
+    description: Description of the need and scope of the Engagement.
+    type: string
+    placeholder: Input here
+
+  research_project:
+    $ref: '_definitions.yaml#/to_many'
+  data_product:
+    $ref: '_definitions.yaml#/to_many'
+  roles:
+    $ref: '_definitions.yaml#/to_many'

@@ -1,0 +1,53 @@
+$schema: "https://monarch.web-dev.bms.com/api/schemaref/_schema_validator#"
+
+id: "https://monarch.web-dev.bms.com/api/permissions/_abac_research_project/schema"
+title: Research project Access Request
+identifierPrefix: DAR
+type: object
+nodeTerms: null
+namespace: https://datacommons.web.bms.com/
+category: administrative
+description: Research project access request
+additionalProperties: false
+validators: null
+
+uiSettings:
+  uiPath: /access_requests
+  plural: Data Access Requests
+  nodeIdentifier: id
+  accessForm:
+    nodeSearchFields:
+      - id
+      - research_project_title
+    requestNode: "research_project"
+    ruleRequestedNodes: "research_projects"
+    nodeName: "Research Project"
+    nodeSelectPanelTitle: "Research projects"
+    nodeSelectDisplayField: research_project_title
+    nodeSelectDisplayFieldSecond: research_project_type
+    nodeSelectLabel: "Start typing the Research project Name or ID# of the research project(s) you would like to request access to:*"
+  accessReviewForm:
+    requestNode: "research_project"
+    ruleRequestedNodes: "research_projects"
+    nodeSelectDisplayField: research_project_title
+    nodeName: "Research project"
+    requestedNodeTitle: RESEARCH PROJECT REQUESTED
+    requestedNodeLabel: Request Access to research project(s)
+
+systemProperties:
+  - _id
+  - type
+
+required:
+  - purpose
+  - using_other
+  - analysis_description
+  - output_use
+  - specific_use_case_agreement
+  - contract_terms_agreement
+
+uniqueKeys:
+  - [id]
+
+properties:
+  $ref: "_definitions.yaml#/abac_ubiquitous_properties"

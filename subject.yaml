@@ -1,0 +1,929 @@
+$schema: "https://monarch.web-dev.bms.com/api/schemaref/_schema_validator#"
+
+id: "https://monarch.web-dev.bms.com/api/subject/schema"
+title: Subject
+title_submitter: Submitter
+identifierPrefix: S
+type: object
+nodeTerms: null
+namespace: https://datacommons.web.bms.com/
+category: administrative
+description: > 
+  A person who is part of a study and from whom a sample may be derived.
+additionalProperties: false
+validators: null
+
+uiSettings:
+  icon: person
+  iconStyle: material-icons-outlined
+  color: rgb(255, 236, 205)
+  uiPath: /datasetcatalog/subject
+  plural: Subjects
+  globalSearchSettings:
+    searchFields:
+      - subject_id
+      - identifier
+      - submitter_id
+    displayFields:
+      - subject_id
+      - identifier
+      - id
+  displayField: subject_id
+  displaySubField: record_name # Used for tag section in flex view
+  defaultSortField: subject_id
+  primaryPersonField: created_by # for email template
+  editValidationUserFields:
+    - created_by
+  nodeIdentifier: id
+  #abacSchemaName: _abac_subject
+  createForm:
+    maxRows: 11
+    maxCols: 2
+    buttonLabel: Create Subject
+  expandFilterOptionsByDefault: true
+  dataFilterField:
+    alcohol_consumption_history:
+      label: Alcohol Consumption History
+      tooltip: true
+    smoking_history:
+      label: Smoking History
+      tooltip: true
+    disease_type:
+      label: Disease Type
+      view: dropdown
+      tooltip: true
+    primary_site:
+      label: Primary Site
+      view: dropdown
+      tooltip: true
+    ethnicity:
+      label: Ethnicity
+      tooltip: true
+    race:
+      label: Race
+      tooltip: true
+    sex:
+      label: Sex
+      tooltip: true
+    current_status:
+      label: Current Status
+      tooltip: true
+    m_score:
+      label: M Score
+      view: dropdown
+      tooltip: true
+    n_score:
+      label: N Score
+      view: dropdown
+      tooltip: true
+    t_score:
+      label: T Score
+      view: dropdown
+      tooltip: true
+    stage:
+      label: Stage
+      view: dropdown
+      tooltip: true
+    identifier:
+      label: Identifier
+      view: dynamic
+      tooltip: true
+      optionsPromiseLimit: 100
+  tableField:
+    subject_id: Subject ID
+    record_name: Record Name
+  searchField:
+    - subject_id
+    - record_name
+    - alcohol_consumption_history
+    - smoking_history
+    - disease_type
+    - primary_site
+    - ethnicity
+    - race
+    - sex
+    - current_status
+    - m_score
+    - n_score
+    - t_score
+    - stage
+    - tags
+    - identifier
+  fullNodeView: true
+  fullNodeViewForm:
+    nameField:
+      name: subject_id
+    personFields:
+    upperFields:
+      - name: links
+      - name: record_name
+        label: Record Name
+      - name: tags
+        label: Tags
+    metadataFields:
+      - name: date_of_birth
+        label: Date of Birth
+      - name: height
+        label: Height
+      - name: weight
+        label: Weight
+      - name: alcohol_consumption_history
+        label: Alcohol Consumption History
+      - name: smoking_history
+        label: Smoking History
+      - name: disease_type
+        label: Disease Type
+      - name: primary_site
+        label: Primary Site
+      - name: ethnicity
+        label: Ethnicity
+      - name: race
+        label: Race
+      - name: sex
+        label: Sex
+      - name: current_status
+        label: Current Status
+      - name: age
+        label: Age
+      - name: m_score
+        label: M Score
+      - name: n_score
+        label: N Score
+      - name: t_score
+        label: T Score
+      - name: stage
+        label: Stage
+      - name: prior_medications
+        label: Prior Medications
+      - name: prior_surgeries
+        label: Prior Surgeries
+      - name: prior_treatments
+        label: Prior Treatments
+      - name: BMI
+        label: BMI
+      - name: primary_diagnosis
+        label: Primary Diagnosis
+      - name: diagnosis_date
+        label: Diagnosis Date
+      - name: cohort_affiliation
+        label: Cohort Affiliation
+      - name: response
+        label: Response
+      - name: response_description
+        label: Response Description
+    relationshipFields:
+      - name: relationships
+        label:
+    bottomFields:
+      - name: files
+        label:
+  
+  fullNodeRegisterForm:
+    readonlyFields:
+      - identifier
+    panels:
+      - title: Overview
+        fields:
+          - name: subject_id
+            label: Subject ID
+            description: The unique ID of the subject.
+          - name: record_name
+            label: Record Name
+            description: Record name of the subject.
+
+      - title: Details
+        optional: true
+        fields:
+          - name: date_of_birth
+            label: Date of Birth
+            description: Subject's date of birth.
+          - name: height
+            label: Height
+            description: Height in inches of the subject.
+          - name: weight
+            label: Weight
+            description: Weight in pounds of the subject.
+          - name: alcohol_consumption_history
+            label: Alcohol Consumption history
+            description: Alcohol consumption History of the subject.
+          - name: smoking_history
+            label: Smoking History
+            description: Smoking history of the subject.
+          - name: disease_type
+            label: Disease Type
+            description: Name of the disease for the subject. (Use DOID from Disease Ontology)
+          - name: primary_site
+            label: Primary Site
+            description: Primary site for the subject. (Use BTO for Tissue Ontology)
+          - name: ethnicity
+            label: Ethnicity
+            description: Ethnicity of the subject as Hispanic or Latino or Not.
+          - name: race
+            label: Race
+            description: Race of the subject.
+          - name: sex
+            label: Sex
+            description: Sex of the subject.
+          - name: current_status
+            label: Current Status
+            description: Current status of the subject.
+          - name: age
+            label: Age
+            description: Age in years of the subject.
+          - name: m_score
+            label: M Score
+            description: M Score
+          - name: n_score
+            label: N Score
+            description: N Score
+          - name: t_score
+            label: T Score
+            description: T Score
+          - name: stage
+            label: Stage
+            description: Stage
+          - name: prior_medications
+            label: Prior Medications
+            description: Add prior medications for the study participant.
+          - name: prior_surgeries
+            label: Prior Surgeries
+            description: Add prior surgeries for the study participant.
+          - name: prior_treatments
+            label: Prior Treatments
+            description: List prior treatments for study participants.
+          - name: BMI
+            label: BMI
+            description: BMI of the participant.
+          - name: primary_diagnosis
+            label: Primary Diagnosis
+            description: Primary diagnosis for the study participant.
+          - name: diagnosis_date
+            label: Diagnosis Date
+            description: Date of primary diagnosis.
+          - name: cohort_affiliation
+            label: Cohort Affiliation
+            description: Cohort ID from analysis_cohort.
+          - name: response
+            label: Response
+            description: 'Value of response (e.g. 3M), if relevant. If multiple, use a field:value format and comma separate the list.'
+          - name: response_description
+            label: Response Description
+            description: 'Description of response (e.g. OS), if relevant. If multiple, use a field:value format and comma separate the list.'
+
+      - title: Related Metadata
+        optional: true
+        fields:
+          - name: relationships
+            label:
+          - name: tags
+            label: Tags
+
+      - title: Files
+        fields:
+          - name: files
+            label:
+
+  fullNodeEditForm:
+    readonlyFields:
+      - identifier
+    panels:
+      - title: Overview
+        fields:
+          - name: subject_id
+            label: Subject ID
+            description: The unique ID of the subject.
+          - name: record_name
+            label: Record Name
+            description: Record name of the subject.
+
+      - title: Details
+        optional: true
+        fields:
+          - name: date_of_birth
+            label: Date of Birth
+            description: Subject's date of birth.
+          - name: height
+            label: Height
+            description: Height in inches of the subject.
+          - name: weight
+            label: Weight
+            description: Weight in pounds of the subject.
+          - name: alcohol_consumption_history
+            label: Alcohol Consumption History
+            description: Alcohol consumption history of the subject.
+          - name: smoking_history
+            label: Smoking History
+            description: Smoking history of the subject.
+          - name: disease_type
+            label: Disease Type
+            description: Name of the disease for the subject. (Use DOID from Disease Ontology)
+          - name: primary_site
+            label: Primary Site
+            description: Primary site for the subject. (Use BTO for Tissue Ontology)
+          - name: ethnicity
+            label: Ethnicity
+            description: Ethnicity of the subject as Hispanic or Latino or Not.
+          - name: race
+            label: Race
+            description: Race of the subject.
+          - name: sex
+            label: Sex
+            description: Sex of the subject.
+          - name: current_status
+            label: Current Status
+            description: Current status of the subject.
+          - name: age
+            label: Age
+            description: Age in years of the subject.
+          - name: m_score
+            label: M Score
+            description: M Score
+          - name: n_score
+            label: N Score
+            description: N Score
+          - name: t_score
+            label: T Score
+            description: T Score
+          - name: stage
+            label: Stage
+            description: Stage
+          - name: prior_medications
+            label: Prior Medications
+            description: Add prior medications for the study participant.
+          - name: prior_surgeries
+            label: Prior Surgeries
+            description: Add prior surgeries for the study participant.
+          - name: prior_treatments
+            label: Prior Treatments
+            description: List prior treatments for study participants.
+          - name: BMI
+            label: BMI
+            description: BMI of the participant.
+          - name: primary_diagnosis
+            label: Primary Diagnosis
+            description: Primary diagnosis for the study participant.
+          - name: diagnosis_date
+            label: Diagnosis Date
+            description: Date of primary diagnosis.
+          - name: cohort_affiliation
+            label: Cohort Affiliation
+            description: Cohort ID from analysis_cohort.
+          - name: response
+            label: Response
+            description: 'Value of response (e.g. 3M), if relevant. If multiple, use a field:value format and comma separate the list.'
+          - name: response_description
+            label: Response Description
+            description: 'Description of response (e.g. OS), if relevant. If multiple, use a field:value format and comma separate the list.'
+
+      - title: Related Metadata
+        optional: true
+        fields:
+          - name: relationships
+            label:
+          - name: tags
+            label: Tags
+
+      - title: Files
+        fields:
+          - name: files
+            label:
+
+
+systemProperties:
+  - id
+  - _id
+  - created_datetime
+  - updated_datetime
+  - created_by
+  - submitter_id
+  - type
+  - state
+
+required:
+  - type
+  # - dataset_name
+  # - dataset_owner
+  # - dataset_steward
+
+uniqueKeys:
+  - [id]
+
+# links:
+#   # - name: clinical_trial
+#   #   backref: subject
+#   #   parent_title: Clinical Trials # what's rendered for this node
+#   #   child_title: Subjects
+#   #   label: participates_in
+#   #   target_type: clinical_trial
+#   #   multiplicity: many_to_many
+#   #   required: false
+
+#   # - name: sample
+#   #   backref: subject
+#   #   parent_title: Samples # what's rendered for this node
+#   #   child_title: Subjects
+#   #   label: includes
+#   #   target_type: sample
+#   #   multiplicity: many_to_many
+#   #   required: false
+
+#   - name: treatment
+#     backref: subject
+#     parent_title: Treatments # what's rendered for this node
+#     child_title: Subjects
+#     label: has
+#     target_type: treatment
+#     multiplicity: many_to_many
+#     required: false
+
+#   - name: visit
+#     backref: subject
+#     parent_title: Visits # what's rendered for this node
+#     child_title: Subjects
+#     label: has 
+#     target_type: visit
+#     multiplicity: many_to_many
+#     required: false
+
+properties:
+  $ref: '_definitions.yaml#/ubiquitous_properties'
+
+  subject_id:
+    title: Subject ID
+    description: The unique ID of the subject.
+    type: string
+    placeholder: Input here
+
+  record_name:
+    title: Record Name
+    description: Record name of the subject.
+    type: string
+    placeholder: Input here
+
+  date_of_birth: 
+    title: Date of Birth
+    description: Subject's date of birth.
+    placeholder: yyyy-mm-dd
+    type: string
+    format: date
+    uiDateFormat: MM-DD-YYYY
+
+  height:
+    title: Height
+    description: Height in inches of the subject.
+    type: integer
+    placeholder: Input here
+
+  weight:
+    title: Weight
+    description: Weight in pounds of the subject.
+    type: integer
+    placeholder: Input here
+
+  alcohol_consumption_history: 
+    title: Alcohol Consumption History
+    description: Alcohol consumption history of the subject.
+    placeholder: Choose from dropdown
+    enum:
+      - Never
+      - Past
+      - Currently
+
+  smoking_history:
+    title: Smoking History
+    description: Smoking history of the subject.
+    placeholder: Choose from dropdown
+    enum:
+      - Never
+      - Past
+      - Currently
+
+  disease_type:
+    title: Disease Type
+    description: Name of the disease for the subject. (Use DOID from Disease Ontology)
+    type: array
+    placeholder: Dynamic Search
+    items:
+      enum:
+        - Acute Coronary Syndrome
+        - Acute Decompensated Heart Failure
+        - Acute Lymphocytic Leukemia
+        - Acute Myeloid Leukemia
+        - Adenoid Cystic Carcinoma
+        - Alpha Thalassemia
+        - Alzheimer's Disease
+        - Anemia
+        - Angioimmunoblastic T-Cell Lymphoma
+        - Ankylosing Spondylitis
+        - Atherosclerosis
+        - Atopic Dermatitis
+        - Atrial Fibrillation
+        - Autism Spectrum Disorder
+        - Autoimmune Disease
+        - Basal Cell Carcinoma
+        - Behcet's Disease
+        - Beta Thalassemia
+        - Bipolar Disorder
+        - Breast Cancer
+        - Cancer NOS
+        - Cardiovascular NOS
+        - Central Nervous System Lymphoma
+        - Cervical Cancer
+        - Chronic Lymphocytic Leukemia
+        - Chronic Myeloid Leukemia
+        - Colorectal Cancer
+        - COVID-19
+        - Crohn's Disease
+        - Cutaneous Lupus Erythematosus
+        - Cutaneous T-Cell Lymphoma
+        - Depression
+        - Diabetes Mellitus
+        - Diabetic Kidney Disease
+        - Diffuse Intrinsic Pontine Glioma
+        - Diffuse Large B-Cell Lymphoma
+        - Dilated Cardiomyopathy 
+        - Endometrial Cancer
+        - Eosinophilic Esophagitis
+        - Esophageal Cancer
+        - Female Reproductive Cancer
+        - Fibrosis NOS
+        - Follicular Lymphoma
+        - Gallbladder Cancer
+        - Gastric Cancer
+        - Gastroesophageal Junction Cancer
+        - Gastrointestinal System Cancer NOS
+        - Giant Cell Arteritis
+        - Glioblastoma Multiforme
+        - Glioma
+        - Graft Rejection
+        - Head and Neck Cancer NOS
+        - Heart Failure
+        - Hematologic Cancer NOS
+        - Hepatitis B
+        - Hepatitis C
+        - Hepatocellular Carcinoma
+        - Hodgkin's Lymphoma
+        - Human Immunodeficiency Virus
+        - Hyperlipidemia
+        - Hypertension
+        - Hypertrophic Cardiomyopathy
+        - Idiopathic Inflammatory Myositis
+        - Idiopathic Pulmonary Fibrosis
+        - IgA Nephropathy
+        - Immune Thrombocytopenic Purpura
+        - Immunoscience NOS
+        - Inflammatory Bowel Disease
+        - Juvenile Idiopathic Arthritis
+        - Kaposi's Sarcoma
+        - Lipodystrophy
+        - Liposarcoma
+        - Lupus Nephritis
+        - Lymphoma NOS
+        - Major Adverse Cardiac Event
+        - Mantle Cell Lymphoma
+        - Marginal Zone Lymphoma
+        - Melanoma
+        - Merkel Cell Carcinoma
+        - Mesothelioma
+        - Metabolic Disease
+        - Microscopic Colitis
+        - Multiple Myeloma
+        - Multiple Sclerosis
+        - Muscle Invasive Bladder Cancer
+        - Myelodysplastic Syndromes
+        - Myelofibrosis
+        - Nasopharyngeal Cancer
+        - Neuroendocrine Neoplasm
+        - Neuromuscular Disease
+        - Neuroscience NOS
+        - Non-Hodgkin Lymphoma
+        - Non-Muscle Invasive Bladder Cancer
+        - Non-Small Cell Lung Carcinoma
+        - Nonalcoholic Steatohepatitis
+        - Ovarian Cancer
+        - Pancreatic Cancer
+        - Peripheral T-Cell Lymphoma
+        - Pleomorphic Adenoma Carcinoma
+        - Polycythemia Vera
+        - Primary Sclerosing Cholangitis
+        - Progressive Supranuclear Palsy
+        - Prostate Cancer
+        - Psoriasis
+        - Psoriatic Arthritis
+        - Pulmonary Sarcoidosis
+        - Renal Cell Carcinoma
+        - Renal Transplant Rejection
+        - Rheumatoid Arthritis
+        - Rhinitis
+        - Sarcoma NOS
+        - Schizophrenia
+        - Scleroderma
+        - Sepsis
+        - Sjogren's Syndrome
+        - Skin Carcinoma NOS
+        - Small Cell Lung Carcinoma
+        - Squamous Cell Carcinoma
+        - Steroid-Resistant Nephrotic Syndrome
+        - Stroke
+        - Systemic Lupus Erythematosus
+        - Systemic Sclerosis
+        - Thrombosis
+        - Thyroid Cancer
+        - Triple-Negative Breast Cancer
+        - Ulcerative Colitis
+        - Urinary Bladder Cancer
+        - Uveitis
+        - Venous Thromboembolism
+        - Virology NOS
+
+  primary_site:
+    title: Primary Site
+    description: Primary site for the subject. (Use BTO for Tissue Ontology)
+    placeholder: Choose from dropdown
+    enum:
+      - Adrenal Gland
+      - Bone
+      - Bone Marrow
+      - Bladder
+      - Brain
+      - Breast
+      - Central Nervous System
+      - Cervix
+      - Chest
+      - Colon
+      - Colorectal
+      - Corpus Uteri
+      - Digestive Organs
+      - Endocrine Gland
+      - Endometrium
+      - Esophagus
+      - Eye
+      - Female Genital Organs
+      - Head and Neck
+      - Heart
+      - Hematopoietic System
+      - Integumentary System
+      - Joints and Articular Cartilage
+      - Kidney
+      - Liver
+      - Lung
+      - Lymph Node
+      - Male Genital Organs
+      - Other Sites
+      - Ovary
+      - Pancreas
+      - Pituitary Gland
+      - Pleura
+      - Prostate
+      - Retroperitoneum and Peritoneum
+      - Skin
+      - Skull
+      - Soft Tissue
+      - Spleen
+      - Stomach
+      - Testis
+      - Thoracic Organs
+      - Thymus
+      - Thyroid
+      - Tongue
+      - Tonsil
+      - Urinary System
+      - Uterus
+
+  ethnicity:
+    title: Ethnicity
+    description: Ethnicity of the subject as Hispanic or Latino or Not.
+    view: radio
+    enum:
+      - Hispanic or Latino
+      - Not Hispanic or Latino
+
+  race:
+    title: Race
+    description: Race of the subject.
+    type: array
+    placeholder: Choose from dropdown
+    items:
+      enum:
+        - White
+        - American Indian or Alaska Native
+        - Black or African American
+        - Asian
+        - Native Hawaiian or Other Pacific Islander
+        - Other
+
+  sex:
+    title: Sex
+    description: Sex of the subject.
+    placeholder: Choose from dropdown
+    enum:
+      - Female
+      - Male
+      - Intersex
+
+  current_status:
+    title: Current Status
+    description: Current status of the subject.
+    placeholder: Choose from dropdown
+    enum:
+      - Deceased
+      - Off-Study
+      - Off-Treatment
+      - On Study
+
+  age:
+    title: Age
+    description: Age in years of the subject.
+    type: integer
+    placeholder: Input here
+
+  m_score:
+    title: M Score
+    description: M Score
+    placeholder: Choose from dropdown
+    enum:
+      - M0
+      - M1
+      - M1a
+      - M1b
+      - M1c
+      - M2
+      - MX
+      - cM0
+      - cM1b
+
+  n_score:
+    title: N Score
+    description: N Score
+    placeholder: Choose from dropdown
+    enum:
+      - N0
+      - N0 (i+)
+      - N0 (i-)
+      - N0 (mol+)
+      - N0 (mol-)
+      - N1
+      - N1a
+      - N1b
+      - N1bI
+      - N1bII
+      - N1bIII
+      - N1bIV
+      - N1c
+      - N1mi
+      - N2
+      - N2a
+      - N2b
+      - N2c
+      - N3
+      - N3a
+      - N3b
+      - N3c
+      - N4
+      - NX
+
+  t_score:
+    title: T Score
+    description: T Score
+    placeholder: Choose from dropdown
+    enum:
+      - T0
+      - T1
+      - T1a
+      - T1a1
+      - T1a2
+      - T1b
+      - T1b1
+      - T1b2
+      - T1c
+      - T1mi
+      - T2
+      - T2a
+      - T2a1
+      - T2a2
+      - T2b
+      - T2c
+      - T2d
+      - T3
+      - T3a
+      - T3b
+      - T3c
+      - T3d
+      - T4
+      - T4a
+      - T4b
+      - T4c
+      - T4d
+      - T4e
+      - TX
+      - Ta
+      - Tis
+      - Tis (DCIS)
+      - Tis (LCIS)
+      - Tis (Paget's)
+
+  stage:
+    title: Stage
+    description: Stage
+    placeholder: Choose from dropdown
+    enum:
+      - '0'
+      - 0a
+      - 0is
+      - I
+      - IA
+      - IA1
+      - IA2
+      - IA3
+      - IB
+      - IB Cervix
+      - IB1
+      - IB2
+      - II
+      - II Cervix
+      - IIA
+      - IIA Cervix
+      - IIB
+      - IIC
+      - III
+      - IIIA
+      - IIIB
+      - IIIC
+      - IS
+      - IV
+      - IVA
+      - IVB
+      - IVC
+      - Tis
+      - X
+
+  prior_medications:
+    title: Prior Medications
+    description: Add prior medications for the study participant.
+    placeholder: Input here
+    type: array
+    items:
+      type: string
+
+  prior_surgeries:
+    title: Prior Surgeries
+    description: Add prior surgeries for the study participant.
+    placeholder: Input here
+    type: array
+    items:
+      type: string
+
+  prior_treatments:
+    title: Prior Treatments
+    description: List prior treatments for study participants.
+    placeholder: Input here
+    type: array
+    items:
+      type: string
+
+  BMI:
+    title: BMI
+    description: BMI of the participant.
+    type: integer
+    placeholder: Input here
+
+  primary_diagnosis:
+    title: Primary Diagnosis
+    description: Primary diagnosis for the study participant.
+    type: string
+    placeholder: Input here
+
+  diagnosis_date:
+    title: Diagnosis Date
+    description: Date of primary diagnosis.
+    placeholder: yyyy-mm-dd
+    type: string
+    format: date
+    uiDateFormat: MM-DD-YYYY
+
+  cohort_affiliation:
+    title: Cohort Affiliation
+    description: Cohort ID from analysis_cohort.
+    type: string
+    placeholder: Input here
+
+  response:
+    title: Response
+    description: 'Value of response (e.g. 3M), if relevant. If multiple, use a field:value format and comma separate the list.'
+    type: string
+    placeholder: Input here
+
+  response_description:
+    title: Response Description
+    description: 'Description of response (e.g. OS), if relevant. If multiple, use a field:value format and comma separate the list.'
+    type: string
+    placeholder: Input here
+
+  clinical_trial:
+    $ref: '_definitions.yaml#/to_many'
+  sample:
+    $ref: '_definitions.yaml#/to_many'
+  treatment:
+    $ref: '_definitions.yaml#/to_many'
+  visit:
+    $ref: '_definitions.yaml#/to_many'

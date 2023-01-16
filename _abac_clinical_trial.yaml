@@ -1,0 +1,53 @@
+$schema: "https://monarch.web-dev.bms.com/api/schemaref/_schema_validator#"
+
+id: "https://monarch.web-dev.bms.com/api/permissions/_abac_clinical_trial/schema"
+title: Clinical Trial Access Request
+identifierPrefix: DAR
+type: object
+nodeTerms: null
+namespace: https://datacommons.web.bms.com/
+category: administrative
+description: Clinical Trial access request
+additionalProperties: false
+validators: null
+
+uiSettings:
+  uiPath: /access_requests
+  plural: Data Access Requests
+  nodeIdentifier: id
+  accessForm:
+    nodeSearchFields:
+      - id
+      - protocol_title
+    requestNode: "clinical_trial"
+    ruleRequestedNodes: "clinical_trials"
+    nodeName: "Clinical Trial"
+    nodeSelectPanelTitle: "Clinical Trial"
+    nodeSelectDisplayField: protocol_title
+    nodeSelectDisplayFieldSecond: clinical_trials_title
+    nodeSelectLabel: "Start typing the Clinical Trial Name or ID# of the Clinical Trial(s) you would like to request access to:*"
+  accessReviewForm:
+    requestNode: "clinical_trial"
+    ruleRequestedNodes: "clinical_trials"
+    nodeSelectDisplayField: protocol_title
+    nodeName: "Clinical Trial"
+    requestedNodeTitle: CLINICAL TRIAL REQUESTED
+    requestedNodeLabel: Request Access to Clinical Trial(s)
+
+systemProperties:
+  - _id
+  - type
+
+required:
+  - purpose
+  - using_other
+  - analysis_description
+  - output_use
+  - specific_use_case_agreement
+  - contract_terms_agreement
+
+uniqueKeys:
+  - [id]
+
+properties:
+  $ref: "_definitions.yaml#/abac_ubiquitous_properties"
