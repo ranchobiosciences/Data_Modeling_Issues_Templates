@@ -1,0 +1,41 @@
+title: Visit
+description: 'As part of a longitudinal experiment or clinical trial, a subject can
+  have a visit, during which they may undergo  a treatment or have a sample taken
+  from them.
+
+  '
+type: object
+required:
+- type
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+  visit_label:
+    title: Visit Label
+    description: Number + Time Component + Date
+    placeholder: Input here
+    type: string
+  visit_description:
+    title: Visit Description
+    description: Description of the subject's visit, including treatment information
+      and details pertaining to the purpose of the visit.
+    placeholder: Input here
+    multiline: true
+    type: string
+  visit_date:
+    title: Visit Date
+    description: Date of the visit.
+    placeholder: yyyy-mm-dd
+    format: date
+    uiDateFormat: MM-DD-YYYY
+    type: string
+  visit_timepoint:
+    title: Visit Timepoint
+    description: Timepoint that the visit corresponds to with respect to a sample
+      taken from the subject or an experimental timeline.
+    placeholder: Input here
+    multiline: true
+    type: array
+    items:
+      type: string
+  clinical_trial:
+    $ref: _definitions.yaml#/to_many

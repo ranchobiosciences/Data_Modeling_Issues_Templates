@@ -1,0 +1,29 @@
+title: DASH
+description: A singular project aim
+type: object
+required:
+- type
+- project_update
+- key_findings
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+  project_update:
+    title: Project Update
+    description: New updates/files to add to DASH (i.e final report).
+    type: string
+  key_findings:
+    title: Key Findings
+    description: A few sentences to describe the key findings of a given DASH report.
+    multiline: true
+    colSpan: 3
+    type: string
+  context_next_steps:
+    title: Context / Next Steps
+    description: Context of project and next steps.
+    type: string
+  bms_contact:
+    title: BMS Contact
+    description: BMS contact for II-ON project.
+    type: string
+  ii_on_project:
+    $ref: _definitions.yaml#/to_many

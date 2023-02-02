@@ -1,0 +1,74 @@
+title: Roles
+description: 'Roles is a collection of various persons needed for or who execute projects,
+  clinical trials, experiments, and analyses.
+
+  '
+type: object
+required:
+- type
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+  research_scientist:
+    title: Research Scientist
+    description: Name(s) of the research scientist(s) performing the experiments for
+      a research project.
+    placeholder: Dynamic Search
+    additionalProperties: true
+    $ref: _definitions.yaml#/bms_group_enum_config
+    type: array
+    items:
+      type: object
+  lab_scientist:
+    title: Lab Scientist
+    description: Name of the lab scientist performing the experiment.
+    placeholder: Dynamic Search
+    additionalProperties: true
+    $ref: _definitions.yaml#/bms_group_enum_config
+    type: array
+    items:
+      type: object
+  operator:
+    title: Operator
+    description: Name of the CITRE lab scientist performing the experiment.
+    placeholder: Choose from dropdown
+    type: array
+    items:
+      enum:
+      - Alicia Benitez
+      - Alicia Martinez
+      - Alicia Sanchez
+      - Anabel Moreno
+      - Carla Guarinos
+      - Carlos Rueda
+      - Carmen Jimenez
+      - Daniel Aguilar
+      - Debora Pons
+      - Diego Sobradillo
+      - Fabiola Felipe
+      - Estela Garcia
+      - Jose Carlos Blanco
+      - Jose Francisco Lopez
+      - Ines Gonzalez
+      - Maria Sanchez
+      - Dolores Jimenez
+      - Marta Tabaco
+      - "Nuria Pedre\xF1o"
+      - Pilar de la Torre
+  research_project:
+    $ref: _definitions.yaml#/to_many
+  clinical_trial:
+    $ref: _definitions.yaml#/to_many
+  lab_experiment:
+    $ref: _definitions.yaml#/to_many
+  dataset:
+    $ref: _definitions.yaml#/to_many
+  bioinformatics_pipeline:
+    $ref: _definitions.yaml#/to_many
+  secondary_analysis:
+    $ref: _definitions.yaml#/to_many
+  results:
+    $ref: _definitions.yaml#/to_many
+  data_product:
+    $ref: _definitions.yaml#/to_many
+  external_partner:
+    $ref: _definitions.yaml#/to_many

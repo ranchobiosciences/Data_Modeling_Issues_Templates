@@ -1,0 +1,85 @@
+title: Analysis Result
+description: 'Post-analysis or post-process collection of data or datasets.  Often
+  includes a summary of what was done to the data to generate these results.
+
+  '
+type: object
+required:
+- type
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+  results_name:
+    title: Results Name
+    description: The name of the analysis.
+    placeholder: Input here
+    type: string
+  results_description:
+    title: Description
+    description: The description of the results.
+    view: richtext
+    placeholder: Enter an analysis results description here
+    type: string
+  results_owner:
+    title: Owner
+    description: The person that generated the results.
+    placeholder: Dynamic Search
+    sortField: results_owner.cn
+    additionalProperties: true
+    $ref: _definitions.yaml#/bms_group_enum_config
+    type: object
+  results_path:
+    title: stash/s3 Filesystem Location(s)
+    description: 'stash/s3 Filesystem Location(s) including the configured endpoint,
+      bucket (aka mount for sftp), and directory paths. This is used to inform permissions
+      enforcement on the stash/s3 filesystem, which can only work recursively on the
+      directory level. Because of this restriction/behavior of the stash/s3 filesystem,
+      this field will also be used to restrict stash/s3 file attachments to the analysis
+      result node using ABAC rules: the files must exist with a key  that is within
+      or under the defined locations. Otherwise an error will be thrown.
+
+      '
+    view: resultPath
+    items:
+      additionalProperties: false
+      properties:
+        endpoint:
+          type: string
+        bucket:
+          type: string
+        key:
+          type: string
+      type: object
+    type: array
+  links:
+    title: Links
+    description: Links.
+    view: linkbuttons
+    placeholder: Links.
+    additionalProperties: true
+    objectFields:
+    - name: linkName
+      label: Link Name
+    - name: linkUrl
+      label: Link URL
+    type: array
+    items:
+      type: object
+  output_type:
+    title: Output Type
+    description: The filetype of results output.
+    placeholder: Choose from dropdown
+    enum:
+    - csv
+    - docx
+    - pdf
+    - pptx
+    - txt
+    - xlsx
+  dataset:
+    $ref: _definitions.yaml#/to_many
+  clinical_trial:
+    $ref: _definitions.yaml#/to_many
+  secondary_analysis:
+    $ref: _definitions.yaml#/to_many
+  data_product:
+    $ref: _definitions.yaml#/to_many

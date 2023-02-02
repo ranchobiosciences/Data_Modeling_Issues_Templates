@@ -1,0 +1,118 @@
+title: II-ON Project
+description: A singular project aim
+type: object
+required:
+- type
+- project_title
+- institution
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+  created_datetime:
+    title: Created On
+    description: The date and time your project was created.
+    type: string
+  project_number:
+    title: Project Number
+    description: The main identifier for a project.
+    type: string
+  project_title:
+    title: Project Title
+    description: The title of your II_ON project.
+    type: string
+  investigator:
+    title: Investigator
+    description: The primary PI responsible for the project.
+    type: string
+  institution:
+    title: Institution
+    description: The primary insituiton responsible for the project.
+    type: string
+  project_milestones:
+    title: Expected Timeline and Milestones/Check-ins
+    status_timeline: true
+    propertyNames:
+      enum:
+      - Contract Signed
+      - DASH Report
+      - Check-In
+      - Final Report
+    additionalProperties:
+      oneOf:
+      - type: object
+        required:
+        - milestone_timestamp
+        - checkins
+        properties:
+          milestone_timestamp:
+            type: string
+            format: date-time
+          checkins:
+            type: array
+            items:
+              type: object
+              required:
+              - checkin_timestamp
+              - checkin_message
+              properties:
+                checkin_timestamp:
+                  type: string
+                  format: date-time
+                checkin_message:
+                  type: string
+      - type: 'null'
+    type: object
+  research_priority:
+    title: Research Priority
+    description: The priority of a II-ON research project.
+    type: string
+  ii_on_contact:
+    title: II-ON Contact
+    description: The primary II-ON contact related to a DASH.
+    sortField: ii_on_contact.cn
+    additionalProperties: true
+    $ref: _definitions.yaml#/bms_group_enum_config
+    type: object
+  project_hypothesis:
+    title: Project Hypothesis
+    description: a few sentences to describe the hypothesis for a project.
+    multiline: true
+    textWrap: true
+    colSpan: 3
+    type: string
+  sharepoint_files:
+    title: SharePoint Project Files
+    description: Link to associated sharepoint files.
+    type: array
+    items:
+      type: string
+  tumor_simple:
+    title: Tumor Simple
+    description: The priority of a II-ON research project.
+    type: string
+  project_status:
+    title: Project Status Simple
+    description: The priority of a II-ON research project.
+    type: string
+  final_report_planned_date:
+    title: Final Report Planned Date
+    description: The priority of a II-ON research project.
+    format: date
+    type: string
+  study_id:
+    title: Study ID
+    description: The priority of a II-ON research project.
+    type: string
+  project_champion:
+    title: Project Champion
+    description: The primary II-ON contact related to a DASH.
+    additionalProperties: true
+    $ref: _definitions.yaml#/bms_group_enum_config
+    type: object
+  relevant_asset:
+    title: Relevant Asset
+    description: The priority of a II-ON research project.
+    type: string
+  tm_or_mm:
+    title: TM or MM
+    description: The priority of a II-ON research project.
+    type: string
