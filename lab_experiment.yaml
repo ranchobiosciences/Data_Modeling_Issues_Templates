@@ -1,0 +1,38 @@
+title: Lab Experiment
+description: 'Individual experiment performed by a laboratory scientist with a specific
+  purpose or hypothesis.
+
+  '
+type: object
+required:
+- type
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+  lab_experiment_title:
+    title: Lab Experiment Title
+    description: Title of the individual laboratory experiment.
+    placeholder: Input here
+    type: string
+  lab_experiment_description:
+    title: Lab Experiment Description
+    description: Description of the laboratory experiment purpose.
+    placeholder: Input here
+    type: string
+  lab_experiment_status:
+    title: Lab Experiment Status
+    description: Status of the laboratory experiment.
+    placeholder: Choose from dropdown
+    enum:
+    - In Progress
+    - Complete
+  lab_experiment_date:
+    title: Lab Experiment Date
+    description: The date the lab experiment was performed.
+    placeholder: yyyy-mm-dd
+    format: date
+    uiDateFormat: MM-DD-YYYY
+    type: string
+  assay:
+    $ref: _definitions.yaml#/to_many
+  sample:
+    $ref: _definitions.yaml#/to_many

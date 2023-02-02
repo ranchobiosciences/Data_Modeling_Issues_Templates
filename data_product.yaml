@@ -1,0 +1,99 @@
+title: Data Product
+description: Data product is an application that queries a collection of data, a summary
+  of a collection of data, or a collection of data that is distinct from a dataset.
+type: object
+required:
+- type
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+  data_product_name:
+    title: Data Product Name
+    description: Name of the data product.
+    placeholder: Input here
+    type: string
+  data_product_location:
+    title: Data Product Location
+    description: Location of the data product.
+    placeholder: Choose from dropdown
+    enum:
+    - Celgene
+    - TM
+    - Research
+    - DMCP
+  data_product_url:
+    title: Data Project URL
+    description: Data product direct url.
+    placeholder: Input here
+    enum_source:
+      type: suggestion
+      global: false
+      enforce: auto_add
+    items:
+      format: uri
+      type: string
+    type: array
+  data_product_type:
+    title: Data Product Type
+    description: Type of data product.
+    placeholder: Choose from dropdown
+    enum:
+    - Spotfire Build
+    - Shiny app
+    - DaaP
+  owner:
+    title: Owner
+    description: The individual or group who owns and maintains the data product.
+    placeholder: Dynamic Search
+    sortField: owner.cn
+    additionalProperties: true
+    $ref: _definitions.yaml#/bms_group_enum_config
+    type: object
+  collaborator:
+    title: Collaborator
+    description: Collaborators for the data product.
+    placeholder: Dynamic Search
+    additionalProperties: true
+    $ref: _definitions.yaml#/bms_group_enum_config
+    type: array
+    items:
+      type: object
+  data_product_version:
+    title: Data Product Version
+    description: Version of the data product.
+    placeholder: Input here
+    type: integer
+  version_update_desc:
+    title: Version Update Description
+    description: Description of the data product version and update.
+    placeholder: Input here
+    type: string
+  data_product_description:
+    title: Description
+    description: The description of the data product.
+    view: richtext
+    placeholder: Enter a data product description here
+    type: string
+  links:
+    title: Links
+    description: Links of the data product.
+    view: linkbuttons
+    placeholder: Links of the data product.
+    additionalProperties: true
+    objectFields:
+    - name: linkName
+      label: Link Name
+    - name: linkUrl
+      label: Link URL
+    type: array
+    items:
+      type: object
+  dataset:
+    $ref: _definitions.yaml#/to_many
+  sample:
+    $ref: _definitions.yaml#/to_many
+  assay:
+    $ref: _definitions.yaml#/to_many
+  clinical_trial:
+    $ref: _definitions.yaml#/to_many
+  analysis_result:
+    $ref: _definitions.yaml#/to_many

@@ -1,0 +1,644 @@
+title: Dataset
+description: 'Dataset is a collection of data including research project and clinical
+  trial information, especially of assay and experiment specifics.  Datasets may also
+  have associated bioinformatics pipelines.
+
+  '
+type: object
+required:
+- type
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+  submitter_id:
+    title: Submitter ID
+    description: The legacy identifier of projects imported from NGS 360, Redda or
+      other external systems.
+    placeholder: Input here
+    type: string
+  dataset_name:
+    title: Dataset Name
+    description: The name of the dataset.
+    placeholder: Input here
+    type: string
+  dataset_description:
+    title: Description
+    description: The description of the dataset.
+    view: richtext
+    placeholder: Enter a dataset description here
+    type: string
+  dataset_owner:
+    title: Owner
+    description: Ultimate person responsible for the dataset.
+    placeholder: Dynamic Search
+    sortField: dataset_owner.cn
+    additionalProperties: true
+    $ref: _definitions.yaml#/bms_group_enum_config
+    type: object
+  dataset_steward:
+    title: Steward
+    description: Data curation lead responsible for the data quality, curation, and
+      harmonization.
+    placeholder: Dynamic Search
+    sortField: dataset_steward.cn
+    additionalProperties: true
+    $ref: _definitions.yaml#/bms_group_enum_config
+    type: object
+  dataset_collaborators:
+    title: Collaborators
+    description: Collaborators of the dataset.
+    placeholder: Dynamic Search
+    additionalProperties: true
+    $ref: _definitions.yaml#/bms_group_enum_config
+    type: array
+    items:
+      type: object
+  includes_patient:
+    title: Includes Patient
+    description: Indication of whether the dataset includes subjects.
+    view: radio
+    enum:
+    - 'Yes'
+    - 'No'
+  is_multimodal:
+    title: Is Multimodal
+    description: Is the dataset multimodal?
+    view: radio
+    enum:
+    - 'Yes'
+    - 'No'
+  internal_external:
+    title: Internal External
+    description: Indication of whether the dataset was produced internally or externally.
+    view: checkbox
+    type: array
+    items:
+      enum:
+      - Internal
+      - External
+  publicly_available:
+    title: Publicly Available
+    description: Indication of whether the dataset uses publicly available data.
+    placeholder: Choose from dropdown
+    enum:
+    - 'Yes'
+    - 'No'
+  interventional_observational:
+    title: Interventional Observational
+    description: Indication of whether the data within the dataset is from an interventional
+      or observational trial.
+    view: checkbox
+    type: array
+    items:
+      enum:
+      - Interventional
+      - Observational
+  data_type:
+    title: Data Type
+    description: The type of data.
+    placeholder: Choose from dropdown
+    type: array
+    items:
+      enum:
+      - Adult
+      - Clinical
+      - Cytokine
+      - FACS
+      - NGS
+      - Flow Cytometry
+      - Genomic
+      - IHC
+      - Pathology
+      - Pediatric
+      - Pharmacology
+      - Proteomic
+  assay_type:
+    title: Assay Type
+    description: The technique/method for data generation to be analyzed in pipeline
+      of assay.
+    placeholder: Choose from dropdown
+    type: array
+    items:
+      enum:
+      - 10X Visium
+      - ATAC-Seq
+      - ChIP-Seq
+      - CITE-Seq
+      - CRISPR gRNA screens
+      - CRISPR knockout screen
+      - CRISPR-DAV
+      - CRISPRa activation screen
+      - CRISPRi interference screen
+      - CUT&RUN
+      - DNA/CNV
+      - Edge-Seq
+      - Gene Expression (GEX)
+      - Long read sequencing
+      - MAGeCK CRISPR Screen
+      - MARS-Seq
+      - Microbiome Targeted RNA sequencing
+      - Microbiome Total RNA Sequencing
+      - Microbiome Whole Genome Sequencing (WGS)
+      - microRNA-Seq
+      - mRNA-Seq
+      - Multiome ATAC + Gene Expression
+      - Perturb-Seq
+      - PRISM screen
+      - Ribosomal Profiling
+      - scTCR
+      - Single Cell ATAC-Seq
+      - Single Cell DNA-Seq
+      - Single Cell mRNA-Seq
+      - Single Cell Total RNA-Seq
+      - Single Nuclei ATAC-Seq
+      - Single Nuclei mRNA-Seq
+      - Spatial Transcriptomics
+      - SPLiT-seq
+      - Targeted (DNA) Resequencing
+      - Targeted RNA-Seq
+      - Total RNA-Seq
+      - VDJ
+      - Whole Exome Sequencing (WES)
+      - Whole Genome Bisulfite Sequencing (WGBS)
+      - Whole Genome Sequencing (WGS)
+  dataset_provider:
+    title: Provider
+    description: The vendor or collaborator that generated the data
+    placeholder: Dynamic Search
+    enum:
+    - 10x genomics
+    - ABI
+    - Active Motif
+    - Adaptive
+    - Agilent
+    - AltraBio
+    - ApoCell
+    - ArcherDx
+    - Arima Genomics
+    - Asuragen
+    - Avaden
+    - Amsterdam University Medical Center
+    - Accelerating Medicines Partnership
+    - Baylor College Of Medicine
+    - BBRC
+    - Beijing Chaoyang Hospital, Capital Medical University
+    - BGI
+    - BioAgilytix
+    - Biocartis
+    - Biognosys
+    - Blue Spark Technologies
+    - BLUEPRINT
+    - BMA
+    - Broad
+    - Brooks
+    - BC Platforms
+    - Canopy
+    - Caris LifeSciences
+    - Celgene (Quanticel Research)
+    - Celgene (Sequencing Research Group)
+    - CGG
+    - CGI
+    - Champions
+    - Charite Research Organisation
+    - Charles River Lab
+    - Citre
+    - Cleveland Clinic
+    - Coppe Healthcare
+    - CoreBiome
+    - Covance Genomics
+    - Crohn's and Colitis Foundation
+    - Cytapex
+    - COTA
+    - DDL
+    - DFCI
+    - DLS
+    - DxTerity Diagnostics
+    - EA
+    - EGA
+    - Elim Biopharmaceuticals
+    - Envigo
+    - Epic Sciences
+    - Epiontis
+    - Eurofins DiscoverX
+    - Evotec
+    - ExosomeDx
+    - FinnGen
+    - Flagship Bioscience
+    - Foundation Medicine
+    - Geneuity
+    - Genewiz
+    - Genova Diagnostics
+    - Ghent University
+    - GEO
+    - GRC
+    - Guardant
+    - HCA
+    - HD Bio
+    - Hematogenix
+    - Histogenex
+    - HTG Molecular
+    - HudsonAlpha Genomic Services Laboratory
+    - IGTP
+    - Illumina
+    - IMIDomics
+    - Institute of Cancer Research, London
+    - IQ Proteomics
+    - James Krueger Lab
+    - Juno Sequencing Core
+    - King's College London
+    - LabCorp
+    - Leica Biosystems
+    - Louis Nguyenvu
+    - M2GEN
+    - Medgenome
+    - MLL
+    - Moffitt
+    - Monasterium Laboratory
+    - Mosaic
+    - Mount Sinai
+    - MSKCC
+    - Myriad RBM
+    - Maastricht University Medical Center
+    - Nano Imaging Services
+    - Nantomics
+    - National BioService LLC
+    - National Cancer Institute
+    - National Institute on Aging
+    - National Institute of Biomedical Imaging and Bioengineering
+    - NCBI Database of Genotype and Phenotypes (dbGaP)
+    - NCBI Gene Expression Omnibus (GEO)
+    - NCBI Short Read Archive (SRA)
+    - Neogenomics
+    - NIH
+    - Nilogen
+    - Nordic Bioscience
+    - Novo Nordisk
+    - Novogene - China
+    - NYGC
+    - Olink
+    - OncoMed
+    - Other
+    - Oxford University
+    - Oregon Health & Science University (OHSU)
+    - Pacific BioMarkers
+    - Parker Institute for Cancer Immunotherapy
+    - PathAI INC
+    - Personal Genome Diagnostic
+    - PhenoPath
+    - PPD
+    - Presage Biosciences
+    - Proteome Sciences
+    - Q2 Expression Analysis
+    - Q2 Solutions
+    - Qiagen
+    - QPS
+    - Rockefeller University
+    - Sanford Burnham Prebys Proteomics Core
+    - Seattle Children's Hospital
+    - Second Genome Solutions
+    - SGI
+    - SRA
+    - Stanford
+    - StemCell
+    - Swift Biosciences
+    - Somalogic
+    - Tandem
+    - Tara Biosystems
+    - TCGA
+    - Tempus
+    - TGEN
+    - The Belfer Laboratory
+    - Thermo Fisher
+    - Toronto University
+    - Tsinghua
+    - University of Otago
+    - University of Oxford
+    - University of Pennsylvania
+    - U Lausanne
+    - UCSD
+    - UKBiobank/Regeneron
+    - VCU
+    - Vivia Biotech
+    - WuXi
+  availability_type:
+    title: Availability Type
+    description: The security classification of the dataset.
+    view: radio
+    enum:
+    - Open
+    - Restricted
+  availability_mechanism:
+    title: Availability Mechanism
+    description: Mechanism by which the dataset will be made available.
+    placeholder: Choose from dropdown
+    enum:
+    - Xpress
+    - NGS360
+    - Paradigm4
+    - File Storage
+  data_source:
+    title: Data Source
+    description: Original source of data.
+    placeholder: Origin source of data.
+    enum:
+    - REDDA
+    - NGS 360
+    - Stash
+    type: string
+  data_use_requirements:
+    title: Data Use Requirements
+    description: Data Use Requirements of the dataset.
+    placeholder: Choose from dropdown
+    type: array
+    items:
+      enum:
+      - Time limit on use
+      - Project-specific restrictions
+      - Institution-specific restrictions
+      - License Terms
+      - Security Terms
+      - Expunging Terms
+  dataset_links:
+    title: Dataset Links
+    description: Web URLs for resources associated with the dataset.
+    placeholder: Input here
+    enum_source:
+      type: suggestion
+      global: false
+      enforce: auto_add
+    items:
+      format: uri
+      type: string
+    type: array
+  dataset_location:
+    title: stash/s3 Filesystem Location(s)
+    description: 'stash/s3 Filesystem Location(s) including the configured endpoint,
+      bucket (aka mount for sftp), and directory paths. This is used to inform permissions
+      enforcement on the stash/s3 filesystem, which can only work recursively on the
+      directory level. Because of this restriction/behavior of the stash/s3 filesystem,
+      this field will also be used to restrict stash/s3 file attachments to the dataset
+      node using ABAC rules: the files must exist with a key  that is within or under
+      the defined locations. Otherwise an error will be thrown.
+
+      '
+    view: datasetPath
+    sortField: dataset_location.key
+    items:
+      additionalProperties: false
+      properties:
+        endpoint:
+          type: string
+        bucket:
+          type: string
+        key:
+          type: string
+      type: object
+    type: array
+  data_regulations:
+    title: Data Regulations
+    description: The regulations associated with the dataset.
+    view: checkbox
+    type: array
+    items:
+      enum:
+      - HIPAA
+      - GDPR
+  data_destruction_requirements:
+    title: Data Destruction Requirements Comment
+    description: Data Destruction Requirements Comment.
+    view: multiline
+    placeholder: e.g., milestone/date, see reference agreement
+    type: string
+  license_end_date:
+    title: License End Date
+    description: The license end date for the dataset.
+    placeholder: yyyy-mm-dd
+    format: date
+    uiDateFormat: MM-DD-YYYY
+    type: string
+  legal_acknowledgements:
+    title: Legal Acknowledgements
+    description: Contract acknowledgements for access request.
+    view: addremove
+    placeholder: Contract Acknowledgements
+    add_text: Add contract acknowledgement
+    remove_title: Remove Contract Acknowledgement
+    remove_text: Are you sure you want to remove legal acknowledgement?
+    additionalProperties: true
+    type: array
+    items:
+      type: string
+  indication:
+    title: Indication
+    description: The indication for the dataset.
+    placeholder: Dynamic Search
+    enum:
+    - Acute Coronary Syndrome
+    - Acute Decompensated Heart Failure
+    - Acute Lymphocytic Leukemia
+    - Acute Myeloid Leukemia
+    - Adenoid Cystic Carcinoma
+    - Alpha Thalassemia
+    - Alzheimer's Disease
+    - Anemia
+    - Angioimmunoblastic T-Cell Lymphoma
+    - Ankylosing Spondylitis
+    - Atherosclerosis
+    - Atopic Dermatitis
+    - Atrial Fibrillation
+    - Autism Spectrum Disorder
+    - Autoimmune Disease
+    - Basal Cell Carcinoma
+    - Behcet's Disease
+    - Beta Thalassemia
+    - Bipolar Disorder
+    - Breast Cancer
+    - Cancer NOS
+    - Cardiovascular NOS
+    - Central Nervous System Lymphoma
+    - Cervical Cancer
+    - Chronic Lymphocytic Leukemia
+    - Chronic Myeloid Leukemia
+    - Colorectal Cancer
+    - COVID-19
+    - Crohn's Disease
+    - Cutaneous Lupus Erythematosus
+    - Cutaneous T-Cell Lymphoma
+    - Depression
+    - Diabetes Mellitus
+    - Diabetic Kidney Disease
+    - Diffuse Intrinsic Pontine Glioma
+    - Diffuse Large B-Cell Lymphoma
+    - Dilated Cardiomyopathy
+    - Endometrial Cancer
+    - Eosinophilic Esophagitis
+    - Esophageal Cancer
+    - Female Reproductive Cancer
+    - Fibrosis NOS
+    - Follicular Lymphoma
+    - Gallbladder Cancer
+    - Gastric Cancer
+    - Gastroesophageal Junction Cancer
+    - Gastrointestinal System Cancer NOS
+    - Giant Cell Arteritis
+    - Glioblastoma Multiforme
+    - Glioma
+    - Graft Rejection
+    - Head and Neck Cancer NOS
+    - Heart Failure
+    - Hematologic Cancer NOS
+    - Hepatitis B
+    - Hepatitis C
+    - Hepatocellular Carcinoma
+    - Hodgkin's Lymphoma
+    - Human Immunodeficiency Virus
+    - Hyperlipidemia
+    - Hypertension
+    - Hypertrophic Cardiomyopathy
+    - Idiopathic Inflammatory Myositis
+    - Idiopathic Pulmonary Fibrosis
+    - IgA Nephropathy
+    - Immune Thrombocytopenic Purpura
+    - Immunoscience NOS
+    - Inflammatory Bowel Disease
+    - Juvenile Idiopathic Arthritis
+    - Kaposi's Sarcoma
+    - Lipodystrophy
+    - Liposarcoma
+    - Lupus Nephritis
+    - Lymphoma NOS
+    - Major Adverse Cardiac Event
+    - Mantle Cell Lymphoma
+    - Marginal Zone Lymphoma
+    - Melanoma
+    - Merkel Cell Carcinoma
+    - Mesothelioma
+    - Metabolic Disease
+    - Microscopic Colitis
+    - Multiple Myeloma
+    - Multiple Sclerosis
+    - Muscle Invasive Bladder Cancer
+    - Myelodysplastic Syndromes
+    - Myelofibrosis
+    - Nasopharyngeal Cancer
+    - Neuroendocrine Neoplasm
+    - Neuromuscular Disease
+    - Neuroscience NOS
+    - Non-Hodgkin Lymphoma
+    - Non-Muscle Invasive Bladder Cancer
+    - Non-Small Cell Lung Carcinoma
+    - Nonalcoholic Steatohepatitis
+    - Ovarian Cancer
+    - Pancreatic Cancer
+    - Peripheral T-Cell Lymphoma
+    - Pleomorphic Adenoma Carcinoma
+    - Polycythemia Vera
+    - Primary Sclerosing Cholangitis
+    - Progressive Supranuclear Palsy
+    - Prostate Cancer
+    - Psoriasis
+    - Psoriatic Arthritis
+    - Pulmonary Sarcoidosis
+    - Renal Cell Carcinoma
+    - Renal Transplant Rejection
+    - Rheumatoid Arthritis
+    - Rhinitis
+    - Sarcoma NOS
+    - Schizophrenia
+    - Scleroderma
+    - Sepsis
+    - Sjogren's Syndrome
+    - Skin Carcinoma NOS
+    - Small Cell Lung Carcinoma
+    - Squamous Cell Carcinoma
+    - Steroid-Resistant Nephrotic Syndrome
+    - Stroke
+    - Systemic Lupus Erythematosus
+    - Systemic Sclerosis
+    - Thrombosis
+    - Thyroid Cancer
+    - Triple-Negative Breast Cancer
+    - Ulcerative Colitis
+    - Urinary Bladder Cancer
+    - Uveitis
+    - Venous Thromboembolism
+    - Virology NOS
+  therapeutic_area:
+    title: Therapeutic Area
+    description: The therapeutic area of the dataset.
+    placeholder: Choose from dropdown
+    type: array
+    items:
+      enum:
+      - Cardiovascular
+      - Dermatology
+      - Fibrosis
+      - Hematology
+      - Immunoscience
+      - Metabolism
+      - Neuroscience
+      - Oncology
+      - Virology
+  last_loaded_date:
+    title: Last Loaded Date
+    description: Date which the dataset was last loaded.
+    placeholder: yyyy-mm-dd
+    format: date
+    uiDateFormat: MM-DD-YYYY
+    type: string
+  expected_delivery_date:
+    title: Expected Delivery Date
+    description: Date that the dataset is expected to be delivered.
+    placeholder: yyyy-mm-dd
+    format: date
+    uiDateFormat: MM-DD-YYYY
+    type: string
+  actual_delivery_date:
+    title: Actual Delivery Date
+    description: Date that the dataset was actually delivered.
+    placeholder: yyyy-mm-dd
+    format: date
+    uiDateFormat: MM-DD-YYYY
+    type: string
+  dataset_status:
+    title: Dataset Status
+    description: Status of the dataset.
+    placeholder: Choose from dropdown
+    enum:
+    - Incomplete
+    - Complete
+    - Delivered
+  links:
+    title: Links
+    description: Links of the dataset.
+    view: linkbuttons
+    placeholder: Links of the dataset.
+    additionalProperties: true
+    objectFields:
+    - name: linkName
+      label: Link Name
+    - name: linkUrl
+      label: Link URL
+    data_links:
+    - url: https://ngs.rdcloud.bms.com/projects/<submitter_id>
+      title: NGS 360
+      pattern: P-20
+      dataSource: NGS 360
+      fields:
+      - submitter_id
+    type: array
+    items:
+      type: object
+  research_project:
+    $ref: _definitions.yaml#/to_many
+  assay:
+    $ref: _definitions.yaml#/to_many
+  analysis_result:
+    $ref: _definitions.yaml#/to_many
+  lab_experiment:
+    $ref: _definitions.yaml#/to_many
+  clinical_trial:
+    $ref: _definitions.yaml#/to_many
+  bioinformatics_pipeline:
+    $ref: _definitions.yaml#/to_many
+  sample:
+    $ref: _definitions.yaml#/to_many

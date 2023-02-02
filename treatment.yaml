@@ -1,0 +1,225 @@
+title: Treatment
+description: 'Treatment is a manipulation of a sample or subject, usually with a compound
+  or physical intervention in line  with a specific regimen in order to change the
+  sample or subjects'' current state to another.
+
+  '
+type: object
+required:
+- type
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+  treatment_name:
+    title: Treatment Name
+    description: 'Give a conventional name to the treatment, for example: Yervoy,
+      placebo, radiation therapy, etc.'
+    placeholder: Input here
+    type: string
+  treatment_ID:
+    title: Treatment ID
+    description: If available, provide ID for the pharmaceutical from internal database.
+    placeholder: Input here
+    type: string
+  treatment_ID_aligned:
+    title: Treatment ID Aligned
+    description: Treatment ID aligned to an ontology such as ChEMBL or Drugbank.
+  treatment_dose:
+    title: Treatement Dose
+    description: 'List dosing in conventional format, for example: 1 mg/kg.'
+    placeholder: Input here
+    type: array
+    items:
+      type: string
+  treatment_frequency:
+    title: Treatment Frequency
+    description: List frequency of treatment using pull down values.
+    placeholder: Choose from dropdown
+    enum:
+    - 10 times a day
+    - 2-3 times a day
+    - 4 times per week
+    - 5 times a day
+    - 7 times a day
+    - 8-12 times per day
+    - 8 times per day
+    - BID
+    - BWK
+    - continuous
+    - every 2-3 months
+    - every 2 days
+    - every 3 days
+    - every 4 days
+    - every 72 hrs
+    - for 24 hours
+    - for 3 days
+    - for 72 hours
+    - hourly for 72 hours
+    - Intermittent
+    - Q24H
+    - Q3H
+    - Q4H
+    - QD
+    - QD and BID on alternative days
+    - QHS
+    - QID
+    - QOD
+    - TID
+  route_of_administration:
+    title: Route of Administration
+    description: Select from the provided list the route of administration of the
+      main treatment.
+    placeholder: Choose from dropdown
+    enum:
+    - Auricular (Otic)
+    - Buccal
+    - Conjunctival
+    - Cutaneous
+    - Dental
+    - Electro-Osmosis
+    - Endocervical
+    - Endosinusial
+    - Endotracheal
+    - Enteral
+    - Epidural
+    - Extra-Amniotic
+    - Extracorporeal
+    - Hemodialysis
+    - Infiltration
+    - Interstitial
+    - Intra-Abdominal
+    - Intra-Amniotic
+    - Intra-Arterial
+    - Intra-Articular
+    - Intrabiliary
+    - Intrabronchial
+    - Intrabursal
+    - Intracardiac
+    - Intracartilaginous
+    - Intracaudal
+    - Intracavernous
+    - Intracavitary
+    - Intracerebral
+    - Intracisternal
+    - Intracorneal
+    - Intracoronal, Dental
+    - Intracoronary
+    - Intracorporus Cavernosum
+    - Intradermal
+    - Intradiscal
+    - Intraductal
+    - Intraduodenal
+    - Intradural
+    - Intraepidermal
+    - Intraesophageal
+    - Intragastric
+    - Intragingival
+    - Intraileal
+    - Intralesional
+    - Intraluminal
+    - Intralymphatic
+    - Intramedullary
+    - Intrameningeal
+    - Intramuscular
+    - Intraocular
+    - Intraovarian
+    - Intrapericardial
+    - Intraperitoneal
+    - Intrapleural
+    - Intraprostatic
+    - Intrapulmonary
+    - Intrasinal
+    - Intraspinal
+    - Intrasynovial
+    - Intratendinous
+    - Intratesticular
+    - Intrathecal
+    - Intrathoracic
+    - Intratubular
+    - Intratumor
+    - Intratympanic
+    - Intrauterine
+    - Intravascular
+    - Intravenous
+    - Intravenous Bolus
+    - Intravenous Drip
+    - Intraventricular
+    - Intravesical
+    - Intravitreal
+    - Iontophoresis
+    - Irrigation
+    - Laryngeal
+    - Nasal
+    - Nasogastric
+    - Not Applicable
+    - Opthalmic
+    - Oral
+    - Oropharyngeal
+    - Parenteral
+    - Percutaneous
+    - Periarticular
+    - Peridural
+    - Perineural
+    - Periodontal
+    - Rectal
+    - Respiratory (Inhalation)
+    - Retrobulbar
+    - Soft Tissue
+    - Subarachnoid
+    - Subconjunctival
+    - Subcutaneous
+    - Sublingual
+    - Submucosal
+    - Topical
+    - Transdermal
+    - Transmucosal
+    - Transplacental
+    - Transtracheal
+    - Transtympanic
+    - Unknown
+    - Urethral
+    - Vaginal
+  treatment_regimen:
+    title: Treatment Regimen
+    description: 'Describe treatment regimen. For example: "first week of trial, dosing
+      is done twice daily followed by a rest period of 3 weeks."'
+    placeholder: Input here
+    type: string
+  treatment_duration:
+    title: Treatment Duration
+    description: Used for samples treatment usually and indicates how long a sample
+      was treated with a modifier.
+    placeholder: Input here
+    type: integer
+  treatment_duration_units:
+    title: Treatment Duration Units
+    description: With treatment duration indicates the unit of time a sample was treated
+      with a modifier.
+    placeholder: Choose from dropdown
+    enum:
+    - days
+    - hours
+    - minutes
+    - months
+    - seconds
+  exposure_duration:
+    title: Exposure Duration
+    description: Used for subjects treatment usually and indicates how long a subject
+      was exposed to a modifier.
+    placeholder: Input here
+    type: integer
+  exposure_duration_units:
+    title: Exposure Duration Units
+    description: With exposure duration indicates the unit of time a subject was exposed
+      to a modifier.
+    placeholder: Choose from dropdown
+    enum:
+    - days
+    - hours
+    - minutes
+    - months
+    - seconds
+  longitudinal_timepoint:
+    title: Longitudinal Timepoint
+    description: The Longitudinal Timepoint for the sample.
+    placeholder: Input here
+    type: string

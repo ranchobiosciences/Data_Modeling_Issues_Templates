@@ -1,0 +1,463 @@
+title: Subject
+description: 'A person who is part of a study and from whom a sample may be derived.
+
+  '
+type: object
+required:
+- type
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+  subject_id:
+    title: Subject ID
+    description: The unique ID of the subject.
+    placeholder: Input here
+    type: string
+  record_name:
+    title: Record Name
+    description: Record name of the subject.
+    placeholder: Input here
+    type: string
+  date_of_birth:
+    title: Date of Birth
+    description: Subject's date of birth.
+    placeholder: yyyy-mm-dd
+    format: date
+    uiDateFormat: MM-DD-YYYY
+    type: string
+  height:
+    title: Height
+    description: Height in inches of the subject.
+    placeholder: Input here
+    type: integer
+  weight:
+    title: Weight
+    description: Weight in pounds of the subject.
+    placeholder: Input here
+    type: integer
+  alcohol_consumption_history:
+    title: Alcohol Consumption History
+    description: Alcohol consumption history of the subject.
+    placeholder: Choose from dropdown
+    enum:
+    - Never
+    - Past
+    - Currently
+  smoking_history:
+    title: Smoking History
+    description: Smoking history of the subject.
+    placeholder: Choose from dropdown
+    enum:
+    - Never
+    - Past
+    - Currently
+  disease_type:
+    title: Disease Type
+    description: Name of the disease for the subject. (Use DOID from Disease Ontology)
+    placeholder: Dynamic Search
+    type: array
+    items:
+      enum:
+      - Acute Coronary Syndrome
+      - Acute Decompensated Heart Failure
+      - Acute Lymphocytic Leukemia
+      - Acute Myeloid Leukemia
+      - Adenoid Cystic Carcinoma
+      - Alpha Thalassemia
+      - Alzheimer's Disease
+      - Anemia
+      - Angioimmunoblastic T-Cell Lymphoma
+      - Ankylosing Spondylitis
+      - Atherosclerosis
+      - Atopic Dermatitis
+      - Atrial Fibrillation
+      - Autism Spectrum Disorder
+      - Autoimmune Disease
+      - Basal Cell Carcinoma
+      - Behcet's Disease
+      - Beta Thalassemia
+      - Bipolar Disorder
+      - Breast Cancer
+      - Cancer NOS
+      - Cardiovascular NOS
+      - Central Nervous System Lymphoma
+      - Cervical Cancer
+      - Chronic Lymphocytic Leukemia
+      - Chronic Myeloid Leukemia
+      - Colorectal Cancer
+      - COVID-19
+      - Crohn's Disease
+      - Cutaneous Lupus Erythematosus
+      - Cutaneous T-Cell Lymphoma
+      - Depression
+      - Diabetes Mellitus
+      - Diabetic Kidney Disease
+      - Diffuse Intrinsic Pontine Glioma
+      - Diffuse Large B-Cell Lymphoma
+      - Dilated Cardiomyopathy
+      - Endometrial Cancer
+      - Eosinophilic Esophagitis
+      - Esophageal Cancer
+      - Female Reproductive Cancer
+      - Fibrosis NOS
+      - Follicular Lymphoma
+      - Gallbladder Cancer
+      - Gastric Cancer
+      - Gastroesophageal Junction Cancer
+      - Gastrointestinal System Cancer NOS
+      - Giant Cell Arteritis
+      - Glioblastoma Multiforme
+      - Glioma
+      - Graft Rejection
+      - Head and Neck Cancer NOS
+      - Heart Failure
+      - Hematologic Cancer NOS
+      - Hepatitis B
+      - Hepatitis C
+      - Hepatocellular Carcinoma
+      - Hodgkin's Lymphoma
+      - Human Immunodeficiency Virus
+      - Hyperlipidemia
+      - Hypertension
+      - Hypertrophic Cardiomyopathy
+      - Idiopathic Inflammatory Myositis
+      - Idiopathic Pulmonary Fibrosis
+      - IgA Nephropathy
+      - Immune Thrombocytopenic Purpura
+      - Immunoscience NOS
+      - Inflammatory Bowel Disease
+      - Juvenile Idiopathic Arthritis
+      - Kaposi's Sarcoma
+      - Lipodystrophy
+      - Liposarcoma
+      - Lupus Nephritis
+      - Lymphoma NOS
+      - Major Adverse Cardiac Event
+      - Mantle Cell Lymphoma
+      - Marginal Zone Lymphoma
+      - Melanoma
+      - Merkel Cell Carcinoma
+      - Mesothelioma
+      - Metabolic Disease
+      - Microscopic Colitis
+      - Multiple Myeloma
+      - Multiple Sclerosis
+      - Muscle Invasive Bladder Cancer
+      - Myelodysplastic Syndromes
+      - Myelofibrosis
+      - Nasopharyngeal Cancer
+      - Neuroendocrine Neoplasm
+      - Neuromuscular Disease
+      - Neuroscience NOS
+      - Non-Hodgkin Lymphoma
+      - Non-Muscle Invasive Bladder Cancer
+      - Non-Small Cell Lung Carcinoma
+      - Nonalcoholic Steatohepatitis
+      - Ovarian Cancer
+      - Pancreatic Cancer
+      - Peripheral T-Cell Lymphoma
+      - Pleomorphic Adenoma Carcinoma
+      - Polycythemia Vera
+      - Primary Sclerosing Cholangitis
+      - Progressive Supranuclear Palsy
+      - Prostate Cancer
+      - Psoriasis
+      - Psoriatic Arthritis
+      - Pulmonary Sarcoidosis
+      - Renal Cell Carcinoma
+      - Renal Transplant Rejection
+      - Rheumatoid Arthritis
+      - Rhinitis
+      - Sarcoma NOS
+      - Schizophrenia
+      - Scleroderma
+      - Sepsis
+      - Sjogren's Syndrome
+      - Skin Carcinoma NOS
+      - Small Cell Lung Carcinoma
+      - Squamous Cell Carcinoma
+      - Steroid-Resistant Nephrotic Syndrome
+      - Stroke
+      - Systemic Lupus Erythematosus
+      - Systemic Sclerosis
+      - Thrombosis
+      - Thyroid Cancer
+      - Triple-Negative Breast Cancer
+      - Ulcerative Colitis
+      - Urinary Bladder Cancer
+      - Uveitis
+      - Venous Thromboembolism
+      - Virology NOS
+  primary_site:
+    title: Primary Site
+    description: Primary site for the subject. (Use BTO for Tissue Ontology)
+    placeholder: Choose from dropdown
+    enum:
+    - Adrenal Gland
+    - Bone
+    - Bone Marrow
+    - Bladder
+    - Brain
+    - Breast
+    - Central Nervous System
+    - Cervix
+    - Chest
+    - Colon
+    - Colorectal
+    - Corpus Uteri
+    - Digestive Organs
+    - Endocrine Gland
+    - Endometrium
+    - Esophagus
+    - Eye
+    - Female Genital Organs
+    - Head and Neck
+    - Heart
+    - Hematopoietic System
+    - Integumentary System
+    - Joints and Articular Cartilage
+    - Kidney
+    - Liver
+    - Lung
+    - Lymph Node
+    - Male Genital Organs
+    - Other Sites
+    - Ovary
+    - Pancreas
+    - Pituitary Gland
+    - Pleura
+    - Prostate
+    - Retroperitoneum and Peritoneum
+    - Skin
+    - Skull
+    - Soft Tissue
+    - Spleen
+    - Stomach
+    - Testis
+    - Thoracic Organs
+    - Thymus
+    - Thyroid
+    - Tongue
+    - Tonsil
+    - Urinary System
+    - Uterus
+  ethnicity:
+    title: Ethnicity
+    description: Ethnicity of the subject as Hispanic or Latino or Not.
+    view: radio
+    enum:
+    - Hispanic or Latino
+    - Not Hispanic or Latino
+  race:
+    title: Race
+    description: Race of the subject.
+    placeholder: Choose from dropdown
+    type: array
+    items:
+      enum:
+      - White
+      - American Indian or Alaska Native
+      - Black or African American
+      - Asian
+      - Native Hawaiian or Other Pacific Islander
+      - Other
+  sex:
+    title: Sex
+    description: Sex of the subject.
+    placeholder: Choose from dropdown
+    enum:
+    - Female
+    - Male
+    - Intersex
+  current_status:
+    title: Current Status
+    description: Current status of the subject.
+    placeholder: Choose from dropdown
+    enum:
+    - Deceased
+    - Off-Study
+    - Off-Treatment
+    - On Study
+  age:
+    title: Age
+    description: Age in years of the subject.
+    placeholder: Input here
+    type: integer
+  m_score:
+    title: M Score
+    description: M Score
+    placeholder: Choose from dropdown
+    enum:
+    - M0
+    - M1
+    - M1a
+    - M1b
+    - M1c
+    - M2
+    - MX
+    - cM0
+    - cM1b
+  n_score:
+    title: N Score
+    description: N Score
+    placeholder: Choose from dropdown
+    enum:
+    - N0
+    - N0 (i+)
+    - N0 (i-)
+    - N0 (mol+)
+    - N0 (mol-)
+    - N1
+    - N1a
+    - N1b
+    - N1bI
+    - N1bII
+    - N1bIII
+    - N1bIV
+    - N1c
+    - N1mi
+    - N2
+    - N2a
+    - N2b
+    - N2c
+    - N3
+    - N3a
+    - N3b
+    - N3c
+    - N4
+    - NX
+  t_score:
+    title: T Score
+    description: T Score
+    placeholder: Choose from dropdown
+    enum:
+    - T0
+    - T1
+    - T1a
+    - T1a1
+    - T1a2
+    - T1b
+    - T1b1
+    - T1b2
+    - T1c
+    - T1mi
+    - T2
+    - T2a
+    - T2a1
+    - T2a2
+    - T2b
+    - T2c
+    - T2d
+    - T3
+    - T3a
+    - T3b
+    - T3c
+    - T3d
+    - T4
+    - T4a
+    - T4b
+    - T4c
+    - T4d
+    - T4e
+    - TX
+    - Ta
+    - Tis
+    - Tis (DCIS)
+    - Tis (LCIS)
+    - Tis (Paget's)
+  stage:
+    title: Stage
+    description: Stage
+    placeholder: Choose from dropdown
+    enum:
+    - '0'
+    - 0a
+    - 0is
+    - I
+    - IA
+    - IA1
+    - IA2
+    - IA3
+    - IB
+    - IB Cervix
+    - IB1
+    - IB2
+    - II
+    - II Cervix
+    - IIA
+    - IIA Cervix
+    - IIB
+    - IIC
+    - III
+    - IIIA
+    - IIIB
+    - IIIC
+    - IS
+    - IV
+    - IVA
+    - IVB
+    - IVC
+    - Tis
+    - X
+  prior_medications:
+    title: Prior Medications
+    description: Add prior medications for the study participant.
+    placeholder: Input here
+    type: array
+    items:
+      type: string
+  prior_surgeries:
+    title: Prior Surgeries
+    description: Add prior surgeries for the study participant.
+    placeholder: Input here
+    type: array
+    items:
+      type: string
+  prior_treatments:
+    title: Prior Treatments
+    description: List prior treatments for study participants.
+    placeholder: Input here
+    type: array
+    items:
+      type: string
+  BMI:
+    title: BMI
+    description: BMI of the participant.
+    placeholder: Input here
+    type: integer
+  primary_diagnosis:
+    title: Primary Diagnosis
+    description: Primary diagnosis for the study participant.
+    placeholder: Input here
+    type: string
+  diagnosis_date:
+    title: Diagnosis Date
+    description: Date of primary diagnosis.
+    placeholder: yyyy-mm-dd
+    format: date
+    uiDateFormat: MM-DD-YYYY
+    type: string
+  cohort_affiliation:
+    title: Cohort Affiliation
+    description: Cohort ID from analysis_cohort.
+    placeholder: Input here
+    type: string
+  response:
+    title: Response
+    description: Value of response (e.g. 3M), if relevant. If multiple, use a field:value
+      format and comma separate the list.
+    placeholder: Input here
+    type: string
+  response_description:
+    title: Response Description
+    description: Description of response (e.g. OS), if relevant. If multiple, use
+      a field:value format and comma separate the list.
+    placeholder: Input here
+    type: string
+  clinical_trial:
+    $ref: _definitions.yaml#/to_many
+  sample:
+    $ref: _definitions.yaml#/to_many
+  treatment:
+    $ref: _definitions.yaml#/to_many
+  visit:
+    $ref: _definitions.yaml#/to_many

@@ -1,0 +1,345 @@
+title: Clinical Trial
+description: 'Clinical Trial is a part of the Program;  they are a distinct research
+  activity that is centered around  administering treatment of interest to human subjects.
+  (Synonyms: Clinical study, Trial)
+
+  '
+type: object
+required:
+- type
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+  clinical_trial_id:
+    title: Clinical Trial ID
+    description: The unique ID for the clinical trial.
+    type: string
+  clinical_trial_title:
+    title: Clinical Trial Title
+    description: The title of the clinical trial.
+    placeholder: Input here
+    type: string
+  protocol_number:
+    title: 'Protocol #'
+    description: The number of the protocol for a trial.
+    type: string
+  inclusion_criteria:
+    title: Inclusion Criteria
+    description: List all inclusion criteria for the clinical trial.
+    view: richtext
+    placeholder: Input here
+    type: string
+  exclusion_criteria:
+    title: Exclusion Criteria
+    description: List all exclusion criteria for the clinical trial.
+    view: richtext
+    placeholder: Input here
+    type: string
+  has_results:
+    title: Has Results
+    description: Flag for results.
+    placeholder: Choose from dropdown
+    enum:
+    - 'Yes'
+    - 'No'
+    - Pending analysis
+    type: string
+  indication:
+    title: Indication
+    description: The indication for a trial.
+    placeholder: Dynamic Search
+    enum:
+    - Acute Coronary Syndrome
+    - Acute Decompensated Heart Failure
+    - Acute Lymphocytic Leukemia
+    - Acute Myeloid Leukemia
+    - Adenoid Cystic Carcinoma
+    - Alpha Thalassemia
+    - Alzheimer's Disease
+    - Anemia
+    - Angioimmunoblastic T-Cell Lymphoma
+    - Ankylosing Spondylitis
+    - Atherosclerosis
+    - Atopic Dermatitis
+    - Atrial Fibrillation
+    - Autism Spectrum Disorder
+    - Autoimmune Disease
+    - Basal Cell Carcinoma
+    - Behcet's Disease
+    - Beta Thalassemia
+    - Bipolar Disorder
+    - Breast Cancer
+    - Cancer NOS
+    - Cardiovascular NOS
+    - Central Nervous System Lymphoma
+    - Cervical Cancer
+    - Chronic Lymphocytic Leukemia
+    - Chronic Myeloid Leukemia
+    - Colorectal Cancer
+    - COVID-19
+    - Crohn's Disease
+    - Cutaneous Lupus Erythematosus
+    - Cutaneous T-Cell Lymphoma
+    - Depression
+    - Diabetes Mellitus
+    - Diabetic Kidney Disease
+    - Diffuse Intrinsic Pontine Glioma
+    - Diffuse Large B-Cell Lymphoma
+    - Dilated Cardiomyopathy
+    - Endometrial Cancer
+    - Eosinophilic Esophagitis
+    - Esophageal Cancer
+    - Female Reproductive Cancer
+    - Fibrosis NOS
+    - Follicular Lymphoma
+    - Gallbladder Cancer
+    - Gastric Cancer
+    - Gastroesophageal Junction Cancer
+    - Gastrointestinal System Cancer NOS
+    - Giant Cell Arteritis
+    - Glioblastoma Multiforme
+    - Glioma
+    - Graft Rejection
+    - Head and Neck Cancer NOS
+    - Heart Failure
+    - Hematologic Cancer NOS
+    - Hepatitis B
+    - Hepatitis C
+    - Hepatocellular Carcinoma
+    - Hodgkin's Lymphoma
+    - Human Immunodeficiency Virus
+    - Hyperlipidemia
+    - Hypertension
+    - Hypertrophic Cardiomyopathy
+    - Idiopathic Inflammatory Myositis
+    - Idiopathic Pulmonary Fibrosis
+    - IgA Nephropathy
+    - Immune Thrombocytopenic Purpura
+    - Immunoscience NOS
+    - Inflammatory Bowel Disease
+    - Juvenile Idiopathic Arthritis
+    - Kaposi's Sarcoma
+    - Lipodystrophy
+    - Liposarcoma
+    - Lupus Nephritis
+    - Lymphoma NOS
+    - Major Adverse Cardiac Event
+    - Mantle Cell Lymphoma
+    - Marginal Zone Lymphoma
+    - Melanoma
+    - Merkel Cell Carcinoma
+    - Mesothelioma
+    - Metabolic Disease
+    - Microscopic Colitis
+    - Multiple Myeloma
+    - Multiple Sclerosis
+    - Muscle Invasive Bladder Cancer
+    - Myelodysplastic Syndromes
+    - Myelofibrosis
+    - Nasopharyngeal Cancer
+    - Neuroendocrine Neoplasm
+    - Neuromuscular Disease
+    - Neuroscience NOS
+    - Non-Hodgkin Lymphoma
+    - Non-Muscle Invasive Bladder Cancer
+    - Non-Small Cell Lung Carcinoma
+    - Nonalcoholic Steatohepatitis
+    - Ovarian Cancer
+    - Pancreatic Cancer
+    - Peripheral T-Cell Lymphoma
+    - Pleomorphic Adenoma Carcinoma
+    - Polycythemia Vera
+    - Primary Sclerosing Cholangitis
+    - Progressive Supranuclear Palsy
+    - Prostate Cancer
+    - Psoriasis
+    - Psoriatic Arthritis
+    - Pulmonary Sarcoidosis
+    - Renal Cell Carcinoma
+    - Renal Transplant Rejection
+    - Rheumatoid Arthritis
+    - Rhinitis
+    - Sarcoma NOS
+    - Schizophrenia
+    - Scleroderma
+    - Sepsis
+    - Sjogren's Syndrome
+    - Skin Carcinoma NOS
+    - Small Cell Lung Carcinoma
+    - Squamous Cell Carcinoma
+    - Steroid-Resistant Nephrotic Syndrome
+    - Stroke
+    - Systemic Lupus Erythematosus
+    - Systemic Sclerosis
+    - Thrombosis
+    - Thyroid Cancer
+    - Triple-Negative Breast Cancer
+    - Ulcerative Colitis
+    - Urinary Bladder Cancer
+    - Uveitis
+    - Venous Thromboembolism
+    - Virology NOS
+  intervention:
+    title: Intervention
+    description: The intervention used in the clinical trial.
+    placeholder: Choose from dropdown
+    enum:
+    - Combination treatment
+    - Gene therapy
+    - Hormone therapy
+    - Immunotherapy
+    - Multiple modalities
+    - Radiotherapy
+    - Single treatment
+    - Surgery
+    - Targeted molecular therapy
+  principal_investigator:
+    title: Principal Investigator
+    description: The lead sponsor or principal investigator for the clinical trial.
+    placeholder: Dynamic Search
+    sortField: principal_investigator.cn
+    additionalProperties: true
+    $ref: _definitions.yaml#/bms_group_enum_config
+    type: object
+  regimen:
+    title: Regimen
+    description: Regimen of the clinical trial, include duration and treatment description.
+    placeholder: Input here
+    type: string
+  clinical_trial_status:
+    title: Clinical Trial Status
+    description: The status for the clinical trial.
+    placeholder: Choose from dropdown
+    enum:
+    - Ongoing
+    - Enrolling
+    - Completed
+    - Terminated
+    - Suspended
+  study_arms:
+    title: Study Arms
+    description: Description of the study arms.
+    placeholder: Input here
+    type: string
+  study_blinding_procedure:
+    title: Study Blinding Procedure
+    description: Description of the blinding protocol.
+    placeholder: Choose from dropdown
+    enum:
+    - Open
+    - Single blind
+    - Double blind
+    - Triple blind
+  study_design:
+    title: Study Design
+    description: Description of the study design - use NIH guidlelines for terminology.
+    placeholder: Choose from dropdown
+    enum:
+    - Placebo concurrent controlled
+    - Dose-comparison concurrent control
+    - No treatment concurrent control
+    - Active treatment concurrent control
+    - Historical control
+  study_phase:
+    title: Study Phase
+    description: The phase for a clinical trial.
+    placeholder: Choose from dropdown
+    enum:
+    - Phase 0
+    - Phase 1/2
+    - Phase 1
+    - Phase 2
+    - Phase 2a
+    - Phase 2b
+    - Phase 3
+    - Phase 4
+  therapeutic_area:
+    title: Therapeutic Area
+    description: The therapeutic area of the clinical trial.
+    placeholder: Choose from dropdown
+    enum:
+    - Cardiovascular
+    - Dermatology
+    - Fibrosis
+    - Hematology
+    - Immunoscience
+    - Metabolism
+    - Neuroscience
+    - Oncology
+    - Virology
+  study_type:
+    title: Study Type
+    description: The category that the clinical trial falls under.
+    placeholder: Choose from dropdown
+    enum:
+    - Cross-sectional
+    - Ex Vivo
+    - Interventional
+    - Interventional and Observational
+    - Longitudinal
+    - Normal Health Volunteer
+    - Observational
+    - Prospective
+    - RWD
+    - Rapid Autopsy
+    - Retrospective
+  program_id:
+    title: Program ID
+    description: The program ID for a trial.
+    type: string
+  status:
+    title: Status
+    description: The status for a trial.
+    type: string
+  drug_code:
+    title: Drug Code
+    description: The drug code for a trial.
+    type: string
+  study_id:
+    title: Study ID
+    description: The ID of the trial.
+    type: string
+  links:
+    title: Links
+    description: Links.
+    view: linkbuttons
+    placeholder: Links.
+    additionalProperties: true
+    objectFields:
+    - name: linkName
+      label: Link Name
+    - name: linkUrl
+      label: Link URL
+    type: array
+    items:
+      type: object
+  lead_sponsor:
+    title: Lead Sponsor
+    description: The lead sponsor for the trial
+    type: string
+  compound_number:
+    title: 'Compound #'
+    description: The compound number used in the trial.
+    type: string
+  project_publications:
+    title: Project Publications
+    description: Link(s) to publications related to the project.
+    placeholder: Input here
+    enum_source:
+      type: suggestion
+      global: false
+      enforce: auto_add
+    type: array
+    items:
+      type: string
+  research_project:
+    $ref: _definitions.yaml#/to_many
+  analysis_result:
+    $ref: _definitions.yaml#/to_many
+  program:
+    $ref: _definitions.yaml#/to_many
+  subject:
+    $ref: _definitions.yaml#/to_many
+  roles:
+    $ref: _definitions.yaml#/to_many
+  sample:
+    $ref: _definitions.yaml#/to_many

@@ -1,0 +1,200 @@
+title: Sample QC Metrics
+description: Metrics for sample quality control.
+type: object
+required:
+- type
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+  quality_metric:
+    title: Quality Metric
+    description: quality_metric (e.g. RIN:<RIN Number>, RQS:<RQS index>, etc.). Use
+      a field:value format and comma separate the list.
+    placeholder: Input here
+    type: string
+  QCFLAG:
+    title: QC Flag
+    description: 'Quality control flag: 0 = Data file delivered and passed vendor
+      QC, 1 = Data file delivered but failed vendor QC, 3 = Data file not delivered
+      because sample has not yet been assayed, 4 = Data file previously delivered'
+    placeholder: Choose from dropdown
+    enum:
+    - '0'
+    - '1'
+    - '2'
+    - '3'
+    - '4'
+    multiline: true
+  QC_Note:
+    title: QC Note
+    description: Quality control notes.
+    view: richtext
+    placeholder: Input here
+    type: string
+  FA_Load:
+    title: FA Load
+    description: Load for fragment analyzer.
+    placeholder: Input here
+    type: string
+  dil:
+    title: Dil
+    description: Dilution
+    placeholder: Input here
+    type: integer
+  CHECKSUM:
+    title: CHECKSUM
+    description: md5 checksum of data file
+    placeholder: Input here
+    type: string
+  Actual_Nucleic_Acid_Conc:
+    title: Actual Nucleic Acid Concentration
+    description: Actual nucleic acid concentration.
+    placeholder: Input here
+    type: string
+  abs_ratio_nucleicacid:
+    title: Abs Ratio Nucleic Acid
+    description: A260/A280 ratio indicating the type of nucleic acid present (dsDNA
+      or RNA).
+    placeholder: Input here
+    type: integer
+  abs_ratio_contaminants:
+    title: Abs Ratio Contaminants
+    description: A260/A230 ratio indicating how contaminated the sample is.
+    placeholder: Input here
+    type: integer
+  Percent_Integrated_Area:
+    title: Percent Integrated Area
+    description: Percent integrated area (area under the curve).
+    placeholder: Input here
+    type: integer
+  conc_nucleicacid:
+    title: Concentration of Nucleic Acid
+    description: The concentration of the nucleic acid sample used.
+    placeholder: Input here
+    type: integer
+  total_nucleicacid:
+    title: Total Nucleic Acid
+    description: The total ng value of the nucleic acid sample used.
+    placeholder: Input here
+    type: integer
+  Fragment_Analyzer_Dil_Factor:
+    title: Fragment Analyzer Dilution Factor
+    description: Dilution factor for fragment analyzer.
+    placeholder: Input here
+    type: integer
+  Fragment_Analyzer_Final_Conc:
+    title: Fragment Analyzer Final Conc
+    description: Final concentration for fragment analyzer (ng/uL).
+    placeholder: Input here
+    type: integer
+  Fragment_Analyzer_RQN:
+    title: Fragment Analyzer RQN
+    description: RNA Quality Number (RQN) for fragment analyzer, equivalent and interchangeable
+      with RIN.
+    placeholder: Input here
+    type: string
+  Assigned_conc:
+    title: Assigned Conc
+    description: Assigned nucleic acid concentration.
+    placeholder: Input here
+    type: integer
+  Calibrated_conc:
+    title: Calibrated Conc
+    description: Calibrated nucleic acid concentration.
+    placeholder: Input here
+    type: integer
+  clusters_raw:
+    title: Raw Clusters
+    description: Number of raw clusters in this lane. For patterened flow cells, the
+      number of raw clusters is equal to the number of wells on the flow cell.
+    placeholder: Input here
+    multiline: true
+    type: integer
+  clusters_PF:
+    title: Clusters PF
+    description: Number of clusters passing filter in this lane.
+    placeholder: Input here
+    type: integer
+  reads_PF:
+    title: Reads PF
+    description: The sum of all bases in clusters that passed filtering for the entire
+      project.
+    placeholder: Input here
+    type: integer
+  Peak_Molarity:
+    title: Peak Molarity
+    description: Molarity of the peak analyzed.
+    placeholder: Input here
+    type: integer
+  Peak_comment:
+    title: Peak Comment
+    description: Comment regarding the peak analyzed.
+    placeholder: Input here
+    type: string
+  percent_perfect_barcode:
+    title: Percent Perfect Barcode
+    description: Percentage of index reads in this sample which perfectly matched
+      the given index.
+    placeholder: Input here
+    type: integer
+  percent_one_mismatch:
+    title: Percent One Mismatch
+    description: Percentage of the index reads in this sample which had 1 mismatch
+      to given index.
+    placeholder: Input here
+    type: integer
+  percent_PF_clusters:
+    title: Percentage PF Clusters
+    description: The percentage of clusters that passed filtering.
+    placeholder: Input here
+    type: integer
+  percent_Q30_Bases:
+    title: Percent Q30 Bases
+    description: Yield of bases with Q30 or higher from clusters passing filter divided
+      by total yield of clusters passing filter.
+    placeholder: Input here
+    type: integer
+  Mean_Quality_Score:
+    title: Mean Quality Score
+    description: The total sum of quality scores of bases from clusters passing filter
+      divided by total yield of bases from clusters passing filter.
+    placeholder: Input here
+    multiline: true
+    type: integer
+  NGS_rfu:
+    title: NGS RFU
+    description: Relative flourescence units.
+    placeholder: Input here
+    type: string
+  negative_control_acceptable:
+    title: Negative Control Acceptable
+    description: Is the negative control for the sample acceptable?
+    view: radio
+    enum:
+    - 'Yes'
+    - 'No'
+  sample_LDD:
+    title: Sample LDD
+    description: LDD (Least Detectable Dose)-determined as the mean + 3 standard deviations
+      of 20 blank readings. Results below the LDD will be more variable than results
+      above the LDD.
+    placeholder: Input here
+    multiline: true
+    type: integer
+  sample_LLOQ:
+    title: Sample LLOQ
+    description: LLOQ (Lower Limit of Quantitation)-lowest concentration of an analyte
+      in a sample that can be reliably detected and at which the total error meets
+      the laboratory's requirements for accuracy.
+    placeholder: Input here
+    multiline: true
+    type: integer
+  sample_ULOQ:
+    title: Sample ULOQ
+    description: ULOQ (Upper Limit of Quantitation)-highest concentration of an analyte
+      in a sample that can be reliably detected and at which the total error meets
+      the laboratory's requirements for accuracy.
+    placeholder: Input here
+    multiline: true
+    type: integer
+  sample:
+    $ref: _definitions.yaml#/to_many

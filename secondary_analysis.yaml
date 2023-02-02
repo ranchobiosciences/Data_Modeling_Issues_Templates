@@ -1,0 +1,49 @@
+title: Secondary Analysis
+description: 'Secondary analysis describes a process performed on a dataset or set
+  of data to analyze, visualize, or convert raw data  into another interpretable form.
+
+  '
+type: object
+required:
+- type
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+  analysis_name:
+    title: Analysis Name
+    description: Name of the analysis.
+    placeholder: Input here
+    type: string
+  analysis_date:
+    title: Analysis Date
+    description: Date that the analysis was performed.
+    placeholder: yyyy-mm-dd
+    format: date
+    uiDateFormat: MM-DD-YYYY
+    type: string
+  analysis_software:
+    title: Analysis Software
+    description: Software, program, package and/or language that is used to perform
+      the analysis.
+    placeholder: Choose from dropdown
+    enum:
+    - FlowJo
+    - flowViz
+    - cytotree
+    - tSNE
+    - other - R
+    - other - python
+  cluster_info:
+    title: Cluster Info
+    description: Flow cytometry cluster assigned by analysis.
+    placeholder: Input here
+    type: string
+  assay:
+    $ref: _definitions.yaml#/to_many
+  dataset:
+    $ref: _definitions.yaml#/to_many
+  analysis_result:
+    $ref: _definitions.yaml#/to_many
+  research_project:
+    $ref: _definitions.yaml#/to_many
+  lab_experiment:
+    $ref: _definitions.yaml#/to_many

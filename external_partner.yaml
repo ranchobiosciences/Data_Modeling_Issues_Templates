@@ -1,0 +1,67 @@
+title: External Partner
+description: Partner for a research project external to BMS.
+type: object
+required:
+- type
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+  partner_name:
+    title: Partner Name
+    description: Name of external partner.
+    placeholder: Input here
+    type: string
+  partner_ID:
+    title: External Partner ID
+    description: External Partner ID.
+    placeholder: Input here
+    type: string
+  partner_projectID:
+    title: Parter Project ID
+    description: Project ID specific to an engagement with an external partner.
+    placeholder: Input here
+    type: string
+  BMS_sponsor:
+    title: BMS Sponsor
+    description: The BMS representative who holds the relationship with external company
+      and oversees this engagement.
+    placeholder: Dynamic Search
+    sortField: BMS_sponsor.cn
+    additionalProperties: true
+    $ref: _definitions.yaml#/bms_group_enum_config
+    type: object
+  partner_poc:
+    title: Partner Point of Contact
+    description: Partner Point of Contact (Delegate) who will be responsible for on-boarding,
+      review, and off-boarding of partner identities.
+    placeholder: Input here
+    type: string
+  partner_poc_email:
+    title: Partner Point of Contact Email
+    description: Partner Point of Contact email.
+    placeholder: Input here
+    type: string
+  engagement_startdate:
+    title: Engagement Start Date
+    description: Start date of the Engagement.
+    placeholder: yyyy-mm-dd
+    format: date
+    uiDateFormat: MM-DD-YYYY
+    type: string
+  engagement_enddate:
+    title: Engagement End Date
+    description: End date of the Engagement.
+    placeholder: yyyy-mm-dd
+    format: date
+    uiDateFormat: MM-DD-YYYY
+    type: string
+  engagement_justification:
+    title: Engagement Justification
+    description: Description of the need and scope of the Engagement.
+    placeholder: Input here
+    type: string
+  research_project:
+    $ref: _definitions.yaml#/to_many
+  data_product:
+    $ref: _definitions.yaml#/to_many
+  roles:
+    $ref: _definitions.yaml#/to_many

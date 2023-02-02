@@ -1,255 +1,68 @@
-$schema: 'bioinformatics_pipline'
-
-id: 'bioinformatics_pipeline'
 title: Bioinformatics Pipeline
-title_submitter: Submitter
-identifierPrefix: BP
+description: A set of bioinformatics algorithms, when executed in a predefined sequence
+  to process NGS data, is collectively referred to as a bioinformatics pipeline.
 type: object
-nodeTerms: null
-namespace: self
-category: administrative
-description: A set of bioinformatics algorithms, when executed in a predefined sequence to process NGS data, is collectively referred to as a bioinformatics pipeline.
-additionalProperties: false
-validators: null
-
-uiSettings:
-  icon: analytics
-  iconStyle: material-icons-outlined
-  color: rgb(255, 236, 205)
-  uiPath: /datasetcatalog/bioinformatics_pipeline
-  plural: Bioinformatics Pipelines
-  globalSearchSettings:
-    searchFields:
-      - pipeline_name
-      - identifier
-    displayFields:
-      - pipeline_name
-      - identifier
-      - id
-  displayField: pipeline_name
-  displaySubField: pipeline_description
-  defaultSortField: id
-  primaryPersonField: pipeline_owner # User for email notifications
-  editValidationUserFields: # List of user field to allow edit node
-    - pipeline_owner.uid
-    - created_by
-  nodeIdentifier: id
-  #abacSchemaName:
-  createForm:
-    maxRows: 11
-    maxCols: 2
-    buttonLabel: Create Bioinformatics Pipeline
-  myNodesAdditionalFields:
-    - pipeline_owner.uid
-  expandFilterOptionsByDefault: true
-  dataFilterField:
-    genome_reference:
-      label: Genome Reference
-      view: dropdown
-      tooltip: true
-    identifier:
-      label: Identifier
-      view: dynamic
-      tooltip: true
-      optionsPromiseLimit: 100
-  tableField:
-    pipeline_id: Pipeline ID
-    pipeline_description: Pipeline Description
-    pipeline_name: Pipeline Name
-    pipeline_owner: Pipeline Owner
-    genome_reference: Genome Reference
-  searchField:
-    - pipeline_name
-    - pipeline_id
-    - pipeline_description
-    - pipeline_owner.uid
-    - genome_reference
-    - tags
-    - identifier
-  fullNodeView: true
-  fullNodeViewForm:
-    nameField: pipeline_name
-    personFields: 
-      - name: pipeline_owner
-        label: Owner
-    upperFields:
-      - name: links
-      - name: pipeline_description
-      - name: tags
-        label: Tags
-    metadataFields:
-      - name: genome_reference
-        label: Genome Reference
-      - name: left_flanking_sequence
-        label: Left Flanking Sequence
-      - name: right_flanking_sequence
-        label: Right Flanking Sequence
-    relationshipFields:
-      - name: relationships
-        label:
-    bottomFields:
-      - name: files
-        label:
-
-  fullNodeRegisterForm:
-    readonlyFields:
-      - identifier
-    panels:
-      - title: Overview
-        fields:
-          - name: pipeline_name
-            label: Pipeline Name
-            description: Title of the bioinformatics pipeline.
-          - name: pipeline_owner
-            label: Owner
-            description: Department or person responsible for the pipeline.
-          - name: pipeline_description
-            label: Description
-
-      - title: Details
-        optional: true
-        fields:
-          - name: genome_reference
-            label: Genome Reference
-            description: Name of the reference genome, or genome reference and gene model.
-          - name: Left_flanking_sequence
-            label: Left Flanking Sequence
-          - name: Right_flanking_sequence
-            label: Right Flanking Sequence
-
-      - title: Related Metadata
-        optional: true
-        fields:
-          - name: relationships
-            label:
-            width: 12
-          - name: tags
-            label: Tags
-            width: 12
-
-      - title: Files
-        fields:
-          - name: files
-            label:
-
-  fullNodeEditForm:
-    readonlyFields:
-        - identifier
-    panels:
-      - title: Overview
-        fields:
-          - name: pipeline_name
-            label: Pipeline Name
-            description: Title of the bioinformatics pipeline.
-          - name: pipeline_owner
-            label: Owner
-            description: Department or person responsible for the pipeline.
-          - name: pipeline_description
-            label: Description
-
-      - title: Details
-        optional: true
-        fields:
-          - name: genome_reference
-            label: Genome Reference
-            description: Name of the reference genome, or genome reference and gene model.
-          - name: Left_flanking_sequence
-            label: Left Flanking Sequence
-          - name: Right_flanking_sequence
-            label: Right Flanking Sequence
-
-      - title: Related Metadata
-        optional: true
-        fields:
-          - name: relationships
-            label:
-            width: 12
-          - name: tags
-            label: Tags
-            width: 12
-
-      - title: Files
-        fields:
-          - name: files
-            label:
-
-
-systemProperties:
-  - id
-  - _id
-  - created_datetime
-  - updated_datetime
-  - created_by
-  - submitter_id
-  - type
-  - state
-  - identifier
-
 required:
-  - type 
-  # - pipeline_name
-
-uniqueKeys:
-  - [id]
-
-links:
-  - name: dataset
-    backref: bioinformatics_pipeline
-    parent_title: Datasets # what's rendered for this node
-    child_title: Bioinformatics Pipelines
-    label: member_of
-    target_type: dataset
-    multiplicity: many_to_many
-    required: false
-
+- type
 properties:
-  $ref: '_definitions.yaml#/ubiquitous_properties'
-
+  $ref: _definitions.yaml#/ubiquitous_properties
   pipeline_name:
     title: Pipeline Name
     description: Title of the bioinformatics pipeline.
-    type: string
     placeholder: Input here
-
+    type: string
   pipeline_description:
     title: Pipeline Description
     description: Description of the pipelines' objectives.
-    type: string
     placeholder: Input here
-
+    type: string
   pipeline_owner:
     title: Owner
     description: Department or person responsible for the pipeline.
-    type: object
-    sortField: pipeline_owner.cn
     placeholder: Dynamic Search
+    sortField: pipeline_owner.cn
     additionalProperties: true
-    $ref: '_definitions.yaml#/bms_group_enum_config'
-
+    $ref: _definitions.yaml#/bms_group_enum_config
+    type: object
   genome_reference:
     title: Genome Reference
     description: Name of the reference genome, or genome reference and gene model.
-    type: array
-    multiline: true
     placeholder: Choose from dropdown
+    multiline: true
+    type: array
     items:
       enum:
-        - hg37
-        - hg38
-
+      - hg19
+      - hg38
+      - mm10
+      - canFam3
+      - criGri1
+      - rn6
+      - GRCh38-ensembl93
+      - GRCm38-ensembl91
+      - mm10-3.0.0
+      - MacFas5.0-ensembl97
+      - Rnor6.0-ensembl98
+      - CanFam3.1-ensembl89
+      - mm10-3.0.0_premrna
+      - Rnor6.0ERCC-ensembl98_premrna
+      - GRCh38-2020-A_premrna
+      - vdj-GRCh38-alts-ensembl-3.1.0
+      - refdata-cellranger-vdj-GRCm38-alts-ensembl-3.1.0
+      - atac-mm10-1.1.0
   left_flanking_sequence:
     title: Left Flanking Sequence
-    description: 'This is a sequence to be trimmed prior to alignment.'
-    type: string
-    multiline: true
+    description: 'This is a sequence to be trimmed prior to alignment. ex: P-20210101-0001.
+      Required for CRISPR gRNA screens.'
     placeholder: Input here
-
+    multiline: true
+    type: string
   right_flanking_sequence:
     title: Right Flanking Sequence
-    description: This is a sequence to be trimmed prior to alignment.
-    type: string
-    multiline: true
+    description: This is a sequence to be trimmed prior to alignment. Required for
+      CRISPR gRNA screens.
     placeholder: Input here
-
+    multiline: true
+    type: string
   dataset:
-    $ref: '_definitions.yaml#/to_many'
+    $ref: _definitions.yaml#/to_many

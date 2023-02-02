@@ -1,0 +1,284 @@
+title: Raw
+type: object
+required:
+- type
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+  bmsprojectid:
+    title: BMSPROJECTID
+    description: BMS Project Id. Format P-yyyymmdd-9999
+    placeholder: Input here
+    type: string
+  studyid:
+    title: STUDYID
+    description: BMS Protocol Number. Format = XXXXX-XXX, where X is any uppercase
+      Latin letter (A-Z) or a digit (0-9). For a project without a defined clinical
+      trial ID, such as a discovery or TR&D project, format will be something like
+      DISXX-XXX, e.g. DISCA-PD1 for an oncology (CA) discovery project related to
+      PD1, or TRDXX-XXX, e.g. TRDCA-FUG.
+    placeholder: Input here
+    type: string
+  usubjid:
+    title: USUBJID
+    description: Subject identifier. Format = XX999999-1-1. The first string is STUDYID,
+      without the dash. The second string is investigator SITEID. The third string
+      is SUBJID.
+    placeholder: Input here
+    type: string
+  vslabl:
+    title: VSLABL
+    description: Visit Labels are defined by BMS.
+    placeholder: Input here
+    type: string
+  visitd:
+    title: VISITD
+    description: 'Visit Date. Value is optional. Format: DD-MMM-YYYY or YYYY-MM-DD,
+      e.g. 24-AUG-2001 or 2001-08-24. Not case sensitive.'
+    placeholder: DD-MMM-YYYY or YYYY-MM-DD
+    format: date
+    type: string
+  sex:
+    title: SEX
+    description: Subject sex. Preferred format is one of {F, M, O}.
+    placeholder: Choose from dropdown
+    enum:
+    - F
+    - M
+    - O
+    - I
+  accnum:
+    title: ACCNUM
+    description: Accession number assigned by the central lab for the collection timepoint
+    placeholder: Input here
+    type: string
+  barcode:
+    title: BARCODE
+    description: Number associated with barcode
+    placeholder: Input here
+    type: string
+  barcodesrc:
+    title: BARCODESRC
+    description: Source of the barcode
+    placeholder: Input here
+    type: string
+  spectype:
+    title: SPECTYPE
+    description: Specimen type
+    placeholder: Choose from dropdown
+    enum:
+    - TUMOR_4 10UM FFPE CURL
+    - TUMOR_BLOCK
+    - TUMOR_EXTRACTED DNA
+    - TUMOR_EXTRACTED RNA
+    - TUMOR_RNALATER
+    - TUMOR_UNSTAINED TISSUE SLIDE
+    - NORMAL_EXTRACTED DNA
+    - NORMAL_EXTRACTED RNA
+    - NORMAL_PAXGENE
+    - NORMAL_PBMC
+    - NORMAL_WHOLE BLOOD - SNP
+    - ADIPOSE TISSUE
+    - AMNIOTIC FLUID
+    - AQUEOUS HUMOR
+    - ARTERIAL BLOOD
+    - ARTERIAL CORD BLOOD
+    - ASPIRATE
+    - ATHEROSCLEROTIC PLAQUE
+    - BILE
+    - BLOOD
+    - BONE
+    - BONE MARROW
+    - BREAST MILK
+    - BUFFY COAT
+    - CALCULUS
+    - CAPILLARY BLOOD
+    - CARDIAC MUSCLE TISSUE
+    - CEREBROSPINAL FLUID
+    - CERUMEN
+    - CIRCULATING TUMOR CELL
+    - COLOSTRUM
+    - CORD BLOOD
+    - CORD SERUM
+    - DERMAL TISSUE
+    - DIALYSIS FLUID
+    - EMESIS
+    - EPIDERMAL TISSUE
+    - ERYTHROCYTES
+    - EXHALED BREATH CONDENSATE
+    - EXPIRED AIR
+    - EXUDATE
+    - FLUID
+    - GASTRIC CONTENTS
+    - HAIR
+    - HAIR FOLLICLE
+    - INFRANATANT, PLASMA
+    - INFRANATANT, PLEURAL FLUID
+    - INFRANATANT, SERUM
+    - INTERSTITIAL FLUID
+    - ISOLATE
+    - KERATINOCYTE
+    - LAVAGE FLUID
+    - LOCHIA
+    - LUNG SURFACTANT
+    - LYMPH
+    - LYSATE
+    - MECONIUM
+    - MENSTRUAL BLOOD
+    - MONOCYTE
+    - MUCUS
+    - NAIL
+    - PERIPHERAL BLOOD MONONUCLEAR CELL
+    - PERSPIRATION
+    - PLASMA
+    - PLATELET
+    - PLATELET POOR PLASMA
+    - PLATELET RICH PLASMA
+    - PLEURAL FLUID
+    - PROSTATIC FLUID
+    - PUS
+    - SALIVA
+    - SEBUM
+    - SEMEN
+    - SEMINAL FLUID
+    - SERUM
+    - SERUM OR PLASMA
+    - SKELETAL MUSCLE TISSUE
+    - SKIN TISSUE
+    - SMEGMA
+    - SMOOTH MUSCLE TISSUE
+    - SOFT TISSUE
+    - SPERMATOZOON
+    - SPUTUM
+    - STOOL
+    - STRIATED MUSCLE TISSUE
+    - SUPERNATANT, PLASMA
+    - SUPERNATANT, PLEURAL FLUID
+    - SUPERNATANT, SERUM
+    - SYNOVIAL FLUID
+    - TISSUE
+    - TRANSUDATE
+    - TUMOR TISSUE
+    - URINE
+    - VENOUS BLOOD
+    - VENOUS CORD BLOOD
+    - VITREOUS HUMOR
+  vendorname:
+    title: VENDORNAME
+    description: Lab/Vendor responsible for the analysis.
+    placeholder: Input here
+    type: string
+  assay_type:
+    title: assay_type
+    description: Description of Assay
+    placeholder: Choose from dropdown
+    enum:
+    - WES
+    - RNA-Seq
+    - WGS
+    - Edge-Seq
+    - TSO500
+  poolid:
+    title: POOLID
+    description: The number assigned to the pool of samples being analyzed (Vendor
+      sample ID.) Note that a pool might contain only a single sample.
+    placeholder: Input here
+    type: integer
+  vrunid:
+    title: VRUNID
+    description: Vendor run ID - unique for every sample analysis event
+    placeholder: Input here
+    type: string
+  vrunidsuffix:
+    title: VRUNIDSUFFIX
+    description: Vendor run ID suffix. Used when have multiple data files from same
+      VRUNID (e.g. 1,2)
+    placeholder: Input here
+    type: integer
+  repnum:
+    title: REPNUM
+    description: 'Repeat ID. Format = a positive integer: 1 for the first run (VRUNID)
+      for a given POOLID; 2, 3, ... for subsequent runs (VRUNID values) of the same
+      POOLID.'
+    placeholder: Input here
+    type: integer
+  repreason:
+    title: REPREASON
+    description: Free text, giving reason for repeat run of specimen
+    placeholder: Input here
+    type: string
+  batchid:
+    title: BATCHID
+    description: Run batch (e.g., a plate ID)
+    placeholder: Input here
+    type: string
+  wellid:
+    title: WELLID
+    description: Well ID if batch is a plate, in format A01, A02,...,H12. Value is
+      mandatory if assay run on plates.
+    placeholder: Input here
+    type: string
+  rundate:
+    title: RUNDATE
+    description: 'Assay Run Date date- format: DD-MMM-YYYY month abbreviation must
+      be capitalized - e.g., 08-AUG-2001'
+    placeholder: DD-MMM-YYYY
+    format: date
+    type: string
+  runtime:
+    title: RUNTIME
+    description: 'Assay Run Time - 24 hr format: HHMMSS - e.g. 131000 If not collected
+      this field is empty.'
+    placeholder: Input here
+    type: integer
+  qcflag:
+    title: QCFLAG
+    description: Quality-control flag. P = Pass, F = Fail. Set to F if, e.g. a given
+      data file should be excluded from analyses, perhaps because those data are to
+      be replaced with data from a re-run.
+    placeholder: Choose from dropdown
+    enum:
+    - P
+    - F
+  filename:
+    title: FILENAME
+    description: Name of data file, including full path after <STUDYID>, e.g. <BATCH-NAME>/<RUN-NAME>/<FILENAME>.
+      Do not begin with a "/".
+    placeholder: Input here
+    type: string
+  checksum:
+    title: CHECKSUM
+    description: Checksum (MD5 digest) of data file
+    placeholder: Input here
+    type: string
+  vhyb:
+    title: VHYB
+    description: VHYB
+    placeholder: Input here
+    type: string
+  vlane:
+    title: VLANE
+    description: VLANE
+    placeholder: Input here
+    type: string
+  vbarcode:
+    title: VBARCODE
+    description: VBARCODE
+    placeholder: Input here
+    type: string
+  technology:
+    title: TECHNOLOGY
+    description: TECHNOLOGY
+    placeholder: Input here
+    type: string
+  indication:
+    title: INDICATION
+    description: The indication for a trial
+    placeholder: Input here
+    type: string
+  raw_data:
+    title: RAW_DATA
+    description: RAW_DATA
+    placeholder: Input here
+    type: object
+  dataset:
+    $ref: _definitions.yaml#/to_many

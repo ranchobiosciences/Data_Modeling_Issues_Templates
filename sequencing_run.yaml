@@ -1,0 +1,162 @@
+title: Sequencing Run
+description: Parameters for a sequencing experiment pertaining to the inputs for the
+  seuqencer.
+type: object
+required:
+- type
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+  sequencing_run_ID:
+    title: Sequencing Run ID
+    description: Unique ID for the sequencing run. This ID may be applicable to a
+      batch of samples run together.
+    placeholder: Input here
+    type: string
+  sequencing_run_name:
+    title: Sequencing Run Name
+    description: Name of the sequencing run.
+    placeholder: Input here
+    type: string
+  sequencing_run_parameters:
+    title: Sequencing Run Parameters
+    description: Description of the sequencing run.
+    placeholder: Input here
+    type: string
+  sequencing_run_type:
+    title: Sequencing Run Type
+    description: Sequenced as single-end or paired-end?
+    placeholder: Choose from dropdown
+    enum:
+    - single-end
+    - paired-end
+  ngs_platform:
+    title: NGS Platform
+    description: The NGS assay platform.
+    placeholder: Choose from dropdown
+    enum:
+    - Illumina
+    - PacBio
+    - Oxford NanoPore
+    - Ion Torrent
+    - Illumina Genome Analyzer
+    - Illumina Genome Analyzer II
+    - Illumina Genome Analyzer IIx
+    - Illumina HiScan HQ
+    - Illumina HiSeq (unspecified)
+    - Illumina HiSeq 1000
+    - Illumina HiSeq 1500
+    - Illumina HiSeq 2000
+    - Illumina HiSeq 2500 High Throughput
+    - Illumina HiSeq 2500 Rapid Run
+    - Illumina HiSeq 2500 (unspecified RR or HT)
+    - Illumina HiSeq 3000
+    - Illumina HiSeq 4000
+    - Illumina HiSeq X
+    - Illumina MiniSeq
+    - Illumina MiSeq
+    - Illumina NextSeq (unspecified)
+    - Illumina NextSeq 500
+    - Illumina NovoSeq 6000
+    - ThermoFisher Ion S5
+  library_kit_used:
+    title: Library Kit Used
+    description: Indication of the assay-defined library kit used to sequence this
+      sample batch.
+    placeholder: Choose from dropdown
+    type: array
+    items:
+      enum:
+      - DNAseq
+      - ATAC-Seq
+      - ChIP-Seq
+      - CITE-Seq
+      - CUT&RUN
+      - CRISPR knockout screen
+      - CRISPRa activation screen
+      - CRISPRi interference screen
+      - MARS-Seq
+      - microbiome targeted RNA sequencing
+      - microbiome total RNA sequencing
+      - microbiome whole genome sequencing (WGS)
+      - microRNA-Seq
+      - mRNA-Seq
+      - PRISM screen
+      - ribosomal profiling
+      - single cell ATAC-Seq
+      - single nuclei ATAC-Seq
+      - single cell DNA-Seq
+      - single cell mRNA-Seq
+      - single nuclei mRNA-Seq
+      - single cell total RNA-Seq
+      - targeted (DNA) resequencing
+      - targeted RNA-Seq
+      - total RNA-Seq
+      - whole exome sequencing (WES)
+      - whole genome bisulfite sequencing (WGBS)
+      - whole genome sequencing (WGS)
+      - Edge-Seq
+      - Gene Expression (GEX)
+      - DNA/CNV
+      - Perturb-Seq
+      - Spatial Transcriptomics
+      - VDJ
+      - CRISPR gRNA screens
+      - RNA-Seq
+      - WES
+      - WGS
+      - 10X Visium
+      - Long read sequencing
+      - MAGeCK CRISPR Screen
+      - scTCR
+      - SPLiT-seq
+      - CRISPR-DAV
+      - Multiome ATAC + Gene Expression
+  read_length:
+    title: Read Length
+    description: Length of the sequencing read.
+    placeholder: Choose from dropdown
+    enum:
+    - 50 bp
+    - 100 bp
+    - 150 bp
+    - 200 bp
+    - 1000 bp
+  flow_cell_id:
+    title: Flow Cell ID
+    description: Flow cell ID.
+    placeholder: Input here
+    type: string
+  spike_ins:
+    title: Spike-in Used
+    description: Spike-in Used
+    placeholder: Choose from dropdown
+    enum:
+    - Drosophila
+    - ERCC
+    - Yeast
+    - NA
+    - NONE
+    - phiX
+  sequencing_run_date:
+    title: Sequencing Run Date
+    description: Date of the sequencing run.
+    placeholder: yyyy-mm-dd
+    format: date
+    uiDateFormat: MM-DD-YYYY
+    type: string
+  sequencing_pool_specs:
+    title: Sequencing Pool Specifications
+    description: Specifications for the pooled samples.
+    placeholder: Input here
+    type: string
+  internal_ngs_reference_control:
+    title: Internal NGS Reference Control
+    description: Ex. UHR, UMR, URR for RNAseq, NA12878 for WGS
+    placeholder: Input here
+    type: string
+  sample:
+    $ref: _definitions.yaml#/to_many
+  bioinformatics_pipeline:
+    $ref: _definitions.yaml#/to_many
+  assay:
+    $ref: _definitions.yaml#/to_many

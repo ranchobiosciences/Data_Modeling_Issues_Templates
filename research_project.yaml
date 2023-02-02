@@ -1,0 +1,89 @@
+title: Research Project
+description: 'Typically the largest category for research activity in an organization.  Encompasses
+  large range of activities, starting with preclinical experiments, followed by clinical
+  trials, and post-market activities. (Synonyms: Research Initiative, Umbrella Study,
+  Research Campaign, Research Consortium)
+
+  '
+type: object
+required:
+- type
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+  research_project_title:
+    title: Title
+    description: The title of the research project.
+    placeholder: Input here
+    type: string
+  research_project_type:
+    title: Type
+    description: The type of the project.
+    placeholder: Choose from dropdown
+    enum:
+    - Clinical (non trial human research)
+    - Clinical trial
+    - Consortium
+    - Development
+    - Discovery (preclinical)
+    - Multimodal
+    - Translational
+  research_project_description:
+    title: Description
+    description: The description of the research project including its goals and scope.
+      Scientific questions being studied, approaches, anticipated findings, etc.
+    view: richtext
+    placeholder: Enter a project description here
+    type: string
+  investigator_name:
+    title: Principal Investigator
+    description: The principal investigator on this research project.
+    placeholder: Dynamic Search
+    sortField: investigator_name.cn
+    additionalProperties: true
+    $ref: _definitions.yaml#/bms_group_enum_config
+    type: object
+  research_project_stakeholder:
+    title: Stakeholder
+    description: A person or persons with vested interest in the outcomes of a research
+      project.
+    placeholder: Dynamic Search
+    additionalProperties: true
+    $ref: _definitions.yaml#/bms_group_enum_config
+    type: array
+    items:
+      type: object
+  research_project_status:
+    title: Status
+    description: The status of the project.
+    placeholder: Choose from dropdown
+    enum:
+    - Planning
+    - In Progress
+    - Completed
+    - Terminated
+    - On Hold
+  research_project_completion_date:
+    title: Completion Date
+    description: The completion date for the project.
+    placeholder: yyyy-mm-dd
+    format: date
+    uiDateFormat: MM-DD-YYYY
+    type: string
+  project_publications:
+    title: Project Publications
+    description: Link(s) to publications related to the project.
+    view: linkbuttons
+    placeholder: Links.
+    additionalProperties: true
+    objectFields:
+    - name: linkName
+      label: Link Name
+    - name: linkUrl
+      label: Link URL
+    type: array
+    items:
+      type: object
+  programs:
+    $ref: _definitions.yaml#/to_many
+  dataset:
+    $ref: _definitions.yaml#/to_many
