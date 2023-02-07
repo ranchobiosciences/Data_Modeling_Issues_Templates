@@ -8,7 +8,7 @@ required:
 - type
 properties:
   $ref: _definitions.yaml#/ubiquitous_properties
-  lab_experiment_title:
+  title:
     title: Lab Experiment Title
     description: Title of the individual laboratory experiment.
     placeholder: Input here
@@ -31,11 +31,6 @@ properties:
     placeholder: yyyy-mm-dd
     format: date
     uiDateFormat: MM-DD-YYYY
-    type: string
-  test:
-    title: test
-    description: test
-    placeholder: Input Here
     type: string
   assay:
     $ref: _definitions.yaml#/to_many
