@@ -32,11 +32,6 @@ properties:
     format: date
     uiDateFormat: MM-DD-YYYY
     type: string
-  test:
-    title: test
-    description: test
-    placeholder: Input Here
-    type: string
   assay:
     $ref: _definitions.yaml#/to_many
   sample:
