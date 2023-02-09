@@ -1,3 +1,5 @@
+$schema: https://mongodb://localhost:27017/api/schemaref/_schema_validator#
+id: https://mongodb://localhost:27017/api/permissions/data_product/schema
 title: Data Product
 description: Data product is an application that queries a collection of data, a summary
   of a collection of data, or a collection of data that is distinct from a dataset.

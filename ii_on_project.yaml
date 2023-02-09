@@ -1,3 +1,5 @@
+$schema: https://mongodb://localhost:27017/api/schemaref/_schema_validator#
+id: https://mongodb://localhost:27017/api/permissions/ii_on_project/schema
 title: II-ON Project
 description: A singular project aim
 type: object

@@ -1,3 +1,5 @@
+$schema: https://mongodb://localhost:27017/api/schemaref/_schema_validator#
+id: https://mongodb://localhost:27017/api/permissions/visit/schema
 title: Visit
 description: 'As part of a longitudinal experiment or clinical trial, a subject can
   have a visit, during which they may undergo  a treatment or have a sample taken

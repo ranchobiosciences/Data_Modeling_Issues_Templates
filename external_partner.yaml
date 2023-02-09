@@ -1,3 +1,5 @@
+$schema: https://mongodb://localhost:27017/api/schemaref/_schema_validator#
+id: https://mongodb://localhost:27017/api/permissions/external_partner/schema
 title: External Partner
 description: Partner for a research project external to BMS.
 type: object

@@ -1,3 +1,5 @@
+$schema: https://mongodb://localhost:27017/api/schemaref/_schema_validator#
+id: https://mongodb://localhost:27017/api/permissions/program/schema
 title: Program
 description: A BMS Asset, Target, Drug or combination of things that proceed through
   the BMS Pipeline.
