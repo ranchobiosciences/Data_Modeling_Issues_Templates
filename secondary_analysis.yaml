@@ -1,3 +1,5 @@
+$schema: https://rdc-dev-mongo.rbscomp.net/api/schemaref/_schema_validator#
+id: https://rdc-dev-mongo.rbscomp.net/api/secondary_analysis/schema
 title: Secondary Analysis
 description: 'Secondary analysis describes a process performed on a dataset or set
   of data to analyze, visualize, or convert raw data  into another interpretable form.
