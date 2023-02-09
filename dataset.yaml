@@ -1,3 +1,5 @@
+$schema: https://rdc-dev-mongo.rbscomp.net/api/schemaref/_schema_validator#
+id: https://rdc-dev-mongo.rbscomp.net/api/dataset/schema
 title: Dataset
 description: 'Dataset is a collection of data including research project and clinical
   trial information, especially of assay and experiment specifics.  Datasets may also
