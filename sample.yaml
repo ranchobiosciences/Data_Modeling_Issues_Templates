@@ -1,3 +1,5 @@
+$schema: https://rdc-dev-mongo.rbscomp.net/api/schemaref/_schema_validator#
+id: https://rdc-dev-mongo.rbscomp.net/api/sample/schema
 title: Sample
 description: A sample is a specimen taken from an organism at a specific visit (timepoint)
   that is used in experiments which may be subject to specific treatments.
@@ -9224,7 +9226,6 @@ properties:
     - MYD
     - MYS/Ms
     - MYS/MzRbrc
-    - N
     - N/St
     - NAK
     - NAKED
@@ -10589,7 +10590,6 @@ properties:
     - XVII/Bln
     - XVII/G
     - XVII/Rd
-    - Y
     - Y/An
     - Y/HeAoFs
     - Y/Wi
