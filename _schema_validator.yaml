@@ -1,0 +1,415 @@
+# Attention!!! Don't edit this file unless you know the implications of the changes
+
+# This file is used by both schematool and monarch to validate schemas prior to loading into the API.
+# Any additional functionality added to schemas (superset of JSON Schemea), for client-side or server-side
+# use should add validation rules here.
+
+# TODO:
+# enum_source
+# uiSettings - Done
+# links
+
+# _meta#uiSettings
+
+id: https://monarch.web-dev.bms.com/api/schemaref/_schema_validator#
+"$schema": http://json-schema.org/draft-04/schema#
+description: Core schema meta-schema
+definitions:
+  schemaArray:
+    type: array
+    minItems: 1
+    items:
+      "$ref": "#"
+  positiveInteger:
+    type: integer
+    minimum: 0
+  positiveIntegerDefault0:
+    allOf:
+      - "$ref": "#/definitions/positiveInteger"
+      - default: 0
+  simpleTypes:
+    enum:
+      - array
+      - boolean
+      - integer
+      - "null"
+      - number
+      - object
+      - string
+  stringArray:
+    type: array
+    items:
+      type: string
+    minItems: 1
+    uniqueItems: true
+type: object
+properties:
+  id:
+    type: string
+  "$schema":
+    type: string
+  description:
+    type: string
+  default: {}
+  multipleOf:
+    type: number
+    minimum: 0
+    exclusiveMinimum: true
+  maximum:
+    type: number
+  exclusiveMaximum:
+    type: boolean
+    default: false
+  minimum:
+    type: number
+  exclusiveMinimum:
+    type: boolean
+    default: false
+  maxLength:
+    "$ref": "#/definitions/positiveInteger"
+  minLength:
+    "$ref": "#/definitions/positiveIntegerDefault0"
+  pattern:
+    type: string
+    format: regex
+  additionalItems:
+    anyOf:
+      - type: boolean
+      - "$ref": "#"
+    default: {}
+  items:
+    anyOf:
+      - "$ref": "#"
+      - "$ref": "#/definitions/schemaArray"
+    default: {}
+  maxItems:
+    "$ref": "#/definitions/positiveInteger"
+  minItems:
+    "$ref": "#/definitions/positiveIntegerDefault0"
+  uniqueItems:
+    type: boolean
+    default: false
+  maxProperties:
+    "$ref": "#/definitions/positiveInteger"
+  minProperties:
+    "$ref": "#/definitions/positiveIntegerDefault0"
+  required:
+    "$ref": "#/definitions/stringArray"
+  additionalProperties:
+    anyOf:
+      - type: boolean
+      - "$ref": "#"
+    default: {}
+  definitions:
+    type: object
+    additionalProperties:
+      "$ref": "#"
+    default: {}
+  properties:
+    type: object
+    additionalProperties:
+      type: object
+      additionalProperties: true
+      properties:
+        enum:
+          type: array
+          minItems: 1
+          uniqueItems: true
+          items:
+            type: string
+        uiDateFormat:
+          type: string
+        multiline:
+          type: boolean
+        title:
+          type: string
+        colSpan:
+          type: integer
+        enum_source:
+          type: object
+          additionalProperties: true
+    default: {}
+  patternProperties:
+    type: object
+    additionalProperties:
+      "$ref": "#"
+    default: {}
+  dependencies:
+    type: object
+    additionalProperties:
+      anyOf:
+        - "$ref": "#"
+        - "$ref": "#/definitions/stringArray"
+  enum:
+    type: array
+    minItems: 1
+    uniqueItems: true
+    items:
+      type: string
+  type:
+    anyOf:
+      - "$ref": "#/definitions/simpleTypes"
+      - type: array
+        items:
+          "$ref": "#/definitions/simpleTypes"
+        minItems: 1
+        uniqueItems: true
+  format:
+    type: string
+  allOf:
+    "$ref": "#/definitions/schemaArray"
+  anyOf:
+    "$ref": "#/definitions/schemaArray"
+  oneOf:
+    "$ref": "#/definitions/schemaArray"
+  not:
+    "$ref": "#"
+  uiSettings:
+    # TODO:
+    # change additionalProperties: false above,
+    # Add rules for other uiSettings, e.g. icon, uiPath, etc... Added most of these rules (missing a few)
+    # Add rules for searchField, systemProperties, required?
+    anyOf: # for _meta schema uiSettings
+      - type: object
+        additionalProperties: false
+        properties:
+          showGlobalSearch:
+            type: boolean
+          globalSearchNodes:
+            type: array
+            items:
+              type: string
+          appNodes:
+            type: object
+            additionalProperties: true
+          navNodesGroups:
+            type: object
+            additionalProperties: true
+          navItems:
+            type: object
+            additionalProperties: true
+
+          propertyNames: #TODO: !!!!!! _meta isn't validated!!!!!!!!!
+            type: string
+          additionalProperties:
+            type: object
+            required:
+              - navPrimary
+
+          enableAccessRequest:
+            type: array
+            items:
+              type: string
+          nodeFilters:
+            type: object
+            additionalProperties: true
+          disableCreate:
+            type: array
+            items:
+              type: string
+          enableRelatedLink:
+            type: array
+            items:
+              type: string
+          enableRelatedCreate:
+            type: array
+            items:
+              type: string # todo: regex?
+          hideRelationships:
+            type: object
+            additionalProperties:
+              type: array
+              items:
+                type: string # todo: regex?
+          hideRelationshipsCreate:
+            type: object
+            additionalProperties:
+              type: array
+              items:
+                type: string # todo: regex?
+          navHideHome:
+            type: boolean
+          headerLabel:
+            type: string
+          navPrimary:
+            type: string
+          navNodes:
+            type: array
+            items:
+              type: string
+          pageTitles: 
+            type: array
+            items:
+              type: object
+              additionalProperties: true
+          routerNodes:
+            type: array
+            items:
+              type: string
+          enableMyNodesAdditionalFields:
+            type: boolean
+          homePage:
+            type: object
+            additionalProperties: true
+      - type: object # for primary schema uiSettings
+        additionalProperties: false
+        properties:
+          fullNodeViewForm:
+            type: object
+            additionalProperties: true # todo
+          fullNodeRegisterForm:
+            type: object
+            additionalProperties: true # todo
+          fullNodeEditForm:
+            type: object
+            additionalProperties: true # todo
+          join: # this needs to be deprecated
+            type: array
+            items:
+              type: string
+          disableCreate:
+            type: boolean
+          disableEdit:
+            type: boolean
+          localHorizontalBarAlignedRight:
+            type: boolean
+          expandFilterOptionsByDefault:
+            type: boolean
+          dataFilterField:
+            type: object
+            additionalProperties: true
+          horizontalFilterPanel:
+            type: array
+            items:
+              type: object
+              additionalProperties: true
+          myNodesAdditionalFields:
+            type: array
+            items:
+              type: string
+          accessForm:
+            type: object
+            additionalProperties: true
+          accessReviewForm:
+            type: object
+            additionalProperties: true
+          globalSearchSettings:
+            type: object
+            additionalProperties: true
+          createForm:
+            type: object
+            additionalProperties: false
+            properties:
+              maxRows:
+                type: integer
+              maxCols:
+                type: integer
+              buttonLabel:
+                type: string
+          joins:
+            type: array
+            items:
+              oneOf:
+                - type: string
+                - type: object
+          searchField:
+            type: array
+            items:
+              type: string
+          searchPlaceholder:
+            type: string
+          renderColCount:
+            type: integer
+          url:
+            type: string
+          uiPath:
+            type: string
+          color:
+            type: string
+          fullNodeView:
+            type: boolean
+          abacSchemaName:
+            type: string
+          hideAttachments:
+            type: boolean
+          icon:
+            type: string
+          iconStyle:
+            type: string
+          routes:
+            type: array
+          plural:
+            type: string
+          displayField:
+            type: string
+          displaySubField:
+            type: string
+          defaultSortField:
+            type: string
+          primaryPersonField: 
+            type: string
+          nodeIdentifier:
+            type: string
+          editValidationUserFields:
+            type: array 
+            items:
+              type: string
+          tableField:
+            oneOf:
+              - type: object
+                additionalProperties:
+                  type: string
+              - type: array
+                items:
+                  type: object
+                  additionalProperties: false
+                  properties:
+                    fieldID:
+                      type: string
+                    headerName:
+                      type: string
+                    colFlex:
+                      type: integer
+                    textWrap:
+                      type: boolean
+                    width:
+                      oneOf:
+                        - type: string
+                        - type: number
+  links:
+    type: array
+    items:
+      type: object
+      additionalProperties: false
+      required:
+        - name
+        - backref
+        - parent_title
+        - child_title
+        #- label
+        - target_type
+        - multiplicity
+      #- required
+      properties:
+        name:
+          type: string
+        backref:
+          type: string
+        parent_title:
+          type: string
+        child_title:
+          type: string
+        label:
+          type: string
+        target_type:
+          type: string
+        multiplicity:
+          type: string
+        required:
+          type: boolean
+dependencies:
+  exclusiveMaximum:
+    - maximum
+  exclusiveMinimum:
+    - minimum
+default: {}
