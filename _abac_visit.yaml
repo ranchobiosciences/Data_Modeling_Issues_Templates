@@ -1,0 +1,53 @@
+$schema: "https://monarch.web-dev.bms.com/api/schemaref/_schema_validator#"
+
+id: "https://monarch.web-dev.bms.com/api/permissions/_abac_visit/schema"
+title: visit Access Request
+identifierPrefix: DAR
+type: object
+nodeTerms: null
+namespace: https://datacommons.web.bms.com/
+category: administrative
+description: visit access request
+additionalProperties: false
+validators: null
+
+uiSettings:
+  uiPath: /access_requests
+  plural: Data Access Requests
+  nodeIdentifier: id
+  accessForm:
+    nodeSearchFields:
+      - id
+      - visit_name
+    requestNode: "visit"
+    ruleRequestedNodes: "visits"
+    nodeName: "Visit"
+    nodeSelectPanelTitle: "Visits"
+    nodeSelectDisplayField: visit_name
+    nodeSelectDisplayFieldSecond: visit_type
+    nodeSelectLabel: "Start typing the visit Name or ID# of the visit(s) you would like to request access to:*"
+  accessReviewForm:
+    requestNode: "visit"
+    ruleRequestedNodes: "visits"
+    nodeSelectDisplayField: visit_name
+    nodeName: "Visit"
+    requestedNodeTitle: VISITS REQUESTED
+    requestedNodeLabel: Request Access to Visit(s)
+
+systemProperties:
+  - _id
+  - type
+
+required:
+  - purpose
+  - using_other
+  - analysis_description
+  - output_use
+  - specific_use_case_agreement
+  - contract_terms_agreement
+
+uniqueKeys:
+  - [id]
+
+properties:
+  $ref: "_definitions.yaml#/abac_ubiquitous_properties"
