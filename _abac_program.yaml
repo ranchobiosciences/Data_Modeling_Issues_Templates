@@ -1,0 +1,53 @@
+$schema: "https://monarch.web-dev.bms.com/api/schemaref/_schema_validator#"
+
+id: "https://monarch.web-dev.bms.com/api/permissions/_abac_program/schema"
+title: program Access Request
+identifierPrefix: DAR
+type: object
+nodeTerms: null
+namespace: https://datacommons.web.bms.com/
+category: administrative
+description: program access request
+additionalProperties: false
+validators: null
+
+uiSettings:
+  uiPath: /access_requests
+  plural: Data Access Requests
+  nodeIdentifier: id
+  accessForm:
+    nodeSearchFields:
+      - id
+      - program_name
+    requestNode: "program"
+    ruleRequestedNodes: "programs"
+    nodeName: "program"
+    nodeSelectPanelTitle: "programs"
+    nodeSelectDisplayField: program_name
+    nodeSelectDisplayFieldSecond: program_type
+    nodeSelectLabel: "Start typing the program Name or ID# of the program(s) you would like to request access to:*"
+  accessReviewForm:
+    requestNode: "program"
+    ruleRequestedNodes: "programs"
+    nodeSelectDisplayField: program_name
+    nodeName: "program"
+    requestedNodeTitle: PROGRAMS REQUESTED
+    requestedNodeLabel: Request Access to program(s)
+
+systemProperties:
+  - _id
+  - type
+
+required:
+  - purpose
+  - using_other
+  - analysis_description
+  - output_use
+  - specific_use_case_agreement
+  - contract_terms_agreement
+
+uniqueKeys:
+  - [id]
+
+properties:
+  $ref: "_definitions.yaml#/abac_ubiquitous_properties"
