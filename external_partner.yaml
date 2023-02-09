@@ -1,3 +1,5 @@
+$schema: https://rdc-dev-mongo.rbscomp.net/api/schemaref/_schema_validator#
+id: https://rdc-dev-mongo.rbscomp.net/api/permissions/external_partner/schema
 title: External Partner
 description: Partner for a research project external to BMS.
 type: object

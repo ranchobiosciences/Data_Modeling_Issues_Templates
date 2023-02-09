@@ -1,3 +1,5 @@
+$schema: https://rdc-dev-mongo.rbscomp.net/api/schemaref/_schema_validator#
+id: https://rdc-dev-mongo.rbscomp.net/api/permissions/ii_on_project/schema
 title: II-ON Project
 description: A singular project aim
 type: object

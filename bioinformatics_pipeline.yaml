@@ -1,3 +1,5 @@
+$schema: https://rdc-dev-mongo.rbscomp.net/api/schemaref/_schema_validator#
+id: https://rdc-dev-mongo.rbscomp.net/api/permissions/bioinformatics_pipeline/schema
 title: Bioinformatics Pipeline
 description: A set of bioinformatics algorithms, when executed in a predefined sequence
   to process NGS data, is collectively referred to as a bioinformatics pipeline.
