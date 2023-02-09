@@ -1,3 +1,5 @@
+$schema: '"https://rdc-dev-mongo.rbscomp.net/api/schemaref/_schema_validator#"'
+id: '"https://rdc-dev-mongo.rbscomp.net/api/clinical_trial/schema"'
 title: Clinical Trial
 description: 'Clinical Trial is a part of the Program;  they are a distinct research
   activity that is centered around  administering treatment of interest to human subjects.

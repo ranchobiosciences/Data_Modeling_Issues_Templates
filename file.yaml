@@ -1,3 +1,5 @@
+$schema: '"https://rdc-dev-mongo.rbscomp.net/api/schemaref/_schema_validator#"'
+id: '"https://rdc-dev-mongo.rbscomp.net/api/file/schema"'
 title: File
 description: A coordinated set of activities to analyze data.
 type: object

@@ -1,3 +1,5 @@
+$schema: '"https://rdc-dev-mongo.rbscomp.net/api/schemaref/_schema_validator#"'
+id: '"https://rdc-dev-mongo.rbscomp.net/api/data_product/schema"'
 title: Data Product
 description: Data product is an application that queries a collection of data, a summary
   of a collection of data, or a collection of data that is distinct from a dataset.
