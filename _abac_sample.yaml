@@ -1,0 +1,53 @@
+$schema: "https://monarch.web-dev.bms.com/api/schemaref/_schema_validator#"
+
+id: "https://monarch.web-dev.bms.com/api/permissions/_abac_sample/schema"
+title: Sample Access Request
+identifierPrefix: DAR
+type: object
+nodeTerms: null
+namespace: https://datacommons.web.bms.com/
+category: administrative
+description: Sample access request
+additionalProperties: false
+validators: null
+
+uiSettings:
+  uiPath: /access_requests
+  plural: Data Access Requests
+  nodeIdentifier: id
+  accessForm:
+    nodeSearchFields:
+      - id
+      - sample_name
+    requestNode: "sample"
+    ruleRequestedNodes: "samples"
+    nodeName: "Sample"
+    nodeSelectPanelTitle: "Samples"
+    nodeSelectDisplayField: sample_name
+    nodeSelectDisplayFieldSecond: sample_type
+    nodeSelectLabel: "Start typing the sample Name or ID# of the sample(s) you would like to request access to:*"
+  accessReviewForm:
+    requestNode: "sample"
+    ruleRequestedNodes: "samples"
+    nodeSelectDisplayField: sample_name
+    nodeName: "Sample"
+    requestedNodeTitle: SAMPLES REQUESTED
+    requestedNodeLabel: Request Access to Sample(s)
+
+systemProperties:
+  - _id
+  - type
+
+required:
+  - purpose
+  - using_other
+  - analysis_description
+  - output_use
+  - specific_use_case_agreement
+  - contract_terms_agreement
+
+uniqueKeys:
+  - [id]
+
+properties:
+  $ref: "_definitions.yaml#/abac_ubiquitous_properties"

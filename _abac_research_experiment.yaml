@@ -1,0 +1,53 @@
+-$schema: "https://monarch.web-dev.bms.com/api/schemaref/_schema_validator#"
+
+id: "https://monarch.web-dev.bms.com/api/permissions/_abac_research_experiment/schema"
+title: Research experiment Access Request
+identifierPrefix: DAR
+type: object
+nodeTerms: null
+namespace: https://datacommons.web.bms.com/
+category: administrative
+description: Research experiment access request
+additionalProperties: false
+validators: null
+
+uiSettings:
+  uiPath: /access_requests
+  plural: Data Access Requests
+  nodeIdentifier: id
+  accessForm:
+    nodeSearchFields:
+      - id
+      - research_experiment_title
+    requestNode: "research_experiment"
+    ruleRequestedNodes: "research_experiments"
+    nodeName: "Research experiment"
+    nodeSelectPanelTitle: "Research experiments"
+    nodeSelectDisplayField: research_experiment_title
+    nodeSelectDisplayFieldSecond: research_experiment_type
+    nodeSelectLabel: "Start typing the Research experiment Name or ID# of the research experiment(s) you would like to request access to:*"
+  accessReviewForm:
+    requestNode: "research_experiment"
+    ruleRequestedNodes: "research_experiments"
+    nodeSelectDisplayField: research_experiment_title
+    nodeName: "Research experiment"
+    requestedNodeTitle: RESEARCH experiment REQUESTED
+    requestedNodeLabel: Request Access to research experiment(s)
+
+systemProperties:
+  - _id
+  - type
+
+required:
+  - purpose
+  - using_other
+  - analysis_description
+  - output_use
+  - specific_use_case_agreement
+  - contract_terms_agreement
+
+uniqueKeys:
+  - [id]
+
+properties:
+  $ref: "_definitions.yaml#/abac_ubiquitous_properties"
