@@ -1,3 +1,5 @@
+$schema: https://rdc-dev-mongo.rbscomp.net/api/schemaref/_schema_validator#
+id: https://rdc-dev-mongo.rbscomp.net/api/assay/schema
 title: Assay
 description: 'Assay is a singular procedure that can be performed on the biological
   sample or model organisms, and it has method(s), instrument(s) and readout(s).  An
