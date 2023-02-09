@@ -1,0 +1,53 @@
+$schema: "https://monarch.web-dev.bms.com/api/schemaref/_schema_validator#"
+
+id: "https://monarch.web-dev.bms.com/api/permissions/_abac_subject/schema"
+title: subject Access Request
+identifierPrefix: DAR
+type: object
+nodeTerms: null
+namespace: https://datacommons.web.bms.com/
+category: administrative
+description: subject access request
+additionalProperties: false
+validators: null
+
+uiSettings:
+  uiPath: /access_requests
+  plural: Data Access Requests
+  nodeIdentifier: id
+  accessForm:
+    nodeSearchFields:
+      - id
+      - subject_title
+    requestNode: "subject"
+    ruleRequestedNodes: "subjects"
+    nodeName: "Subject"
+    nodeSelectPanelTitle: "Subjects"
+    nodeSelectDisplayField: subject_title
+    nodeSelectDisplayFieldSecond: subject_type
+    nodeSelectLabel: "Start typing the Subject Name or ID# of the subject(s) you would like to request access to:*"
+  accessReviewForm:
+    requestNode: "subject"
+    ruleRequestedNodes: "subject"
+    nodeSelectDisplayField: subject_title
+    nodeName: "Subject"
+    requestedNodeTitle: SUBJECTS REQUESTED
+    requestedNodeLabel: Request Access to Subject(s)
+
+systemProperties:
+  - _id
+  - type
+
+required:
+  - purpose
+  - using_other
+  - analysis_description
+  - output_use
+  - specific_use_case_agreement
+  - contract_terms_agreement
+
+uniqueKeys:
+  - [id]
+
+properties:
+  $ref: "_definitions.yaml#/abac_ubiquitous_properties"
