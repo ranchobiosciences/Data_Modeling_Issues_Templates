@@ -1,3 +1,5 @@
+$schema: https://rdc-dev-mongo.rbscomp.net/api/schemaref/_schema_validator#
+id: https://rdc-dev-mongo.rbscomp.net/api/roles/schema
 title: Roles
 description: 'Roles is a collection of various persons needed for or who execute projects,
   clinical trials, experiments, and analyses.

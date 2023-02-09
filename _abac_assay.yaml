@@ -1,0 +1,53 @@
+$schema: "https://monarch.web-dev.bms.com/api/schemaref/_schema_validator#"
+
+id: "https://monarch.web-dev.bms.com/api/permissions/_abac_assay/schema"
+title: Assay Access Request
+identifierPrefix: DAR
+type: object
+nodeTerms: null
+namespace: https://datacommons.web.bms.com/
+category: administrative
+description: Assay access request
+additionalProperties: false
+validators: null
+
+uiSettings:
+  uiPath: /access_requests
+  plural: Data Access Requests
+  nodeIdentifier: id
+  accessForm:
+    nodeSearchFields:
+      - id
+      - assay_name
+    requestNode: "assay"
+    ruleRequestedNodes: "assays"
+    nodeName: "Assay"
+    nodeSelectPanelTitle: "assays"
+    nodeSelectDisplayField: assay_name
+    nodeSelectDisplayFieldSecond: assay_type
+    nodeSelectLabel: "Start typing the assay Name or ID# of the assay(s) you would like to request access to:*"
+  accessReviewForm:
+    requestNode: "assay"
+    ruleRequestedNodes: "assays"
+    nodeSelectDisplayField: assay_name
+    nodeName: "Assay"
+    requestedNodeTitle: ASSAYS REQUESTED
+    requestedNodeLabel: Request Access to Assay(s)
+
+systemProperties:
+  - _id
+  - type
+
+required:
+  - purpose
+  - using_other
+  - analysis_description
+  - output_use
+  - specific_use_case_agreement
+  - contract_terms_agreement
+
+uniqueKeys:
+  - [id]
+
+properties:
+  $ref: "_definitions.yaml#/abac_ubiquitous_properties"

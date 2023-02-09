@@ -1,3 +1,5 @@
+$schema: https://rdc-dev-mongo.rbscomp.net/api/schemaref/_schema_validator#
+id: https://rdc-dev-mongo.rbscomp.net/api/subject/schema
 title: Subject
 description: 'A person who is part of a study and from whom a sample may be derived.
 
