@@ -1,0 +1,26 @@
+name: "Data Model Request Form: Update with review"
+description: Submit changes to the data model with further review
+title: "[DM Request]: "
+labels: ["[SYSTEM] Pending Review"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please describe the changes you would like to see implemented in the data model!
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details
+      description: How can we get in touch with you if we need more info?
+      placeholder: ex. email@example.com
+    validations:
+      required: false
+  - type: textarea
+    id: request
+    attributes:
+      label: Description of changes
+      description: Please include any relevent examples or data in the text or as an attachment
+      placeholder: Tell us what you want to see!
+    validations:
+      required: true
