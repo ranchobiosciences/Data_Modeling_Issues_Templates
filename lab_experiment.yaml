@@ -27,6 +27,7 @@ properties:
     enum:
     - In Progress
     - Complete
+    - To do
   lab_experiment_date:
     title: Lab Experiment Date
     description: The date the lab experiment was performed.
