@@ -209,6 +209,7 @@ properties:
     - GT5 - Go to Full Development
     - GT6 - Go to Commercialization
     - GT7 - Go to File
+    - Post-GT3
   clinical_stage:
     title: Clinical Stage
     description: The clinical stage of the program.

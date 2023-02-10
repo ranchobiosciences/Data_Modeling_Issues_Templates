@@ -52,6 +52,7 @@ properties:
       - vdj-GRCh38-alts-ensembl-3.1.0
       - refdata-cellranger-vdj-GRCm38-alts-ensembl-3.1.0
       - atac-mm10-1.1.0
+      - rn613
   left_flanking_sequence:
     title: Left Flanking Sequence
     description: 'This is a sequence to be trimmed prior to alignment. ex: P-20210101-0001.
