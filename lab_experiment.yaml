@@ -10,12 +10,12 @@ required:
 - type
 properties:
   $ref: _definitions.yaml#/ubiquitous_properties
-  test:
-    title: test
-    description: test
+  lab_experiment_title:
+    title: Lab Experiment Title
+    description: Title of Experiment
     placeholder: Input here
     type: string
-  lab_experiment_description:
+  Lab Experiment Description:
     title: Lab Experiment Description
     description: Description of the laboratory experiment purpose.
     placeholder: Input here
