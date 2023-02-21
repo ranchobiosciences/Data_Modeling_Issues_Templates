@@ -49,7 +49,7 @@ properties:
     type: string
   Actual_Nucleic_Acid_Conc:
     title: Actual Nucleic Acid Concentration
-    description: Actual nucleic acid concentration.
+    description: Actual nucleic acid concentration!
     placeholder: Input here
     type: string
   abs_ratio_nucleicacid:
@@ -80,7 +80,7 @@ properties:
     type: integer
   Fragment_Analyzer_Dil_Factor:
     title: Fragment Analyzer Dilution Factor
-    description: Dilution factor for fragment analyzer.
+    description: Dilution factor for fragment analyzer.....
     placeholder: Input here
     type: integer
   Fragment_Analyzer_Final_Conc:
