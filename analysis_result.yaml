@@ -11,7 +11,7 @@ required:
 properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   results_name:
-    title: Results Name test 123
+    title: Results Name test 4
     description: The name of the analysis.
     placeholder: Input here
     type: string
