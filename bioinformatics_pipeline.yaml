@@ -46,7 +46,7 @@ properties:
       - MacFas5.0-ensembl97
       - Rnor6.0-ensembl98
       - CanFam3.1-ensembl89
-      - mm10-3.0.0_premrna
+      - mm10-3.0.0_premrna123
       - Rnor6.0ERCC-ensembl98_premrna
       - GRCh38-2020-A_premrna
       - vdj-GRCh38-alts-ensembl-3.1.0

@@ -32,7 +32,7 @@ properties:
     - flowViz
     - cytotree
     - tSNE
-    - other - R
+    - other - RS7
     - other - python
   cluster_info:
     title: Cluster Info
