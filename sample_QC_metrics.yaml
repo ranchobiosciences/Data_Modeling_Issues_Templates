@@ -1,202 +1,626 @@
-$schema: https://rdc-dev-mongo.rbscomp.net/api/schemaref/_schema_validator#
-id: https://rdc-dev-mongo.rbscomp.net/api/sample_QC_metrics/schema
+$schema: 'https://monarch.web-dev.bms.com/api/schemaref/_schema_validator#'
+
+id: 'https://monarch.web-dev.bms.com/api/sample_QC_metrics/schema'
 title: Sample QC Metrics
-description: Metrics for sample quality control.
+title_submitter: Submitter
+identifierPrefix: QC
 type: object
+nodeTerms: null
+namespace: https://datacommons.web.bms.com/
+category: administrative
+description: Metrics for sample quality control.
+additionalProperties: false
+validators: null
+
+uiSettings:
+  icon: analytics
+  iconStyle: material-icons-outlined
+  color: rgb(255, 236, 205)
+  uiPath: /datasetcatalog/sample_QC_metrics
+  plural: Sample QC Metrics
+  globalSearchSettings:
+    searchFields:
+      - quality_metric
+      - identifier
+      - submitter_id
+    displayFields:
+      - quality_metric
+      - identifier
+      - id
+  displayField: quality_metric
+  displaySubField: dataset_type # Used for tag section in flex view
+  defaultSortField: quality_metric
+  primaryPersonField: created_by # for email template
+  editValidationUserFields:
+    - created_by
+  nodeIdentifier: id
+  #abacSchemaName:
+  createForm:
+    maxRows: 11
+    maxCols: 2
+    buttonLabel: Create Sample QC Metrics
+  expandFilterOptionsByDefault: true
+  dataFilterField:
+    QCFLAG:
+      label: QC Flag
+      view: dropdown
+      tooltip: true
+    negative_control_acceptable:
+      label: Negative Control Acceptable
+      value: 'Yes'
+      optionLabel: Include acceptable negative control only
+      tooltip: true
+    identifier:
+      label: Identifier
+      view: dynamic
+      tooltip: true
+      optionsPromiseLimit: 100
+  tableField:
+    identifier: Sample QC Metrics ID
+    quality_metric: Quality Metric
+    QCFLAG: QC Flag
+  searchField:
+    - quality_metric
+    - identifier
+    - QCFLAG
+    - tags
+  fullNodeView: true
+  fullNodeViewForm:
+    nameField:
+      name: quality_metric
+    personFields:
+    upperFields:
+      - name: links
+      - name: QC_Note
+        label: QC Note
+      - name: tags
+        label: Tags
+    metadataFields:
+      - name: QCFLAG
+        label: QC Flag
+      - name: FA_Load
+        label: FA Load
+      - name: dil
+        label: Dil
+      - name: CHECKSUM
+        label: CHECKSUM
+      - name: Actual_Nucleic_Acid_Conc
+        label: Actual Nucleic Acid Concentration
+      - name: abs_ratio_nucleicacid
+        label: Abs Ratio Nucleic Acid
+      - name: abs_ratio_contaminants
+        label: Abs Ratio Contaminants
+      - name: Percent_Integrated_Area
+        label: Percent Integrated Area
+      - name: conc_nucleicacid
+        label: Concentration of Nucleic Acid
+      - name: total_nucleicacid
+        label: Total Nucleic Acid
+      - name: Fragment_Analyzer_Dil_Factor
+        label: Fragment Analyzer Dilution Factor
+      - name: Fragment_Analyzer_Final_Conc
+        label: Fragment Analyzer Final Conc
+      - name: Fragment_Analyzer_RQN
+        label: Fragment Analyzer RQN
+      - name: Assigned_conc
+        label: Assigned Conc
+      - name: Calibrated_conc
+        label: Calibrated Conc
+      - name: clusters_raw
+        label: Raw Clusters
+      - name: clusters_PF
+        label: Clusters PF
+      - name: reads_PF
+        label: Reads PF
+      - name: Peak_Molarity
+        label: Peak Molarity
+      - name: Peak_comment
+        label: Peak Comment
+      - name: percent_perfect_barcode
+        label: Percent Perfect Barcode
+      - name: percent_one_mismatch
+        label: Percent One Mismatch
+      - name: percent_PF_clusters
+        label: Percentage PF Clusters
+      - name: percent_Q30_Bases
+        label: Percent Q30 Bases
+      - name: Mean_Quality_Score
+        label: Mean Quality Score
+      - name: NGS_rfu
+        label: NGS RFU
+      - name: negative_control_acceptable
+        label: Negative Control Acceptable
+      - name: sample_LDD
+        label: Sample LDD
+      - name: sample_LLOQ
+        label: Sample LLOQ
+      - name: sample_ULOQ
+        label: Sample ULOQ
+    relationshipFields:
+      - name: relationships
+        label:
+    bottomFields:
+      - name: files
+        label:
+
+  fullNodeRegisterForm:
+    readonlyFields:
+      - identifier
+    panels:
+      - title: Overview
+        fields:
+          - name: quality_metric
+            label: Quality Metric
+            description: 'quality_metric (e.g. RIN:<RIN Number>, RQS:<RQS index>, etc.) Use a field:value format and comma separate the list.'
+          - name: QC_Note
+            label: QC Note
+            description: Quality control notes.
+
+      - title: Details
+        optional: true
+        fields:
+          - name: submitter_id
+            label: Submitter ID
+          - name: QCFLAG
+            label: QC Flag
+            description: 'Quality control flag: 0 = Data file delivered and passed vendor QC, 1 = Data file delivered but failed vendor QC, 3 = Data file not delivered because sample has not yet been assayed, 4 = Data file previously delivered'
+          - name: FA_Load
+            label: FA Load
+            description: Load for fragment analyzer.
+          - name: dil
+            label: Dil
+            description: Dilution
+          - name: CHECKSUM
+            label: CHECKSUM
+            description: md5 checksum of data file
+          - name: Actual_Nucleic_Acid_Conc
+            label: Actual Nucleic Acid Concentration
+            description: Actual nucleic acid concentration.
+          - name: abs_ratio_nucleicacid
+            label: Abs Ratio Nucleic Acid
+            description: A260/A280 ratio indicating the type of nucleic acid present (dsDNA or RNA).
+          - name: abs_ratio_contaminants
+            label: Abs Ratio Contaminants
+            description: A260/A230 ratio indicating how contaminated the sample is.
+          - name: Percent_Integrated_Area
+            label: Percent Integrated Area
+            description: Percent integrated area (area under the curve).
+          - name: conc_nucleicacid
+            label: Concentration of Nucleic Acid
+            description: The concentration of the nucleic acid sample used.
+          - name: total_nucleicacid
+            label: Total Nucleic Acid
+            description: The total ng value of the nucleic acid sample used.
+          - name: Fragment_Analyzer_Dil_Factor
+            label: Fragment Analyzer Dilution Factor
+            description: Dilution factor for fragment analyzer.
+          - name: Fragment_Analyzer_Final_Conc
+            label: Fragment Analyzer Final Conc
+            description: Final concentration for fragment analyzer (ng/uL).
+          - name: Fragment_Analyzer_RQN
+            label: Fragment Analyzer RQN
+            description: RNA Quality Number (RQN) for fragment analyzer, equivalent and interchangeable with RIN.
+          - name: Assigned_conc
+            label: Assigned Conc
+            description: Assigned nucleic acid concentration.
+          - name: Calibrated_conc
+            label: Calibrated Conc
+            description: Calibrated nucleic acid concentration
+          - name: clusters_raw
+            label: Raw Clusters
+            description: Number of raw clusters for this lane. For patterened flow cells, the number of raw clusters in equal to the number of wells on the flow cell.
+          - name: clusters_PF
+            label: Clusters PF
+            description: Number of clusters passing filter in this lane.
+          - name: reads_PF
+            label: Reads PF
+            description: The sum of all bases in clusters that passed filtering for the entire project.
+          - name: Peak_Molarity
+            label: Peak Molarity
+            description: Molarity of the peak analyzed.
+          - name: Peak_comment
+            label: Peak Comment
+            description: Comment regarding the peak analyzed.
+          - name: percent_perfect_barcode
+            label: Percent Perfect Barcode
+            description: Percentage of index reads in this sample which perfetly matched the given index.
+          - name: percent_one_mismatch
+            label: Percent One Mismatch
+            description: Percentage of the index reads in this sample which had 1 mismatch to given index.
+          - name: percent_PF_clusters
+            label: Percentage PF Clusters
+            description: The percentage of clusters that passed filtering.
+          - name: percent_Q30_Bases
+            label: Percent Q30 Bases
+            description: Yield of bases with Q30 or higher from clusters passing filter divided by total yield of clusters passing filter.
+          - name: Mean_Quality_Score
+            label: Mean Quality Score
+            description: The total sum of quality scores of bases from clusters passing filter divided by total yield of bases from clusters passing filter.
+          - name: NGS_rfu
+            label: NGS RFU
+            description: Relative flourescence units.
+          - name: negative_control_acceptable
+            label: Negative Control Acceptable
+            description: Is the negative control for the sample acceptable?
+          - name: sample_LDD
+            label: Sample LDD
+            description: LDD (Least Detectable Dose)-determined as the mean + 3 standard deviations of 20 blank readings. Results below the LDD will be more variable than results above the LDD.
+          - name: sample_LLOQ
+            label: Sample LLOQ
+            description: LLOQ (Lower Limit of Quantitation)-lowest concentration of an analyte in a sample that can be reliably detected and at which the total error meets the laboratory's requirements for accuracy.
+          - name: sample_ULOQ
+            label: Sample ULOQ
+            description: ULOQ (Upper Limit of Quantitation)-highest concentration of an analyte in a sample that can be reliably detected and at which the total error meets the laboratory's requirements for accuracy.
+
+      - title: Related Metadata
+        optional: true
+        fields:
+          - name: relationships
+            label:
+          - name: tags
+            label: Tags
+     
+      - title: Files
+        fields:
+          - name: files
+            label:
+
+  fullNodeEditForm:
+    readonlyFields:
+      - identifier
+    panels:
+      - title: Overview
+        fields:
+          - name: quality_metric
+            label: Quality Metric
+            description: 'quality_metric (e.g. RIN:<RIN Number>, RQS:<RQS index>, etc.) Use a field:value format and comma separate the list.'
+          - name: QC_Note
+            label: QC Note
+            description: Quality control notes.
+
+      - title: Details
+        optional: true
+        fields:
+          - name: QCFLAG
+            label: QC Flag
+            description: 'Quality control flag: 0 = Data file delivered and passed vendor QC, 1 = Data file delivered but failed vendor QC, 3 = Data file not delivered because sample has not yet been assayed, 4 = Data file previously delivered'
+          - name: FA_Load
+            label: FA Load
+            description: Load for fragment analyzer.
+          - name: dil
+            label: Dil
+            description: Dilution
+          - name: CHECKSUM
+            label: CHECKSUM
+            description: md5 checksum of data file
+          - name: Actual_Nucleic_Acid_Conc
+            label: Actual Nucleic Acid Concentration
+            description: Actual nucleic acid concentration.
+          - name: abs_ratio_nucleicacid
+            label: Abs Ratio Nucleic Acid
+            description: A260/A280 ratio indicating the type of nucleic acid present (dsDNA or RNA).
+          - name: abs_ratio_contaminants
+            label: Abs Ratio Contaminants
+            description: A260/A230 ratio indicating how contaminated the sample is.
+          - name: Percent_Integrated_Area
+            label: Percent Integrated Area
+            description: Percent integrated area (area under the curve).
+          - name: conc_nucleicacid
+            label: Concentration of Nucleic Acid
+            description: The concentration of the nucleic acid sample used.
+          - name: total_nucleicacid
+            label: Total Nucleic Acid
+            description: The total ng value of the nucleic acid sample used.
+          - name: Fragment_Analyzer_Dil_Factor
+            label: Fragment Analyzer Dilution Factor
+            description: Dilution factor for fragment analyzer.
+          - name: Fragment_Analyzer_Final_Conc
+            label: Fragment Analyzer Final Conc
+            description: Final concentration for fragment analyzer (ng/uL).
+          - name: Fragment_Analyzer_RQN
+            label: Fragment Analyzer RQN
+            description: RNA Quality Number (RQN) for fragment analyzer, equivalent and interchangeable with RIN.
+          - name: Assigned_conc
+            label: Assigned Conc
+            description: Assigned nucleic acid concentration.
+          - name: Calibrated_conc
+            label: Calibrated Conc
+            description: Calibrated nucleic acid concentration
+          - name: clusters_raw
+            label: Raw Clusters
+            description: Number of raw clusters for this lane. For patterened flow cells, the number of raw clusters in equal to the number of wells on the flow cell.
+          - name: clusters_PF
+            label: Clusters PF
+            description: Number of clusters passing filter in this lane.
+          - name: reads_PF
+            label: Reads PF
+            description: The sum of all bases in clusters that passed filtering for the entire project.
+          - name: Peak_Molarity
+            label: Peak Molarity
+            description: Molarity of the peak analyzed.
+          - name: Peak_comment
+            label: Peak Comment
+            description: Comment regarding the peak analyzed.
+          - name: percent_perfect_barcode
+            label: Percent Perfect Barcode
+            description: Percentage of index reads in this sample which perfetly matched the given index.
+          - name: percent_one_mismatch
+            label: Percent One Mismatch
+            description: Percentage of the index reads in this sample which had 1 mismatch to given index.
+          - name: percent_PF_clusters
+            label: Percentage PF Clusters
+            description: The percentage of clusters that passed filtering.
+          - name: percent_Q30_Bases
+            label: Percent Q30 Bases
+            description: Yield of bases with Q30 or higher from clusters passing filter divided by total yield of clusters passing filter.
+          - name: Mean_Quality_Score
+            label: Mean Quality Score
+            description: The total sum of quality scores of bases from clusters passing filter divided by total yield of bases from clusters passing filter.
+          - name: NGS_rfu
+            label: NGS RFU
+            description: Relative flourescence units.
+          - name: negative_control_acceptable
+            label: Negative Control Acceptable
+            description: Is the negative control for the sample acceptable?
+          - name: sample_LDD
+            label: Sample LDD
+            description: LDD (Least Detectable Dose)-determined as the mean + 3 standard deviations of 20 blank readings. Results below the LDD will be more variable than results above the LDD.
+          - name: sample_LLOQ
+            label: Sample LLOQ
+            description: LLOQ (Lower Limit of Quantitation)-lowest concentration of an analyte in a sample that can be reliably detected and at which the total error meets the laboratory's requirements for accuracy.
+          - name: sample_ULOQ
+            label: Sample ULOQ
+            description: ULOQ (Upper Limit of Quantitation)-highest concentration of an analyte in a sample that can be reliably detected and at which the total error meets the laboratory's requirements for accuracy.
+
+      - title: Related Metadata
+        optional: true
+        fields:
+          - name: relationships
+            label:
+          - name: tags
+            label: Tags
+     
+      - title: Files
+        fields:
+          - name: files
+            label:
+
+
+systemProperties:
+  - id
+  - _id
+  - created_datetime
+  - updated_datetime
+  - created_by
+  - submitter_id
+  - type
+  - state
+  - identifier
+
 required:
-- type
+  - type
+
+uniqueKeys:
+  - [id]
+
+# links:
+#   - name: sample
+#     backref: sample_QC_metrics
+#     parent_title: Samples # what's rendered for this node
+#     child_title: Sample QC Metrics
+#     label: is_part_of
+#     target_type: sample
+#     multiplicity: many_to_many
+#     required: false
+
 properties:
-  $ref: _definitions.yaml#/ubiquitous_properties
+  $ref: '_definitions.yaml#/ubiquitous_properties'
+
   quality_metric:
     title: Quality Metric
-    description: quality_metric (e.g. RIN:<RIN Number>, RQS:<RQS index>, etc.). Use
-      a field:value format and comma separate the list.
-    placeholder: Input here
+    description: 'quality_metric (e.g. RIN:<RIN Number>, RQS:<RQS index>, etc.). Use a field:value format and comma separate the list.'
     type: string
+    placeholder: Input here
+
   QCFLAG:
     title: QC Flag
-    description: 'Quality control flag: 0 = Data file delivered and passed vendor
-      QC, 1 = Data file delivered but failed vendor QC, 3 = Data file not delivered
-      because sample has not yet been assayed, 4 = Data file previously delivered'
+    description: 'Quality control flag: 0 = Data file delivered and passed vendor QC, 1 = Data file delivered but failed vendor QC, 3 = Data file not delivered because sample has not yet been assayed, 4 = Data file previously delivered'
     placeholder: Choose from dropdown
-    enum:
-    - '0'
-    - '1'
-    - '2'
-    - '3'
-    - '4'
     multiline: true
+    enum:
+       - '0'
+       - '1'
+       - '2'
+       - '3'
+       - '4'
+
   QC_Note:
     title: QC Note
     description: Quality control notes.
+    type: string
     view: richtext
     placeholder: Input here
-    type: string
+
   FA_Load:
     title: FA Load
     description: Load for fragment analyzer.
-    placeholder: Input here
     type: string
+    placeholder: Input here
+
   dil:
     title: Dil
     description: Dilution
-    placeholder: Input here
     type: integer
+    placeholder: Input here
+
   CHECKSUM:
     title: CHECKSUM
     description: md5 checksum of data file
-    placeholder: Input here
     type: string
+    placeholder: Input here
+
   Actual_Nucleic_Acid_Conc:
     title: Actual Nucleic Acid Concentration
-    description: Actual nucleic acid concentration!
-    placeholder: Input here
+    description: Actual nucleic acid concentration.
     type: string
+    placeholder: Input here
+  
   abs_ratio_nucleicacid:
     title: Abs Ratio Nucleic Acid
-    description: A260/A280 ratio indicating the type of nucleic acid present (dsDNA
-      or RNA).
-    placeholder: Input here
+    description: A260/A280 ratio indicating the type of nucleic acid present (dsDNA or RNA).
     type: integer
+    placeholder: Input here
+
   abs_ratio_contaminants:
     title: Abs Ratio Contaminants
     description: A260/A230 ratio indicating how contaminated the sample is.
-    placeholder: Input here
     type: integer
+    placeholder: Input here
+
   Percent_Integrated_Area:
     title: Percent Integrated Area
     description: Percent integrated area (area under the curve).
-    placeholder: Input here
     type: integer
+    placeholder: Input here
+
   conc_nucleicacid:
     title: Concentration of Nucleic Acid
     description: The concentration of the nucleic acid sample used.
-    placeholder: Input here
     type: integer
+    placeholder: Input here
+
   total_nucleicacid:
     title: Total Nucleic Acid
     description: The total ng value of the nucleic acid sample used.
-    placeholder: Input here
     type: integer
+    placeholder: Input here
+
   Fragment_Analyzer_Dil_Factor:
     title: Fragment Analyzer Dilution Factor
-    description: Dilution factor for fragment analyzer.....
-    placeholder: Input here
+    description: Dilution factor for fragment analyzer.
     type: integer
+    placeholder: Input here
+
   Fragment_Analyzer_Final_Conc:
     title: Fragment Analyzer Final Conc
     description: Final concentration for fragment analyzer (ng/uL).
-    placeholder: Input here
     type: integer
+    placeholder: Input here
+
   Fragment_Analyzer_RQN:
     title: Fragment Analyzer RQN
-    description: RNA Quality Number (RQN) for fragment analyzer, equivalent and interchangeable
-      with RIN.
-    placeholder: Input here
+    description: RNA Quality Number (RQN) for fragment analyzer, equivalent and interchangeable with RIN.
     type: string
+    placeholder: Input here
+
   Assigned_conc:
     title: Assigned Conc
     description: Assigned nucleic acid concentration.
-    placeholder: Input here
     type: integer
+    placeholder: Input here
+
   Calibrated_conc:
     title: Calibrated Conc
     description: Calibrated nucleic acid concentration.
-    placeholder: Input here
     type: integer
+    placeholder: Input here
+
   clusters_raw:
     title: Raw Clusters
-    description: Number of raw clusters in this lane. For patterened flow cells, the
-      number of raw clusters is equal to the number of wells on the flow cell.
-    placeholder: Input here
-    multiline: true
+    description: Number of raw clusters in this lane. For patterened flow cells, the number of raw clusters is equal to the number of wells on the flow cell.
     type: integer
+    multiline: true
+    placeholder: Input here
+
   clusters_PF:
     title: Clusters PF
     description: Number of clusters passing filter in this lane.
-    placeholder: Input here
     type: integer
+    placeholder: Input here
+
   reads_PF:
     title: Reads PF
-    description: The sum of all bases in clusters that passed filtering for the entire
-      project.
-    placeholder: Input here
+    description: The sum of all bases in clusters that passed filtering for the entire project.
     type: integer
-  Peak_Molarity:
+    placeholder: Input here
+
+  Peak_Molarity: 
     title: Peak Molarity
     description: Molarity of the peak analyzed.
-    placeholder: Input here
     type: integer
+    placeholder: Input here
+
   Peak_comment:
     title: Peak Comment
     description: Comment regarding the peak analyzed.
+    type: string 
     placeholder: Input here
-    type: string
+
   percent_perfect_barcode:
     title: Percent Perfect Barcode
-    description: Percentage of index reads in this sample which perfectly matched
-      the given index.
-    placeholder: Input here
+    description: Percentage of index reads in this sample which perfectly matched the given index.
     type: integer
+    placeholder: Input here
+
   percent_one_mismatch:
     title: Percent One Mismatch
-    description: Percentage of the index reads in this sample which had 1 mismatch
-      to given index.
-    placeholder: Input here
+    description: Percentage of the index reads in this sample which had 1 mismatch to given index.
     type: integer
+    placeholder: Input here
+
   percent_PF_clusters:
     title: Percentage PF Clusters
     description: The percentage of clusters that passed filtering.
-    placeholder: Input here
     type: integer
+    placeholder: Input here
+
   percent_Q30_Bases:
     title: Percent Q30 Bases
-    description: Yield of bases with Q30 or higher from clusters passing filter divided
-      by total yield of clusters passing filter.
-    placeholder: Input here
+    description: Yield of bases with Q30 or higher from clusters passing filter divided by total yield of clusters passing filter.
     type: integer
+    placeholder: Input here
+
   Mean_Quality_Score:
     title: Mean Quality Score
-    description: The total sum of quality scores of bases from clusters passing filter
-      divided by total yield of bases from clusters passing filter.
-    placeholder: Input here
-    multiline: true
+    description: The total sum of quality scores of bases from clusters passing filter divided by total yield of bases from clusters passing filter.
     type: integer
+    multiline: true
+    placeholder: Input here
+
   NGS_rfu:
     title: NGS RFU
     description: Relative flourescence units.
-    placeholder: Input here
     type: string
+    placeholder: Input here
+
   negative_control_acceptable:
     title: Negative Control Acceptable
     description: Is the negative control for the sample acceptable?
     view: radio
-    enum:
-    - 'Yes'
-    - 'No'
+    enum: 
+      - 'Yes'
+      - 'No'
+
   sample_LDD:
     title: Sample LDD
-    description: LDD (Least Detectable Dose)-determined as the mean + 3 standard deviations
-      of 20 blank readings. Results below the LDD will be more variable than results
-      above the LDD.
-    placeholder: Input here
-    multiline: true
+    description: LDD (Least Detectable Dose)-determined as the mean + 3 standard deviations of 20 blank readings. Results below the LDD will be more variable than results above the LDD.
     type: integer
+    multiline: true
+    placeholder: Input here
+
   sample_LLOQ:
     title: Sample LLOQ
-    description: LLOQ (Lower Limit of Quantitation)-lowest concentration of an analyte
-      in a sample that can be reliably detected and at which the total error meets
-      the laboratory's requirements for accuracy.
-    placeholder: Input here
-    multiline: true
+    description: LLOQ (Lower Limit of Quantitation)-lowest concentration of an analyte in a sample that can be reliably detected and at which the total error meets the laboratory's requirements for accuracy.
     type: integer
+    multiline: true
+    placeholder: Input here
+
   sample_ULOQ:
     title: Sample ULOQ
-    description: ULOQ (Upper Limit of Quantitation)-highest concentration of an analyte
-      in a sample that can be reliably detected and at which the total error meets
-      the laboratory's requirements for accuracy.
-    placeholder: Input here
-    multiline: true
+    description: ULOQ (Upper Limit of Quantitation)-highest concentration of an analyte in a sample that can be reliably detected and at which the total error meets the laboratory's requirements for accuracy.
     type: integer
+    multiline: true
+    placeholder: Input here
+
   sample:
-    $ref: _definitions.yaml#/to_many
+    $ref: '_definitions.yaml#/to_many'

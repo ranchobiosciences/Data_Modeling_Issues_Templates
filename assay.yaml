@@ -1,774 +1,1037 @@
-$schema: https://rdc-dev-mongo.rbscomp.net/api/schemaref/_schema_validator#
-id: https://rdc-dev-mongo.rbscomp.net/api/assay/schema
-title: Assay
-description: 'Assay is a singular procedure that can be performed on the biological
-  sample or model organisms, and it has method(s), instrument(s) and readout(s).  An
-  experiment can have many assays.
+$schema: "https://monarch.web-dev.bms.com/api/schemaref/_schema_validator#"
 
-  '
+id: "https://monarch.web-dev.bms.com/api/assay/schema"
+title: Assay
+identifierPrefix: AS
+title_submitter: Submitter
 type: object
+nodeTerms: null
+namespace: https://datacommons.web.bms.com/
+category: administrative
+description: >
+  Assay is a singular procedure that can be performed on the biological sample or model organisms, and it has method(s), instrument(s) and readout(s). 
+  An experiment can have many assays.
+additionalProperties: false
+validators: null
+
+uiSettings:
+  icon: science
+  iconStyle: material-icons-outlined
+  uiPath: /datasetcatalog/assay
+  plural: Assays
+  globalSearchSettings:
+    searchFields:
+      - assay_name
+      - identifier
+      - submitter_id
+    displayFields:
+      - assay_name
+      - identifier
+      - id
+  displayField: assay_name
+  displaySubField: assay_type
+  defaultSortField: identifier
+  primaryPersonField: created_by
+  editValidationUserFields:
+    - created_by
+  nodeIdentifier: id
+  abacSchemaName: _abac_assay
+  renderColCount: 3
+  expandFilterOptionsByDefault: true
+  dataFilterField:
+    assay_type:
+      label: Assay Type
+      tooltip: true
+      multiSelect: true
+      queryOperator: $in
+    assay_platform:
+      label: Assay Platform
+      tooltip: true
+      multiSelect: true
+      queryOperator: $in
+    assay_manufacturer:
+      label: Assay Manufacturer
+      tooltip: true
+      multiSelect: true
+      queryOperator: $in
+    protocol:
+      label: Protocol
+      tooltip: true  # Show info icon with tooltip with text from fullNodeRegisterForm field description (optional)
+      multiSelect: true
+      queryOperator: $in
+      # view: dropdown # View Style of filter
+      type: linkName  # Type of a field
+      fieldName: protocol.linkName # Custom query fieldName (to be able to query objects in mongo)
+    protocol_version:
+      label: Protocol Version
+      tooltip: true  # Show info icon with tooltip with text from fullNodeRegisterForm field description (optional)
+      multiSelect: true
+      queryOperator: $in
+    identifier:
+      label: Identifier
+      view: dynamic
+      tooltip: true
+      multiSelect: true
+      optionsPromiseLimit: 100
+  createForm:
+    maxRows: 12
+    maxCols: 3
+    buttonLabel: Create Assay
+  joins:
+    - node: sample
+      count: "only"
+
+  tableField:
+    assay_id: Assay ID
+    assay_type: Assay Type
+    assay_name: Assay Name
+    samples_count: "# of Samples"
+
+  searchField:
+    - assay_name
+    - assay_id
+    - assay_description
+    - assay_type
+    - assay_manufacturer
+    - assay_platform
+    - protocol
+    - protocol_version
+    - tags
+    - identifier
+
+  fullNodeView: true
+  fullNodeViewForm:
+    nameField: 
+      name: assay_name
+    personFields:
+    upperFields:
+          - name: protocol
+          - name: assay_description
+            label: Description
+          - name: tags
+            label: Tags       
+    metadataFields:   
+          - name: assay_id
+            label: Assay ID
+          - name: assay_type
+            label: Assay Type
+          - name: assay_manufacturer
+            label: Manufacturer
+          - name: assay_platform
+            label: Platform
+          - name: protocol_version
+            label: Protocol Version
+          - name: equipment
+            label: Equipment
+          - name: acquisition_software
+            label: Acquisition Software
+          - name: compensation_unmixing
+            label: Compensation Unmixing
+          - name: flowcytometry_panel
+            label: Flowcytometr Panel
+          - name: flowcytometry_protocol
+            label: Flowcytometry Protocol
+          - name: flowcytometry_antibodies
+            label: Flowcytometry Antibodies
+          - name: flowcytometry_fluorophores
+            label: Flowcytometry Fluorophores
+          - name: flowcytometry_detectors
+            label: Flowcytometry Detectors
+          - name: project_publications
+            label: Project Publications
+          - name: IHC_antibody
+            label: IHC Antibody
+          - name: IHC_clone
+            label: IHC Clone
+          - name: IHC_read_sequence
+            label: IHC Read Sequence
+          - name: IHC_analyte
+            label: IHC Analyte
+          - name: cytokine_analyte
+            label: Cytokine Analyte
+          - name: assay_mode_modality_class
+            label: Assay Mode Modality Class
+    relationshipFields:
+          - name: relationships
+            label:
+  fullNodeRegisterForm:
+    readonlyFields:
+      - identifier
+    panels:
+      - title: Overview
+        fields:
+          - name: assay_name
+            label: Assay Name
+          - name: assay_id
+            label: Assay ID
+          - name: assay_description
+            label: Description
+          - name: assay_type
+            label: Assay Type
+          - name: assay_manufacturer
+            label: Manufacturer
+          - name: assay_platform
+            label: Platform
+          - name: protocol_version
+            label: Protocol Version
+          - name: equipment
+            label: Equipment
+          - name: acquisition_software
+            label: Acquisition Software
+          - name: compensation_unmixing
+            label: Compensation Unmixing
+          - name: flowcytometry_panel
+            label: Flowcytometr Panel
+          - name: flowcytometry_protocol
+            label: Flowcytometry Protocol
+          - name: flowcytometry_antibodies
+            label: Flowcytometry Antibodies
+          - name: flowcytometry_fluorophores
+            label: Flowcytometry Fluorophores
+          - name: flowcytometry_detectors
+            label: Flowcytometry Detectors
+          - name: project_publications
+            label: Project Publications
+          - name: IHC_antibody
+            label: IHC Antibody
+          - name: IHC_clone
+            label: IHC Clone
+          - name: IHC_read_sequence
+            label: IHC Read Sequence
+          - name: IHC_analyte
+            label: IHC Analyte
+          - name: cytokine_analyte
+            label: Cytokine Analyte
+          - name: assay_mode_modality_class
+            label: Assay Mode Modality Class
+
+      - title: Related Metadata
+        optional: true
+        fields:
+          - name: relationships
+            label:
+            width: 12
+          - name: tags
+            label: Tags
+            width: 12
+
+systemProperties:
+  - id
+  - _id
+  - created_datetime
+  - updated_datetime
+  - created_by
+  - submitter_id
+  - type
+  - state
+  - identifier
+
+links:
+  - name: research_project
+    backref: assays
+    parent_title: Research Projects # what's rendered for this node
+    child_title: Assays
+    label: member_of
+    target_type: research_project
+    multiplicity: many_to_many
+    required: false
+
+  - name: dataset
+    backref: assays
+    parent_title: Datasets # what's rendered for this node
+    child_title: Assays
+    label: member_of
+    target_type: dataset
+    multiplicity: many_to_many
+    required: false
+
+  - name: lab_experiment
+    backref: assays
+    parent_title: Lab Experiments # what's rendered for this node
+    child_title: Assays
+    label: member_of
+    target_type: lab_experiment
+    multiplicity: many_to_many
+    required: false
+
+  - name: bioinformatics_pipeline
+    backref: assay
+    parent_title: Bioinformatics Pipelines # what's rendered for this node
+    child_title: Assays
+    label: includes 
+    target_type: bioinformatics_pipeline
+    multiplicity: many_to_many
+    required: false
+
 required:
-- type
+  - type
+  #- assay_name
+
+uniqueKeys:
+  - [id]
+
 properties:
-  $ref: _definitions.yaml#/ubiquitous_properties
+  $ref: "_definitions.yaml#/ubiquitous_properties"
+
   assay_id:
     title: Assay ID
     description: Capture ID for the assay in the assay registration system.
-    placeholder: Input here
     type: string
+    placeholder: Input here
+
   assay_name:
     title: Assay Name
     description: Name of assay being performed.
-    placeholder: Input here
     type: string
+    placeholder: Input here
+
   assay_description:
     title: Description
     description: Description of the assay.
+    type: string
     view: richtext
     placeholder: Enter a assay description here
-    type: string
+
   assay_type:
     title: Assay Type
     description: Technique or method for data generation to be analyzed in pipeline.
     placeholder: Choose from dropdown
     enum:
-    - 10X Visium
-    - ATAC-Seq
-    - Cell sorting/counting
-    - ChIP-Seq
-    - CITE-Seq
-    - CRISPR gRNA screens
-    - CRISPR knockout screen
-    - CRISPR-DAV
-    - CRISPRa activation screen
-    - CRISPRi interference screen
-    - CUT&RUN
-    - DNA/CNV
-    - Edge-Seq
-    - Gene Expression (GEX)
-    - Immunophenotyping
-    - Long read sequencing
-    - MAGeCK CRISPR Screen
-    - MARS-Seq
-    - Microbiome Targeted RNA sequencing
-    - Microbiome Total RNA Sequencing
-    - Microbiome Whole Genome Sequencing (WGS)
-    - microRNA-Seq
-    - mRNA-Seq
-    - Multiome ATAC + Gene Expression
-    - Perturb-Seq
-    - Pharmacodynamics assay
-    - PRISM screen
-    - Quantitative flow cytometry
-    - Ribosomal Profiling
-    - scTCR
-    - Single Cell ATAC-Seq
-    - Single Cell DNA-Seq
-    - Single Cell mRNA-Seq
-    - Single Cell Total RNA-Seq
-    - Single Nuclei ATAC-Seq
-    - Single Nuclei mRNA-Seq
-    - Spatial Transcriptomics
-    - SPLiT-seq
-    - Targeted (DNA) Resequencing
-    - Targeted RNA-Seq
-    - Total RNA-Seq
-    - TruSight Oncology 500
-    - VDJ
-    - Whole Exome Sequencing (WES)
-    - Whole Genome Bisulfite Sequencing (WGBS)
-    - Whole Genome Sequencing (WGS)
+      - "10X Visium"
+      - "ATAC-Seq"
+      - "Cell sorting/counting"
+      - "ChIP-Seq"
+      - "CITE-Seq"
+      - "CRISPR gRNA screens"
+      - "CRISPR knockout screen"
+      - "CRISPR-DAV"
+      - "CRISPRa activation screen"
+      - "CRISPRi interference screen"
+      - "CUT&RUN"
+      - "DNA/CNV"
+      - "Edge-Seq"
+      - "Gene Expression (GEX)"
+      - "Immunophenotyping"
+      - "Long read sequencing"
+      - "MAGeCK CRISPR Screen"
+      - "MARS-Seq"
+      - "Microbiome Targeted RNA sequencing"
+      - "Microbiome Total RNA Sequencing"
+      - "Microbiome Whole Genome Sequencing (WGS)"
+      - "microRNA-Seq"
+      - "mRNA-Seq"
+      - "Multiome ATAC + Gene Expression"
+      - "Perturb-Seq"
+      - "Pharmacodynamics assay"
+      - "PRISM screen"
+      - "Quantitative flow cytometry"
+      - "Ribosomal Profiling"
+      - "scTCR"
+      - "Single Cell ATAC-Seq"
+      - "Single Cell DNA-Seq"
+      - "Single Cell mRNA-Seq"
+      - "Single Cell Total RNA-Seq"
+      - "Single Nuclei ATAC-Seq"
+      - "Single Nuclei mRNA-Seq"
+      - "Spatial Transcriptomics"
+      - "SPLiT-seq"
+      - "Targeted (DNA) Resequencing"
+      - "Targeted RNA-Seq"
+      - "Total RNA-Seq"
+      - "TruSight Oncology 500"
+      - "VDJ"
+      - "Whole Exome Sequencing (WES)"
+      - "Whole Genome Bisulfite Sequencing (WGBS)"
+      - "Whole Genome Sequencing (WGS)"
+
   assay_manufacturer:
     title: Manufacturer
-    description: 'Name of the manufacturer for assay kit, provider for the screening
-      services, or manufacturer for instruments/equipment used to run an assay.  May
-      also be the vendor or collaborator that generated the data.
-
-      '
+    description: > 
+      Name of the manufacturer for assay kit, provider for the screening services, or manufacturer for instruments/equipment used to run an assay. 
+      May also be the vendor or collaborator that generated the data.
     placeholder: Choose from dropdown
     enum:
-    - 10x Genomics
-    - BD Biosciences
-    - Cytek Biosciences
-    - HTG Molecular
-    - Illumina
-    - Nexelis
-    - Pacific Biosciences
-    - Rules-Based Medicine
-    - Thermo Fisher
-    - Unknown
+      - 10x Genomics
+      - BD Biosciences
+      - Cytek Biosciences
+      - HTG Molecular
+      - Illumina
+      - Nexelis
+      - Pacific Biosciences
+      - Rules-Based Medicine
+      - Thermo Fisher
+      - Unknown
+
   assay_platform:
     title: Platform
     description: The assay platform.
     placeholder: Choose from dropdown
     enum:
-    - BD Biosciences FACSAria III
-    - BD Biosciences FACSCanto II
-    - BD Biosciences LSRFortessa X-20
-    - Cytek Biosciences Aurora
-    - Illumina
-    - Illumina Genome Analyzer
-    - Illumina Genome Analyzer II
-    - Illumina Genome Analyzer IIx
-    - Illumina HiScan HQ
-    - Illumina HiSeq (unspecified)
-    - Illumina HiSeq 1000
-    - Illumina HiSeq 1500
-    - Illumina HiSeq 2000
-    - Illumina HiSeq 2500 (unspecified RR or HT)
-    - Illumina HiSeq 2500 High Throughput
-    - Illumina HiSeq 2500 Rapid Run
-    - Illumina HiSeq 3000
-    - Illumina HiSeq 4000
-    - Illumina HiSeq X
-    - Illumina MiSeq
-    - Illumina MiniSeq
-    - Illumina NextSeq (unspecified)
-    - Illumina NextSeq 500
-    - Illumina NovaSeq 6000
-    - Ion Torrent
-    - Oxford Nanopore
-    - PacBio
-    - ThermoFisher Ion S5
+      - "BD Biosciences FACSAria III"
+      - "BD Biosciences FACSCanto II"
+      - "BD Biosciences LSRFortessa X-20"
+      - "Cytek Biosciences Aurora"
+      - "Illumina"
+      - "Illumina Genome Analyzer"
+      - "Illumina Genome Analyzer II"
+      - "Illumina Genome Analyzer IIx"
+      - "Illumina HiScan HQ"
+      - "Illumina HiSeq (unspecified)"
+      - "Illumina HiSeq 1000"
+      - "Illumina HiSeq 1500"
+      - "Illumina HiSeq 2000"
+      - "Illumina HiSeq 2500 (unspecified RR or HT)"
+      - "Illumina HiSeq 2500 High Throughput"
+      - "Illumina HiSeq 2500 Rapid Run"
+      - "Illumina HiSeq 3000"
+      - "Illumina HiSeq 4000"
+      - "Illumina HiSeq X"
+      - "Illumina MiSeq"
+      - "Illumina MiniSeq"
+      - "Illumina NextSeq (unspecified)"
+      - "Illumina NextSeq 500"
+      - "Illumina NovaSeq 6000"
+      - "Ion Torrent"
+      - "Oxford Nanopore"
+      - "PacBio"
+      - "ThermoFisher Ion S5"
+
   equipment:
     title: Equipment
     description: Machine or equipment used to run the experiment.
     placeholder: Choose from dropdown
     enum:
-    - Aria-Arya
-    - Aurora-Amparo
-    - Aurora-Aurora
-    - CantoII-Cersei
-    - CantoII-Jaime
-    - CantoII-Tyrion
-    - Fortessa-Daenerys
+      - "Aria-Arya"
+      - "Aurora-Amparo"
+      - "Aurora-Aurora"
+      - "CantoII-Cersei"
+      - "CantoII-Jaime"
+      - "CantoII-Tyrion"
+      - "Fortessa-Daenerys"
+
   protocol:
     title: Protocol
-    description: 'The SOP (standard operating procedure) detailing the protocol used
-      to perform the assay.  May be derived from (or simply is) a SOW (statement of
-      work).
-
-      '
+    description: > 
+      The SOP (standard operating procedure) detailing the protocol used to perform the assay. 
+      May be derived from (or simply is) a SOW (statement of work).
+    type: array
     view: linkbuttons
     placeholder: Links to assay protocol.
-    additionalProperties: true
-    objectFields:
-    - name: linkName
-      label: Link Name
-    - name: linkUrl
-      label: Link URL
-    type: array
     items:
       type: object
+    additionalProperties: true
+    objectFields:
+      - name: linkName
+        label: Link Name
+      - name: linkUrl
+        label: Link URL
+
   acquisition_software:
     title: Acquisition Software
     description: Software used to acquire the samples in the cytometer.
-    placeholder: Choose drom dropdown
+    placeholder: Choose drom dropdown 
     enum:
-    - SpectroFlo
-    - FACSDiva
+      - "SpectroFlo"
+      - "FACSDiva"
+
   compensation_unmixing:
     title: Compensation Unmixing
-    description: Name of the offset in conventional cytometry experiments or the name
-      of the set of reference controls used in spectral cytometry.
-    placeholder: Input here
+    description: Name of the offset in conventional cytometry experiments or the name of the set of reference controls used in spectral cytometry.
     type: string
+    placeholder: Input here
+
   flowcytometry_panel:
     title: Flow Cytometry Panel
-    description: 'Name of the flow cytometry panel being used.  Selected panel should
-      be matched with the antibodies used to run the panel.
-
-      '
+    description: > 
+      Name of the flow cytometry panel being used. 
+      Selected panel should be matched with the antibodies used to run the panel.
     enum:
-    - Panel ALL
-    - Panel AML
-    - Panel B-Thal
-    - Panel CC-91633
-    - Panel CC-92480-MM-001
-    - Panel CC-94676-PCA-001
-    - Panel CC-99282_Combinations_CLL_Project
-    - Panel CC-99282-CLL-001_Blood
-    - Panel CC-99282-NHL-001
-    - Panel CC-99282-NHL-001_FNA
-    - Panel CK1a 24h-Degradation
-    - Panel CLL
-    - Panel CML
-    - Panel Helios-Degradation
-    - Panel JCAR017
-    - Panel MDS-BLASTS
-    - Panel MDS-ERY
-    - Panel MF
-    - Panel NDP
+      - Panel ALL
+      - Panel AML
+      - Panel B-Thal
+      - Panel CC-91633
+      - Panel CC-92480-MM-001
+      - Panel CC-94676-PCA-001
+      - Panel CC-99282_Combinations_CLL_Project
+      - Panel CC-99282-CLL-001_Blood
+      - Panel CC-99282-NHL-001
+      - Panel CC-99282-NHL-001_FNA
+      - Panel CK1a 24h-Degradation
+      - Panel CLL
+      - Panel CML
+      - Panel Helios-Degradation
+      - Panel JCAR017
+      - Panel MDS-BLASTS
+      - Panel MDS-ERY
+      - Panel MF
+      - Panel NDP
+
   flowcytometry_protocol:
     title: Flow Cytometry Protocol
-    description: 'Description of the flow cytometry protocol being used in the assay
-      and must include titration and optimization parameters.  May also be derived
-      from other assay, sample, experiment, and treatment information.
-
-      '
+    description: > 
+      Description of the flow cytometry protocol being used in the assay and must include titration and optimization parameters. 
+      May also be derived from other assay, sample, experiment, and treatment information.
+    type: string
     view: multiline
     placeholder: Input here
-    type: string
+
   flowcytometry_antibodies:
     title: Flow Cytometry Antibodies
-    description: 'Antibodies used in flow cytometry panel designating the immunogen
-      (target). Select all antibodies used. If the target is not listed, select Other
-      to add it into the list.
-
-      '
-    placeholder: Select from dropdown
+    description: >
+      Antibodies used in flow cytometry panel designating the immunogen (target). Select all antibodies used.
+      If the target is not listed, select Other to add it into the list.
     type: array
+    placeholder: Select from dropdown
     items:
       enum:
-      - 7-AAD
-      - Amcyan
-      - Anti-Glycophorin A
-      - Anti-HLA-DR
-      - Anti-Kappa
-      - Anti-Lambda
-      - Anti-MPO
-      - BFP
-      - CCL1
-      - CCL11
-      - CCL13
-      - CCL14
-      - CCL15
-      - CCL16
-      - CCL17
-      - CCL18
-      - CCL19
-      - CCL2
-      - CCL20
-      - CCL21
-      - CCL22
-      - CCL23
-      - CCL24
-      - CCL25
-      - CCL26
-      - CCL27
-      - CCL3
-      - CCL4
-      - CCL5
-      - CCL7
-      - CCL8
-      - CCR1
-      - CCR10
-      - CCR2
-      - CCR3
-      - CCR4
-      - CCR5
-      - CCR6
-      - CCR7
-      - CCR8
-      - CCR9
-      - CD10
-      - CD100
-      - CD101
-      - CD102
-      - CD103
-      - CD104
-      - CD105
-      - CD106
-      - CD107a
-      - CD107b
-      - CD108
-      - CD109
-      - CD110
-      - CD111
-      - CD112
-      - CD113
-      - CD114
-      - CD115
-      - CD116
-      - CD117
-      - CD118
-      - CD119
-      - CD11a
-      - CD11b
-      - CD120a
-      - CD120b
-      - CD121a
-      - CD121b
-      - CD122
-      - CD123
-      - CD124
-      - CD125
-      - CD126
-      - CD127
-      - CD128a
-      - CD128b
-      - CD129
-      - CD13
-      - CD130
-      - CD131
-      - CD132
-      - CD133
-      - CD134
-      - CD135
-      - CD136
-      - CD137
-      - CD138
-      - CD139
-      - CD14
-      - CD140a
-      - CD140b
-      - CD141
-      - CD142
-      - CD143
-      - CD144
-      - CD146
-      - CD147
-      - CD148
-      - CD149
-      - CD15
-      - CD150
-      - CD151
-      - CD152
-      - CD153
-      - CD154
-      - CD155
-      - CD156a
-      - CD156b
-      - CD156C
-      - CD157
-      - CD158A
-      - CD158B1
-      - CD158B2
-      - CD158C
-      - CD158D
-      - CD158E1
-      - CD158E2
-      - CD158F
-      - CD158G
-      - CD158H
-      - CD158I
-      - CD158J
-      - CD158K
-      - CD16
-      - CD16a
-      - CD16b
-      - CD17
-      - CD175
-      - CD175s
-      - CD176
-      - CD177
-      - CD178
-      - CD179a
-      - CD179b
-      - CD18
-      - CD180
-      - CD181
-      - CD182
-      - CD183
-      - CD184
-      - CD185
-      - CD186
-      - CD19
-      - CD191
-      - CD192
-      - CD193
-      - CD194
-      - CD195
-      - CD196
-      - CD197
-      - CD198
-      - CD199
-      - CD1a
-      - CD1b
-      - CD1c
-      - CD1d
-      - CD1e
-      - CD2
-      - CD20
-      - CD200
-      - CD201
-      - CD202b
-      - CD203c
-      - CD204
-      - CD205
-      - CD206
-      - CD207
-      - CD208
-      - CD209
-      - CD21
-      - CD210a
-      - CD210b
-      - CD212
-      - CD213a1
-      - CD213a2
-      - CD215
-      - CD217
-      - CD218a
-      - CD218b
-      - CD22
-      - CD220
-      - CD221
-      - CD222
-      - CD223
-      - CD224
-      - CD225
-      - CD226
-      - CD227
-      - CD228
-      - CD229
-      - CD23
-      - CD230
-      - CD231
-      - CD232
-      - CD233
-      - CD234
-      - CD235a
-      - CD235b
-      - CD236
-      - CD238
-      - CD239
-      - CD24
-      - CD240CE
-      - CD240D
-      - CD241
-      - CD242
-      - CD243
-      - CD244
-      - CD245
-      - CD246
-      - CD247
-      - CD248
-      - CD249
-      - CD25
-      - CD252
-      - CD253
-      - CD254
-      - CD256
-      - CD257
-      - CD258
-      - CD26
-      - CD261
-      - CD262
-      - CD263
-      - CD264
-      - CD265
-      - CD266
-      - CD267
-      - CD268
-      - CD269
-      - CD27
-      - CD270
-      - CD271
-      - CD272
-      - CD273
-      - CD274
-      - CD275
-      - CD276
-      - CD277
-      - CD278
-      - CD279
-      - CD28
-      - CD280
-      - CD281
-      - CD282
-      - CD283
-      - CD284
-      - CD286
-      - CD288
-      - CD289
-      - CD29
-      - CD290
-      - CD292
-      - CD293
-      - CD294
-      - CD295
-      - CD296
-      - CD297
-      - CD298
-      - CD299
-      - CD3
-      - CD30
-      - CD300a
-      - CD300c
-      - CD301
-      - CD302
-      - CD303
-      - CD304
-      - CD305
-      - CD306
-      - CD307a
-      - CD307b
-      - CD307c
-      - CD307d
-      - CD307e
-      - CD309
-      - CD31
-      - CD312
-      - CD314
-      - CD315
-      - CD316
-      - CD317
-      - CD318
-      - CD319
-      - CD320
-      - CD321
-      - CD322
-      - CD324
-      - CD325
-      - CD326
-      - CD327
-      - CD328
-      - CD329
-      - CD33
-      - CD331
-      - CD332
-      - CD333
-      - CD334
-      - CD335
-      - CD336
-      - CD337
-      - CD338
-      - CD339
-      - CD34
-      - CD340
-      - CD344
-      - CD349
-      - CD35
-      - CD350
-      - CD351
-      - CD352
-      - CD353
-      - CD354
-      - CD355
-      - CD357
-      - CD358
-      - CD36
-      - CD360
-      - CD361
-      - CD362
-      - CD363
-      - CD364
-      - CD365
-      - CD366
-      - CD367
-      - CD368
-      - CD369
-      - CD37
-      - CD370
-      - CD371
-      - CD38
-      - CD39
-      - CD3d
-      - CD3e
-      - CD3g
-      - CD4
-      - CD40
-      - CD41
-      - CD41a
-      - CD42a
-      - CD42b
-      - CD42c
-      - CD42d
-      - CD43
-      - CD44
-      - CD45
-      - CD45RA
-      - CD45RB
-      - CD45RC
-      - CD45RO
-      - CD46
-      - CD47
-      - CD48
-      - CD49a
-      - CD49b
-      - CD49c
-      - CD49d
-      - CD49e
-      - CD49f
-      - CD5
-      - CD50
-      - CD51
-      - CD52
-      - CD53
-      - CD54
-      - CD55
-      - CD56
-      - CD57
-      - CD58
-      - CD59
-      - CD6
-      - CD60a
-      - CD60b
-      - CD60c
-      - CD61
-      - CD62E
-      - CD62L
-      - CD62P
-      - CD63
-      - CD64
-      - CD64a
-      - CD65
-      - CD65s
-      - CD66a
-      - CD66b
-      - CD66c
-      - CD66d
-      - CD66e
-      - CD66f
-      - CD67
-      - CD68
-      - CD69
-      - CD7
-      - CD70
-      - CD71
-      - CD72
-      - CD73
-      - CD74
-      - CD75
-      - CD75s
-      - CD76
-      - CD77
-      - CD79a
-      - CD79b
-      - CD8
-      - CD80
-      - CD81
-      - CD82
-      - CD83
-      - CD84
-      - CD85A
-      - CD85B
-      - CD85C
-      - CD85D
-      - CD85F
-      - CD85G
-      - CD85H
-      - CD85I
-      - CD85J
-      - CD85K
-      - CD85M
-      - CD86
-      - CD87
-      - CD88
-      - CD89
-      - CD8a
-      - CD8b
-      - CD9
-      - CD90
-      - CD91
-      - CD92
-      - CD93
-      - CD94
-      - CD95
-      - CD96
-      - CD97
-      - CD98
-      - CD99
-      - CDw145
-      - CFP
-      - CX3CL1
-      - CX3CR1
-      - CXCL1
-      - CXCL10
-      - CXCL11
-      - CXCL12
-      - CXCL13
-      - CXCL14
-      - CXCL2
-      - CXCL3
-      - CXCL4
-      - CXCL5
-      - CXCL6
-      - CXCL7
-      - CXCL8
-      - CXCL9
-      - CXCR1
-      - CXCR2
-      - CXCR3
-      - CXCR4
-      - CXCR5
-      - DAPI
-      - DiD
-      - Dil
-      - DiO
-      - DRAQ5
-      - DRAQ7
-      - DsRed
-      - DsRed Dimer2
-      - dTomato
-      - Fluorochrome
-      - FMC-7
-      - FVS450
-      - FVS510
-      - FVS520
-      - FVS575V
-      - FVS620
-      - FVS660
-      - FVS700
-      - FVS780
-      - GFP
-      - GM-CSF
-      - IFN-alpha
-      - IFN-beta
-      - IFN-gamma
-      - IL-1 alpha
-      - IL-1 beta
-      - IL-10
-      - IL-12
-      - IL-13
-      - IL-17A
-      - IL-17F
-      - IL-2
-      - IL-21
-      - IL-3
-      - IL-4
-      - IL-5
-      - IL-6
-      - IL-8
-      - IL-9
-      - Keima-Red
-      - Kusabira Orange
-      - LIVE DEAD Aqua
-      - LIVE DEAD Blue
-      - LIVE DEAD Far Red
-      - LIVE DEAD Green
-      - LIVE DEAD NIR
-      - LIVE DEAD Red
-      - LIVE DEAD Violet
-      - LIVE DEAD Yellow
-      - mBanana
-      - mCherry
-      - mHoneyDew
-      - MitoSOX Red
-      - MitoTracker Deep Red
-      - MitoTracker Green
-      - mKate
-      - mOrange
-      - Other
-      - OX40L (CD252)
-      - Propidium Iodide
-      - RFP
-      - Sapphire
-      - TGF-beta1
-      - TMRM
-      - TNF-alpha
-      - TRAIL (CD253)
-      - TWEAK (CD255)
-      - Venus
-      - XCL1
-      - XCL2
-      - XCR1
-      - YFP
-      - Zombie Aqua
-      - Zombie Green
-      - Zombie NIR
-      - Zombie Red
-      - Zombie Violet
-      - Zombie Yellow
+        - 7-AAD
+        - Amcyan
+        - Anti-Glycophorin A
+        - Anti-HLA-DR
+        - Anti-Kappa
+        - Anti-Lambda
+        - Anti-MPO
+        - BFP
+        - CCL1
+        - CCL11
+        - CCL13
+        - CCL14
+        - CCL15
+        - CCL16
+        - CCL17
+        - CCL18
+        - CCL19
+        - CCL2
+        - CCL20
+        - CCL21
+        - CCL22
+        - CCL23
+        - CCL24
+        - CCL25
+        - CCL26
+        - CCL27
+        - CCL3
+        - CCL4
+        - CCL5
+        - CCL7
+        - CCL8
+        - CCR1
+        - CCR10
+        - CCR2
+        - CCR3
+        - CCR4
+        - CCR5
+        - CCR6
+        - CCR7
+        - CCR8
+        - CCR9
+        - CD10
+        - CD100
+        - CD101
+        - CD102
+        - CD103
+        - CD104
+        - CD105
+        - CD106
+        - CD107a
+        - CD107b
+        - CD108
+        - CD109
+        - CD110
+        - CD111
+        - CD112
+        - CD113
+        - CD114
+        - CD115
+        - CD116
+        - CD117
+        - CD118
+        - CD119
+        - CD11a
+        - CD11b
+        - CD120a
+        - CD120b
+        - CD121a
+        - CD121b
+        - CD122
+        - CD123
+        - CD124
+        - CD125
+        - CD126
+        - CD127
+        - CD128a
+        - CD128b
+        - CD129
+        - CD13
+        - CD130
+        - CD131
+        - CD132
+        - CD133
+        - CD134
+        - CD135
+        - CD136
+        - CD137
+        - CD138
+        - CD139
+        - CD14
+        - CD140a
+        - CD140b
+        - CD141
+        - CD142
+        - CD143
+        - CD144
+        - CD146
+        - CD147
+        - CD148
+        - CD149
+        - CD15
+        - CD150
+        - CD151
+        - CD152
+        - CD153
+        - CD154
+        - CD155
+        - CD156a
+        - CD156b
+        - CD156C
+        - CD157
+        - CD158A
+        - CD158B1
+        - CD158B2
+        - CD158C
+        - CD158D
+        - CD158E1
+        - CD158E2
+        - CD158F
+        - CD158G
+        - CD158H
+        - CD158I
+        - CD158J
+        - CD158K
+        - CD16
+        - CD16a
+        - CD16b
+        - CD17
+        - CD175
+        - CD175s
+        - CD176
+        - CD177
+        - CD178
+        - CD179a
+        - CD179b
+        - CD18
+        - CD180
+        - CD181
+        - CD182
+        - CD183
+        - CD184
+        - CD185
+        - CD186
+        - CD19
+        - CD191
+        - CD192
+        - CD193
+        - CD194
+        - CD195
+        - CD196
+        - CD197
+        - CD198
+        - CD199
+        - CD1a
+        - CD1b
+        - CD1c
+        - CD1d
+        - CD1e
+        - CD2
+        - CD20
+        - CD200
+        - CD201
+        - CD202b
+        - CD203c
+        - CD204
+        - CD205
+        - CD206
+        - CD207
+        - CD208
+        - CD209
+        - CD21
+        - CD210a
+        - CD210b
+        - CD212
+        - CD213a1
+        - CD213a2
+        - CD215
+        - CD217
+        - CD218a
+        - CD218b
+        - CD22
+        - CD220
+        - CD221
+        - CD222
+        - CD223
+        - CD224
+        - CD225
+        - CD226
+        - CD227
+        - CD228
+        - CD229
+        - CD23
+        - CD230
+        - CD231
+        - CD232
+        - CD233
+        - CD234
+        - CD235a
+        - CD235b
+        - CD236
+        - CD238
+        - CD239
+        - CD24
+        - CD240CE
+        - CD240D
+        - CD241
+        - CD242
+        - CD243
+        - CD244
+        - CD245
+        - CD246
+        - CD247
+        - CD248
+        - CD249
+        - CD25
+        - CD252
+        - CD253
+        - CD254
+        - CD256
+        - CD257
+        - CD258
+        - CD26
+        - CD261
+        - CD262
+        - CD263
+        - CD264
+        - CD265
+        - CD266
+        - CD267
+        - CD268
+        - CD269
+        - CD27
+        - CD270
+        - CD271
+        - CD272
+        - CD273
+        - CD274
+        - CD275
+        - CD276
+        - CD277
+        - CD278
+        - CD279
+        - CD28
+        - CD280
+        - CD281
+        - CD282
+        - CD283
+        - CD284
+        - CD286
+        - CD288
+        - CD289
+        - CD29
+        - CD290
+        - CD292
+        - CD293
+        - CD294
+        - CD295
+        - CD296
+        - CD297
+        - CD298
+        - CD299
+        - CD3
+        - CD30
+        - CD300a
+        - CD300c
+        - CD301
+        - CD302
+        - CD303
+        - CD304
+        - CD305
+        - CD306
+        - CD307a
+        - CD307b
+        - CD307c
+        - CD307d
+        - CD307e
+        - CD309
+        - CD31
+        - CD312
+        - CD314
+        - CD315
+        - CD316
+        - CD317
+        - CD318
+        - CD319
+        - CD320
+        - CD321
+        - CD322
+        - CD324
+        - CD325
+        - CD326
+        - CD327
+        - CD328
+        - CD329
+        - CD33
+        - CD331
+        - CD332
+        - CD333
+        - CD334
+        - CD335
+        - CD336
+        - CD337
+        - CD338
+        - CD339
+        - CD34
+        - CD340
+        - CD344
+        - CD349
+        - CD35
+        - CD350
+        - CD351
+        - CD352
+        - CD353
+        - CD354
+        - CD355
+        - CD357
+        - CD358
+        - CD36
+        - CD360
+        - CD361
+        - CD362
+        - CD363
+        - CD364
+        - CD365
+        - CD366
+        - CD367
+        - CD368
+        - CD369
+        - CD37
+        - CD370
+        - CD371
+        - CD38
+        - CD39
+        - CD3d
+        - CD3e
+        - CD3g
+        - CD4
+        - CD40
+        - CD41
+        - CD41a
+        - CD42a
+        - CD42b
+        - CD42c
+        - CD42d
+        - CD43
+        - CD44
+        - CD45
+        - CD45RA
+        - CD45RB
+        - CD45RC
+        - CD45RO
+        - CD46
+        - CD47
+        - CD48
+        - CD49a
+        - CD49b
+        - CD49c
+        - CD49d
+        - CD49e
+        - CD49f
+        - CD5
+        - CD50
+        - CD51
+        - CD52
+        - CD53
+        - CD54
+        - CD55
+        - CD56
+        - CD57
+        - CD58
+        - CD59
+        - CD6
+        - CD60a
+        - CD60b
+        - CD60c
+        - CD61
+        - CD62E
+        - CD62L
+        - CD62P
+        - CD63
+        - CD64
+        - CD64a
+        - CD65
+        - CD65s
+        - CD66a
+        - CD66b
+        - CD66c
+        - CD66d
+        - CD66e
+        - CD66f
+        - CD67
+        - CD68
+        - CD69
+        - CD7
+        - CD70
+        - CD71
+        - CD72
+        - CD73
+        - CD74
+        - CD75
+        - CD75s
+        - CD76
+        - CD77
+        - CD79a
+        - CD79b
+        - CD8
+        - CD80
+        - CD81
+        - CD82
+        - CD83
+        - CD84
+        - CD85A
+        - CD85B
+        - CD85C
+        - CD85D
+        - CD85F
+        - CD85G
+        - CD85H
+        - CD85I
+        - CD85J
+        - CD85K
+        - CD85M
+        - CD86
+        - CD87
+        - CD88
+        - CD89
+        - CD8a
+        - CD8b
+        - CD9
+        - CD90
+        - CD91
+        - CD92
+        - CD93
+        - CD94
+        - CD95
+        - CD96
+        - CD97
+        - CD98
+        - CD99
+        - CDw145
+        - CFP
+        - CX3CL1
+        - CX3CR1
+        - CXCL1
+        - CXCL10
+        - CXCL11
+        - CXCL12
+        - CXCL13
+        - CXCL14
+        - CXCL2
+        - CXCL3
+        - CXCL4
+        - CXCL5
+        - CXCL6
+        - CXCL7
+        - CXCL8
+        - CXCL9
+        - CXCR1
+        - CXCR2
+        - CXCR3
+        - CXCR4
+        - CXCR5
+        - DAPI
+        - DiD
+        - Dil
+        - DiO
+        - DRAQ5
+        - DRAQ7
+        - DsRed
+        - DsRed Dimer2
+        - dTomato
+        - Fluorochrome
+        - FMC-7
+        - FVS450
+        - FVS510
+        - FVS520
+        - FVS575V
+        - FVS620
+        - FVS660
+        - FVS700
+        - FVS780
+        - GFP
+        - GM-CSF
+        - IFN-alpha
+        - IFN-beta
+        - IFN-gamma
+        - IL-1 alpha
+        - IL-1 beta
+        - IL-10
+        - IL-12
+        - IL-13
+        - IL-17A
+        - IL-17F
+        - IL-2
+        - IL-21
+        - IL-3
+        - IL-4
+        - IL-5
+        - IL-6
+        - IL-8
+        - IL-9
+        - Keima-Red
+        - Kusabira Orange
+        - LIVE DEAD Aqua
+        - LIVE DEAD Blue
+        - LIVE DEAD Far Red
+        - LIVE DEAD Green
+        - LIVE DEAD NIR
+        - LIVE DEAD Red
+        - LIVE DEAD Violet
+        - LIVE DEAD Yellow
+        - mBanana
+        - mCherry
+        - mHoneyDew
+        - MitoSOX Red
+        - MitoTracker Deep Red
+        - MitoTracker Green
+        - mKate
+        - mOrange
+        - Other
+        - OX40L (CD252)
+        - Propidium Iodide
+        - RFP
+        - Sapphire
+        - TGF-beta1
+        - TMRM
+        - TNF-alpha
+        - TRAIL (CD253)
+        - TWEAK (CD255)
+        - Venus
+        - XCL1
+        - XCL2
+        - XCR1
+        - YFP
+        - Zombie Aqua
+        - Zombie Green
+        - Zombie NIR
+        - Zombie Red
+        - Zombie Violet
+        - Zombie Yellow
+
   flowcytometry_fluorophores:
     title: Flow Cytometry Fluorophores
-    description: 'Fluorophores used in flow cytometry panel. Must indicate which antibody
-      the fluorophore is conjugated to. Select all antibodies used. If the target
-      is not listed, select Other to add it into the list.
-
-      '
-    placeholder: Select from dropdown
+    description: > 
+      Fluorophores used in flow cytometry panel. Must indicate which antibody the fluorophore is conjugated to.
+      Select all antibodies used. If the target is not listed, select Other to add it into the list.
     type: array
+    placeholder: Select from dropdown
     items:
       enum:
       - AF660
@@ -888,111 +1151,125 @@ properties:
       - VioBright 667
       - VioBright FITC
       - VioGreen
+
+
   flowcytometry_detectors:
     title: Flow Cytometry Detectors
-    description: Which channels were used during the flow cytometry assay. Dependent
-      on fluorophores used.
-    placeholder: Choose from dropdown
+    description: Which channels were used during the flow cytometry assay. Dependent on fluorophores used.
     type: array
+    placeholder: Choose from dropdown
     items:
       enum:
-      - Blue Laser
-      - YellowGreen Laser
-      - Red Laser
-      - UV Laser
-      - Violet Laser
+        - Blue Laser
+        - YellowGreen Laser
+        - Red Laser
+        - UV Laser
+        - Violet Laser
+
   protocol_version:
     title: Protocol Version
     description: Version of the SOP/protocol used to perform the assay.
-    placeholder: Input here
     type: string
+    placeholder: Input here
+
   project_publications:
     title: Project Publications
     description: Link(s) to publications related to the project.
     placeholder: Input here
+    type: array
     enum_source:
       type: suggestion
-      global: false
-      enforce: auto_add
-    type: array
+      global:
+        false # by default, the suggestion lists will be partiaitoned by node + field.
+        # If global is set to true, we want to only partition suggestion list based on field
+      enforce:
+        "auto_add" # yes/true/"true": reject any suggestions not registered
+        # auto_add: accept any suggestion, add to validation list if not exist
+        # false/no/"false": accept any suggestion, don't auto add to validation list
     items:
       type: string
+      # format: uri
+
   IHC_antibody:
     title: IHC Antibody
     description: Primary antibodies (including isotype) used in IHC protocol.
-    placeholder: Input here
-    type: string
+    type : string
+    placeholder : Input here
+
   IHC_clone:
     title: IHC Clone
     description: Clonality of the primary antibody used in the IHC protocol.
     placeholder: Choose from dropdown
     enum:
-    - Monoclonal
-    - Polyclonal
+      - Monoclonal
+      - Polyclonal
+
   IHC_read_sequence:
     title: IHC Read Sequence
     description: Description of the order in which the IHC slide is read.
+    type: string
     view: multiline
     placeholder: Input here
-    type: string
+
   IHC_analyte:
     title: IHC Analyte
     description: Targets of the IHC assay. Select all that apply.
-    placeholder: Choose from dropdown
     type: array
+    placeholder: Choose from dropdown
     items:
       enum:
-      - Brain-Derived Neurotrophic Factor (BDNF)
-      - Eotaxin-1
+        - Brain-Derived Neurotrophic Factor (BDNF)
+        - Eotaxin-1
+
   cytokine_analyte:
     title: Cytokine Analyte
     description: Targets of the cytokine assay. Select all that apply.
-    placeholder: Choose from dropdown
     type: array
+    placeholder: Choose from dropdown
     items:
       enum:
-      - Brain-Derived Neurotrophic Factor (BDNF)
-      - Calprotectin
-      - Eotaxin-1
-      - Factor VII
-      - Intercellular Adhesion Molecule 1 (ICAM-1)
-      - Interleukin-1 alpha (IL-1 alpha)
-      - Interleukin-1 beta (IL-1 beta)
-      - Interleukin-1 receptor antagonist (IL-1ra)
-      - Interleukin-12 Subunit p40 (IL-12p40)
-      - Interleukin-12 Subunit p70 (IL-12p70)
-      - Interleukin-15 (IL-15)
-      - Interleukin-17 (IL-17)
-      - Interleukin-23 (IL-23)
-      - Matrix Metalloproteinase-3 (MMP-3)
-      - Matrix Metalloproteinase-9 (MMP-9)
-      - Stem Cell Factor (SCF)
-      - Vascular Endothelial Growth Factor (VEGF)
+        - Brain-Derived Neurotrophic Factor (BDNF)
+        - Calprotectin
+        - Eotaxin-1
+        - Factor VII
+        - Intercellular Adhesion Molecule 1 (ICAM-1)
+        - Interleukin-1 alpha (IL-1 alpha)
+        - Interleukin-1 beta (IL-1 beta)
+        - Interleukin-1 receptor antagonist (IL-1ra)
+        - Interleukin-12 Subunit p40 (IL-12p40)
+        - Interleukin-12 Subunit p70 (IL-12p70)
+        - Interleukin-15 (IL-15)
+        - Interleukin-17 (IL-17)
+        - Interleukin-23 (IL-23)
+        - Matrix Metalloproteinase-3 (MMP-3)
+        - Matrix Metalloproteinase-9 (MMP-9)
+        - Stem Cell Factor (SCF)
+        - Vascular Endothelial Growth Factor (VEGF)
+
   assay_mode_modality_class:
     title: Assay Mode and Modality Class
-    description: Assay mode (in vivo, in vitro, ex vivo, or clinical human) and modality
-      classification (animal model, biologics, milla, small molecule, or human patient
-      sample)
+    description: Assay mode (in vivo, in vitro, ex vivo, or clinical human) and modality classification (animal model, biologics, milla, small molecule, or human patient sample)
     placeholder: Choose from dropdown
     enum:
-    - In Vivo - Animal Model
-    - In Vivo - Biologics
-    - In Vivo - Milla
-    - In Vivo - Small Molecule
-    - In Vitro - Animal Model
-    - In Vitro - Biologics
-    - In Vitro - Milla
-    - In Vitro - Small Molecule
-    - Ex Vivo - Human Patient Samples
-    - Ex Vivo - Animal Model
-    - Clinical Human - Human Patient Sample
+      - In Vivo - Animal Model
+      - In Vivo - Biologics
+      - In Vivo - Milla
+      - In Vivo - Small Molecule
+      - In Vitro - Animal Model
+      - In Vitro - Biologics
+      - In Vitro - Milla
+      - In Vitro - Small Molecule
+      - Ex Vivo - Human Patient Samples
+      - Ex Vivo - Animal Model
+      - Clinical Human - Human Patient Sample
+
   dataset:
-    $ref: _definitions.yaml#/to_many
+    $ref: "_definitions.yaml#/to_many"
   sequencing_run:
-    $ref: _definitions.yaml#/to_many
+    $ref: "_definitions.yaml#/to_many"
   research_project:
-    $ref: _definitions.yaml#/to_many
+    $ref: "_definitions.yaml#/to_many"
   lab_experiment:
-    $ref: _definitions.yaml#/to_many
+    $ref: "_definitions.yaml#/to_many"
   bioinformatics_pipeline:
-    $ref: _definitions.yaml#/to_many
+    $ref: "_definitions.yaml#/to_many"

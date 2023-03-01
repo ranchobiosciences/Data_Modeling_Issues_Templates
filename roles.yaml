@@ -1,76 +1,329 @@
-$schema: https://rdc-dev-mongo.rbscomp.net/api/schemaref/_schema_validator#
-id: https://rdc-dev-mongo.rbscomp.net/api/roles/schema
-title: Roles
-description: 'Roles is a collection of various persons needed for or who execute projects,
-  clinical trials, experiments, and analyses.
+$schema: 'https://monarch.web-dev.bms.com/api/schemaref/_schema_validator#'
 
-  '
+id: 'https://monarch.web-dev.bms.com/api/roles/schema'
+title: Roles
+title_submitter: Submitter
+identifierPrefix: R
 type: object
+nodeTerms: null
+namespace: https://datacommons.web.bms.com/
+category: administrative
+description: > 
+  Roles is a collection of various persons needed for or who execute projects, clinical trials, experiments, and analyses.
+additionalProperties: false
+validators: null
+
+uiSettings:
+  icon: badge
+  iconStyle: material-icons-outlined
+  color: rgb(255, 236, 205)
+  uiPath: /datasetcatalog/roles
+  plural: Roles
+  globalSearchSettings:
+    searchFields:
+      - research_scientist
+      - lab_scientist
+      - operator
+    displayFields:
+      - research_scientist
+      - lab_scientist
+      - operator
+  # displayField: 
+  # displaySubField: 
+  defaultSortField: identifier
+  primaryPersonField: created_by # for email template
+  editValidationUserFields:
+    - research_scientist.uid
+    - lab_scientist.uid
+  nodeIdentifier: id
+  #abacSchemaName: 
+  createForm:
+    maxRows: 11
+    maxCols: 2
+    buttonLabel: Create Roles
+  myNodesAdditionalFields:
+    - research_scientist.uid
+    - lab_scientist.uid
+  expandFilterOptionsByDefault: true
+  dataFilterField:
+    research_scientist:
+      label: Research Scientist
+      tooltip: true
+    lab_scientist:
+      label: Lab Scientist
+      tooltip: true
+    identifier:
+      label: Identifier
+      view: dynamic
+      tooltip: true
+      optionsPromiseLimit: 100
+  tableField:
+    research_scientist: Research Scientist
+    lab_scientist: Lab Scientist
+    operator: Operator
+  searchField:
+    - research_scientist.cn
+    - lab_scientist.cn
+    - operator
+    - tags
+    - identifier
+  fullNodeView: true
+  fullNodeViewForm:
+    nameField: 
+    personFields:
+      - name: research_scientist
+        label: Research Scientist
+      - name: lab_scientist
+        label: Lab Scientist
+    upperFields:
+      - name: links
+      - name: tags
+        label: Tags
+    metadataFields:
+      - name: operator
+        label: Operator
+    relationshipFields:
+      - name: relationships
+        label:
+    bottomFields:
+      - name: files
+        label:
+
+  fullNodeRegisterForm:
+    readonlyFields:
+      - identifier
+    panels:
+      - title: Overview
+        fields:
+          - name: research_scientist
+            label: Research Scientist
+            description: Name(s) of the research scientist(s) performing the experiments for a research project.
+          - name: lab_scientist
+            label: Lab Scientist
+            description: Name of the lab scientist performing the experiment.
+          - name: operator
+            label: Operator
+            description: Name of the CITRE lab scientist performing the experiment.
+
+      - title: Details
+        optional: true
+        fields:
+          - name: submitter_id
+            label: Submitter ID
+
+      - title: Related Metadata
+        optional: true
+        fields:
+          - name: relationships
+            label:
+          - name: tags
+            label: Tags
+
+      - title: Files
+        fields:
+          - name: files
+            label:
+
+  fullNodeEditForm:
+    readonlyFields:
+      - identifier
+    panels:
+      - title: Overview
+        fields:
+          - name: research_scientist
+            label: Research Scientist
+            description: Name(s) of the research scientist(s) performing the experiments for a research project.
+          - name: lab_scientist
+            label: Lab Scientist
+            description: Name of the lab scientist performing the experiment.
+          - name: operator
+            label: Operator
+            description: Name of the CITRE lab scientist performing the experiment.
+
+      - title: Details
+        optional: true
+        fields:
+          - name: submitter_id
+            label: Submitter ID
+
+      - title: Related Metadata
+        optional: true
+        fields:
+          - name: relationships
+            label:
+          - name: tags
+            label: Tags
+
+      - title: Files
+        fields:
+          - name: files
+            label:
+
+
+systemProperties:
+  - id
+  - _id
+  - created_datetime
+  - updated_datetime
+  - created_by
+  - submitter_id
+  - type
+  - state
+
 required:
-- type
+  - type
+
+uniqueKeys:
+  - [id]
+
+# links:
+#   - name: research_project
+#     backref: roles
+#     parent_title: Research Projects # what's rendered for this node
+#     child_title: Roles
+#     label: is_part_of
+#     target_type: research_project
+#     multiplicity: many_to_many
+#     required: false
+
+#   # - name: clinical_trial
+#   #   backref: roles
+#   #   parent_title: Clinical Trials # what's rendered for this node
+#   #   child_title: Roles
+#   #   label: is_part_of
+#   #   target_type: clinical_trial
+#   #   multiplicity: many_to_many
+#   #   required: false
+
+#   # - name: lab_experiment
+#   #   backref: roles
+#   #   parent_title: Lab Experiments # what's rendered for this node
+#   #   child_title: Roles
+#   #   label: is_part_of
+#   #   target_type: lab_experiment
+#   #   multiplicity: many_to_many
+#   #   required: false
+
+  # - name: dataset
+  #   backref: roles
+  #   parent_title: Datasets # what's rendered for this node
+  #   child_title: Roles
+  #   label: is_part_of
+  #   target_type: dataset
+  #   multiplicity: many_to_many
+  #   required: false
+
+#   # - name: bioinformatics_pipeline
+#   #   backref: roles
+#   #   parent_title: Bioinformatics Pipelines # what's rendered for this node
+#   #   child_title: Roles
+#   #   label: is_part_of
+#   #   target_type: bioinformatics_pipeline
+#   #   multiplicity: many_to_many
+#   #   required: false
+
+  # - name: secondary_analysis
+  #   backref: roles
+  #   parent_title: Secondary Analyses # what's rendered for this node
+  #   child_title: Roles
+  #   label: is_part_of
+  #   target_type: secondary_analysis
+  #   multiplicity: many_to_many
+  #   required: false
+
+  # - name: analysis_result
+  #   backref: roles
+  #   parent_title: Analysis Results # what's rendered for this node
+  #   child_title: Roles
+  #   label: is_part_of
+  #   target_type: analysis_result
+  #   multiplicity: many_to_many
+  #   required: false
+
+  # - name: data_product
+  #   backref: roles
+  #   parent_title: Data Products # what's rendered for this node
+  #   child_title: Roles
+  #   label: is_part_of
+  #   target_type: data_product
+  #   multiplicity: many_to_many
+  #   required: false
+
+#   - name: external_partner
+#     backref: roles
+#     parent_title: External Partners # what's rendered for this node
+#     child_title: Roles
+#     label: includes
+#     target_type: external_partner
+#     multiplicity: many_to_many
+#     required: false
+
 properties:
-  $ref: _definitions.yaml#/ubiquitous_properties
+  $ref: '_definitions.yaml#/ubiquitous_properties'
+
   research_scientist:
     title: Research Scientist
-    description: Name(s) of the research scientist(s) performing the experiments for
-      a research project.
-    placeholder: Dynamic Search
-    additionalProperties: true
-    $ref: _definitions.yaml#/bms_group_enum_config
+    description: Name(s) of the research scientist(s) performing the experiments for a research project.
     type: array
+    placeholder: Dynamic Search
     items:
       type: object
+    additionalProperties: true
+    $ref: '_definitions.yaml#/bms_group_enum_config'
+
   lab_scientist:
     title: Lab Scientist
     description: Name of the lab scientist performing the experiment.
-    placeholder: Dynamic Search
-    additionalProperties: true
-    $ref: _definitions.yaml#/bms_group_enum_config
     type: array
+    placeholder: Dynamic Search
     items:
       type: object
+    additionalProperties: true
+    $ref: '_definitions.yaml#/bms_group_enum_config'
+
   operator:
     title: Operator
     description: Name of the CITRE lab scientist performing the experiment.
-    placeholder: Choose from dropdown
     type: array
+    placeholder: Choose from dropdown
     items:
       enum:
-      - Alicia Benitez
-      - Alicia Martinez
-      - Alicia Sanchez
-      - Anabel Moreno
-      - Carla Guarinos
-      - Carlos Rueda
-      - Carmen Jimenez
-      - Daniel Aguilar
-      - Debora Pons
-      - Diego Sobradillo
-      - Fabiola Felipe
-      - Estela Garcia
-      - Jose Carlos Blanco
-      - Jose Francisco Lopez
-      - Ines Gonzalez
-      - Maria Sanchez
-      - Dolores Jimenez
-      - Marta Tabaco
-      - "Nuria Pedre\xF1o"
-      - Pilar de la Torre
+        - Alicia Benitez
+        - Alicia Martinez
+        - Alicia Sanchez
+        - Anabel Moreno
+        - Carla Guarinos
+        - Carlos Rueda
+        - Carmen Jimenez
+        - Daniel Aguilar
+        - Debora Pons
+        - Diego Sobradillo
+        - Fabiola Felipe
+        - Estela Garcia
+        - Jose Carlos Blanco
+        - Jose Francisco Lopez
+        - Ines Gonzalez
+        - Maria Sanchez
+        - Dolores Jimenez
+        - Marta Tabaco
+        - Nuria Pedreño
+        - Pilar de la Torre
+
   research_project:
-    $ref: _definitions.yaml#/to_many
+    $ref: '_definitions.yaml#/to_many'
   clinical_trial:
-    $ref: _definitions.yaml#/to_many
+    $ref: '_definitions.yaml#/to_many'
   lab_experiment:
-    $ref: _definitions.yaml#/to_many
+    $ref: '_definitions.yaml#/to_many'
   dataset:
-    $ref: _definitions.yaml#/to_many
+    $ref: '_definitions.yaml#/to_many'
   bioinformatics_pipeline:
-    $ref: _definitions.yaml#/to_many
+    $ref: '_definitions.yaml#/to_many'
   secondary_analysis:
-    $ref: _definitions.yaml#/to_many
+    $ref: '_definitions.yaml#/to_many'
   results:
-    $ref: _definitions.yaml#/to_many
+    $ref: '_definitions.yaml#/to_many'
   data_product:
-    $ref: _definitions.yaml#/to_many
+    $ref: '_definitions.yaml#/to_many'
   external_partner:
-    $ref: _definitions.yaml#/to_many
+    $ref: '_definitions.yaml#/to_many'

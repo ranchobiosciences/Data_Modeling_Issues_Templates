@@ -1,76 +1,168 @@
-$schema: https://rdc-dev-mongo.rbscomp.net/api/schemaref/_schema_validator#
-id: https://rdc-dev-mongo.rbscomp.net/api/file/schema
+$schema: "https://monarch.web-dev.bms.com/api/schemaref/_schema_validator#"
+
+id: "https://monarch.web-dev.bms.com/api/file/schema"
 title: File
-description: A coordinated set of activities to analyze data.
+identifierPrefix: F
 type: object
+nodeTerms: null
+namespace: https://datacommons.web.bms.com/
+category: administrative
+description: A coordinated set of activities to analyze data.
+additionalProperties: false
+validators: null
+
+uiSettings:
+  icon: file_copy
+  uiPath: /files
+  plural: Files
+  displayField: filename
+  displaySubField: size
+  #defaultSortField: size
+  nodeIdentifier: id
+  disableCreate: true
+  disableEdit: false
+  expandFilterOptionsByDefault: true  
+  # dataFilterField:
+  #   created_datetime:
+  #     label: Date Range
+  #   datasets:
+  #     label: Datasets
+  #     filterFields:
+  #       - id
+  #       - _id
+  #       - submitter_id
+  #       - identifier
+  #   filetype: 
+  #     label: File Type
+  horizontalFilterPanel:
+    - label: Source # Label of button
+      field: endpoint # name of node field to filter
+
+    - label: Location
+      field: bucket
+
+    - label: File Type
+      field: filename
+
+    - label: Last Updated
+      field: updated_datetime
+
+  tableField:
+    filename: Filename
+    size: Size
+    filetype: File Type
+    bucket: Location
+    created_datetime: Created
+    updated_datetime: Updated
+  searchField:
+    - bucket
+    - endpoint
+    - checksum_sha256
+    - filename
+    - guid
+    - key
+    - size
+
+systemProperties:
+  - id
+  - _id
+  - created_datetime
+  - updated_datetime
+  - created_by
+  - submitter_id
+  - type
+  - state
+
+links: [] # All nodes dynamically added by Monarch
+
 required:
-- type
+  - type
+
+uniqueKeys:
+  - [id]
+
 properties:
-  $ref: _definitions.yaml#/ubiquitous_properties
+  $ref: "_definitions.yaml#/ubiquitous_properties"
+
   bucket:
     title: Location
     description: The name/identifier of the S3 Bucket
     type: string
+
   endpoint:
     title: Endpoint
     description: Endpoint ID that has configured with Monarch
     type: string
+
+  # TODO: Add validation rules here for all of the file type nodes that were deleted - dont understand 10/12
   metadata:
     description: Tag(s) for facilitating file-level search.
     oneOf:
-    - type: object
-      additionalProperties: true
-    - type: 'null'
+      - type: object
+        additionalProperties: true
+      - type: "null"
+
   checksum_sha256:
     title: Checksum SHA256
     description: The SHA256 checksum of the dataobject hex encoded string
     type: string
+
   filename:
     title: Filename
     description: The data object's filename
     type: string
+
   guid:
     title: GUID
     description: The index records GUID, used to reference files
     type: string
+
   filetype:
     title: File Type
     description: File type defined in settings
+    type: string
     uiFormat: filetype
     dataSource: filename
     sortField: mime
-    type: string
+
   mime:
     title: Mime Type
     description: Mime type of file derived from ext
     type: string
+
   key:
     title: Object Key (Path)
-    description: Full path (key) of the object in the S3 bucket, relative to endpoint
-      config options
+    description: Full path (key) of the object in the S3 bucket, relative to endpoint config options
     type: string
+
+  # https://opis.io/json-schema/2.x/formats.html
+
   size:
     title: Size
     description: File size in bytes
-    uiFormat: size
     type: integer
+    uiFormat: size
+
   created_datetime:
     title: Created
     description: File creation date
     format: date-time
-    uiDateFormat: MM/DD/YYYY hh:mm a
     type: string
+    uiDateFormat: MM/DD/YYYY hh:mm a
+
   updated_datetime:
     title: Updated
     description: Last file update date
     format: date-time
-    uiDateFormat: MM/DD/YYYY hh:mm a
     type: string
+    uiDateFormat: MM/DD/YYYY hh:mm a
+
   last_modified:
     title: Last modified
     description: File modify date
     format: date-time
-    uiDateFormat: MM/DD/YYYY hh:mm a
     type: string
+    uiDateFormat: MM/DD/YYYY hh:mm a
+
   files:
-    $ref: _definitions.yaml#/to_many
+    $ref: "_definitions.yaml#/to_many"

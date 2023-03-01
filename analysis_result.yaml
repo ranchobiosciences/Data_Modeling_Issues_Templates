@@ -1,47 +1,245 @@
-$schema: https://rdc-dev-mongo.rbscomp.net/api/schemaref/_schema_validator#
-id: https://rdc-dev-mongo.rbscomp.net/api/analysis_result/schema
-title: Analysis Result
-description: 'Post-analysis or post-process collection of data or datasets.  Often
-  includes a summary of what was done to the data to generate these results.
+$schema: 'https://monarch.web-dev.bms.com/api/schemaref/_schema_validator#'
 
-  '
+id: 'https://monarch.web-dev.bms.com/api/analysis_result/schema'
+title: Analysis Result
+title_submitter: Submitter
+identifierPrefix: AR
 type: object
+nodeTerms: null
+namespace: https://datacommons.web.bms.com/
+category: administrative
+description: >
+  Post-analysis or post-process collection of data or datasets. 
+  Often includes a summary of what was done to the data to generate these results.
+additionalProperties: false
+validators: null
+
+uiSettings:
+  icon: insert_chart_outlined
+  iconStyle: material-icons-outlined
+  uiPath: /datasetcatalog/analysis_result
+  plural: Analysis Results
+  globalSearchSettings:
+    searchFields:
+      - results_name
+      - id
+      - identifier
+      - tags
+    displayFields:
+      - results_name
+      - id
+      - identifier
+  displayField: results_name
+  displaySubField: output_type # Used for tag section in flex view
+  defaultSortField: results_name
+  editValidationUserFields:
+    - results_owner.uid
+    - created_by
+  nodeIdentifier: id
+  abacSchemaName: _abac_analysis_result
+  createForm:
+    maxRows: 11
+    maxCols: 2
+    buttonLabel: Create Result
+  myNodesAdditionalFields:
+    - results_owner.uid
+  tableField:
+    identifier: Result ID
+    results_name: Result Name
+    output_type: Type
+  searchField:
+    - results_name
+    - results_owner.cn
+    - identifier
+    - output_type
+    - results_description
+    - results_path
+  fullNodeView: true
+  fullNodeViewForm:
+    nameField:
+      name: results_name
+    personFields:
+      - name: results_owner
+        label: Owner
+    upperFields:
+      - name: links
+      - name: results_description
+        label: Description
+      - name: tags
+        label: Tags
+    metadataFields:
+      - name: output_type
+        label: Output Type
+    resultPath:
+      - name: results_path
+        label: Result Path
+    relationshipFields:
+      - name: relationships
+        label:
+    bottomFields:
+      - name: results_path_files
+        label:
+
+  fullNodeRegisterForm:
+    readonlyFields:
+      - identifier
+    panels:
+      - title: Overview
+        fields:
+          - name: results_name
+            label: Result Name
+            description: The title of the analysis that is referenced across applications, as well as RDC search results.
+          - name: results_owner
+            label: Owner
+            description: The person responsible for creating and maintaining the analysis result.
+          - name: results_description
+            label: Description
+            description: Information that defines the analysis, including keywords that will appear in search results.
+          - name: results_path
+            label: Result Path
+            description: 'Storage location for the analysis result: stash/s3 file path, S3 path, etc.'
+
+      # - title: Details
+      #   optional: true
+      #   fields:
+      #     - name: output_type
+      #       label: Output Type
+      #       description: The type of data.
+      - title: Related Metadata
+        optional: true
+        fields:
+          - name: relationships
+            label:
+          - name: tags
+            label: Tags
+      # - title: Files
+      #   fields:
+      #     - name: files
+      #       label:
+
+  fullNodeEditForm:
+    readonlyFields:
+      - identifier
+    panels:
+      - title: Overview
+        fields:
+          - name: results_name
+            label: Result Name
+            description: The title of the analysis results that is referenced across applications, as well as RDC search results.
+          - name: results_owner
+            label: Owner
+            description: The person responsible for creating and maintaining the analysis result.
+          - name: results_description
+            label: Description
+            description: Information that defines the analysis result, including keywords that will appear in search results.
+
+      - title: Details
+        optional: true
+        fields:
+          - name: output_type
+            label: Output Type
+            description: The type of data.
+          - name: results_path
+            label: Result Path
+      - title: Related Metadata
+        optional: true
+        fields:
+          - name: relationships
+            label:
+      # - title: Files
+      #   fields:
+      #     - name: files
+      #       label:
+
+systemProperties:
+  - id
+  - _id
+  - created_datetime
+  - updated_datetime
+  - created_by
+  - submitter_id
+  - type
+
 required:
-- type
+  - type
+
+uniqueKeys:
+  - [id]
+
+links:
+  - name: dataset
+    backref: analysis_result
+    parent_title: Datasets # what's rendered for this node
+    child_title: Analysis Results
+    label: derived_from
+    target_type: dataset
+    multiplicity: many_to_many
+    required: false
+
+  - name: secondary_analysis
+    backref: analysis_result
+    parent_title: Secondary Analyses # what's rendered for this node
+    child_title: Analysis Results
+    label: is_from
+    target_type: secondary_analysis
+    multiplicity: many_to_many
+    required: false
+
+  - name: data_product
+    backref: analysis_result
+    parent_title: Data Products # what's rendered for this node
+    child_title: Analysis Results
+    label: is_from
+    target_type: data_product
+    multiplicity: many_to_many
+    required: false
+
+  - name: clinical_trial
+    backref: analysis_result
+    parent_title: Clinical Trials
+    child_title: Analysis Result
+    label: derived_from
+    target_type: clinical_trial
+    multiplicity: many_to_many
+    required: false
+
 properties:
-  $ref: _definitions.yaml#/ubiquitous_properties
+  $ref: '_definitions.yaml#/ubiquitous_properties'
+
   results_name:
-    title: Results Name test 6
+    title: Results Name
     description: The name of the analysis.
-    placeholder: Input here
     type: string
+    placeholder: Input here
+
   results_description:
     title: Description
     description: The description of the results.
+    type: string
     view: richtext
     placeholder: Enter an analysis results description here
-    type: string
+
   results_owner:
     title: Owner
     description: The person that generated the results.
-    placeholder: Dynamic Search
-    sortField: results_owner.cn
-    additionalProperties: true
-    $ref: _definitions.yaml#/bms_group_enum_config
     type: object
+    sortField: results_owner.cn
+    placeholder: Dynamic Search
+    additionalProperties: true
+    $ref: '_definitions.yaml#/bms_group_enum_config'
+
   results_path:
     title: stash/s3 Filesystem Location(s)
-    description: 'stash/s3 Filesystem Location(s) including the configured endpoint,
-      bucket (aka mount for sftp), and directory paths. This is used to inform permissions
-      enforcement on the stash/s3 filesystem, which can only work recursively on the
-      directory level. Because of this restriction/behavior of the stash/s3 filesystem,
-      this field will also be used to restrict stash/s3 file attachments to the analysis
-      result node using ABAC rules: the files must exist with a key  that is within
-      or under the defined locations. Otherwise an error will be thrown.
-
-      '
+    description: >
+      stash/s3 Filesystem Location(s) including the configured endpoint, bucket (aka mount for sftp), and directory paths.
+      This is used to inform permissions enforcement on the stash/s3 filesystem, which can only work recursively on the
+      directory level. Because of this restriction/behavior of the stash/s3 filesystem, this field will also be used
+      to restrict stash/s3 file attachments to the analysis result node using ABAC rules: the files must exist with a key 
+      that is within or under the defined locations. Otherwise an error will be thrown.
+    type: array
     view: resultPath
     items:
+      type: object
       additionalProperties: false
       properties:
         endpoint:
@@ -50,39 +248,40 @@ properties:
           type: string
         key:
           type: string
-      type: object
-    type: array
+
   links:
     title: Links
     description: Links.
+    type: array
     view: linkbuttons
     placeholder: Links.
-    additionalProperties: true
-    objectFields:
-    - name: linkName
-      label: Link Name
-    - name: linkUrl
-      label: Link URL
-    type: array
     items:
       type: object
+    additionalProperties: true
+    objectFields:
+      - name: linkName
+        label: Link Name
+      - name: linkUrl
+        label: Link URL
+
   output_type:
     title: Output Type
     description: The filetype of results output.
     placeholder: Choose from dropdown
     enum:
-    - csv
-    - docx
-    - pdf
-    - pptx
-    - txt
-    - xlsx
-    - ppt
+      - csv
+      - docx
+      - pdf
+      - pptx
+      - txt
+      - xlsx
+
+
   dataset:
-    $ref: _definitions.yaml#/to_many
+    $ref: '_definitions.yaml#/to_many'
   clinical_trial:
-    $ref: _definitions.yaml#/to_many
+    $ref: '_definitions.yaml#/to_many'
   secondary_analysis:
-    $ref: _definitions.yaml#/to_many
+    $ref: '_definitions.yaml#/to_many'
   data_product:
-    $ref: _definitions.yaml#/to_many
+    $ref: '_definitions.yaml#/to_many'
