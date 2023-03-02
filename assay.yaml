@@ -32,7 +32,6 @@ properties:
     description: Technique or method for data generation to be analyzed in pipeline.
     placeholder: Choose from dropdown
     enum:
-    - Y
     - 10X Visium
     - ATAC-Seq
     - Cell sorting/counting
