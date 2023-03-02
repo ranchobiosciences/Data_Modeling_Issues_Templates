@@ -97,7 +97,6 @@ properties:
     - Rules-Based Medicine
     - Thermo Fisher
     - Unknown
-    - Y
   assay_platform:
     title: Platform
     description: The assay platform.
