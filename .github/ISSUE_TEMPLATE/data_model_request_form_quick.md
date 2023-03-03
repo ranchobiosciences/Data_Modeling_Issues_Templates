@@ -1,5 +1,5 @@
 ---
-name: Data Model Request Form: Quick update
+name: "Data Model Request Form: Quick update"
 about: Submit changes to the data model in a quick way
 title: "[DM Request]"
 labels: ["[SYSTEM] Pending Quick"]
