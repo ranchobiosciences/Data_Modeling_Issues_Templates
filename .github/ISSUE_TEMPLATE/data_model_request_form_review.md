@@ -2,7 +2,7 @@
 name: "Data Model Request Form: Update with review"
 about: Submit changes to the data model with further review
 title: "[DM Request]"
-labels: ["[SYSTEM] Pending Reivew"]
+labels: ["[SYSTEM] Pending Review"]
 assignees: ""
 ---
 
