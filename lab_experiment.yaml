@@ -25,7 +25,7 @@ properties:
     description: Status of the laboratory experiment.
     placeholder: Choose from dropdown
     enum:
-    - In Progress 123
+    - In Progress
     - Complete
   lab_experiment_date:
     title: Lab Experiment Date
