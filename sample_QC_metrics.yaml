@@ -9,15 +9,12 @@ properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   quality_metric:
     title: Quality Metric
-    description: quality_metric (e.g. RIN:<RIN Number>, RQS:<RQS index>, etc.). Use
-      a field:value format and comma separate the list.
+    description: quality_metric (e.g. RIN:<RIN Number>, RQS:<RQS index>, etc.). Use a field:value format and comma separate the list.
     placeholder: Input here
     type: string
   QCFLAG:
     title: QC Flag
-    description: 'Quality control flag: 0 = Data file delivered and passed vendor
-      QC, 1 = Data file delivered but failed vendor QC, 3 = Data file not delivered
-      because sample has not yet been assayed, 4 = Data file previously delivered'
+    description: 'Quality control flag: 0 = Data file delivered and passed vendor QC, 1 = Data file delivered but failed vendor QC, 3 = Data file not delivered because sample has not yet been assayed, 4 = Data file previously delivered'
     placeholder: Choose from dropdown
     enum:
     - '0'
@@ -54,8 +51,7 @@ properties:
     type: string
   abs_ratio_nucleicacid:
     title: Abs Ratio Nucleic Acid
-    description: A260/A280 ratio indicating the type of nucleic acid present (dsDNA
-      or RNA).
+    description: A260/A280 ratio indicating the type of nucleic acid present (dsDNA or RNA).
     placeholder: Input here
     type: integer
   abs_ratio_contaminants:
@@ -90,8 +86,7 @@ properties:
     type: integer
   Fragment_Analyzer_RQN:
     title: Fragment Analyzer RQN
-    description: RNA Quality Number (RQN) for fragment analyzer, equivalent and interchangeable
-      with RIN.
+    description: RNA Quality Number (RQN) for fragment analyzer, equivalent and interchangeable with RIN.
     placeholder: Input here
     type: string
   Assigned_conc:
@@ -106,8 +101,7 @@ properties:
     type: integer
   clusters_raw:
     title: Raw Clusters
-    description: Number of raw clusters in this lane. For patterened flow cells, the
-      number of raw clusters is equal to the number of wells on the flow cell.
+    description: Number of raw clusters in this lane. For patterened flow cells, the number of raw clusters is equal to the number of wells on the flow cell.
     placeholder: Input here
     multiline: true
     type: integer
@@ -118,8 +112,7 @@ properties:
     type: integer
   reads_PF:
     title: Reads PF
-    description: The sum of all bases in clusters that passed filtering for the entire
-      project.
+    description: The sum of all bases in clusters that passed filtering for the entire project.
     placeholder: Input here
     type: integer
   Peak_Molarity:
@@ -134,14 +127,12 @@ properties:
     type: string
   percent_perfect_barcode:
     title: Percent Perfect Barcode
-    description: Percentage of index reads in this sample which perfectly matched
-      the given index.
+    description: Percentage of index reads in this sample which perfectly matched the given index.
     placeholder: Input here
     type: integer
   percent_one_mismatch:
     title: Percent One Mismatch
-    description: Percentage of the index reads in this sample which had 1 mismatch
-      to given index.
+    description: Percentage of the index reads in this sample which had 1 mismatch to given index.
     placeholder: Input here
     type: integer
   percent_PF_clusters:
@@ -151,14 +142,12 @@ properties:
     type: integer
   percent_Q30_Bases:
     title: Percent Q30 Bases
-    description: Yield of bases with Q30 or higher from clusters passing filter divided
-      by total yield of clusters passing filter.
+    description: Yield of bases with Q30 or higher from clusters passing filter divided by total yield of clusters passing filter.
     placeholder: Input here
     type: integer
   Mean_Quality_Score:
     title: Mean Quality Score
-    description: The total sum of quality scores of bases from clusters passing filter
-      divided by total yield of bases from clusters passing filter.
+    description: The total sum of quality scores of bases from clusters passing filter divided by total yield of bases from clusters passing filter.
     placeholder: Input here
     multiline: true
     type: integer
@@ -176,25 +165,19 @@ properties:
     - 'No'
   sample_LDD:
     title: Sample LDD
-    description: LDD (Least Detectable Dose)-determined as the mean + 3 standard deviations
-      of 20 blank readings. Results below the LDD will be more variable than results
-      above the LDD.
+    description: LDD (Least Detectable Dose)-determined as the mean + 3 standard deviations of 20 blank readings. Results below the LDD will be more variable than results above the LDD.
     placeholder: Input here
     multiline: true
     type: integer
   sample_LLOQ:
     title: Sample LLOQ
-    description: LLOQ (Lower Limit of Quantitation)-lowest concentration of an analyte
-      in a sample that can be reliably detected and at which the total error meets
-      the laboratory's requirements for accuracy.
+    description: LLOQ (Lower Limit of Quantitation)-lowest concentration of an analyte in a sample that can be reliably detected and at which the total error meets the laboratory's requirements for accuracy.
     placeholder: Input here
     multiline: true
     type: integer
   sample_ULOQ:
     title: Sample ULOQ
-    description: ULOQ (Upper Limit of Quantitation)-highest concentration of an analyte
-      in a sample that can be reliably detected and at which the total error meets
-      the laboratory's requirements for accuracy.
+    description: ULOQ (Upper Limit of Quantitation)-highest concentration of an analyte in a sample that can be reliably detected and at which the total error meets the laboratory's requirements for accuracy.
     placeholder: Input here
     multiline: true
     type: integer

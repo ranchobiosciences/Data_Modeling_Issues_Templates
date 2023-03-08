@@ -1,8 +1,7 @@
 $schema: https://rdc-dev-mongo.rbscomp.net/api/schemaref/_schema_validator#
 id: https://rdc-dev-mongo.rbscomp.net/api/roles/schema
 title: Roles
-description: 'Roles is a collection of various persons needed for or who execute projects,
-  clinical trials, experiments, and analyses.
+description: 'Roles is a collection of various persons needed for or who execute projects, clinical trials, experiments, and analyses.
 
   '
 type: object
@@ -12,8 +11,7 @@ properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   research_scientist:
     title: Research Scientist
-    description: Name(s) of the research scientist(s) performing the experiments for
-      a research project.
+    description: Name(s) of the research scientist(s) performing the experiments for a research project.
     placeholder: Dynamic Search
     additionalProperties: true
     $ref: _definitions.yaml#/bms_group_enum_config

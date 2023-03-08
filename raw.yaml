@@ -13,18 +13,12 @@ properties:
     type: string
   studyid:
     title: STUDYID
-    description: BMS Protocol Number. Format = XXXXX-XXX, where X is any uppercase
-      Latin letter (A-Z) or a digit (0-9). For a project without a defined clinical
-      trial ID, such as a discovery or TR&D project, format will be something like
-      DISXX-XXX, e.g. DISCA-PD1 for an oncology (CA) discovery project related to
-      PD1, or TRDXX-XXX, e.g. TRDCA-FUG.
+    description: BMS Protocol Number. Format = XXXXX-XXX, where X is any uppercase Latin letter (A-Z) or a digit (0-9). For a project without a defined clinical trial ID, such as a discovery or TR&D project, format will be something like DISXX-XXX, e.g. DISCA-PD1 for an oncology (CA) discovery project related to PD1, or TRDXX-XXX, e.g. TRDCA-FUG.
     placeholder: Input here
     type: string
   usubjid:
     title: USUBJID
-    description: Subject identifier. Format = XX999999-1-1. The first string is STUDYID,
-      without the dash. The second string is investigator SITEID. The third string
-      is SUBJID.
+    description: Subject identifier. Format = XX999999-1-1. The first string is STUDYID, without the dash. The second string is investigator SITEID. The third string is SUBJID.
     placeholder: Input here
     type: string
   vslabl:
@@ -34,8 +28,7 @@ properties:
     type: string
   visitd:
     title: VISITD
-    description: 'Visit Date. Value is optional. Format: DD-MMM-YYYY or YYYY-MM-DD,
-      e.g. 24-AUG-2001 or 2001-08-24. Not case sensitive.'
+    description: 'Visit Date. Value is optional. Format: DD-MMM-YYYY or YYYY-MM-DD, e.g. 24-AUG-2001 or 2001-08-24. Not case sensitive.'
     placeholder: DD-MMM-YYYY or YYYY-MM-DD
     format: date
     type: string
@@ -181,8 +174,7 @@ properties:
     - TSO500
   poolid:
     title: POOLID
-    description: The number assigned to the pool of samples being analyzed (Vendor
-      sample ID.) Note that a pool might contain only a single sample.
+    description: The number assigned to the pool of samples being analyzed (Vendor sample ID.) Note that a pool might contain only a single sample.
     placeholder: Input here
     type: integer
   vrunid:
@@ -192,15 +184,12 @@ properties:
     type: string
   vrunidsuffix:
     title: VRUNIDSUFFIX
-    description: Vendor run ID suffix. Used when have multiple data files from same
-      VRUNID (e.g. 1,2)
+    description: Vendor run ID suffix. Used when have multiple data files from same VRUNID (e.g. 1,2)
     placeholder: Input here
     type: integer
   repnum:
     title: REPNUM
-    description: 'Repeat ID. Format = a positive integer: 1 for the first run (VRUNID)
-      for a given POOLID; 2, 3, ... for subsequent runs (VRUNID values) of the same
-      POOLID.'
+    description: 'Repeat ID. Format = a positive integer: 1 for the first run (VRUNID) for a given POOLID; 2, 3, ... for subsequent runs (VRUNID values) of the same POOLID.'
     placeholder: Input here
     type: integer
   repreason:
@@ -215,36 +204,30 @@ properties:
     type: string
   wellid:
     title: WELLID
-    description: Well ID if batch is a plate, in format A01, A02,...,H12. Value is
-      mandatory if assay run on plates.
+    description: Well ID if batch is a plate, in format A01, A02,...,H12. Value is mandatory if assay run on plates.
     placeholder: Input here
     type: string
   rundate:
     title: RUNDATE
-    description: 'Assay Run Date date- format: DD-MMM-YYYY month abbreviation must
-      be capitalized - e.g., 08-AUG-2001'
+    description: 'Assay Run Date date- format: DD-MMM-YYYY month abbreviation must be capitalized - e.g., 08-AUG-2001'
     placeholder: DD-MMM-YYYY
     format: date
     type: string
   runtime:
     title: RUNTIME
-    description: 'Assay Run Time - 24 hr format: HHMMSS - e.g. 131000 If not collected
-      this field is empty.'
+    description: 'Assay Run Time - 24 hr format: HHMMSS - e.g. 131000 If not collected this field is empty.'
     placeholder: Input here
     type: integer
   qcflag:
     title: QCFLAG
-    description: Quality-control flag. P = Pass, F = Fail. Set to F if, e.g. a given
-      data file should be excluded from analyses, perhaps because those data are to
-      be replaced with data from a re-run.
+    description: Quality-control flag. P = Pass, F = Fail. Set to F if, e.g. a given data file should be excluded from analyses, perhaps because those data are to be replaced with data from a re-run.
     placeholder: Choose from dropdown
     enum:
     - P
     - F
   filename:
     title: FILENAME
-    description: Name of data file, including full path after <STUDYID>, e.g. <BATCH-NAME>/<RUN-NAME>/<FILENAME>.
-      Do not begin with a "/".
+    description: Name of data file, including full path after <STUDYID>, e.g. <BATCH-NAME>/<RUN-NAME>/<FILENAME>. Do not begin with a "/".
     placeholder: Input here
     type: string
   checksum:

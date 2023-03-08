@@ -1,9 +1,7 @@
 $schema: https://rdc-dev-mongo.rbscomp.net/api/schemaref/_schema_validator#
 id: https://rdc-dev-mongo.rbscomp.net/api/treatment/schema
 title: Treatment
-description: 'Treatment is a manipulation of a sample or subject, usually with a compound
-  or physical intervention in line  with a specific regimen in order to change the
-  sample or subjects'' current state to another.
+description: 'Treatment is a manipulation of a sample or subject, usually with a compound or physical intervention in line  with a specific regimen in order to change the sample or subjects'' current state to another.
 
   '
 type: object
@@ -13,8 +11,7 @@ properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   treatment_name:
     title: Treatment Name
-    description: 'Give a conventional name to the treatment, for example: Yervoy,
-      placebo, radiation therapy, etc.'
+    description: 'Give a conventional name to the treatment, for example: Yervoy, placebo, radiation therapy, etc.'
     placeholder: Input here
     type: string
   treatment_ID:
@@ -68,8 +65,7 @@ properties:
     - TID
   route_of_administration:
     title: Route of Administration
-    description: Select from the provided list the route of administration of the
-      main treatment.
+    description: Select from the provided list the route of administration of the main treatment.
     placeholder: Choose from dropdown
     enum:
     - Auricular (Otic)
@@ -182,20 +178,17 @@ properties:
     - Vaginal
   treatment_regimen:
     title: Treatment Regimen
-    description: 'Describe treatment regimen. For example: "first week of trial, dosing
-      is done twice daily followed by a rest period of 3 weeks."'
+    description: 'Describe treatment regimen. For example: "first week of trial, dosing is done twice daily followed by a rest period of 3 weeks."'
     placeholder: Input here
     type: string
   treatment_duration:
     title: Treatment Duration
-    description: Used for samples treatment usually and indicates how long a sample
-      was treated with a modifier.
+    description: Used for samples treatment usually and indicates how long a sample was treated with a modifier.
     placeholder: Input here
     type: integer
   treatment_duration_units:
     title: Treatment Duration Units
-    description: With treatment duration indicates the unit of time a sample was treated
-      with a modifier.
+    description: With treatment duration indicates the unit of time a sample was treated with a modifier.
     placeholder: Choose from dropdown
     enum:
     - days
@@ -205,14 +198,12 @@ properties:
     - seconds
   exposure_duration:
     title: Exposure Duration
-    description: Used for subjects treatment usually and indicates how long a subject
-      was exposed to a modifier.
+    description: Used for subjects treatment usually and indicates how long a subject was exposed to a modifier.
     placeholder: Input here
     type: integer
   exposure_duration_units:
     title: Exposure Duration Units
-    description: With exposure duration indicates the unit of time a subject was exposed
-      to a modifier.
+    description: With exposure duration indicates the unit of time a subject was exposed to a modifier.
     placeholder: Choose from dropdown
     enum:
     - days

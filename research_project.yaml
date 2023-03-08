@@ -1,10 +1,7 @@
 $schema: https://rdc-dev-mongo.rbscomp.net/api/schemaref/_schema_validator#
 id: https://rdc-dev-mongo.rbscomp.net/api/research_project/schema
 title: Research Project
-description: 'Typically the largest category for research activity in an organization.  Encompasses
-  large range of activities, starting with preclinical experiments, followed by clinical
-  trials, and post-market activities. (Synonyms: Research Initiative, Umbrella Study,
-  Research Campaign, Research Consortium)
+description: 'Typically the largest category for research activity in an organization.  Encompasses large range of activities, starting with preclinical experiments, followed by clinical trials, and post-market activities. (Synonyms: Research Initiative, Umbrella Study, Research Campaign, Research Consortium)
 
   '
 type: object
@@ -31,8 +28,7 @@ properties:
     - Translational
   research_project_description:
     title: Description
-    description: The description of the research project including its goals and scope.
-      Scientific questions being studied, approaches, anticipated findings, etc.
+    description: The description of the research project including its goals and scope. Scientific questions being studied, approaches, anticipated findings, etc.
     view: richtext
     placeholder: Enter a project description here
     type: string
@@ -46,8 +42,7 @@ properties:
     type: object
   research_project_stakeholder:
     title: Stakeholder
-    description: A person or persons with vested interest in the outcomes of a research
-      project.
+    description: A person or persons with vested interest in the outcomes of a research project.
     placeholder: Dynamic Search
     additionalProperties: true
     $ref: _definitions.yaml#/bms_group_enum_config

@@ -1,8 +1,7 @@
 $schema: https://rdc-dev-mongo.rbscomp.net/api/schemaref/_schema_validator#
 id: https://rdc-dev-mongo.rbscomp.net/api/bioinformatics_pipeline/schema
 title: Bioinformatics Pipeline
-description: A set of bioinformatics algorithms, when executed in a predefined sequence
-  to process NGS data, is collectively referred to as a bioinformatics pipeline.
+description: A set of bioinformatics algorithms, when executed in a predefined sequence to process NGS data, is collectively referred to as a bioinformatics pipeline.
 type: object
 required:
 - type
@@ -55,15 +54,13 @@ properties:
       - rn613
   left_flanking_sequence:
     title: Left Flanking Sequence
-    description: 'This is a sequence to be trimmed prior to alignment. ex: P-20210101-0001.
-      Required for CRISPR gRNA screens.'
+    description: 'This is a sequence to be trimmed prior to alignment. ex: P-20210101-0001. Required for CRISPR gRNA screens.'
     placeholder: Input here
     multiline: true
     type: string
   right_flanking_sequence:
     title: Right Flanking Sequence
-    description: This is a sequence to be trimmed prior to alignment. Required for
-      CRISPR gRNA screens.
+    description: This is a sequence to be trimmed prior to alignment. Required for CRISPR gRNA screens.
     placeholder: Input here
     multiline: true
     type: string

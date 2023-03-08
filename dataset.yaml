@@ -1,9 +1,7 @@
 $schema: https://rdc-dev-mongo.rbscomp.net/api/schemaref/_schema_validator#
 id: https://rdc-dev-mongo.rbscomp.net/api/dataset/schema
 title: Dataset
-description: 'Dataset is a collection of data including research project and clinical
-  trial information, especially of assay and experiment specifics.  Datasets may also
-  have associated bioinformatics pipelines.
+description: 'Dataset is a collection of data including research project and clinical trial information, especially of assay and experiment specifics.  Datasets may also have associated bioinformatics pipelines.
 
   '
 type: object
@@ -13,8 +11,7 @@ properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   submitter_id:
     title: Submitter ID
-    description: The legacy identifier of projects imported from NGS 360, Redda or
-      other external systems.
+    description: The legacy identifier of projects imported from NGS 360, Redda or other external systems.
     placeholder: Input here
     type: string
   dataset_name:
@@ -38,8 +35,7 @@ properties:
     type: object
   dataset_steward:
     title: Steward
-    description: Data curation lead responsible for the data quality, curation, and
-      harmonization.
+    description: Data curation lead responsible for the data quality, curation, and harmonization.
     placeholder: Dynamic Search
     sortField: dataset_steward.cn
     additionalProperties: true
@@ -86,8 +82,7 @@ properties:
     - 'No'
   interventional_observational:
     title: Interventional Observational
-    description: Indication of whether the data within the dataset is from an interventional
-      or observational trial.
+    description: Indication of whether the data within the dataset is from an interventional or observational trial.
     view: checkbox
     type: array
     items:
@@ -115,8 +110,7 @@ properties:
       - Proteomic
   assay_type:
     title: Assay Type
-    description: The technique/method for data generation to be analyzed in pipeline
-      of assay.
+    description: The technique/method for data generation to be analyzed in pipeline of assay.
     placeholder: Choose from dropdown
     type: array
     items:
@@ -373,13 +367,7 @@ properties:
     type: array
   dataset_location:
     title: stash/s3 Filesystem Location(s)
-    description: 'stash/s3 Filesystem Location(s) including the configured endpoint,
-      bucket (aka mount for sftp), and directory paths. This is used to inform permissions
-      enforcement on the stash/s3 filesystem, which can only work recursively on the
-      directory level. Because of this restriction/behavior of the stash/s3 filesystem,
-      this field will also be used to restrict stash/s3 file attachments to the dataset
-      node using ABAC rules: the files must exist with a key  that is within or under
-      the defined locations. Otherwise an error will be thrown.
+    description: 'stash/s3 Filesystem Location(s) including the configured endpoint, bucket (aka mount for sftp), and directory paths. This is used to inform permissions enforcement on the stash/s3 filesystem, which can only work recursively on the directory level. Because of this restriction/behavior of the stash/s3 filesystem, this field will also be used to restrict stash/s3 file attachments to the dataset node using ABAC rules: the files must exist with a key  that is within or under the defined locations. Otherwise an error will be thrown.
 
       '
     view: datasetPath

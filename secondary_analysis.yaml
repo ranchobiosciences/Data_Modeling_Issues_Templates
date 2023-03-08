@@ -1,8 +1,7 @@
 $schema: https://rdc-dev-mongo.rbscomp.net/api/schemaref/_schema_validator#
 id: https://rdc-dev-mongo.rbscomp.net/api/secondary_analysis/schema
 title: Secondary Analysis
-description: 'Secondary analysis describes a process performed on a dataset or set
-  of data to analyze, visualize, or convert raw data  into another interpretable form.
+description: 'Secondary analysis describes a process performed on a dataset or set of data to analyze, visualize, or convert raw data  into another interpretable form.
 
   '
 type: object
@@ -24,8 +23,7 @@ properties:
     type: string
   analysis_software:
     title: Analysis Software
-    description: Software, program, package and/or language that is used to perform
-      the analysis.
+    description: Software, program, package and/or language that is used to perform the analysis.
     placeholder: Choose from dropdown
     enum:
     - FlowJo

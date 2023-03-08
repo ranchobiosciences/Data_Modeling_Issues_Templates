@@ -445,14 +445,12 @@ properties:
     type: string
   response:
     title: Response
-    description: Value of response (e.g. 3M), if relevant. If multiple, use a field:value
-      format and comma separate the list.
+    description: Value of response (e.g. 3M), if relevant. If multiple, use a field:value format and comma separate the list.
     placeholder: Input here
     type: string
   response_description:
     title: Response Description
-    description: Description of response (e.g. OS), if relevant. If multiple, use
-      a field:value format and comma separate the list.
+    description: Description of response (e.g. OS), if relevant. If multiple, use a field:value format and comma separate the list.
     placeholder: Input here
     type: string
   clinical_trial:

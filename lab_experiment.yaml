@@ -1,8 +1,7 @@
 $schema: https://rdc-dev-mongo.rbscomp.net/api/schemaref/_schema_validator#
 id: https://rdc-dev-mongo.rbscomp.net/api/lab_experiment/schema
 title: Lab Experiment
-description: 'Individual experiment performed by a laboratory scientist with a specific
-  purpose or hypothesis.
+description: 'Individual experiment performed by a laboratory scientist with a specific purpose or hypothesis.
 
   '
 type: object
@@ -25,7 +24,7 @@ properties:
     description: Status of the laboratory experiment.
     placeholder: Choose from dropdown
     enum:
-    - In Progress 123
+    - In Progress
     - Complete
   lab_experiment_date:
     title: Lab Experiment Date

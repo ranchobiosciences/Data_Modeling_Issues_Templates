@@ -1,8 +1,7 @@
 $schema: https://rdc-dev-mongo.rbscomp.net/api/schemaref/_schema_validator#
 id: https://rdc-dev-mongo.rbscomp.net/api/sequencing_run/schema
 title: Sequencing Run
-description: Parameters for a sequencing experiment pertaining to the inputs for the
-  seuqencer.
+description: Parameters for a sequencing experiment pertaining to the inputs for the seuqencer.
 type: object
 required:
 - type
@@ -10,8 +9,7 @@ properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   sequencing_run_ID:
     title: Sequencing Run ID
-    description: Unique ID for the sequencing run. This ID may be applicable to a
-      batch of samples run together.
+    description: Unique ID for the sequencing run. This ID may be applicable to a batch of samples run together.
     placeholder: Input here
     type: string
   sequencing_run_name:
@@ -62,8 +60,7 @@ properties:
     - ThermoFisher Ion S5
   library_kit_used:
     title: Library Kit Used
-    description: Indication of the assay-defined library kit used to sequence this
-      sample batch.
+    description: Indication of the assay-defined library kit used to sequence this sample batch.
     placeholder: Choose from dropdown
     type: array
     items:
