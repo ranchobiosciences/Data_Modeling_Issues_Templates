@@ -1,9 +1,7 @@
 $schema: https://rdc-dev-mongo.rbscomp.net/api/schemaref/_schema_validator#
 id: https://rdc-dev-mongo.rbscomp.net/api/assay/schema
 title: Assay
-description: 'Assay is a singular procedure that can be performed on the biological
-  sample or model organisms, and it has method(s), instrument(s) and readout(s).  An
-  experiment can have many assays.
+description: 'Assay is a singular procedure that can be performed on the biological sample or model organisms, and it has method(s), instrument(s) and readout(s).  An experiment can have many assays.
 
   '
 type: object
@@ -80,9 +78,7 @@ properties:
     - Whole Genome Sequencing (WGS)
   assay_manufacturer:
     title: Manufacturer
-    description: 'Name of the manufacturer for assay kit, provider for the screening
-      services, or manufacturer for instruments/equipment used to run an assay.  May
-      also be the vendor or collaborator that generated the data.
+    description: 'Name of the manufacturer for assay kit, provider for the screening services, or manufacturer for instruments/equipment used to run an assay.  May also be the vendor or collaborator that generated the data.
 
       '
     placeholder: Choose from dropdown
@@ -144,9 +140,7 @@ properties:
     - Fortessa-Daenerys
   protocol:
     title: Protocol
-    description: 'The SOP (standard operating procedure) detailing the protocol used
-      to perform the assay.  May be derived from (or simply is) a SOW (statement of
-      work).
+    description: 'The SOP (standard operating procedure) detailing the protocol used to perform the assay.  May be derived from (or simply is) a SOW (statement of work).
 
       '
     view: linkbuttons
@@ -169,14 +163,12 @@ properties:
     - FACSDiva
   compensation_unmixing:
     title: Compensation Unmixing
-    description: Name of the offset in conventional cytometry experiments or the name
-      of the set of reference controls used in spectral cytometry.
+    description: Name of the offset in conventional cytometry experiments or the name of the set of reference controls used in spectral cytometry.
     placeholder: Input here
     type: string
   flowcytometry_panel:
     title: Flow Cytometry Panel
-    description: 'Name of the flow cytometry panel being used.  Selected panel should
-      be matched with the antibodies used to run the panel.
+    description: 'Name of the flow cytometry panel being used.  Selected panel should be matched with the antibodies used to run the panel.
 
       '
     enum:
@@ -201,9 +193,7 @@ properties:
     - Panel NDP
   flowcytometry_protocol:
     title: Flow Cytometry Protocol
-    description: 'Description of the flow cytometry protocol being used in the assay
-      and must include titration and optimization parameters.  May also be derived
-      from other assay, sample, experiment, and treatment information.
+    description: 'Description of the flow cytometry protocol being used in the assay and must include titration and optimization parameters.  May also be derived from other assay, sample, experiment, and treatment information.
 
       '
     view: multiline
@@ -211,9 +201,7 @@ properties:
     type: string
   flowcytometry_antibodies:
     title: Flow Cytometry Antibodies
-    description: 'Antibodies used in flow cytometry panel designating the immunogen
-      (target). Select all antibodies used. If the target is not listed, select Other
-      to add it into the list.
+    description: 'Antibodies used in flow cytometry panel designating the immunogen (target). Select all antibodies used. If the target is not listed, select Other to add it into the list.
 
       '
     placeholder: Select from dropdown
@@ -762,9 +750,7 @@ properties:
       - Zombie Yellow
   flowcytometry_fluorophores:
     title: Flow Cytometry Fluorophores
-    description: 'Fluorophores used in flow cytometry panel. Must indicate which antibody
-      the fluorophore is conjugated to. Select all antibodies used. If the target
-      is not listed, select Other to add it into the list.
+    description: 'Fluorophores used in flow cytometry panel. Must indicate which antibody the fluorophore is conjugated to. Select all antibodies used. If the target is not listed, select Other to add it into the list.
 
       '
     placeholder: Select from dropdown
@@ -890,8 +876,7 @@ properties:
       - VioGreen
   flowcytometry_detectors:
     title: Flow Cytometry Detectors
-    description: Which channels were used during the flow cytometry assay. Dependent
-      on fluorophores used.
+    description: Which channels were used during the flow cytometry assay. Dependent on fluorophores used.
     placeholder: Choose from dropdown
     type: array
     items:
@@ -970,9 +955,7 @@ properties:
       - Vascular Endothelial Growth Factor (VEGF)
   assay_mode_modality_class:
     title: Assay Mode and Modality Class
-    description: Assay mode (in vivo, in vitro, ex vivo, or clinical human) and modality
-      classification (animal model, biologics, milla, small molecule, or human patient
-      sample)
+    description: Assay mode (in vivo, in vitro, ex vivo, or clinical human) and modality classification (animal model, biologics, milla, small molecule, or human patient sample)
     placeholder: Choose from dropdown
     enum:
     - In Vivo - Animal Model

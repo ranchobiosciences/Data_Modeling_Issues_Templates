@@ -24,8 +24,7 @@ properties:
     type: string
   BMS_sponsor:
     title: BMS Sponsor
-    description: The BMS representative who holds the relationship with external company
-      and oversees this engagement.
+    description: The BMS representative who holds the relationship with external company and oversees this engagement.
     placeholder: Dynamic Search
     sortField: BMS_sponsor.cn
     additionalProperties: true
@@ -33,8 +32,7 @@ properties:
     type: object
   partner_poc:
     title: Partner Point of Contact
-    description: Partner Point of Contact (Delegate) who will be responsible for on-boarding,
-      review, and off-boarding of partner identities.
+    description: Partner Point of Contact (Delegate) who will be responsible for on-boarding, review, and off-boarding of partner identities.
     placeholder: Input here
     type: string
   partner_poc_email:

@@ -46,8 +46,7 @@ properties:
     type: string
   key:
     title: Object Key (Path)
-    description: Full path (key) of the object in the S3 bucket, relative to endpoint
-      config options
+    description: Full path (key) of the object in the S3 bucket, relative to endpoint config options
     type: string
   size:
     title: Size

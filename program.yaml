@@ -1,8 +1,7 @@
 $schema: https://rdc-dev-mongo.rbscomp.net/api/schemaref/_schema_validator#
 id: https://rdc-dev-mongo.rbscomp.net/api/program/schema
 title: Program
-description: A BMS Asset, Target, Drug or combination of things that proceed through
-  the BMS Pipeline.
+description: A BMS Asset, Target, Drug or combination of things that proceed through the BMS Pipeline.
 type: object
 required:
 - type

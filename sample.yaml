@@ -1,8 +1,7 @@
 $schema: https://rdc-dev-mongo.rbscomp.net/api/schemaref/_schema_validator#
 id: https://rdc-dev-mongo.rbscomp.net/api/sample/schema
 title: Sample
-description: A sample is a specimen taken from an organism at a specific visit (timepoint)
-  that is used in experiments which may be subject to specific treatments.
+description: A sample is a specimen taken from an organism at a specific visit (timepoint) that is used in experiments which may be subject to specific treatments.
 type: object
 required:
 - type
@@ -22,8 +21,7 @@ properties:
     type: string
   sample_name_short:
     title: Sample Name Short
-    description: Used for visualizations in tools that need a short name (e.g. UCSC
-      browser)
+    description: Used for visualizations in tools that need a short name (e.g. UCSC browser)
     placeholder: Input here
     type: string
   sample_type:
@@ -10648,8 +10646,7 @@ properties:
     - Normal
   matching_ID:
     title: Matching ID
-    description: An identifier used for sample matching (i.e. ChIP to input, or tumor
-      vs normal)
+    description: An identifier used for sample matching (i.e. ChIP to input, or tumor vs normal)
     placeholder: Input here
     type: string
   is_control:
@@ -10828,8 +10825,7 @@ properties:
     - Fail
   host_genome:
     title: Host Genome
-    description: Organism used as host in the case of a xenograft sample; required
-      if biosample_type = xenograft.
+    description: Organism used as host in the case of a xenograft sample; required if biosample_type = xenograft.
     placeholder: Choose from dropdown
     enum:
     - Canis familiaris
@@ -10858,9 +10854,7 @@ properties:
     type: string
   extraction_site:
     title: Extraction Site
-    description: For sample_type = xenograft, tumor biopsy or microbiome only - it
-      is an ontology term describing the most specific  anatomical site from which
-      the sample was taken.
+    description: For sample_type = xenograft, tumor biopsy or microbiome only - it is an ontology term describing the most specific  anatomical site from which the sample was taken.
     placeholder: Input here
     type: string
   sample_origin:
@@ -10885,8 +10879,7 @@ properties:
     - Vacuum aspiration
   selection_markers:
     title: Selection Markers
-    description: Markers used for sample purification (FACS). Separate the list with
-      commas.
+    description: Markers used for sample purification (FACS). Separate the list with commas.
     placeholder: Input here
     type: string
   sample_state:
@@ -10907,8 +10900,7 @@ properties:
     - 'No'
   sample_grouping:
     title: Sample Grouping
-    description: Indicate if the sample belongs to a control, or to a replication
-      group.
+    description: Indicate if the sample belongs to a control, or to a replication group.
     view: radio
     enum:
     - Control
@@ -10991,9 +10983,7 @@ properties:
     type: string
   introduced_construct:
     title: Introduced Construct
-    description: Indicate if the biosample contains a construct that requires mapping
-      to a custom index containing the construct. Choose None if using the default
-      organism genome index.
+    description: Indicate if the biosample contains a construct that requires mapping to a custom index containing the construct. Choose None if using the default organism genome index.
     placeholder: Choose from dropdown
     enum:
     - BB2121 (CAR-T)
@@ -11026,8 +11016,7 @@ properties:
     - vdj-GRCh38-alts-ensembl-3.1.0
   universal_molecular_identifier:
     title: UMI
-    description: '"in read name", "in separate file", or "UMIs not used" depending
-      on whether Universal Molecular Identifiers (UMI) are being used or not.'
+    description: '"in read name", "in separate file", or "UMIs not used" depending on whether Universal Molecular Identifiers (UMI) are being used or not.'
     placeholder: Choose from dropdown
     enum:
     - in read name
@@ -11035,15 +11024,12 @@ properties:
     - UMIs not used
   merged_groups:
     title: Merged Groups
-    description: Indicate the sequencing replicates that should be merged by assigning
-      the SAME positive integer.
+    description: Indicate the sequencing replicates that should be merged by assigning the SAME positive integer.
     placeholder: Input here
     type: integer
   repeat_run_id:
     title: Repeat Run ID
-    description: 'Repeat ID. Format = a positive integer: 1 for the first run (VSAEID)
-      for a given VSAMPID; 2, 3, ... for subsequent runs (VSAEID values) of the same
-      VSAMPID.'
+    description: 'Repeat ID. Format = a positive integer: 1 for the first run (VSAEID) for a given VSAMPID; 2, 3, ... for subsequent runs (VSAEID values) of the same VSAMPID.'
     placeholder: Input here
     type: string
   library_prep:
@@ -11054,10 +11040,8 @@ properties:
     - Unspecified library prep method
     - 10X Genomics Chromium Single Cell 3' v2 Chemistry protocol
     - 10X Genomics Chromium Single Cell 3' v3 Chemistry protocol
-    - 10X Genomics Chromium Single Cell 5' Immune Profiling with Cell Surface Proteins
-      protocol
-    - 10X Genomics Chromium Single Cell 5' Immune Profiling with V(D)J Enrichment
-      protocol
+    - 10X Genomics Chromium Single Cell 5' Immune Profiling with Cell Surface Proteins protocol
+    - 10X Genomics Chromium Single Cell 5' Immune Profiling with V(D)J Enrichment protocol
     - 10X Genomics Chromium Single Cell 5' protocol
     - 10X Genomics Chromium Single Cell ATAC protocol
     - 10X Genomics Chromium Single Cell CNV protocol
@@ -11097,15 +11081,13 @@ properties:
     - Smart_seq2
     - Swift Biosciences Accel-NGS 2S Hyb DNA Library Kit
     - Swift Biosciences Accel-NGS 2S Plus DNA Library Kit
-    - Swift Biosciences Accel-NGS 2S Plus DNA Library Kit with UMIs for ChIP-Seq (custom
-      protocol)
+    - Swift Biosciences Accel-NGS 2S Plus DNA Library Kit with UMIs for ChIP-Seq (custom protocol)
     - Takara SMART-Seq v4 Ultra Low Input RNA Kit
     - Takara SMARTer Stranded RNA-Seq Kit
     - Visium
   crispr_guide_library:
     title: CRISPR Guide Library
-    description: Library used for the CRISPR guide. Conditionally required for processing
-      if assay_subtype is a type of CRISPR screen.
+    description: Library used for the CRISPR guide. Conditionally required for processing if assay_subtype is a type of CRISPR screen.
     placeholder: Choose from dropdown
     enum:
     - NA
@@ -11157,8 +11139,7 @@ properties:
     type: string
   gene_symbol:
     title: Gene Symbol
-    description: Target gene as annotated by library source (e.g. Cellecta or BroadGPP).
-      Not always strictly a Gene_Name, as often will contain "Non_Targeting" or "Intergenic".
+    description: Target gene as annotated by library source (e.g. Cellecta or BroadGPP). Not always strictly a Gene_Name, as often will contain "Non_Targeting" or "Intergenic".
     placeholder: Input here
     type: string
   capture_area:
@@ -11242,8 +11223,7 @@ properties:
     - ETB1039_CDSTilePool3.200912.design.txt
   staining_protocol:
     title: Staining Protocol
-    description: Protocol for fixation, permeabilization and labeling for samples
-      for cytometry.
+    description: Protocol for fixation, permeabilization and labeling for samples for cytometry.
     placeholder: Choose from dropdown
     enum:
     - PNT-CITRE-LAB-34_FACS staining
@@ -11279,20 +11259,17 @@ properties:
     - 'No'
   IHC_staining_intensity_light:
     title: IHC Staining Intensity Light
-    description: Percentage of the sample with 1+ staining, generally indicating light
-      staining.
+    description: Percentage of the sample with 1+ staining, generally indicating light staining.
     placeholder: Input type
     type: integer
   IHC_staining_intensity_moderate:
     title: IHC Staining Intensity Moderate
-    description: Percentage of the sample with 2+ staining, generally indicating moderate
-      staining.
+    description: Percentage of the sample with 2+ staining, generally indicating moderate staining.
     placeholder: Input here
     type: integer
   IHC_staining_intensity_heavy:
     title: IHC Staining Intensity Heavy
-    description: Percentage of the sample with 3+ staining, generally indicating heavy
-      staining.
+    description: Percentage of the sample with 3+ staining, generally indicating heavy staining.
     placeholder: Input here
     type: integer
   IHC_tumor_associated_immune_cells:
@@ -11304,23 +11281,20 @@ properties:
     - 'No'
   IHC_TAIC_density:
     title: IHC TAIC Density
-    description: Description of the density of tumor associated immune cells (TAIC)
-      present in the sample.
+    description: Description of the density of tumor associated immune cells (TAIC) present in the sample.
     view: multiline
     placeholder: Input here
     type: string
   IHC_TAIC_PDL1_membrane_staining:
     title: IHC TAIC PDL1 Membrane Staining
-    description: Are the tumor associated immune cells (TAIC) positive for PDL1 membrane
-      staining?
+    description: Are the tumor associated immune cells (TAIC) positive for PDL1 membrane staining?
     view: radio
     enum:
     - 'Yes'
     - 'No'
   IHC_TAIC_PDL1_cell_count:
     title: IHC TAIC PDL1 Cell Count
-    description: Total cell count of tumor associated immune cells (TAIC) present
-      in the sample.
+    description: Total cell count of tumor associated immune cells (TAIC) present in the sample.
     placeholder: Input here
     type: integer
   IHC_TAIC_PDL1_cell_percentage:
@@ -11330,8 +11304,7 @@ properties:
     type: integer
   IHC_TAIC_location:
     title: IHC TAIC Location
-    description: Description of where the the tumor associated immune cells (TAIC)
-      are in the slide.
+    description: Description of where the the tumor associated immune cells (TAIC) are in the slide.
     placeholder: Input here
     type: string
   IHC_PDL1_intratumoral_percentage:
@@ -11346,8 +11319,7 @@ properties:
     type: integer
   IHC_location:
     title: IHC Location
-    description: Description of where the sample slice on the slide is relative to
-      the whole sample.
+    description: Description of where the sample slice on the slide is relative to the whole sample.
     view: multiline
     placeholder: Input here
     type: string
@@ -12041,8 +12013,7 @@ properties:
     - Mesothelioma
     - Mesothelioma (Biphasic)
     - Metaplastic Carcinoma
-    - Mixed; Small Cell Lung Cancer; Adenocarcinoma; Squamous Cell Carcinoma; Stage
-      1
+    - Mixed; Small Cell Lung Cancer; Adenocarcinoma; Squamous Cell Carcinoma; Stage 1
     - Mucoepidermoid Pulmonary Carcinoma
     - Myeloma (Plasma Cell)
     - Neuroblastoma
@@ -12245,8 +12216,7 @@ properties:
     type: string
   assay_type:
     title: Assay Type
-    description: The technique/method for data generation to be analyzed in pipeline
-      of assay.
+    description: The technique/method for data generation to be analyzed in pipeline of assay.
     placeholder: Choose from dropdown
     enum:
     - 10X Visium
